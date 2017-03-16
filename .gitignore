@@ -1,6 +1,7 @@
 *.class
 *.log
 target/
+application.yaml
 
 #IntelliJ IDEA specific
 **/.idea

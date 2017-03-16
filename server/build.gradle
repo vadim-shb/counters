@@ -47,6 +47,7 @@ dependencies {
 //    compile group: 'org.jetbrains.kotlin'           , name: 'kotlin-stdlib'                 , version: kotlin_version
     compile group: 'org.postgresql'                 , name: 'postgresql'                    , version: '9.4.1212.jre7'
     compile group: 'com.zaxxer'                     , name: 'HikariCP'
+    compile group: 'org.liquibase'                  , name: 'liquibase-core'                , version: '3.5.3'
     compile group: 'org.apache.commons'             , name: 'commons-lang3'                 , version: '3.5'
     compile group: 'commons-codec'                  , name: 'commons-codec'                 , version: '1.10'
 //    compile group: 'org.springframework.security'   , name: 'spring-security-web'
