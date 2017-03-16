@@ -4,5 +4,3 @@ spring:
     username:  "pguser"
     password:  "1234"
     driver-class-name: "org.postgresql.Driver"
-  data:
-    jpa.repositories.enabled: true

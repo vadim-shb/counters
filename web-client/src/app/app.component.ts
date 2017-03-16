@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get(`/api/resume`)
+    this.http.get(`/api/resume/1`)
       .map(response => response.json() as Resume)
       .subscribe(resume => {
         this.resume = resume;
