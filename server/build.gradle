@@ -1,0 +1,65 @@
+buildscript {
+    ext.kotlin_version = '1.1.1'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+//plugins {
+//    id "java" apply true
+//    id "org.jetbrains.kotlin.jvm" version kotlin_version apply true
+//    id "org.springframework.boot" apply true
+//}
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'vocabulator'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+//bootRun {
+//    jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"
+//}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile group: 'org.springframework.boot'       , name: 'spring-boot-starter-jetty'
+    compile group: 'org.springframework'            , name: 'spring-webmvc'
+//    compile group: 'org.springframework.boot'       , name: 'spring-boot-starter-data-jpa'
+    compile group: 'org.springframework'            , name: 'spring-context-support'
+    compile group: 'javax.inject'                   , name: 'javax.inject'                  , version: '1'
+//    compile group: 'javax.mail'                     , name: 'mail'                          , version: '1.4.7'
+
+//    compile group: 'org.jetbrains.kotlin'           , name: 'kotlin-stdlib'                 , version: kotlin_version
+    compile group: 'org.postgresql'                 , name: 'postgresql'                    , version: '9.4.1212.jre7'
+    compile group: 'com.zaxxer'                     , name: 'HikariCP'
+    compile group: 'org.apache.commons'             , name: 'commons-lang3'                 , version: '3.5'
+    compile group: 'commons-codec'                  , name: 'commons-codec'                 , version: '1.10'
+//    compile group: 'org.springframework.security'   , name: 'spring-security-web'
+//    compile group: 'org.springframework.security'   , name: 'spring-security-config'
+
+
+    compile group: 'org.springframework.boot'       , name: 'spring-boot-starter-actuator'
+    compile group: 'org.springframework.boot'       , name: 'spring-boot-devtools'
+
+
+    testCompile group: 'org.springframework'        , name: 'spring-test'
+    testCompile group: 'junit'                      , name: 'junit'
+    testCompile group: 'com.h2database'             , name: 'h2'
+
+}
+
