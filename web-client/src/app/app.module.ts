@@ -1,11 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
-import { RootComponent } from './components/root/root.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import "hammerjs";
+import {BrowserModule} from "@angular/platform-browser";
+import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
+import {RootComponent} from "./components/root/root.component";
+import {SignInComponent} from "./components/sign-in/sign-in.component";
 import {RoutingModule} from "./routing-module";
+import {MaterialModule} from "@angular/material";
+import {UserService} from "./services/user/user.service";
 
 @NgModule({
   declarations: [
@@ -16,9 +18,13 @@ import {RoutingModule} from "./routing-module";
     BrowserModule,
     FormsModule,
     HttpModule,
+    MaterialModule,
     RoutingModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [RootComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
