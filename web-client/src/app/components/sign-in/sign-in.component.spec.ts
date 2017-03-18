@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SignInComponent } from './sign-in.component';
+import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {SignInComponent} from "./sign-in.component";
+import {MaterialModule} from "@angular/material";
 
 describe('SignInComponent', () => {
   let component: SignInComponent;
@@ -8,18 +8,20 @@ describe('SignInComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignInComponent ]
+      imports: [
+        MaterialModule
+      ],
+      declarations: [SignInComponent]
     })
-    .compileComponents();
+      .compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(SignInComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+      });
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SignInComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 });
