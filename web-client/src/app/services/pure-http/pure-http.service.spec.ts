@@ -1,18 +1,15 @@
-import { TestBed, inject } from '@angular/core/testing';
-
-import { SecurityService } from './security.service';
-import {PureHttpService} from "../pure-http/pure-http.service";
-import {HttpModule, BaseRequestOptions} from "@angular/http";
+import {TestBed, inject} from "@angular/core/testing";
+import {PureHttpService} from "./pure-http.service";
+import {HttpModule, Http, BaseRequestOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 
-describe('SecurityService', () => {
+describe('PureHttpService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         HttpModule
       ],
       providers: [
-        SecurityService,
         BaseRequestOptions,
         MockBackend,
         {
@@ -24,7 +21,7 @@ describe('SecurityService', () => {
     });
   });
 
-  it('should be created', inject([SecurityService], (service: SecurityService) => {
+  it('should be created', inject([PureHttpService], (service: PureHttpService) => {
     expect(service).toBeTruthy();
   }));
 });

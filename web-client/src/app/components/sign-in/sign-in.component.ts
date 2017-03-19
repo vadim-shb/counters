@@ -1,7 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {SecurityService} from "../../services/security/security.service";
 import {Router} from "@angular/router";
-import {User} from "../../services/security/user";
+import {User} from "../../domain/user";
+import {UsernamePasswordCredentials} from "../../domain/username-password-credentials";
 
 @Component({
   selector: 'app-sign-in',
@@ -9,8 +10,10 @@ import {User} from "../../services/security/user";
   styleUrls: ['./sign-in.component.less']
 })
 export class SignInComponent implements OnInit {
-  username: string = '';
-  password: string = '';
+  credentials: UsernamePasswordCredentials = {
+    username: '',
+    password: ''
+  };
 
   constructor(private router: Router,
               private securityService: SecurityService) {
@@ -20,7 +23,7 @@ export class SignInComponent implements OnInit {
   }
 
   signIn() {
-    this.securityService.signIn(this.username, this.password)
+    this.securityService.signIn(this.credentials)
       .subscribe((user: User | undefined) => {
         if (user) {
           this.router.navigate(['/vacancies']);

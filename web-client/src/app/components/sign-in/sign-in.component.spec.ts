@@ -18,7 +18,7 @@ describe('SignInComponent', () => {
       ],
       providers: [
         {provide: SecurityService, useValue: {}},
-        {provide: Router, useValue: { navigate: jasmine.createSpy('navigate')}}
+        {provide: Router, useValue: {navigate: jasmine.createSpy('navigate')}}
       ],
       declarations: [SignInComponent]
     })
@@ -40,14 +40,16 @@ describe('SignInComponent', () => {
     let securityServiceMock = TestBed.get(SecurityService);
     securityServiceMock.signIn = jasmine.createSpy('signIn').and.returnValue(new BehaviorSubject(undefined));
 
-    component.username = 'nick';
-    component.password = '123';
+    component.credentials = {
+      username: 'nick',
+      password: '123'
+    };
 
     // WHEN
     component.signIn();
 
     // THEN
-    expect(securityServiceMock.signIn).toHaveBeenCalledWith('nick','123');
+    expect(securityServiceMock.signIn).toHaveBeenCalledWith({username: 'nick', password: '123'});
   });
 
   it('should redirect if successful sign in', () => {
