@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {SecurityService} from "../../services/security/security.service";
+import {Router} from "@angular/router";
+import {User} from "../../services/security/authentication-result";
 
 @Component({
   selector: 'app-sign-in',
@@ -10,12 +12,19 @@ export class SignInComponent implements OnInit {
   username: string = '';
   password: string = '';
 
-  constructor(private securityService: SecurityService) { }
+  constructor(private router: Router,
+              private securityService: SecurityService) {
+  }
 
   ngOnInit() {
   }
 
   signIn() {
-    this.securityService.signIn(this.username, this.password);
+    this.securityService.signIn(this.username, this.password)
+      .subscribe((user: User | undefined) => {
+        if (user) {
+          this.router.navigate(['/vacancies']);
+        }
+      });
   }
 }
