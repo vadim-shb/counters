@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable, BehaviorSubject} from "rxjs";
-import {User} from "./authentication-result";
+import {User} from "./user";
 
 @Injectable()
 export class SecurityService {

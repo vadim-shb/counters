@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {SecurityService} from "../../services/security/security.service";
 import {Router} from "@angular/router";
-import {User} from "../../services/security/authentication-result";
+import {User} from "../../services/security/user";
 
 @Component({
   selector: 'app-sign-in',
