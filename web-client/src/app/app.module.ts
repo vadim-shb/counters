@@ -10,6 +10,7 @@ import {MaterialModule} from "@angular/material";
 import {UserService} from "./services/user/user.service";
 import {PureHttpService} from "./services/pure-http/pure-http.service";
 import {SecureHttpService} from "./services/secure-http/secure-http.service";
+import {ErrorHandleService} from "./services/error-handle/error-handle.service";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {SecureHttpService} from "./services/secure-http/secure-http.service";
   ],
   providers: [
     UserService,
+    ErrorHandleService,
     PureHttpService,
     {provide: Http, useClass: SecureHttpService}
   ],
