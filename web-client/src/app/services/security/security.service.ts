@@ -17,7 +17,7 @@ export class SecurityService {
 
   signIn(credentials: UsernamePasswordCredentials): Observable<User | undefined> {
     return this.pureHttp.post(`/api/security/sign-in`, credentials)
-      .catch(response => this.errorHandleService.catchHttpError(response))
+      // .catch(response => this.errorHandleService.catchHttpError(response))
       .map(response => {
         if (response.status == 404) {
           return undefined;
@@ -26,8 +26,8 @@ export class SecurityService {
       })
       .map(auth => {
         if (auth) {
-          this.userService.setUser(auth.user);
-          this.userService.setAccessToken(auth.accessToken);
+        //   this.userService.setUser(auth.user);
+        //   this.userService.setAccessToken(auth.accessToken);
           return auth.user
         }
       })
