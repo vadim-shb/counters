@@ -4,6 +4,8 @@ import { SecurityService } from './security.service';
 import {PureHttpService} from "../pure-http/pure-http.service";
 import {HttpModule, BaseRequestOptions} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
+import {ErrorHandleService} from "../error-handle/error-handle.service";
+import {UserService} from "../user/user.service";
 
 describe('SecurityService', () => {
   beforeEach(() => {
@@ -13,6 +15,8 @@ describe('SecurityService', () => {
       ],
       providers: [
         SecurityService,
+        ErrorHandleService,
+        UserService,
         BaseRequestOptions,
         MockBackend,
         {
