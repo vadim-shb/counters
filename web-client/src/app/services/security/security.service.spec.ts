@@ -71,7 +71,7 @@ describe('SecurityService', () => {
 
     let result = service.signIn({username: 'nick', password: '123'});
 
-    result.subscribe(user => expect(user).toBe({
+    result.subscribe(user => expect(user).toEqual({
       id: 7,
       name: 'Nick',
       surname: 'Fury',
