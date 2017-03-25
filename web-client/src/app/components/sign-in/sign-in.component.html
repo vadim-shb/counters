@@ -5,5 +5,5 @@
   <md-input-container>
     <input mdInput [(ngModel)]="credentials.password" placeholder="Password" type="password">
   </md-input-container>
-  <button md-button color="primary">Sign In</button>
+  <button md-button color="primary" (click)="signIn()">Sign In</button>
 </div>
