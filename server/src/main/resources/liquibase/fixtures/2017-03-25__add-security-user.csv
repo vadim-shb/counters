@@ -1,0 +1,2 @@
+username,hashed_password,salt,email,first_name,last_name
+admin,a933ffa9272f446f0f4132472e48a9a43d6381592d702aafc03f0795700b7b26012fc1137e39f9444a6741ee0d0f3b7a130be2b7eb9cb7f9ebcc067a4f5169e2,Z2YTKR,admin@admin.com,Администратор,

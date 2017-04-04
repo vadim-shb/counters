@@ -53,8 +53,8 @@ dependencies {
     compile group: 'org.liquibase'                  , name: 'liquibase-core'                , version: '3.5.3'
     compile group: 'org.apache.commons'             , name: 'commons-lang3'                 , version: '3.5'
     compile group: 'commons-codec'                  , name: 'commons-codec'                 , version: '1.10'
-//    compile group: 'org.springframework.security'   , name: 'spring-security-web'
-//    compile group: 'org.springframework.security'   , name: 'spring-security-config'
+    compile group: 'org.springframework.security'   , name: 'spring-security-web'
+    compile group: 'org.springframework.security'   , name: 'spring-security-config'
 
 
     compile group: 'org.springframework.boot'       , name: 'spring-boot-starter-actuator'
