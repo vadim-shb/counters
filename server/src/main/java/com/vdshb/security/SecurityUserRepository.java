@@ -6,4 +6,5 @@ public interface SecurityUserRepository extends CrudRepository<SecurityUser, Lon
 
     SecurityUser findByUsername(String username);
 
+    SecurityUser findByAccessToken(String accessToken);
 }

@@ -6,7 +6,7 @@ import org.springframework.security.authentication.AuthenticationCredentialsNotF
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ public class UsernamePasswordAuthenticationFilter extends AbstractAuthentication
 
     private static ObjectReader credentialsReader = new ObjectMapper().readerFor(UsernamePasswordCredentials.class);
 
-    public UsernamePasswordAuthenticationFilter(AntPathRequestMatcher defaultFilterProcessesUrl) {
+    public UsernamePasswordAuthenticationFilter(RequestMatcher defaultFilterProcessesUrl) {
         super(defaultFilterProcessesUrl);
     }
 
