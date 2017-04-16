@@ -6,15 +6,22 @@
     <changeSet id="2017-03-25__create-security-user-with-roles" author="vdshb" context="main">
         <sql>
             create table security_user (
-                id                  BIGSERIAL           NOT NULL PRIMARY KEY,
-                access_token        VARCHAR(32),
-                username            VARCHAR(100),
-                hashed_password     VARCHAR(128),
-                salt                VARCHAR(6),
-                email               VARCHAR(1000),
-                first_name          VARCHAR(100),
-                last_name           VARCHAR(100)
+                id                                  BIGSERIAL           NOT NULL PRIMARY KEY,
+                access_token                        VARCHAR(40),
+                refresh_token                       VARCHAR(40),
+                refresh_token_expiration_date_time  TIMESTAMP WITHOUT TIME ZONE,
+                access_token_expiration_date_time   TIMESTAMP WITHOUT TIME ZONE,
+                username                            VARCHAR(100),
+                hashed_password                     VARCHAR(128),
+                salt                                VARCHAR(6),
+                email                               VARCHAR(1000),
+                first_name                          VARCHAR(100),
+                last_name                           VARCHAR(100)
             );
+
+            CREATE INDEX security_user___username ON security_user (username);
+            CREATE INDEX security_user___access_token ON security_user (access_token);
+            CREATE INDEX security_user___refresh_token ON security_user (refresh_token);
 
             create table security_role (
                 id                  BIGSERIAL           NOT NULL PRIMARY KEY,

@@ -1,5 +1,7 @@
 package com.vdshb.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vdshb.security.AuthenticatedUserResponse;
 import com.vdshb.security.CustomUsernamePasswordAuthenticationFilter;
 import com.vdshb.security.SecurityUser;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,12 +18,16 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.Http403ForbiddenEntryPoint;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Inject
+    private ObjectMapper objectMapper;
 
     private AuthenticationProvider customUsernamePasswordAuthenticationProvider;
 
@@ -78,8 +84,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationSuccessHandler successHandler() {
         return (request, response, authentication) -> {
-            SecurityUser user = (SecurityUser) authentication.getPrincipal();
-            response.getWriter().write("{\"accessToken\": \"" + user.getAccessToken() + "\"}");
+            SecurityUser securityUser = (SecurityUser) authentication.getPrincipal();
+            objectMapper.writeValue(response.getWriter(), new AuthenticatedUserResponse(securityUser));
         };
     }
 }

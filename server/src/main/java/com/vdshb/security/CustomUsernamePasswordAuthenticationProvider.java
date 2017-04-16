@@ -6,40 +6,30 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.inject.Inject;
 import java.util.List;
-import java.util.stream.Collectors;
-
 
 @Component
 @Qualifier("CustomUsernamePasswordAuthenticationProvider")
 public class CustomUsernamePasswordAuthenticationProvider implements AuthenticationProvider {
 
-    private final SecurityUserRepository securityUserRepository;
-    private final RoleRepository roleRepository;
+    @Inject
+    private SecurityUserService securityUserService;
 
-    public CustomUsernamePasswordAuthenticationProvider(
-            SecurityUserRepository securityUserRepository,
-            RoleRepository roleRepository
-    ) {
-        this.securityUserRepository = securityUserRepository;
-        this.roleRepository = roleRepository;
-    }
+    @Inject
+    private SecurityTokensService securityTokensService;
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         UsernamePasswordCredentials credentials = (UsernamePasswordCredentials) authentication.getCredentials();
-        SecurityUser securityUser = securityUserRepository.findByUsername(credentials.getUsername());
+        SecurityUser securityUser = securityUserService.findUserByUsername(credentials.getUsername());
         if (securityUser != null && checkPassword(securityUser, credentials.getPassword())) {
-            List<Role> roles = roleRepository.findByUser(securityUser.getId());
-            List<GrantedAuthority> authorities = roles
-                    .stream()
-                    .map(role -> new SimpleGrantedAuthority(role.getRole()))
-                    .collect(Collectors.toList());
+            List<GrantedAuthority> authorities = securityUserService.findAuthorities(securityUser.getId());
+            securityTokensService.renewTokens(securityUser);
             return new SecurityUserToken(securityUser, authorities);
         }
         return null;

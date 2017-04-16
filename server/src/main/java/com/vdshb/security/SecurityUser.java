@@ -1,6 +1,7 @@
 package com.vdshb.security;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "security_user")
@@ -12,6 +13,15 @@ public class SecurityUser {
 
     @Column(name = "access_token")
     private String accessToken;
+
+    @Column(name = "refresh_token")
+    private String refreshToken;
+
+    @Column(name = "access_token_expiration_date_time")
+    private LocalDateTime accessTokenExpirationDateTime;
+
+    @Column(name = "refresh_token_expiration_date_time")
+    private LocalDateTime refreshTokenExpirationDateTime;
 
     private String username;
 
@@ -43,6 +53,30 @@ public class SecurityUser {
 
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
+    public LocalDateTime getAccessTokenExpirationDateTime() {
+        return accessTokenExpirationDateTime;
+    }
+
+    public void setAccessTokenExpirationDateTime(LocalDateTime accessTokenExpirationDateTime) {
+        this.accessTokenExpirationDateTime = accessTokenExpirationDateTime;
+    }
+
+    public LocalDateTime getRefreshTokenExpirationDateTime() {
+        return refreshTokenExpirationDateTime;
+    }
+
+    public void setRefreshTokenExpirationDateTime(LocalDateTime refreshTokenExpirationDateTime) {
+        this.refreshTokenExpirationDateTime = refreshTokenExpirationDateTime;
     }
 
     public String getUsername() {
