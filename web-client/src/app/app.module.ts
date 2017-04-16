@@ -12,6 +12,7 @@ import {PureHttpService} from "./services/pure-http/pure-http.service";
 import {SecureHttpService} from "./services/secure-http/secure-http.service";
 import {ErrorHandleService} from "./services/error-handle/error-handle.service";
 import {SecurityService} from "./services/security/security.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {SecurityService} from "./services/security/security.service";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     MaterialModule,
