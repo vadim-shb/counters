@@ -16,12 +16,12 @@ import java.util.stream.Collectors;
 
 @Component
 @Qualifier("CustomUsernamePasswordAuthenticationProvider")
-public class UsernamePasswordAuthenticationProvider implements AuthenticationProvider {
+public class CustomUsernamePasswordAuthenticationProvider implements AuthenticationProvider {
 
     private final SecurityUserRepository securityUserRepository;
     private final RoleRepository roleRepository;
 
-    public UsernamePasswordAuthenticationProvider(
+    public CustomUsernamePasswordAuthenticationProvider(
             SecurityUserRepository securityUserRepository,
             RoleRepository roleRepository
     ) {
@@ -34,7 +34,7 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         UsernamePasswordCredentials credentials = (UsernamePasswordCredentials) authentication.getCredentials();
         SecurityUser securityUser = securityUserRepository.findByUsername(credentials.getUsername());
-        if (securityUser != null && checkPassword(securityUser, credentials.getPassword())){
+        if (securityUser != null && checkPassword(securityUser, credentials.getPassword())) {
             List<Role> roles = roleRepository.findByUser(securityUser.getId());
             List<GrantedAuthority> authorities = roles
                     .stream()
@@ -53,6 +53,6 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return authentication.getClass().isAssignableFrom(UsernamePasswordAuthentication.class);
+        return authentication.isAssignableFrom(UsernamePasswordAuthentication.class);
     }
 }
