@@ -18,7 +18,7 @@ public class AccessTokenAuthenticationFilter extends AbstractAuthenticationProce
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        String accessToken = request.getHeader("Access-token");
+        String accessToken = request.getHeader("access-token");
         if (accessToken != null) {
             AccessTokenCredentials accessTokenCredentials = new AccessTokenCredentials();
             accessTokenCredentials.setAccessToken(accessToken);

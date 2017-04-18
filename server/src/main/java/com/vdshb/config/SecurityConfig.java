@@ -1,6 +1,7 @@
 package com.vdshb.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.vdshb.security.AccessTokenSecurityContextRepository;
 import com.vdshb.security.AuthenticatedUserResponse;
 import com.vdshb.security.CustomUsernamePasswordAuthenticationFilter;
 import com.vdshb.security.SecurityUser;
@@ -29,6 +30,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Inject
     private ObjectMapper objectMapper;
 
+    @Inject
+    private AccessTokenSecurityContextRepository accessTokenSecurityContextRepository;
+
     private AuthenticationProvider customUsernamePasswordAuthenticationProvider;
 
     public SecurityConfig(
@@ -41,6 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:off
         http
+            .securityContext().securityContextRepository(accessTokenSecurityContextRepository).and()
             .exceptionHandling().authenticationEntryPoint(new Http403ForbiddenEntryPoint()).and()
                 .headers().and()
 
