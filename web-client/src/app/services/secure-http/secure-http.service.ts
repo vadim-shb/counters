@@ -41,12 +41,12 @@ export class SecureHttpService extends Http {
     if (options) {
       result = Object.assign({}, options);
       if (result.headers) {
-        result.headers.append('Authorization', accessToken);
+        result.headers.append('access-token', accessToken);
       } else {
-        result.headers = new Headers({'Authorization': accessToken});
+        result.headers = new Headers({'access-token': accessToken});
       }
     } else {
-      result = {headers: new Headers({'Authorization': accessToken})};
+      result = {headers: new Headers({'access-token': accessToken})};
     }
     return result;
   }
