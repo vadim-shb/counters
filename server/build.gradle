@@ -59,6 +59,7 @@ dependencies {
     compile group: 'commons-codec'                  , name: 'commons-codec'                 , version: '1.10'
     compile group: 'org.springframework.security'   , name: 'spring-security-web'
     compile group: 'org.springframework.security'   , name: 'spring-security-config'
+    compile group: 'org.springframework.session'    , name: 'spring-session' //todo: remove
     compile group: 'com.github.ben-manes.caffeine'  , name: 'caffeine'
 
 

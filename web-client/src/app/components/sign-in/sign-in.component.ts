@@ -26,7 +26,7 @@ export class SignInComponent implements OnInit {
     this.securityService.signIn(this.credentials)
       .subscribe((user: User | undefined) => {
         if (user) {
-          this.router.navigate(['/vacancies']);
+          this.router.navigate(['/dashboard']);
         }
       });
   }

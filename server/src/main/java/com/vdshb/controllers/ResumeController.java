@@ -19,4 +19,9 @@ public class ResumeController {
     public Resume getResume(@PathVariable Long resumeId) {
         return resumeRepository.findOne(resumeId);
     }
+
+    @GetMapping("/api/resumes")
+    public Iterable<Resume> getResumes() {
+        return resumeRepository.findAll();
+    }
 }

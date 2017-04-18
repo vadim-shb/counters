@@ -11,6 +11,7 @@ import org.springframework.session.web.http.HttpSessionStrategy;
 @EnableSpringHttpSession
 public class SecuritySessionConfig {
 
+    //todo: drop it
     @Bean
     public MapSessionRepository sessionRepository() {
         return new MapSessionRepository();
