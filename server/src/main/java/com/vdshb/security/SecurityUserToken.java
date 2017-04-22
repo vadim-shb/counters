@@ -4,6 +4,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -55,7 +56,7 @@ public class SecurityUserToken implements Authentication {
 
     @Override
     public boolean isAuthenticated() {
-        return isAuthenticated;
+        return isAuthenticated && user.getAccessTokenExpirationDateTime().isAfter(Instant.now());
     }
 
     @Override

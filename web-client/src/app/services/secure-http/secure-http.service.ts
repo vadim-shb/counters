@@ -19,16 +19,14 @@ export class SecureHttpService extends Http {
   // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
   get(url: string, options?: RequestOptionsArgs): Observable<Response> {
     return this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options))
-      .catch((response) => {
+      .catch(response => {
         if (response.status == 403 || response.status == 401) {
           return this.securityService.refreshAuthSession()
-            .flatMap(() => {
-              return this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options))
-            });
+            .flatMap(() => this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options)));
         }
         return response;
       })
-      .catch(response => this.errorHandleService.catchHttpError(response))
+      .catch(response => this.errorHandleService.catchHttpError(response));
   }
 
   private modifyOptions(accessToken: string, options?: RequestOptionsArgs): RequestOptionsArgs {

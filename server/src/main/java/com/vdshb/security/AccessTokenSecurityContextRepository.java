@@ -38,9 +38,12 @@ public class AccessTokenSecurityContextRepository implements SecurityContextRepo
 
     @Override
     public void saveContext(SecurityContext context, HttpServletRequest request, HttpServletResponse response) {
-        if (context.getAuthentication() != null && context.getAuthentication().getPrincipal() instanceof SecurityUser) {
-            String accessToken = ((SecurityUser) context.getAuthentication().getPrincipal()).getAccessToken();
-            cachedSecurityContexts.put(accessToken, context);
+        if (context.getAuthentication() != null &&
+                context.getAuthentication().getPrincipal() instanceof SecurityUser &&
+                context.getAuthentication().isAuthenticated()) {
+
+            SecurityUser securityUser = (SecurityUser) context.getAuthentication().getPrincipal();
+            cachedSecurityContexts.put(securityUser.getAccessToken(), context);
         }
     }
 

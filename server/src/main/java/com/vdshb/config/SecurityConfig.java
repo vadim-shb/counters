@@ -66,13 +66,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // @formatter:on
     }
 
-    //todo: try without it
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(customUsernamePasswordAuthenticationProvider);
-//        auth.authenticationProvider(refreshTokenAuthenticationProvider);
-//    }
-
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
