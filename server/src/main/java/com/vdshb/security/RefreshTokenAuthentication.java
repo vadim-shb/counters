@@ -5,12 +5,12 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 
-public class AccessTokenAuthentication implements Authentication {
+public class RefreshTokenAuthentication implements Authentication {
 
-    private final AccessTokenCredentials accessTokenCredentials;
+    private final RefreshTokenCredentials refreshTokenCredentials;
 
-    public AccessTokenAuthentication(AccessTokenCredentials accessTokenCredentials) {
-        this.accessTokenCredentials = accessTokenCredentials;
+    public RefreshTokenAuthentication(RefreshTokenCredentials refreshTokenCredentials) {
+        this.refreshTokenCredentials = refreshTokenCredentials;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class AccessTokenAuthentication implements Authentication {
 
     @Override
     public Object getCredentials() {
-        return accessTokenCredentials;
+        return refreshTokenCredentials;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class AccessTokenAuthentication implements Authentication {
 
     @Override
     public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
-        throw new IllegalArgumentException("class AccessTokenAuthentication can not be used in security context. It is for authentication purposes only [as credentials holder]. Use SecurityUserToken instead.");
+        throw new IllegalArgumentException("class RefreshTokenAuthentication can not be used in security context. It is for authentication purposes only [as credentials holder]. Use SecurityUserToken instead.");
 
     }
 

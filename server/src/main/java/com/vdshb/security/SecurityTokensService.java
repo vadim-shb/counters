@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -25,13 +23,14 @@ public class SecurityTokensService {
     @Inject
     private SecurityUserRepository securityUserRepository;
 
-    private final Cache<String, SecurityUserToken> cachedSecurityUsers;
+    //todo: add caching
+//    private final Cache<String, SecurityUserToken> cachedSecurityUsers;
 
-    public SecurityTokensService(@Value("${security.access-token-expiration-time}") Long accessTokenExpirationTime) {
-        this.cachedSecurityUsers = Caffeine.newBuilder()
-                .expireAfterWrite(accessTokenExpirationTime, TimeUnit.SECONDS)
-                .build();
-    }
+//    public SecurityTokensService(@Value("${security.access-token-expiration-time}") Long accessTokenExpirationTime) {
+//        this.cachedSecurityUsers = Caffeine.newBuilder()
+//                .expireAfterWrite(accessTokenExpirationTime, TimeUnit.SECONDS)
+//                .build();
+//    }
 
     public void renewTokens(SecurityUser securityUser) {
         String newAccessToken = UUID.randomUUID().toString();
@@ -42,8 +41,8 @@ public class SecurityTokensService {
 
         securityUser.setAccessToken(newAccessToken);
         securityUser.setRefreshToken(newRefreshToken);
-        securityUser.setAccessTokenExpirationDateTime(LocalDateTime.ofInstant(accessTokenExpirationDateTime, ZoneOffset.UTC));
-        securityUser.setRefreshTokenExpirationDateTime(LocalDateTime.ofInstant(refreshTokenExpirationDateTime, ZoneOffset.UTC));
+        securityUser.setAccessTokenExpirationDateTime(accessTokenExpirationDateTime);
+        securityUser.setRefreshTokenExpirationDateTime(refreshTokenExpirationDateTime);
 
         securityUserRepository.save(securityUser);
     }

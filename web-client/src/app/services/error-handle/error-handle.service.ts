@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 import {Response} from "@angular/http";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
@@ -8,17 +8,19 @@ import {UserService} from "../user/user.service";
 export class ErrorHandleService {
 
   constructor(private router: Router,
-  private userService: UserService) { }
+              private userService: UserService) {
+  }
 
-  catchHttpError(response: Response) : Observable<Response> {
-    if (response.status == 403) {
+  catchHttpError(response: Response): Observable<Response> {
+    if (response.status == 403 || response.status == 401) {
       this.userService.clearUser();
       this.router.navigate(['/sign-in']);
-      throw "user must be signed in";
+      throw 'user must be signed in';
     }
     if (response.status == 500) {
       this.router.navigate(['/error']);
     }
     return Observable.never();
   }
+
 }

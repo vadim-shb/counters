@@ -13,8 +13,11 @@ export class DashboardComponent implements OnInit {
   constructor(private resumeDao: ResumeDao) { }
 
   ngOnInit() {
+    this.reload();
+  }
+
+  reload() {
     this.resumeDao.findAll()
       .subscribe(resume => this.resumes = resume);
   }
-
 }

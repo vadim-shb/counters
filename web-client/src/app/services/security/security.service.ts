@@ -1,12 +1,11 @@
 import {Injectable} from "@angular/core";
-import {Observable, ReplaySubject, BehaviorSubject} from "rxjs";
+import {Observable} from "rxjs";
 import {User} from "../../domain/user";
 import {PureHttpService} from "../pure-http/pure-http.service";
 import {UsernamePasswordCredentials} from "../../domain/username-password-credentials";
 import {ErrorHandleService} from "../error-handle/error-handle.service";
 import {UserService} from "../user/user.service";
 import {AuthenticationSession} from "../../domain/authentication-session";
-import * as moment from 'moment';
 import {SuccessAuthenticationResponse} from "../../domain/success-authentication-response";
 
 @Injectable()
@@ -14,11 +13,8 @@ export class SecurityService {
 
   private authSession: AuthenticationSession;
 
-  private refreshSessionLock = false;
-  private previousSessionWaitSteps = 0;
-
   constructor(private pureHttp: PureHttpService,
-              // private errorHandleService: ErrorHandleService,
+              private errorHandleService: ErrorHandleService,
               private userService: UserService) {
   }
 
@@ -31,7 +27,7 @@ export class SecurityService {
         // }
         return response.json() as SuccessAuthenticationResponse
       })
-      .map(auth=> {
+      .map(auth => {
         if (auth) {
           this.userService.setUser(auth.user);
           this.authSession = auth.session;
@@ -40,53 +36,38 @@ export class SecurityService {
       })
   }
 
-  getAccessToken(): Observable<string|undefined> {
-    let accessTokenExpirationTime = moment(this.authSession.accessTokenExpirationTime);
-    if (accessTokenExpirationTime.isAfter(moment().add(5, 'm'))) {
-      return new BehaviorSubject(this.authSession.accessToken)
-    } else {
-      if (!this.refreshSessionLock) {
-        return this.refreshAuthSession();
-      } else {
-        return this.waitPreviousRefreshFinish();
-      }
+  getAccessToken(): string | undefined {
+    if (this.authSession) {
+      return this.authSession.accessToken;
     }
   }
 
-  private waitPreviousRefreshFinish() {
-    this.previousSessionWaitSteps++;
-    if (this.previousSessionWaitSteps > 30){
-      throw 'Max level of tryings. Can\'t refresh authentication session.';
+  private refreshingSessionProcess?: Observable<undefined>;
+
+  refreshAuthSession(): Observable<undefined> {
+    if (!this.refreshingSessionProcess) {
+      this.refreshingSessionProcess = this.refreshAuthSessionRequest(this.authSession.refreshToken)
+        .map(auth => {
+          this.userService.setUser(auth.user);
+          this.authSession = auth.session;
+        })
+        .finally(() => {
+        //todo: check if works correctly on two close refreshes
+          delete this.refreshingSessionProcess;
+        });
     }
-    let result = new ReplaySubject<string|undefined>(1);
-    setTimeout(() => {
-      this.getAccessToken()
-        .subscribe(accessToken => result.next(accessToken));
-    }, 100 * (this.previousSessionWaitSteps + 1));
-    return result;
+
+    return this.refreshingSessionProcess;
   }
 
-  private refreshAuthSession() {
-    this.refreshSessionLock = true;
-    return this.refreshAuthSessionRequest(this.authSession.refreshToken)
-      .map(authSession => {
-        this.authSession = authSession;
-        return authSession.refreshToken;
-      })
-      .finally(() => {
-        this.refreshSessionLock = false;
-        this.previousSessionWaitSteps = 0;
-      });
-  }
-
-  private refreshAuthSessionRequest(refreshToken: string): Observable<AuthenticationSession | undefined> {
+  private refreshAuthSessionRequest(refreshToken: string): Observable<SuccessAuthenticationResponse> {
     return this.pureHttp.post(`/api/security/refresh-auth-session`, refreshToken)
-      // .catch(response => this.errorHandleService.catchHttpError(response))
+      .catch(response => this.errorHandleService.catchHttpError(response))
       .map(response => {
         // if (response.status == 404) {
         //   return undefined;
         // }
-        return response.json() as AuthenticationSession
+        return response.json() as SuccessAuthenticationResponse;
       })
   }
 }

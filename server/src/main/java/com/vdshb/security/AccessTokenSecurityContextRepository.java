@@ -29,7 +29,7 @@ public class AccessTokenSecurityContextRepository implements SecurityContextRepo
         String accessToken = requestResponseHolder.getRequest().getHeader("access-token");
         if (accessToken != null) {
             SecurityContext cachedSecurityContext = cachedSecurityContexts.getIfPresent(accessToken);
-            if (cachedSecurityContext != null){
+            if (cachedSecurityContext != null) {
                 return cachedSecurityContext;
             }
         }
@@ -38,8 +38,8 @@ public class AccessTokenSecurityContextRepository implements SecurityContextRepo
 
     @Override
     public void saveContext(SecurityContext context, HttpServletRequest request, HttpServletResponse response) {
-        if (context.getAuthentication() != null) {
-            String accessToken = ((SecurityUser)context.getAuthentication().getPrincipal()).getAccessToken();
+        if (context.getAuthentication() != null && context.getAuthentication().getPrincipal() instanceof SecurityUser) {
+            String accessToken = ((SecurityUser) context.getAuthentication().getPrincipal()).getAccessToken();
             cachedSecurityContexts.put(accessToken, context);
         }
     }
@@ -48,6 +48,6 @@ public class AccessTokenSecurityContextRepository implements SecurityContextRepo
     public boolean containsContext(HttpServletRequest request) {
         //todo: try just:| return request.getHeader("access-token") != null;
         String accessToken = request.getHeader("access-token");
-        return cachedSecurityContexts.getIfPresent(accessToken) != null;
+        return accessToken != null && cachedSecurityContexts.getIfPresent(accessToken) != null;
     }
 }

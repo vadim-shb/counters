@@ -2,7 +2,6 @@ import {Injectable} from "@angular/core";
 import {Http, ConnectionBackend, RequestOptions, RequestOptionsArgs, Response, Headers} from "@angular/http";
 import {PureHttpService} from "../pure-http/pure-http.service";
 import {Observable} from "rxjs";
-import {Router} from "@angular/router";
 import {ErrorHandleService} from "../error-handle/error-handle.service";
 import {SecurityService} from "../security/security.service";
 
@@ -13,27 +12,23 @@ export class SecureHttpService extends Http {
               private defaultOptions: RequestOptions,
               private pureHttpService: PureHttpService,
               private securityService: SecurityService,
-              private router: Router,
               private errorHandleService: ErrorHandleService,) {
     super(backend, defaultOptions);
   }
 
+  // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
   get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.securityService.getAccessToken()
-      .flatMap(accessToken => {
-        if (accessToken) {
-          return this.pureHttpService.get(url, this.modifyOptions(accessToken, options))
-            .catch(response => this.errorHandleService.catchHttpError(response))
+    return this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options))
+      .catch((response) => {
+        if (response.status == 403 || response.status == 401) {
+          return this.securityService.refreshAuthSession()
+            .flatMap(() => {
+              return this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options))
+            });
         }
-        else {
-          this.notSignedInUserErrorHandler();
-          return Observable.empty() as Observable<Response>;
-        }
-      });
-  }
-
-  private notSignedInUserErrorHandler(): void {
-    this.router.navigate(['/sign-in']);
+        return response;
+      })
+      .catch(response => this.errorHandleService.catchHttpError(response))
   }
 
   private modifyOptions(accessToken: string, options?: RequestOptionsArgs): RequestOptionsArgs {

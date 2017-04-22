@@ -1,7 +1,9 @@
 package com.vdshb.security;
 
 import javax.persistence.*;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 @Entity
 @Table(name = "security_user")
@@ -63,20 +65,20 @@ public class SecurityUser {
         this.refreshToken = refreshToken;
     }
 
-    public LocalDateTime getAccessTokenExpirationDateTime() {
-        return accessTokenExpirationDateTime;
+    public Instant getAccessTokenExpirationDateTime() {
+        return accessTokenExpirationDateTime.toInstant(ZoneOffset.UTC);
     }
 
-    public void setAccessTokenExpirationDateTime(LocalDateTime accessTokenExpirationDateTime) {
-        this.accessTokenExpirationDateTime = accessTokenExpirationDateTime;
+    public void setAccessTokenExpirationDateTime(Instant accessTokenExpirationDateTime) {
+        this.accessTokenExpirationDateTime = LocalDateTime.ofInstant(accessTokenExpirationDateTime, ZoneOffset.UTC);
     }
 
-    public LocalDateTime getRefreshTokenExpirationDateTime() {
-        return refreshTokenExpirationDateTime;
+    public Instant getRefreshTokenExpirationDateTime() {
+        return refreshTokenExpirationDateTime.toInstant(ZoneOffset.UTC);
     }
 
-    public void setRefreshTokenExpirationDateTime(LocalDateTime refreshTokenExpirationDateTime) {
-        this.refreshTokenExpirationDateTime = refreshTokenExpirationDateTime;
+    public void setRefreshTokenExpirationDateTime(Instant refreshTokenExpirationDateTime) {
+        this.refreshTokenExpirationDateTime = LocalDateTime.ofInstant(refreshTokenExpirationDateTime, ZoneOffset.UTC);
     }
 
     public String getUsername() {

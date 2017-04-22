@@ -1,7 +1,5 @@
 package com.vdshb.security;
 
-import java.time.ZoneOffset;
-
 public class AuthenticatedUserResponse {
 
     private AuthenticationSession session;
@@ -11,8 +9,8 @@ public class AuthenticatedUserResponse {
         session = new AuthenticationSession();
         session.setAccessToken(securityUser.getAccessToken());
         session.setRefreshToken(securityUser.getRefreshToken());
-        session.setAccessTokenExpirationTime(securityUser.getAccessTokenExpirationDateTime().toInstant(ZoneOffset.UTC));
-        session.setRefreshTokenExpirationTime(securityUser.getRefreshTokenExpirationDateTime().toInstant(ZoneOffset.UTC));
+        session.setAccessTokenExpirationTime(securityUser.getAccessTokenExpirationDateTime());
+        session.setRefreshTokenExpirationTime(securityUser.getRefreshTokenExpirationDateTime());
         user = new PublicUser();
         user.setFirstName(securityUser.getFirstName());
         user.setLastName(securityUser.getLastName());

@@ -1,10 +1,7 @@
 package com.vdshb.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.vdshb.security.AccessTokenSecurityContextRepository;
-import com.vdshb.security.AuthenticatedUserResponse;
-import com.vdshb.security.CustomUsernamePasswordAuthenticationFilter;
-import com.vdshb.security.SecurityUser;
+import com.vdshb.security.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +30,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Inject
     private AccessTokenSecurityContextRepository accessTokenSecurityContextRepository;
 
+    @Inject
+    private RefreshTokenAuthenticationProvider refreshTokenAuthenticationProvider;
+
     private AuthenticationProvider customUsernamePasswordAuthenticationProvider;
 
     public SecurityConfig(
@@ -59,29 +59,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/security/**").permitAll()
                 .anyRequest().authenticated()
             .and()
-            .addFilter(customUsernamePasswordAuthenticationFilter());
+            .addFilter(customUsernamePasswordAuthenticationFilter())
+            .addFilterAfter(refreshTokenAuthenticationFilter(), CustomUsernamePasswordAuthenticationFilter.class);
 //                .httpBasic();
 
     // @formatter:on
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(customUsernamePasswordAuthenticationProvider);
-    }
+    //todo: try without it
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(customUsernamePasswordAuthenticationProvider);
+//        auth.authenticationProvider(refreshTokenAuthenticationProvider);
+//    }
 
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         List<AuthenticationProvider> authenticationProviderList = new ArrayList<AuthenticationProvider>();
         authenticationProviderList.add(customUsernamePasswordAuthenticationProvider);
+        authenticationProviderList.add(refreshTokenAuthenticationProvider);
         return new ProviderManager(authenticationProviderList);
     }
-
 
     @Bean
     public CustomUsernamePasswordAuthenticationFilter customUsernamePasswordAuthenticationFilter() throws Exception {
         CustomUsernamePasswordAuthenticationFilter result = new CustomUsernamePasswordAuthenticationFilter(new AntPathRequestMatcher("/api/security/sign-in/username-password", "POST"), authenticationManagerBean());
+        result.setAuthenticationSuccessHandler(successHandler());
+        return result;
+    }
+
+    @Bean
+    public RefreshTokenAuthenticationFilter refreshTokenAuthenticationFilter() throws Exception {
+        RefreshTokenAuthenticationFilter result = new RefreshTokenAuthenticationFilter(new AntPathRequestMatcher("/api/security/refresh-auth-session", "POST"), authenticationManagerBean());
         result.setAuthenticationSuccessHandler(successHandler());
         return result;
     }

@@ -6,5 +6,8 @@ public interface SecurityUserRepository extends CrudRepository<SecurityUser, Lon
 
     SecurityUser findByUsername(String username);
 
+    //todo: check access-tokens not only in memory
     SecurityUser findByAccessToken(String accessToken);
+
+    SecurityUser findByRefreshToken(String refreshToken);
 }

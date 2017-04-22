@@ -21,6 +21,10 @@ public class SecurityUserService {
         return securityUserRepository.findByUsername(username);
     }
 
+    public SecurityUser findUserByRefreshToken(String refreshToken) {
+        return securityUserRepository.findByRefreshToken(refreshToken);
+    }
+
     public List<GrantedAuthority> findAuthorities(Long securityUserId) {
         List<Role> roles = roleRepository.findByUser(securityUserId);
         return roles
@@ -28,4 +32,5 @@ public class SecurityUserService {
                 .map(role -> new SimpleGrantedAuthority(role.getRole()))
                 .collect(Collectors.toList());
     }
+
 }
