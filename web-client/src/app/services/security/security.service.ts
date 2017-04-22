@@ -11,12 +11,12 @@ import {SuccessAuthenticationResponse} from "../../domain/success-authentication
 @Injectable()
 export class SecurityService {
 
-  //todo: to local storage
   private authSession: AuthenticationSession;
 
   constructor(private pureHttp: PureHttpService,
               private errorHandleService: ErrorHandleService,
               private userService: UserService) {
+    this.authSession = JSON.parse(localStorage.getItem('authSession'));
   }
 
   signIn(credentials: UsernamePasswordCredentials): Observable<User | undefined> {
@@ -31,10 +31,15 @@ export class SecurityService {
       .map(auth => {
         if (auth) {
           this.userService.setUser(auth.user);
-          this.authSession = auth.session;
+          this.setAuthSession(auth.session);
           return auth.user;
         }
       })
+  }
+
+  private setAuthSession(authSession: AuthenticationSession):void {
+    this.authSession = authSession;
+    localStorage.setItem('authSession', JSON.stringify(authSession));
   }
 
   isCurrentUserAuthenticated(): boolean {
@@ -55,7 +60,7 @@ export class SecurityService {
       this.refreshAuthSessionRequest(this.authSession.refreshToken)
         .subscribe(auth => {
           this.userService.setUser(auth.user);
-          this.authSession = auth.session;
+          this.setAuthSession(auth.session);
           this.refreshingSessionProcess.next();
           setTimeout(() => {delete this.refreshingSessionProcess}, 10000); //10 seconds for all started requests, which get 403. So they will not starts new refresh
         });
