@@ -49,8 +49,6 @@ public class AccessTokenSecurityContextRepository implements SecurityContextRepo
 
     @Override
     public boolean containsContext(HttpServletRequest request) {
-        //todo: try just:| return request.getHeader("access-token") != null;
-        String accessToken = request.getHeader("access-token");
-        return accessToken != null && cachedSecurityContexts.getIfPresent(accessToken) != null;
+        return request.getHeader("access-token") != null;
     }
 }
