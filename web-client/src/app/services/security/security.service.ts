@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Observable} from "rxjs";
+import {Observable, ReplaySubject, Subject} from "rxjs";
 import {User} from "../../domain/user";
 import {PureHttpService} from "../pure-http/pure-http.service";
 import {UsernamePasswordCredentials} from "../../domain/username-password-credentials";
@@ -11,6 +11,7 @@ import {SuccessAuthenticationResponse} from "../../domain/success-authentication
 @Injectable()
 export class SecurityService {
 
+  //todo: to local storage
   private authSession: AuthenticationSession;
 
   constructor(private pureHttp: PureHttpService,
@@ -46,18 +47,17 @@ export class SecurityService {
     }
   }
 
-  private refreshingSessionProcess?: Observable<undefined>;
+  private refreshingSessionProcess?: Subject<undefined>;
 
   refreshAuthSession(): Observable<undefined> {
     if (!this.refreshingSessionProcess) {
-      this.refreshingSessionProcess = this.refreshAuthSessionRequest(this.authSession.refreshToken)
-        .map(auth => {
+      this.refreshingSessionProcess = new ReplaySubject(1);
+      this.refreshAuthSessionRequest(this.authSession.refreshToken)
+        .subscribe(auth => {
           this.userService.setUser(auth.user);
           this.authSession = auth.session;
-        })
-        .finally(() => {
-        //todo: check if works correctly on two close refreshes
-          delete this.refreshingSessionProcess;
+          this.refreshingSessionProcess.next();
+          setTimeout(() => {delete this.refreshingSessionProcess}, 10000); //10 seconds for all started requests, which get 403. So they will not starts new refresh
         });
     }
 

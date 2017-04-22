@@ -17,7 +17,6 @@ export class DashboardComponent implements OnInit {
   }
 
   reload() {
-    this.resumeDao.findAll()
-      .subscribe(resume => this.resumes = resume);
+    this.resumeDao.findAll().subscribe(resume => this.resumes = resume);
   }
 }
