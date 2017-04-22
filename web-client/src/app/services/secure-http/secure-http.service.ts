@@ -4,6 +4,8 @@ import {PureHttpService} from "../pure-http/pure-http.service";
 import {Observable} from "rxjs";
 import {ErrorHandleService} from "../error-handle/error-handle.service";
 import {SecurityService} from "../security/security.service";
+import {UserService} from "../user/user.service";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class SecureHttpService extends Http {
@@ -12,21 +14,37 @@ export class SecureHttpService extends Http {
               private defaultOptions: RequestOptions,
               private pureHttpService: PureHttpService,
               private securityService: SecurityService,
+              private userService: UserService,
+              private router: Router,
               private errorHandleService: ErrorHandleService,) {
     super(backend, defaultOptions);
   }
 
   // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
   get(url: string, options?: RequestOptionsArgs): Observable<Response> {
-    return this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options))
-      .catch(response => {
-        if (response.status == 403 || response.status == 401) {
-          return this.securityService.refreshAuthSession()
-            .flatMap(() => this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options)));
-        }
-        return response;
-      })
-      .catch(response => this.errorHandleService.catchHttpError(response));
+    return this.ifAuthenticated(() => {
+      return this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options))
+        .catch(response => {
+          if (response.status == 403 || response.status == 401) {
+            return this.securityService.refreshAuthSession()
+              .flatMap(() => this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options)));
+          }
+          return response;
+        })
+        .catch(response => {
+          console.log(response);
+          return this.errorHandleService.catchHttpError(response)
+        })
+    });
+  }
+
+  private ifAuthenticated(callback: () => Observable<Response>): Observable<Response> {
+    if (this.securityService.isCurrentUserAuthenticated()) {
+      return callback();
+    } else {
+      this.userService.clearUser();
+      this.router.navigate(['/sign-in']);
+    }
   }
 
   private modifyOptions(accessToken: string, options?: RequestOptionsArgs): RequestOptionsArgs {

@@ -36,6 +36,10 @@ export class SecurityService {
       })
   }
 
+  isCurrentUserAuthenticated(): boolean {
+    return !! this.authSession;
+  }
+
   getAccessToken(): string | undefined {
     if (this.authSession) {
       return this.authSession.accessToken;
