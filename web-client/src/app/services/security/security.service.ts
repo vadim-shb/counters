@@ -15,6 +15,10 @@ export class SecurityService {
 
   private authSession: AuthenticationSession;
 
+  private refreshingSessionProcess?: Subject<undefined>;
+  //10 seconds for already started requests, which get 403. So they will not starts new refresh process
+  private TIME_GAP_TO_GET_PREVIOUS_REFRESH_TOKEN:number = 10000;
+
   constructor(private pureHttp: PureHttpService,
               private errorHandleService: ErrorHandleService,
               private router: Router,
@@ -68,8 +72,6 @@ export class SecurityService {
     }
   }
 
-  private refreshingSessionProcess?: Subject<undefined>;
-
   refreshAuthSession(): Observable<undefined> {
     if (!this.refreshingSessionProcess) {
       this.refreshingSessionProcess = new ReplaySubject(1);
@@ -80,7 +82,7 @@ export class SecurityService {
           this.refreshingSessionProcess.next();
           setTimeout(() => {
             delete this.refreshingSessionProcess
-          }, 10000); //10 seconds for already started requests, which get 403. So they will not starts new refresh process
+          }, this.TIME_GAP_TO_GET_PREVIOUS_REFRESH_TOKEN);
         });
     }
 
