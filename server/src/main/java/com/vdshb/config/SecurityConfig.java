@@ -98,6 +98,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationSuccessHandler successHandler() {
         return (request, response, authentication) -> {
+            //todo: add roles to response
             SecurityUser securityUser = (SecurityUser) authentication.getPrincipal();
             objectMapper.writeValue(response.getWriter(), new AuthenticatedUserResponse(securityUser));
         };
