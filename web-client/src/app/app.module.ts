@@ -17,13 +17,15 @@ import {MomentModule} from "angular2-moment";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {ResumeDao} from "./dao/resume/resume.dao";
 import { HeaderComponent } from './components/header/header.component';
+import { IfAuthenticatedDirective } from './directives/if-authenticated/if-authenticated.directive';
 
 @NgModule({
   declarations: [
     RootComponent,
     SignInComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    IfAuthenticatedDirective
   ],
   imports: [
     BrowserModule,
