@@ -8,6 +8,9 @@ export class IfAuthenticatedDirective {
 
   private isView = false;
 
+  //todo: change to *userHasRoles="['ADMIN', 'USER']"  // may be UserRoles.ADMIN
+  //todo: change to *userHasAnyRole="['ADMIN', 'USER']"
+
   //@formatter:off
   constructor(
     private templateRef: TemplateRef<any>,

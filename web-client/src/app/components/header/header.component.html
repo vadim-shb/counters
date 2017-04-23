@@ -1,1 +1,12 @@
-<button (click)="signOut()">sign out</button>
+<md-toolbar color="primary">
+  <span>HR paradise</span>
+  <span class="app-toolbar-filler"></span>
+
+  <ng-container *ngIf="user | async; else : anonymousBlock">
+      <button md-button (click)="signOut()">sign out</button>
+  </ng-container>
+  <ng-template #anonymousBlock>
+
+  </ng-template>
+</md-toolbar>
+
