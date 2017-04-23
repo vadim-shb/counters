@@ -1,24 +1,32 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from "@angular/core";
 import {User} from "../../domain/user";
+import {Observable, Subject, BehaviorSubject} from "rxjs";
 
 @Injectable()
 export class UserService {
 
-  private user: User;
-  private accessToken: string;
+  private userSubject: Subject<User|undefined> = new BehaviorSubject<User|undefined>(undefined);
 
-  constructor() { }
-
-  setUser(user: User) {
-    this.user = user;
+  constructor() {
+    this.userSubject.next(JSON.parse(localStorage.getItem('currentUser')));
+    this.userSubject.subscribe(user => {
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      } else {
+        localStorage.removeItem('currentUser');
+      }
+    });
   }
 
-  setAccessToken(accessToken: string) {
-    this.accessToken = accessToken;
+  setUser(user: User) {
+    this.userSubject.next(user);
   }
 
   clearUser() {
-    delete this.user;
-    delete this.accessToken;
+    this.userSubject.next();
+  }
+
+  getUser(): Observable<User|undefined> {
+    return this.userSubject;
   }
 }

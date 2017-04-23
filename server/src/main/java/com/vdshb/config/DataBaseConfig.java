@@ -52,7 +52,7 @@ public class DataBaseConfig {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.vdshb.domain");
+        factory.setPackagesToScan("com.vdshb.domain", "com.vdshb.security");
         factory.setDataSource(dataSource());
         return factory;
     }

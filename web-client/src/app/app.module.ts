@@ -12,18 +12,29 @@ import {PureHttpService} from "./services/pure-http/pure-http.service";
 import {SecureHttpService} from "./services/secure-http/secure-http.service";
 import {ErrorHandleService} from "./services/error-handle/error-handle.service";
 import {SecurityService} from "./services/security/security.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MomentModule} from "angular2-moment";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {ResumeDao} from "./dao/resume/resume.dao";
+import { HeaderComponent } from './components/header/header.component';
+import { IfAuthenticatedDirective } from './directives/if-authenticated/if-authenticated.directive';
 
 @NgModule({
   declarations: [
     RootComponent,
-    SignInComponent
+    SignInComponent,
+    DashboardComponent,
+    HeaderComponent,
+    IfAuthenticatedDirective
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     MaterialModule,
-    RoutingModule
+    RoutingModule,
+    MomentModule
   ],
   providers: [
     SecurityService,
@@ -31,7 +42,8 @@ import {SecurityService} from "./services/security/security.service";
     ErrorHandleService,
     {provide: ConnectionBackend, useClass: XHRBackend},
     PureHttpService,
-    {provide: Http, useClass: SecureHttpService}
+    {provide: Http, useClass: SecureHttpService},
+    ResumeDao
   ],
   bootstrap: [RootComponent]
 })

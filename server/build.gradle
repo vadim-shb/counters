@@ -43,6 +43,10 @@ dependencies {
     compile group: 'org.springframework.boot'       , name: 'spring-boot-starter-jetty'
     compile group: 'org.springframework'            , name: 'spring-webmvc'
     compile group: 'org.springframework.boot'       , name: 'spring-boot-starter-data-jpa'
+    compile group: 'org.hibernate'                  , name: 'hibernate-core'                , version: '5.2.9.Final'
+    compile group: 'org.hibernate'                  , name: 'hibernate-entitymanager'       , version: '5.2.9.Final'
+    compile group: 'com.fasterxml.jackson.datatype' , name: 'jackson-datatype-jsr310'       , version: '2.8.8'
+
     compile group: 'org.springframework'            , name: 'spring-context-support'
     compile group: 'javax.inject'                   , name: 'javax.inject'                  , version: '1'
 //    compile group: 'javax.mail'                     , name: 'mail'                          , version: '1.4.7'
@@ -53,8 +57,9 @@ dependencies {
     compile group: 'org.liquibase'                  , name: 'liquibase-core'                , version: '3.5.3'
     compile group: 'org.apache.commons'             , name: 'commons-lang3'                 , version: '3.5'
     compile group: 'commons-codec'                  , name: 'commons-codec'                 , version: '1.10'
-//    compile group: 'org.springframework.security'   , name: 'spring-security-web'
-//    compile group: 'org.springframework.security'   , name: 'spring-security-config'
+    compile group: 'org.springframework.security'   , name: 'spring-security-web'
+    compile group: 'org.springframework.security'   , name: 'spring-security-config'
+    compile group: 'com.github.ben-manes.caffeine'  , name: 'caffeine'
 
 
     compile group: 'org.springframework.boot'       , name: 'spring-boot-starter-actuator'

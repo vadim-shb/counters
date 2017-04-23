@@ -4,3 +4,7 @@ spring:
     username:  "pguser"
     password:  "1234"
     driver-class-name: "org.postgresql.Driver"
+
+security:
+  access-token-expiration-time: 3600  # 1 hour
+  refresh-token-expiration-time: 7776000 # 90 days
