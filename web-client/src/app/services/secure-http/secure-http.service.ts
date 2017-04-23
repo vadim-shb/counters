@@ -28,14 +28,12 @@ export class SecureHttpService extends Http {
           if (response.status == 403 || response.status == 401) {
             return this.securityService.refreshAuthSession()
               .flatMap(() => {
-                console.log('============= get =============');
                 return this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options))
               });
           }
           return response;
         })
         .catch(response => {
-          console.log(response);
           return this.errorHandleService.catchHttpError(response)
         })
     });

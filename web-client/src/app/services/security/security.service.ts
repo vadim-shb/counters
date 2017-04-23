@@ -7,6 +7,8 @@ import {ErrorHandleService} from "../error-handle/error-handle.service";
 import {UserService} from "../user/user.service";
 import {AuthenticationSession} from "../../domain/authentication-session";
 import {SuccessAuthenticationResponse} from "../../domain/success-authentication-response";
+import {Router} from "@angular/router";
+import {RequestOptionsArgs, Headers} from "@angular/http";
 
 @Injectable()
 export class SecurityService {
@@ -15,6 +17,7 @@ export class SecurityService {
 
   constructor(private pureHttp: PureHttpService,
               private errorHandleService: ErrorHandleService,
+              private router: Router,
               private userService: UserService) {
     this.authSession = JSON.parse(localStorage.getItem('authSession'));
   }
@@ -37,13 +40,26 @@ export class SecurityService {
       })
   }
 
-  private setAuthSession(authSession: AuthenticationSession):void {
+  private setAuthSession(authSession: AuthenticationSession): void {
     this.authSession = authSession;
     localStorage.setItem('authSession', JSON.stringify(authSession));
   }
 
+  signOut() {
+    this.refreshAuthSession().subscribe(() => {
+      let options: RequestOptionsArgs = {headers: new Headers({'access-token': this.authSession.accessToken})};
+      this.pureHttp.get(`/api/security/sign-out`, options)
+        .subscribe(() => {
+          delete this.authSession;
+          this.userService.clearUser();
+          localStorage.clear();
+          this.router.navigate(['/']);
+        });
+    });
+  }
+
   isCurrentUserAuthenticated(): boolean {
-    return !! this.authSession;
+    return !!this.authSession;
   }
 
   getAccessToken(): string | undefined {
@@ -62,7 +78,9 @@ export class SecurityService {
           this.userService.setUser(auth.user);
           this.setAuthSession(auth.session);
           this.refreshingSessionProcess.next();
-          setTimeout(() => {delete this.refreshingSessionProcess}, 10000); //10 seconds for all started requests, which get 403. So they will not starts new refresh
+          setTimeout(() => {
+            delete this.refreshingSessionProcess
+          }, 10000); //10 seconds for already started requests, which get 403. So they will not starts new refresh process
         });
     }
 

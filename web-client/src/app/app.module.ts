@@ -16,12 +16,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MomentModule} from "angular2-moment";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {ResumeDao} from "./dao/resume/resume.dao";
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     RootComponent,
     SignInComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

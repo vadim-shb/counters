@@ -22,7 +22,7 @@ public class RefreshTokenAuthenticationFilter extends AbstractAuthenticationProc
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
         String refreshToken = request.getReader().readLine();
-        if (refreshToken == null) {
+        if (refreshToken == null || refreshToken.length() <= 3) {
             throw new AuthenticationCredentialsNotFoundException("Refresh token not found");
         }
 

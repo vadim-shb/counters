@@ -51,4 +51,8 @@ public class AccessTokenSecurityContextRepository implements SecurityContextRepo
     public boolean containsContext(HttpServletRequest request) {
         return request.getHeader("access-token") != null;
     }
+
+    public void dropAuthentication(String accessToken) {
+        cachedSecurityContexts.invalidate(accessToken);
+    }
 }
