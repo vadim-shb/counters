@@ -1,9 +1,26 @@
 <div class="component-container">
-  <md-input-container>
-    <input mdInput [(ngModel)]="credentials.username" placeholder="Username">
-  </md-input-container>
-  <md-input-container>
-    <input mdInput [(ngModel)]="credentials.password" placeholder="Password" type="password">
-  </md-input-container>
-  <button md-button color="primary" (click)="signIn()">Sign In</button>
+  <form [formGroup]="signInForm" (ngSubmit)="signIn()" novalidate>
+    <md-input-container>
+      <input mdInput formControlName="username" placeholder="Username">
+      <md-hint *ngIf="usernameFormControl.touched && usernameFormControl.hasError('required')">
+        Username required
+      </md-hint>
+      <md-hint *ngIf="usernameFormControl.touched && usernameFormControl.hasError('maxlength')">
+        Username can not be longer than 100 characters
+      </md-hint>
+    </md-input-container>
+    <md-input-container>
+      <input mdInput formControlName="password" placeholder="Password" type="password">
+      <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('required')">
+        Password required
+      </md-hint>
+      <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('minlength')">
+        Password can not be shorter than 4 characters
+      </md-hint>
+      <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('maxlength')">
+        Password can not be longer than 1000 characters
+      </md-hint>
+    </md-input-container>
+    <button type="submit" md-button color="primary" [disabled]="signInForm.invalid">Sign In</button>
+  </form>
 </div>

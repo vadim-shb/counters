@@ -1,7 +1,7 @@
 import "hammerjs";
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {HttpModule, Http, XHRBackend, ConnectionBackend} from "@angular/http";
 import {RootComponent} from "./components/root/root.component";
 import {SignInComponent} from "./components/sign-in/sign-in.component";
@@ -14,10 +14,10 @@ import {ErrorHandleService} from "./services/error-handle/error-handle.service";
 import {SecurityService} from "./services/security/security.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MomentModule} from "angular2-moment";
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {ResumeDao} from "./dao/resume/resume.dao";
-import { HeaderComponent } from './components/header/header.component';
-import { IfAuthenticatedDirective } from './directives/if-authenticated/if-authenticated.directive';
+import {HeaderComponent} from "./components/header/header.component";
+import {IfAuthenticatedDirective} from "./directives/if-authenticated/if-authenticated.directive";
 
 @NgModule({
   declarations: [
@@ -30,7 +30,7 @@ import { IfAuthenticatedDirective } from './directives/if-authenticated/if-authe
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     MaterialModule,
     RoutingModule,

@@ -1,6 +1,21 @@
+@import "../../../styles";
+
+.error-md-hint();
+
 .component-container {
-  margin-top: 200px;
+  display: flex;
+  height: calc(~"100vh - 64px");
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  width: 350px;
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
+  md-input-container {
+    width: 100%
+  }
 }
