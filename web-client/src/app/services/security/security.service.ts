@@ -8,7 +8,7 @@ import {UserService} from "../user/user.service";
 import {AuthenticationSession} from "../../domain/authentication-session";
 import {SuccessAuthenticationResponse} from "../../domain/success-authentication-response";
 import {Router} from "@angular/router";
-import {RequestOptionsArgs, Headers} from "@angular/http";
+import {Headers, RequestOptionsArgs} from "@angular/http";
 
 @Injectable()
 export class SecurityService {
@@ -17,7 +17,7 @@ export class SecurityService {
 
   private refreshingSessionProcess?: Subject<undefined>;
   //10 seconds for already started requests, which get 403. So they will not starts new refresh process
-  private TIME_GAP_TO_GET_PREVIOUS_REFRESH_TOKEN:number = 10000;
+  private TIME_GAP_TO_GET_PREVIOUS_REFRESH_TOKEN: number = 10000;
 
   constructor(private pureHttp: PureHttpService,
               private errorHandleService: ErrorHandleService,
@@ -28,7 +28,7 @@ export class SecurityService {
 
   signIn(credentials: UsernamePasswordCredentials): Observable<User | undefined> {
     return this.pureHttp.post(`/api/security/sign-in/username-password`, credentials)
-    // .catch(response => this.errorHandleService.catchHttpError(response)) // todo: handle errors
+      .catch(response => this.errorHandleService.catchHttpError(response, [401]))
       .map(response => {
         return response.json() as SuccessAuthenticationResponse
       })

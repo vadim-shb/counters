@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
+import {ToastService} from "../../services/toast/toast.service";
+import {ToasterConfig} from "angular2-toaster";
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RootComponent implements OnInit {
 
-  constructor() { }
+  private toasterConfig: ToasterConfig;
+  constructor(private toastService: ToastService) {
+    this.toasterConfig = this.toastService.getConfig();
+  }
 
   ngOnInit() {
   }

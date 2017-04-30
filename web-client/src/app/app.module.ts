@@ -18,6 +18,8 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {ResumeDao} from "./dao/resume/resume.dao";
 import {HeaderComponent} from "./components/header/header.component";
 import {IfAuthenticatedDirective} from "./directives/if-authenticated/if-authenticated.directive";
+import {ToasterModule} from "angular2-toaster";
+import {ToastService} from "./services/toast/toast.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import {IfAuthenticatedDirective} from "./directives/if-authenticated/if-authent
     SignInComponent,
     DashboardComponent,
     HeaderComponent,
-    IfAuthenticatedDirective
+    IfAuthenticatedDirective,
   ],
   imports: [
     BrowserModule,
@@ -33,10 +35,12 @@ import {IfAuthenticatedDirective} from "./directives/if-authenticated/if-authent
     ReactiveFormsModule,
     HttpModule,
     MaterialModule,
+    ToasterModule,
     RoutingModule,
     MomentModule
   ],
   providers: [
+    ToastService,
     SecurityService,
     UserService,
     ErrorHandleService,
