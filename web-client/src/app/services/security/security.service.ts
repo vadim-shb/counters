@@ -30,9 +30,6 @@ export class SecurityService {
     return this.pureHttp.post(`/api/security/sign-in/username-password`, credentials)
     // .catch(response => this.errorHandleService.catchHttpError(response)) // todo: handle errors
       .map(response => {
-        // if (response.status == 404) {
-        //   return undefined;
-        // }
         return response.json() as SuccessAuthenticationResponse
       })
       .map(auth => {
@@ -93,9 +90,6 @@ export class SecurityService {
     return this.pureHttp.post(`/api/security/refresh-auth-session`, refreshToken)
       .catch(response => this.errorHandleService.catchHttpError(response))
       .map(response => {
-        // if (response.status == 404) {
-        //   return undefined;
-        // }
         return response.json() as SuccessAuthenticationResponse;
       })
   }

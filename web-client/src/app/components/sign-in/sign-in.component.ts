@@ -13,6 +13,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class SignInComponent implements OnInit {
 
   private signInForm: FormGroup;
+  private wrongUsernamePassword: boolean = false;
 
   get usernameFormControl() { return this.signInForm.get('username') };
   get passwordFormControl() { return this.signInForm.get('password') };
@@ -39,12 +40,21 @@ export class SignInComponent implements OnInit {
   }
 
   signIn() {
+    if (this.signInForm.invalid) {
+      this.signInForm.get("username").markAsTouched();
+      this.signInForm.get("password").markAsTouched();
+      return;
+    }
     let credentials : UsernamePasswordCredentials = this.signInForm.value;
 
     this.securityService.signIn(credentials)
-      .subscribe((user: User | undefined) => {
+      .subscribe((user: User) => {
         if (user) {
           this.router.navigate(['/dashboard']);
+        }
+      }, (errorResponse: Response) => {
+        if (errorResponse.status === 401){
+          this.wrongUsernamePassword = true;
         }
       });
   }

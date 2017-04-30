@@ -21,6 +21,9 @@
         Password can not be longer than 1000 characters
       </md-hint>
     </md-input-container>
-    <button type="submit" md-button color="primary" [disabled]="signInForm.invalid">Sign In</button>
+    <div class="error-message" *ngIf="wrongUsernamePassword">
+      <md-hint>Incorrect username or password</md-hint>
+    </div>
+    <button type="submit" md-button color="primary">Sign In</button>
   </form>
 </div>

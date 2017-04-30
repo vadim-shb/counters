@@ -4,10 +4,12 @@ body {
   margin: 0;
 }
 
+@error-color: #f44336; // .mat-input-error.color
+
 .error-md-hint() {
   .ng-invalid {
     md-hint {
-      color: #f44336;
+      color: @error-color;
     }
   }
 }
