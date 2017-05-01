@@ -30,4 +30,11 @@ export class I18nService {
     return this.currentTranslation;
   }
 
+  getTranslations() : Translation[] {
+    return [
+      this.russianTranslation,
+      this.englishTranslation
+    ]
+  }
+
 }

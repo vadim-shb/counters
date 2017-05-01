@@ -2,6 +2,8 @@ import {Lang} from "./lang";
 
 export interface Translation {
   TRANSLATION_LANGUAGE: Lang;
+  TRANSLATION_LANGUAGE_NAME: string;
+  TRANSLATION_LANGUAGE_FLAG_PATH: string;
 
   ui: {
     USERNAME: string;

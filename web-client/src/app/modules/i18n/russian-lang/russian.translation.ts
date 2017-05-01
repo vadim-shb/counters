@@ -6,6 +6,8 @@ import {Lang} from "../domain/lang";
 export class RussianTranslation implements Translation {
 
   TRANSLATION_LANGUAGE = Lang.RUSSIAN;
+  TRANSLATION_LANGUAGE_NAME = 'Русский';
+  TRANSLATION_LANGUAGE_FLAG_PATH = 'assets/flags/24/Russia.png';
 
   constructor() {
   }
