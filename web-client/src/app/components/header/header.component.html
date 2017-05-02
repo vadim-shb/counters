@@ -2,11 +2,16 @@
   <span>HR paradise</span>
   <span class="app-toolbar-filler"></span>
 
-  <ng-container *ngIf="user | async; else : anonymousBlock">
+  <ng-container *ngIf="userService.getUser() | async; else : anonymousBlock">
       <button md-button (click)="signOut()">sign out</button>
   </ng-container>
   <ng-template #anonymousBlock>
-
+    <button md-button [mdMenuTriggerFor]="langMenu"><img src="{{i18n.TRANSLATION_LANGUAGE_FLAG_PATH}}"></button>
+    <md-menu #langMenu="mdMenu">
+      <button md-menu-item *ngFor="let translation of i18nService.getTranslations()" (click)="langSelected(translation)">
+        <span><img src="{{translation.TRANSLATION_LANGUAGE_FLAG_PATH}}"></span> {{translation.TRANSLATION_LANGUAGE_NAME}}
+      </button>
+    </md-menu>
   </ng-template>
 </md-toolbar>
 

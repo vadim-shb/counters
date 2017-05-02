@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {User} from "../../domain/user";
 import {UsernamePasswordCredentials} from "../../domain/username-password-credentials";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {I18nService} from "../../modules/i18n/i18n.service";
+import {Translation} from "../../modules/i18n/domain/translation";
 
 @Component({
   selector: 'app-sign-in',
@@ -14,6 +16,7 @@ export class SignInComponent implements OnInit {
 
   private signInForm: FormGroup;
   private wrongUsernamePassword: boolean = false;
+  private i18n: Translation;
 
   get usernameFormControl() { return this.signInForm.get('username') };
   get passwordFormControl() { return this.signInForm.get('password') };
@@ -22,7 +25,12 @@ export class SignInComponent implements OnInit {
     private router: Router,
     private securityService: SecurityService,
     private fb: FormBuilder,
+    private i18nService: I18nService,
   ) {
+    i18nService.getTranslation()
+      .subscribe(translation => {
+        this.i18n = translation;
+      });
   }
 
   ngOnInit() {

@@ -20,6 +20,7 @@ import {HeaderComponent} from "./components/header/header.component";
 import {IfAuthenticatedDirective} from "./directives/if-authenticated/if-authenticated.directive";
 import {ToasterModule} from "angular2-toaster";
 import {ToastService} from "./services/toast/toast.service";
+import {I18nModule} from "./modules/i18n/i18n.module";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {ToastService} from "./services/toast/toast.service";
     MaterialModule,
     ToasterModule,
     RoutingModule,
-    MomentModule
+    MomentModule,
+    I18nModule,
   ],
   providers: [
     ToastService,
