@@ -3,6 +3,7 @@ import {SecurityService} from "../../services/security/security.service";
 import {UserService} from "../../services/user/user.service";
 import {I18nService} from "../../modules/i18n/i18n.service";
 import {Translation} from "../../modules/i18n/domain/translation";
+import {User} from "../../domain/user";
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ import {Translation} from "../../modules/i18n/domain/translation";
 export class HeaderComponent implements OnInit {
 
   private i18n: Translation;
+  private user?: User;
 
   constructor(private securityService: SecurityService,
               private userService: UserService,
@@ -19,6 +21,11 @@ export class HeaderComponent implements OnInit {
     i18nService.getTranslation()
       .subscribe(translation => {
         this.i18n = translation;
+      });
+
+    userService.getUser()
+      .subscribe(user => {
+        this.user = user;
       });
   }
 

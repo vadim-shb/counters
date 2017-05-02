@@ -21,6 +21,7 @@ import {IfAuthenticatedDirective} from "./directives/if-authenticated/if-authent
 import {ToasterModule} from "angular2-toaster";
 import {ToastService} from "./services/toast/toast.service";
 import {I18nModule} from "./modules/i18n/i18n.module";
+import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {I18nModule} from "./modules/i18n/i18n.module";
     DashboardComponent,
     HeaderComponent,
     IfAuthenticatedDirective,
+    UserSettingsComponent,
   ],
   imports: [
     BrowserModule,

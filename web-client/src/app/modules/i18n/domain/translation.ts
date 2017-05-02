@@ -9,6 +9,8 @@ export interface Translation {
     USERNAME: string;
     PASSWORD: string;
     SIGN_IN: string;
+    SIGN_OUT: string;
+    SETTINGS: string;
   };
 
   errorMessages: {
