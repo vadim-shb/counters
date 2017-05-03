@@ -17,6 +17,8 @@ export class RussianTranslation implements Translation {
     PASSWORD: 'Пароль',
     SIGN_IN: 'Вход',
     SIGN_OUT: 'Выход',
+    SIGN_UP: 'Регистрация',
+    FORGOT_PASSWORD_QUESTION: 'Забыли пароль?',
     SETTINGS: 'Настройки',
   };
 

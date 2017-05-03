@@ -17,6 +17,8 @@ export class EnglishTranslation implements Translation {
     PASSWORD: 'Password',
     SIGN_IN: 'Sign In',
     SIGN_OUT: 'Sign Out',
+    SIGN_UP: 'Sign Up',
+    FORGOT_PASSWORD_QUESTION: 'Forgot password?',
     SETTINGS: 'Settings',
   };
 

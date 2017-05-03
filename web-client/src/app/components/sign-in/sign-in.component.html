@@ -1,29 +1,35 @@
 <div class="component-container">
-  <form [formGroup]="signInForm" (ngSubmit)="signIn()" novalidate>
-    <md-input-container>
-      <input mdInput formControlName="username" placeholder="{{i18n.ui.USERNAME}}">
-      <md-hint *ngIf="usernameFormControl.touched && usernameFormControl.hasError('required')">
-        {{i18n.errorMessages.signInForm.USERNAME_REQUIRED}}
-      </md-hint>
-      <md-hint *ngIf="usernameFormControl.touched && usernameFormControl.hasError('maxlength')">
-        {{i18n.errorMessages.signInForm.USERNAME_CAN_NOT_BE_LONGER_THAN_100_CHARACTERS}}
-      </md-hint>
-    </md-input-container>
-    <md-input-container>
-      <input mdInput formControlName="password" placeholder="{{i18n.ui.PASSWORD}}" type="password">
-      <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('required')">
-        {{i18n.errorMessages.signInForm.PASSWORD_REQUIRED}}
-      </md-hint>
-      <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('minlength')">
-        {{i18n.errorMessages.signInForm.PASSWORD_CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS}}
-      </md-hint>
-      <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('maxlength')">
-        {{i18n.errorMessages.signInForm.PASSWORD_CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
-      </md-hint>
-    </md-input-container>
-    <div class="error-message" *ngIf="wrongUsernamePassword">
-      <md-hint>{{i18n.errorMessages.signInForm.INCORRECT_USERNAME_OR_PASSWORD}}</md-hint>
+  <div class="center-container">
+    <form [formGroup]="signInForm" (ngSubmit)="signIn()" novalidate>
+      <md-input-container>
+        <input mdInput formControlName="username" placeholder="{{i18n.ui.USERNAME}}">
+        <md-hint *ngIf="usernameFormControl.touched && usernameFormControl.hasError('required')">
+          {{i18n.errorMessages.signInForm.USERNAME_REQUIRED}}
+        </md-hint>
+        <md-hint *ngIf="usernameFormControl.touched && usernameFormControl.hasError('maxlength')">
+          {{i18n.errorMessages.signInForm.USERNAME_CAN_NOT_BE_LONGER_THAN_100_CHARACTERS}}
+        </md-hint>
+      </md-input-container>
+      <md-input-container>
+        <input mdInput formControlName="password" placeholder="{{i18n.ui.PASSWORD}}" type="password">
+        <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('required')">
+          {{i18n.errorMessages.signInForm.PASSWORD_REQUIRED}}
+        </md-hint>
+        <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('minlength')">
+          {{i18n.errorMessages.signInForm.PASSWORD_CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS}}
+        </md-hint>
+        <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('maxlength')">
+          {{i18n.errorMessages.signInForm.PASSWORD_CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+        </md-hint>
+      </md-input-container>
+      <div class="error-message" *ngIf="wrongUsernamePassword">
+        <md-hint>{{i18n.errorMessages.signInForm.INCORRECT_USERNAME_OR_PASSWORD}}</md-hint>
+      </div>
+      <button type="submit" md-raised-button color="primary">{{i18n.ui.SIGN_IN}}</button>
+    </form>
+    <div id="linksContainer">
+      <a id="signUpLink" routerLink="/sign-up">{{i18n.ui.SIGN_UP}}</a>
+      <a id="passwordRecoveryLink" routerLink="/password-recovery">{{i18n.ui.FORGOT_PASSWORD_QUESTION}}</a>
     </div>
-    <button type="submit" md-button color="primary">{{i18n.ui.SIGN_IN}}</button>
-  </form>
+  </div>
 </div>

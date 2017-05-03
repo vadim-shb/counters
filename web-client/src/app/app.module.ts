@@ -22,6 +22,8 @@ import {ToasterModule} from "angular2-toaster";
 import {ToastService} from "./services/toast/toast.service";
 import {I18nModule} from "./modules/i18n/i18n.module";
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { UserSettingsComponent } from './components/user-settings/user-settings.
     HeaderComponent,
     IfAuthenticatedDirective,
     UserSettingsComponent,
+    SignUpComponent,
+    PasswordRecoveryComponent,
   ],
   imports: [
     BrowserModule,

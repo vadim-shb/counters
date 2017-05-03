@@ -10,6 +10,8 @@ export interface Translation {
     PASSWORD: string;
     SIGN_IN: string;
     SIGN_OUT: string;
+    SIGN_UP: string;
+    FORGOT_PASSWORD_QUESTION: string;
     SETTINGS: string;
   };
 

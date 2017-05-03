@@ -3,6 +3,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {SignInComponent} from "./components/sign-in/sign-in.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {UserSettingsComponent} from "./components/user-settings/user-settings.component";
+import {SignUpComponent} from "./components/sign-up/sign-up.component";
+import {PasswordRecoveryComponent} from "./components/password-recovery/password-recovery.component";
 
 const ROUTES: Routes = [
   {
@@ -13,6 +15,14 @@ const ROUTES: Routes = [
   {
     path: 'sign-in',
     component: SignInComponent
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent
+  },
+  {
+    path: 'password-recovery',
+    component: PasswordRecoveryComponent
   },
   {
     path: 'dashboard',
