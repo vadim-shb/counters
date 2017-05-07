@@ -99,6 +99,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AuthenticationSuccessHandler successHandler() {
         return (request, response, authentication) -> {
+            response.setHeader("content-type","application/json");
             objectMapper.writeValue(response.getWriter(), new AuthenticatedUserResponse(authentication));
         };
     }
