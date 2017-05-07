@@ -26,7 +26,7 @@ export class I18nService {
     }
   }
 
-  getTranslation(): Observable<Translation> {
+  getCurrentTranslation(): Observable<Translation> {
     return this.currentTranslation;
   }
 

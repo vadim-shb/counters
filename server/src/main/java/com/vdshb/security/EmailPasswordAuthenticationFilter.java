@@ -2,6 +2,7 @@ package com.vdshb.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
+import com.vdshb.security.domain.EmailPasswordCredentials;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
@@ -13,11 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class CustomUsernamePasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class EmailPasswordAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private static ObjectReader credentialsReader = new ObjectMapper().readerFor(UsernamePasswordCredentials.class);
+    private static ObjectReader credentialsReader = new ObjectMapper().readerFor(EmailPasswordCredentials.class);
 
-    public CustomUsernamePasswordAuthenticationFilter(RequestMatcher defaultFilterProcessesUrl, AuthenticationManager authenticationManager) {
+    public EmailPasswordAuthenticationFilter(RequestMatcher defaultFilterProcessesUrl, AuthenticationManager authenticationManager) {
         super();
         setRequiresAuthenticationRequestMatcher(defaultFilterProcessesUrl);
         setAuthenticationManager(authenticationManager);
@@ -25,12 +26,12 @@ public class CustomUsernamePasswordAuthenticationFilter extends UsernamePassword
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        final UsernamePasswordCredentials credentials;
+        final EmailPasswordCredentials credentials;
         try {
             credentials = credentialsReader.readValue(request.getReader());
         } catch (Exception e) {
             throw new AuthenticationCredentialsNotFoundException("Wrong credentials format. Username and password in JSON format required.", e);
         }
-        return this.getAuthenticationManager().authenticate(new UsernamePasswordAuthentication(credentials));
+        return this.getAuthenticationManager().authenticate(new EmailPasswordAuthentication(credentials));
     }
 }

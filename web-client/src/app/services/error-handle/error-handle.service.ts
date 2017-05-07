@@ -18,7 +18,7 @@ export class ErrorHandleService {
     private toastService: ToastService,
     private i18nService: I18nService,
   ) {
-    i18nService.getTranslation()
+    i18nService.getCurrentTranslation()
       .subscribe(translation => {
         this.i18n = translation;
       });

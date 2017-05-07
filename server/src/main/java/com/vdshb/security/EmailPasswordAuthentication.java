@@ -1,15 +1,16 @@
 package com.vdshb.security;
 
+import com.vdshb.security.domain.EmailPasswordCredentials;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 
-public class UsernamePasswordAuthentication implements Authentication {
+public class EmailPasswordAuthentication implements Authentication {
 
-    private final UsernamePasswordCredentials credentials;
+    private final EmailPasswordCredentials credentials;
 
-    public UsernamePasswordAuthentication(UsernamePasswordCredentials credentials) {
+    public EmailPasswordAuthentication(EmailPasswordCredentials credentials) {
         this.credentials = credentials;
     }
 
@@ -40,7 +41,7 @@ public class UsernamePasswordAuthentication implements Authentication {
 
     @Override
     public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
-        throw new IllegalArgumentException("class UsernamePasswordAuthentication can not be used in security context. It is for authentication purposes only [as credentials holder]. Use SecurityUserToken instead.");
+        throw new IllegalArgumentException("class EmailPasswordAuthentication can not be used in security context. It is for authentication purposes only [as credentials holder]. Use SecurityUserToken instead.");
     }
 
     @Override

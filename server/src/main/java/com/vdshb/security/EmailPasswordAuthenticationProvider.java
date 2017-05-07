@@ -1,5 +1,9 @@
 package com.vdshb.security;
 
+import com.vdshb.security.domain.SecurityUser;
+import com.vdshb.security.domain.EmailPasswordCredentials;
+import com.vdshb.security.service.SecurityTokensService;
+import com.vdshb.security.service.SecurityUserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -13,8 +17,8 @@ import javax.inject.Inject;
 import java.util.List;
 
 @Component
-@Qualifier("CustomUsernamePasswordAuthenticationProvider")
-public class CustomUsernamePasswordAuthenticationProvider implements AuthenticationProvider {
+@Qualifier("EmailPasswordAuthenticationProvider")
+public class EmailPasswordAuthenticationProvider implements AuthenticationProvider {
 
     @Inject
     private SecurityUserService securityUserService;
@@ -25,8 +29,8 @@ public class CustomUsernamePasswordAuthenticationProvider implements Authenticat
     @Transactional
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        UsernamePasswordCredentials credentials = (UsernamePasswordCredentials) authentication.getCredentials();
-        SecurityUser securityUser = securityUserService.findUserByUsername(credentials.getUsername());
+        EmailPasswordCredentials credentials = (EmailPasswordCredentials) authentication.getCredentials();
+        SecurityUser securityUser = securityUserService.findUserByEmail(credentials.getEmail());
         if (securityUser != null && checkPassword(securityUser, credentials.getPassword())) {
             List<GrantedAuthority> authorities = securityUserService.findAuthorities(securityUser.getId());
             securityTokensService.renewTokens(securityUser);
@@ -43,6 +47,6 @@ public class CustomUsernamePasswordAuthenticationProvider implements Authenticat
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return authentication.isAssignableFrom(UsernamePasswordAuthentication.class);
+        return authentication.isAssignableFrom(EmailPasswordAuthentication.class);
     }
 }

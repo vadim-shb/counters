@@ -39,6 +39,25 @@ export class SecureHttpService extends Http {
     });
   }
 
+  // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
+  post(url: string, data?: Object, options?: RequestOptionsArgs): Observable<Response> {
+    return this.ifAuthenticated(() => {
+      return this.pureHttpService.post(url, data, this.modifyOptions(this.securityService.getAccessToken(), options))
+        .catch(response => {
+          if (response.status == 403 || response.status == 401) {
+            return this.securityService.refreshAuthSession()
+              .flatMap(() => {
+                return this.pureHttpService.post(url, data, this.modifyOptions(this.securityService.getAccessToken(), options))
+              });
+          }
+          return response;
+        })
+        .catch(response => {
+          return this.errorHandleService.catchHttpError(response)
+        })
+    });
+  }
+
   private ifAuthenticated(callback: () => Observable<Response>): Observable<Response> {
     if (this.securityService.isCurrentUserAuthenticated()) {
       return callback();

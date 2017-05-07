@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-docker stop hr-postgres
-docker rm hr-postgres
-docker rmi hr-postgres
+sudo docker stop hr-postgres
+sudo docker rm hr-postgres
+#sudo docker rmi hr-postgres

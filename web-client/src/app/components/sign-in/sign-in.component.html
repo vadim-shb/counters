@@ -2,16 +2,19 @@
   <div class="center-container">
     <form [formGroup]="signInForm" (ngSubmit)="signIn()" novalidate>
       <md-input-container>
-        <input mdInput formControlName="username" placeholder="{{i18n.ui.USERNAME}}">
-        <md-hint *ngIf="usernameFormControl.touched && usernameFormControl.hasError('required')">
-          {{i18n.errorMessages.signInForm.USERNAME_REQUIRED}}
+        <input mdInput formControlName="email" placeholder="{{i18n.entity.securityUser.EMAIL}}">
+        <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('required')">
+          {{i18n.errorMessages.securityUser.EMAIL__REQUIRED}}
         </md-hint>
-        <md-hint *ngIf="usernameFormControl.touched && usernameFormControl.hasError('maxlength')">
-          {{i18n.errorMessages.signInForm.USERNAME_CAN_NOT_BE_LONGER_THAN_100_CHARACTERS}}
+        <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('maxlength')">
+          {{i18n.errorMessages.securityUser.EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+        </md-hint>
+        <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('email')">
+          {{i18n.errorMessages.securityUser.EMAIL__INVALID}}
         </md-hint>
       </md-input-container>
       <md-input-container>
-        <input mdInput formControlName="password" placeholder="{{i18n.ui.PASSWORD}}" type="password">
+        <input mdInput formControlName="password" placeholder="{{i18n.entity.securityUser.PASSWORD}}" type="password">
         <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('required')">
           {{i18n.errorMessages.signInForm.PASSWORD_REQUIRED}}
         </md-hint>

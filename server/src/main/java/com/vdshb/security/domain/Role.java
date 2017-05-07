@@ -1,4 +1,4 @@
-package com.vdshb.security;
+package com.vdshb.security.domain;
 
 import javax.persistence.*;
 

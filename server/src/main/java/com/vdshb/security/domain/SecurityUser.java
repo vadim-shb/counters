@@ -1,4 +1,5 @@
-package com.vdshb.security;
+package com.vdshb.security.domain;
+
 
 import javax.persistence.*;
 import java.time.Instant;
@@ -25,20 +26,18 @@ public class SecurityUser {
     @Column(name = "refresh_token_expiration_date_time")
     private LocalDateTime refreshTokenExpirationDateTime;
 
-    private String username;
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "hashed_password")
     private String hashedPassword;
 
     private String salt;
 
-    @Column(name = "first_name")
-    private String firstName;
+    private String name;
 
-    @Column(name = "last_name")
-    private String lastName;
-
-    private String email;
+    @Enumerated(EnumType.STRING)
+    private Language language;
 
 
     public Long getId() {
@@ -81,14 +80,6 @@ public class SecurityUser {
         this.refreshTokenExpirationDateTime = LocalDateTime.ofInstant(refreshTokenExpirationDateTime, ZoneOffset.UTC);
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getHashedPassword() {
         return hashedPassword;
     }
@@ -105,21 +96,6 @@ public class SecurityUser {
         this.salt = salt;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getEmail() {
         return email;
@@ -127,5 +103,21 @@ public class SecurityUser {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 }

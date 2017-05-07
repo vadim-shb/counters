@@ -2,13 +2,13 @@ import {Injectable} from "@angular/core";
 import {Observable, ReplaySubject, Subject} from "rxjs";
 import {User} from "../../domain/user";
 import {PureHttpService} from "../pure-http/pure-http.service";
-import {UsernamePasswordCredentials} from "../../domain/username-password-credentials";
 import {ErrorHandleService} from "../error-handle/error-handle.service";
 import {UserService} from "../user/user.service";
 import {AuthenticationSession} from "../../domain/authentication-session";
 import {SuccessAuthenticationResponse} from "../../domain/success-authentication-response";
 import {Router} from "@angular/router";
 import {Headers, RequestOptionsArgs} from "@angular/http";
+import {EmailPasswordCredentials} from "../../domain/email-password-credentials";
 
 @Injectable()
 export class SecurityService {
@@ -26,8 +26,8 @@ export class SecurityService {
     this.authSession = JSON.parse(localStorage.getItem('authSession'));
   }
 
-  signIn(credentials: UsernamePasswordCredentials): Observable<User | undefined> {
-    return this.pureHttp.post(`/api/security/sign-in/username-password`, credentials)
+  signIn(credentials: EmailPasswordCredentials): Observable<User | undefined> {
+    return this.pureHttp.post(`/api/security/sign-in/email-password`, credentials)
       .catch(response => this.errorHandleService.catchHttpError(response, [401]))
       .map(response => {
         return response.json() as SuccessAuthenticationResponse

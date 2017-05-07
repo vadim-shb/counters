@@ -1,5 +1,6 @@
 package com.vdshb.security;
 
+import com.vdshb.security.domain.RefreshTokenCredentials;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -41,7 +42,6 @@ public class RefreshTokenAuthentication implements Authentication {
     @Override
     public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
         throw new IllegalArgumentException("class RefreshTokenAuthentication can not be used in security context. It is for authentication purposes only [as credentials holder]. Use SecurityUserToken instead.");
-
     }
 
     @Override

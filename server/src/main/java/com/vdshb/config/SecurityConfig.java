@@ -2,6 +2,9 @@ package com.vdshb.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vdshb.security.*;
+import com.vdshb.security.domain.AuthenticatedUserResponse;
+import com.vdshb.security.domain.SecurityUser;
+import com.vdshb.security.repository.SecurityUserRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,13 +39,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Inject
     private SecurityUserRepository securityUserRepository;
 
-    private AuthenticationProvider customUsernamePasswordAuthenticationProvider;
+    @Inject
+    @Qualifier("EmailPasswordAuthenticationProvider")
+    private AuthenticationProvider emailPasswordAuthenticationProvider;
 
-    public SecurityConfig(
-            @Qualifier("CustomUsernamePasswordAuthenticationProvider") AuthenticationProvider customUsernamePasswordAuthenticationProvider
-    ) {
+    public SecurityConfig() {
         super(true);
-        this.customUsernamePasswordAuthenticationProvider = customUsernamePasswordAuthenticationProvider;
     }
 
     protected void configure(HttpSecurity http) throws Exception {
@@ -62,12 +64,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/security/**").permitAll()
                 .anyRequest().authenticated()
             .and()
-            .addFilter(customUsernamePasswordAuthenticationFilter())
-            .addFilterAfter(refreshTokenAuthenticationFilter(), CustomUsernamePasswordAuthenticationFilter.class)
+            .addFilter(emailPasswordAuthenticationFilter()) //override UsernamePasswordAuthenticationFilter
+            .addFilterAfter(refreshTokenAuthenticationFilter(), EmailPasswordAuthenticationFilter.class)
             .logout()
                 .logoutUrl("/api/security/sign-out")
                 .logoutSuccessHandler(logoutHandler());
-//                .httpBasic();
 
     // @formatter:on
     }
@@ -76,14 +77,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         List<AuthenticationProvider> authenticationProviderList = new ArrayList<AuthenticationProvider>();
-        authenticationProviderList.add(customUsernamePasswordAuthenticationProvider);
+        authenticationProviderList.add(emailPasswordAuthenticationProvider);
         authenticationProviderList.add(refreshTokenAuthenticationProvider);
         return new ProviderManager(authenticationProviderList);
     }
 
     @Bean
-    public CustomUsernamePasswordAuthenticationFilter customUsernamePasswordAuthenticationFilter() throws Exception {
-        CustomUsernamePasswordAuthenticationFilter result = new CustomUsernamePasswordAuthenticationFilter(new AntPathRequestMatcher("/api/security/sign-in/username-password", "POST"), authenticationManagerBean());
+    public EmailPasswordAuthenticationFilter emailPasswordAuthenticationFilter() throws Exception {
+        EmailPasswordAuthenticationFilter result = new EmailPasswordAuthenticationFilter(new AntPathRequestMatcher("/api/security/sign-in/email-password", "POST"), authenticationManagerBean());
         result.setAuthenticationSuccessHandler(successHandler());
         return result;
     }

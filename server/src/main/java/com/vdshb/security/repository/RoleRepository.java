@@ -1,5 +1,6 @@
-package com.vdshb.security;
+package com.vdshb.security.repository;
 
+import com.vdshb.security.domain.Role;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

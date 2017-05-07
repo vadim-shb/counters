@@ -24,6 +24,7 @@ import {I18nModule} from "./modules/i18n/i18n.module";
 import { UserSettingsComponent } from './components/user-settings/user-settings.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import {ValidationService} from "./services/validation/validation.service";
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { PasswordRecoveryComponent } from './components/password-recovery/passwo
     SecurityService,
     UserService,
     ErrorHandleService,
+    ValidationService,
     {provide: ConnectionBackend, useClass: XHRBackend},
     PureHttpService,
     {provide: Http, useClass: SecureHttpService},

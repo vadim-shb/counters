@@ -1,5 +1,6 @@
-package com.vdshb.security;
+package com.vdshb.security.repository;
 
+import com.vdshb.security.domain.SecurityUser;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -9,7 +10,7 @@ import javax.transaction.Transactional;
 
 public interface SecurityUserRepository extends CrudRepository<SecurityUser, Long> {
 
-    SecurityUser findByUsername(String username);
+    SecurityUser findByEmail(String email);
 
     SecurityUser findByRefreshToken(String refreshToken);
 

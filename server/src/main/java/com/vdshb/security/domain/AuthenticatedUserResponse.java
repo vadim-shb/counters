@@ -1,4 +1,4 @@
-package com.vdshb.security;
+package com.vdshb.security.domain;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,9 +18,9 @@ public class AuthenticatedUserResponse {
         session.setAccessTokenExpirationTime(securityUser.getAccessTokenExpirationDateTime());
         session.setRefreshTokenExpirationTime(securityUser.getRefreshTokenExpirationDateTime());
         user = new PublicUser();
-        user.setFirstName(securityUser.getFirstName());
-        user.setLastName(securityUser.getLastName());
+        user.setName(securityUser.getName());
         user.setEmail(securityUser.getEmail());
+        user.setLanguage(securityUser.getLanguage());
         user.setRoles(authentication.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
