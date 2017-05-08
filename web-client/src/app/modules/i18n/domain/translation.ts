@@ -48,6 +48,7 @@ export interface Translation {
       PASSWORD_CONFIRMATION__DO_NOT_MATCH: string;
 
       INCORRECT_EMAIL_OR_PASSWORD: string;
+      USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP: string;
     }
   };
 }

@@ -55,6 +55,7 @@ export class EnglishTranslation implements Translation {
       PASSWORD_CONFIRMATION__DO_NOT_MATCH: "Passwords don't match",
 
       INCORRECT_EMAIL_OR_PASSWORD: 'Incorrect email or password',
+      USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP: 'User with this email has been already signed up',
     },
   };
 }

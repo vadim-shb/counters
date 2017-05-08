@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {I18nService} from "../../modules/i18n/i18n.service";
 import {Translation} from "../../modules/i18n/domain/translation";
 import {Lang} from "../../modules/i18n/domain/lang";
@@ -16,21 +16,22 @@ export class SignUpComponent implements OnInit {
 
   private signUpForm: FormGroup;
   private i18n: Translation;
+  private alreadyRegisteredEmail: boolean = false;
 
-  get userNameFormControl() {
-    return this.signUpForm.get('name')
+  get userNameFormControl(): FormControl {
+    return this.signUpForm.get('name') as FormControl;
   };
 
-  get passwordFormControl() {
-    return this.signUpForm.get('password')
+  get passwordFormControl(): FormControl {
+    return this.signUpForm.get('password') as FormControl;
   };
 
-  get repeatPasswordFormControl() {
-    return this.signUpForm.get('repeatPassword')
+  get repeatPasswordFormControl(): FormControl {
+    return this.signUpForm.get('repeatPassword') as FormControl;
   };
 
-  get emailFormControl() {
-    return this.signUpForm.get('email')
+  get emailFormControl(): FormControl {
+    return this.signUpForm.get('email') as FormControl;
   };
 
 
@@ -38,8 +39,7 @@ export class SignUpComponent implements OnInit {
               private i18nService: I18nService,
               private pureHttp: PureHttpService,
               private router: Router,
-              private validationService: ValidationService,
-  ) {
+              private validationService: ValidationService,) {
     i18nService.getCurrentTranslation()
       .subscribe(translation => {
         this.i18n = translation;
@@ -53,7 +53,11 @@ export class SignUpComponent implements OnInit {
       language: Lang[Lang.RUSSIAN]
     });
     //repeatPasswordValidator uses signUpForm
-    this.signUpForm.get('repeatPassword').setValidators(this.repeatPasswordValidator());
+    this.repeatPasswordFormControl.setValidators(this.repeatPasswordValidator());
+  }
+
+  emailChanges() {
+    this.alreadyRegisteredEmail = false;
   }
 
   ngOnInit() {
@@ -77,6 +81,11 @@ export class SignUpComponent implements OnInit {
     this.pureHttp.post(`/api/security/sign-up`, signUpRequest)
       .subscribe(response => {
         this.router.navigate(['/sign-up-success']);
+      }, response => {
+        if (response.status == 409) {
+          this.alreadyRegisteredEmail = true;
+        }
+        console.log(response);
       });
   }
 

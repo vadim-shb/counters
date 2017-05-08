@@ -16,17 +16,17 @@
       <md-input-container>
         <input mdInput formControlName="password" placeholder="{{i18n.entity.securityUser.PASSWORD}}" type="password">
         <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('required')">
-          {{i18n.errorMessages.signInForm.PASSWORD_REQUIRED}}
+          {{i18n.errorMessages.securityUser.PASSWORD__REQUIRED}}
         </md-hint>
         <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('minlength')">
-          {{i18n.errorMessages.signInForm.PASSWORD_CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS}}
+          {{i18n.errorMessages.securityUser.PASSWORD__CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS}}
         </md-hint>
         <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('maxlength')">
-          {{i18n.errorMessages.signInForm.PASSWORD_CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+          {{i18n.errorMessages.securityUser.PASSWORD__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
         </md-hint>
       </md-input-container>
-      <div class="error-message" *ngIf="wrongUsernamePassword">
-        <md-hint>{{i18n.errorMessages.signInForm.INCORRECT_USERNAME_OR_PASSWORD}}</md-hint>
+      <div class="error-message" *ngIf="wrongEmailOrPassword">
+        <md-hint>{{i18n.errorMessages.securityUser.INCORRECT_EMAIL_OR_PASSWORD}}</md-hint>
       </div>
       <button type="submit" md-raised-button color="primary">{{i18n.ui.SIGN_IN}}</button>
     </form>

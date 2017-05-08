@@ -16,7 +16,7 @@ import {ValidationService} from "../../services/validation/validation.service";
 export class SignInComponent implements OnInit {
 
   private signInForm: FormGroup;
-  private wrongUsernamePassword: boolean = false;
+  private wrongEmailOrPassword: boolean = false;
   private i18n: Translation;
 
   get emailFormControl() { return this.signInForm.get('email') };
@@ -65,7 +65,7 @@ export class SignInComponent implements OnInit {
         }
       }, (errorResponse: Response) => {
         if (errorResponse.status === 401){
-          this.wrongUsernamePassword = true;
+          this.wrongEmailOrPassword = true;
         }
       });
   }

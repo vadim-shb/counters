@@ -9,7 +9,7 @@
     </md-hint>
   </md-input-container>
   <md-input-container>
-    <input mdInput formControlName="email" placeholder="{{i18n.entity.securityUser.EMAIL}}">
+    <input mdInput formControlName="email" placeholder="{{i18n.entity.securityUser.EMAIL}}" (ngModelChange)="emailChanges()">
     <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('required')">
       {{i18n.errorMessages.securityUser.EMAIL__REQUIRED}}
     </md-hint>
@@ -44,5 +44,9 @@
       <span><img src="{{translation.TRANSLATION_LANGUAGE_FLAG_PATH}}"></span> {{translation.TRANSLATION_LANGUAGE_NAME}}
     </md-option>
   </md-select>
+
+  <div class="error-message" *ngIf="alreadyRegisteredEmail">
+    <md-hint>{{i18n.errorMessages.securityUser.USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP}}</md-hint>
+  </div>
   <button type="submit" md-raised-button color="primary">{{i18n.ui.DO_SIGN_UP}}</button>
 </form>

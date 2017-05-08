@@ -55,6 +55,7 @@ export class RussianTranslation implements Translation {
       PASSWORD_CONFIRMATION__DO_NOT_MATCH: 'Пароли не совпадают',
 
       INCORRECT_EMAIL_OR_PASSWORD: 'Не верно введен email или пароль',
+      USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP: 'Пользователь с данным email уже зарегистрирован',
     },
   };
 }
