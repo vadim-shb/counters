@@ -12,5 +12,6 @@ public interface InactiveSecurityUserRepository extends CrudRepository<InactiveS
     @Query("select u from InactiveSecurityUser u where u.emailConfirmationToken = :emailConfirmationToken")
     InactiveSecurityUser findByEmailConfirmationToken(@Param("emailConfirmationToken") String emailConfirmationToken);
 
+    //todo: clean table regularly
     List<InactiveSecurityUser> findByEmail(String email);
 }

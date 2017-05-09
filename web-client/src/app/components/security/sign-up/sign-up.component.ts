@@ -43,7 +43,6 @@ export class SignUpComponent implements OnInit {
     i18nService.getCurrentTranslation()
       .subscribe(translation => {
         this.i18n = translation;
-
       });
     this.signUpForm = fb.group({
       name: ['', [Validators.required, Validators.maxLength(100)]],
@@ -52,8 +51,10 @@ export class SignUpComponent implements OnInit {
       repeatPassword: ['', []],
       language: Lang[Lang.RUSSIAN]
     });
-    //repeatPasswordValidator uses signUpForm
-    this.repeatPasswordFormControl.setValidators(this.repeatPasswordValidator());
+    //repeatPasswordValidator uses signUpForm.password
+    this.repeatPasswordFormControl.setValidators(this.validationService.repeatPasswordValidator(() => {
+      return this.passwordFormControl.value;
+    }));
   }
 
   emailChanges() {
@@ -86,17 +87,6 @@ export class SignUpComponent implements OnInit {
           this.alreadyRegisteredEmail = true;
         }
       });
-  }
-
-  private repeatPasswordValidator() {
-    let signUpForm = this.signUpForm;
-    console.log(signUpForm);
-    return (control: AbstractControl): { [key: string]: any } => {
-      const emailRegexp = /.+@.+/i;
-      if (control.value != signUpForm.get('password').value) {
-        return {'repeatPassword': true}
-      }
-    }
   }
 
 }

@@ -44,7 +44,7 @@ public class SignUpController {
 
     @PostMapping("/api/security/sign-up")
     @Transactional
-    public ResponseEntity signUp(@RequestBody SignUpRequest signUpRequest) throws InterruptedException {
+    public ResponseEntity signUp(@RequestBody SignUpRequest signUpRequest) {
         SecurityUser securityUser = securityUserRepository.findByEmail(signUpRequest.getEmail().toLowerCase());
         if (securityUser != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
@@ -52,7 +52,7 @@ public class SignUpController {
 
         InactiveSecurityUser inactiveSecurityUser = fulfillInactiveSecurityUser(signUpRequest);
         inactiveSecurityUserRepository.save(inactiveSecurityUser);
-        securityEmailService.sendEmailConfirmation(inactiveSecurityUser);
+        securityEmailService.sendEmailAddressConfirmationEmail(inactiveSecurityUser);
         return ResponseEntity.ok(null);
     }
 

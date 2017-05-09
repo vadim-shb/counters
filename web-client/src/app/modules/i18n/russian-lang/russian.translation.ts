@@ -43,7 +43,10 @@ export class RussianTranslation implements Translation {
     emailConfirmationSuccess: {
       WELCOME: 'Добро пожаловать!',
       SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: 'Ваш email был успешно подтвержден. Теперь вы можете войти в HR paradise',
-    }
+    },
+    passwordRecovery: {
+      RECOVERY_PASSWORD: 'Восстановить пароль',
+    },
   };
 
   errorMessages = {
@@ -70,6 +73,7 @@ export class RussianTranslation implements Translation {
 
       INCORRECT_EMAIL_OR_PASSWORD: 'Не верно введен email или пароль',
       USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP: 'Пользователь с данным email уже зарегистрирован',
+      USER_WITH_THIS_EMAIL_HAS_NEVER_BEEN_SIGNED_UP: 'Пользователь с данным email не зарегистрирован',
     },
   };
 }

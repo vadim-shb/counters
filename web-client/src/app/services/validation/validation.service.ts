@@ -12,4 +12,12 @@ export class ValidationService {
       return {'email': true}
     }
   }
+
+  repeatPasswordValidator(passwordGetter: () => string) {
+    return (control: AbstractControl): { [key: string]: any } => {
+      if (control.value != passwordGetter()) {
+        return {'repeatPassword': true}
+      }
+    }
+  }
 }

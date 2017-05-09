@@ -43,7 +43,10 @@ export class EnglishTranslation implements Translation {
     emailConfirmationSuccess: {
       WELCOME: 'Welcome!',
       SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: 'Your email has been successfully confirmed. Now you could sign in to HR paradise',
-    }
+    },
+    passwordRecovery: {
+      RECOVERY_PASSWORD: 'Recovery password',
+    },
   };
 
   errorMessages = {
@@ -70,6 +73,7 @@ export class EnglishTranslation implements Translation {
 
       INCORRECT_EMAIL_OR_PASSWORD: 'Incorrect email or password',
       USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP: 'User with this email has been already signed up',
+      USER_WITH_THIS_EMAIL_HAS_NEVER_BEEN_SIGNED_UP: 'User with this email has never been signed up',
     },
   };
 }

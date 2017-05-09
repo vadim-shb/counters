@@ -2,6 +2,7 @@ package com.vdshb.security.service;
 
 import com.vdshb.security.domain.InactiveSecurityUser;
 import com.vdshb.security.domain.Language;
+import com.vdshb.security.domain.PasswordRecovery;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.slf4j.Logger;
@@ -9,13 +10,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
+
 @Service
 public class SecurityEmailService {
 
     private Logger log = LoggerFactory.getLogger(SecurityEmailService.class);
 
-    @Value("${app.url}")
-    String appUrl;
     @Value("${smtp.mock}")
     boolean isMock;
     @Value("${smtp.host}")
@@ -31,14 +32,32 @@ public class SecurityEmailService {
     @Value("${smtp.tls}")
     boolean isTls;
 
-    public void sendEmailConfirmation(InactiveSecurityUser inactiveSecurityUser) {
-        String subject = localizedEmailConfirmationSubject(inactiveSecurityUser.getLanguage());
-        String textMessage = localizedEmailConfirmationPlainTextMessage(inactiveSecurityUser.getLanguage(), inactiveSecurityUser.getEmailConfirmationToken());
-        String htmlMessage = localizedEmailConfirmationHtmlMessage(inactiveSecurityUser.getLanguage(), inactiveSecurityUser.getEmailConfirmationToken());
+    @Inject
+    EmailConfirmationLocalizedMessageGenerator emailConfirmationLocalizedMessageGenerator;
+
+    @Inject
+    PasswordRecoveryLocalizedMessageGenerator passwordRecoveryLocalizedMessageGenerator;
+
+    public void sendEmailAddressConfirmationEmail(InactiveSecurityUser inactiveSecurityUser) {
+        String subject = emailConfirmationLocalizedMessageGenerator.localizedSubject(inactiveSecurityUser.getLanguage());
+        String textMessage = emailConfirmationLocalizedMessageGenerator.localizedPlainTextMessage(inactiveSecurityUser.getLanguage(), inactiveSecurityUser.getEmailConfirmationToken());
+        String htmlMessage = emailConfirmationLocalizedMessageGenerator.localizedHtmlMessage(inactiveSecurityUser.getLanguage(), inactiveSecurityUser.getEmailConfirmationToken());
+        sendEmail(inactiveSecurityUser.getEmail(), inactiveSecurityUser.getName(), subject, textMessage, htmlMessage);
+    }
+
+    public void sendPasswordRecoveryEmail(PasswordRecovery passwordRecovery) {
+        Language language = passwordRecovery.getSecurityUser().getLanguage();
+        String subject = passwordRecoveryLocalizedMessageGenerator.localizedSubject(language);
+        String textMessage = passwordRecoveryLocalizedMessageGenerator.localizedPlainTextMessage(language, passwordRecovery.getEmailConfirmationToken());
+        String htmlMessage = passwordRecoveryLocalizedMessageGenerator.localizedHtmlMessage(language, passwordRecovery.getEmailConfirmationToken());
+        sendEmail(passwordRecovery.getSecurityUser().getEmail(), passwordRecovery.getSecurityUser().getName(), subject, textMessage, htmlMessage);
+    }
+
+    private void sendEmail(String emailAddress, String userName, String subject, String textMessage, String htmlMessage) {
         if (isMock) {
             log.info("================ sent Email ================");
             log.info("Subject: " + subject);
-            log.info("Text Message: " + textMessage);
+            log.info("Text Message:\n" + textMessage);
             log.info("============================================");
         } else {
             try {
@@ -47,112 +66,16 @@ public class SecurityEmailService {
                 email.setSslSmtpPort(port);
                 email.setSSLCheckServerIdentity(isSsl);
                 email.setStartTLSRequired(isTls);
-                email.addTo(inactiveSecurityUser.getEmail(), inactiveSecurityUser.getName());
+                email.addTo(emailAddress, userName);
                 email.setAuthentication(user, password);
                 email.setSubject(subject);
                 email.setHtmlMsg(htmlMessage);
                 email.setTextMsg(textMessage);
                 email.send();
             } catch (EmailException e) {
-                log.error("Couldn't send email to " + inactiveSecurityUser.getEmail(), e);
+                log.error("Couldn't send email to " + emailAddress, e);
             }
         }
     }
 
-    private String localizedEmailConfirmationSubject(Language language) {
-        switch (language) {
-            case ENGLISH:
-                return "HR-paradise registration confirmation";
-            case RUSSIAN:
-                return "Подтверждение регистрации в HR-paradise";
-            default:
-                return localizedEmailConfirmationSubject(Language.ENGLISH);
-        }
-    }
-
-    private String localizedEmailConfirmationHtmlMessage(Language language, String emailConfirmationToken) {
-        switch (language) {
-            case ENGLISH:
-                return "<html><body>" +
-                        "<style>" +
-                        "    body {" +
-                        "        font-family: Arial, Helvetica, sans-serif;" +
-                        "        font-size: 20px;" +
-                        "        margin: 20px;" +
-                        "    }" +
-                        "    p {" +
-                        "        display: inline-block;" +
-                        "        margin-right: 10px;" +
-                        "    }" +
-                        "    h2 {" +
-                        "        margin-bottom: 30px;" +
-                        "    }" +
-                        "    div {" +
-                        "        margin-bottom: 15px;" +
-                        "    }" +
-                        "    a {" +
-                        "        text-decoration: none;" +
-                        "        color: #337ab7;" +
-                        "        font-weight: 400;" +
-                        "    }" +
-                        "    a:hover {" +
-                        "        color: #23527c;" +
-                        "        text-decoration: underline;" +
-                        "    }" +
-                        "</style>" +
-                        "<h2>Welcome to HR-paradise!</h2>" +
-                        "<p>To activate your account please follow the link:</p>" +
-                        "<a href=\"" + appUrl + "/api/security/confirm-user-email/" + emailConfirmationToken + "\">Activate the account</a>" +
-                        "</body></html>";
-            case RUSSIAN:
-                return "<html><body>" +
-                        "<style>" +
-                        "    body {" +
-                        "        font-family: Arial, Helvetica, sans-serif;" +
-                        "        font-size: 20px;" +
-                        "        margin: 20px;" +
-                        "    }" +
-                        "    p {" +
-                        "        display: inline-block;" +
-                        "        margin-right: 10px;" +
-                        "    }" +
-                        "    h2 {" +
-                        "        margin-bottom: 30px;" +
-                        "    }" +
-                        "    div {" +
-                        "        margin-bottom: 15px;" +
-                        "    }" +
-                        "    a {" +
-                        "        text-decoration: none;" +
-                        "        color: #337ab7;" +
-                        "        font-weight: 400;" +
-                        "    }" +
-                        "    a:hover {" +
-                        "        color: #23527c;" +
-                        "        text-decoration: underline;" +
-                        "    }" +
-                        "</style>" +
-                        "<h2>Добро пожалловать в HR-paradise!</h2>" +
-                        "<p>Для того, чтобы активировать свой аккаунт, пожалуйста, пройдите по ссылке:</p>" +
-                        "<a href=\"" + appUrl + "/api/security/confirm-user-email/" + emailConfirmationToken + "\">Активировать аккаунт</a>" +
-                        "</body></html>";
-            default:
-                return localizedEmailConfirmationHtmlMessage(Language.ENGLISH, emailConfirmationToken);
-        }
-    }
-
-    private String localizedEmailConfirmationPlainTextMessage(Language language, String emailConfirmationToken) {
-        switch (language) {
-            case ENGLISH:
-                return "Welcome to HR-paradise!\n" +
-                        "To activate your account please follow the link:\n" +
-                        appUrl + "/api/security/confirm-user-email/" + emailConfirmationToken;
-            case RUSSIAN:
-                return "Добро пожалловать в HR-paradise!\n" +
-                        "Для того, чтобы активировать свой аккаунт, пожалуйста, пройдите по ссылке:\n" +
-                        appUrl + "/api/security/confirm-user-email/" + emailConfirmationToken;
-            default:
-                return localizedEmailConfirmationPlainTextMessage(Language.ENGLISH, emailConfirmationToken);
-        }
-    }
 }

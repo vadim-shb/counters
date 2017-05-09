@@ -14,7 +14,6 @@ public class InactiveSecurityUser {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name = "email")
     private String email;
 
     @Column(name = "hashed_password")
