@@ -29,7 +29,7 @@ export class ErrorHandleService {
       let i18nHttpErrors = this.i18n.errorMessages.http;
       if (response.status == 403 || response.status == 401) {
         this.userService.clearUser();
-        this.router.navigate(['/sign-in']);
+        this.router.navigate(['/security/sign-in']);
         throw 'user must be signed in';
       }
       if (response.status == 500 || response.status == 504) {

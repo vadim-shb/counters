@@ -1,11 +1,11 @@
 import {Component, OnInit} from "@angular/core";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {I18nService} from "../../modules/i18n/i18n.service";
-import {Translation} from "../../modules/i18n/domain/translation";
-import {Lang} from "../../modules/i18n/domain/lang";
+import {I18nService} from "../../../modules/i18n/i18n.service";
+import {Translation} from "../../../modules/i18n/domain/translation";
+import {Lang} from "../../../modules/i18n/domain/lang";
 import {Router} from "@angular/router";
-import {PureHttpService} from "../../services/pure-http/pure-http.service";
-import {ValidationService} from "../../services/validation/validation.service";
+import {PureHttpService} from "../../../services/pure-http/pure-http.service";
+import {ValidationService} from "../../../services/validation/validation.service";
 
 @Component({
   selector: 'app-sign-up',
@@ -80,12 +80,11 @@ export class SignUpComponent implements OnInit {
 
     this.pureHttp.post(`/api/security/sign-up`, signUpRequest)
       .subscribe(response => {
-        this.router.navigate(['/sign-up-success']);
+        this.router.navigate(['/confirmation-email-sent']);
       }, errorResponse => {
         if (errorResponse.status == 409) {
           this.alreadyRegisteredEmail = true;
         }
-        console.log(errorResponse);
       });
   }
 

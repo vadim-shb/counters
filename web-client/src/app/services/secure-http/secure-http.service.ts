@@ -63,7 +63,7 @@ export class SecureHttpService extends Http {
       return callback();
     } else {
       this.userService.clearUser();
-      this.router.navigate(['/sign-in']);
+      this.router.navigate(['/security/sign-in']);
     }
   }
 

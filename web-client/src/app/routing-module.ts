@@ -1,24 +1,24 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {SignInComponent} from "./components/sign-in/sign-in.component";
+import {SignInComponent} from "./components/security/sign-in/sign-in.component";
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
-import {UserSettingsComponent} from "./components/user-settings/user-settings.component";
-import {SignUpComponent} from "./components/sign-up/sign-up.component";
-import {PasswordRecoveryComponent} from "./components/password-recovery/password-recovery.component";
+import {UserSettingsComponent} from "./components/security/user-settings/user-settings.component";
+import {SignUpComponent} from "./components/security/sign-up/sign-up.component";
+import {PasswordRecoveryComponent} from "./components/security/password-recovery/password-recovery.component";
 import {EmailConfirmationSuccessComponent} from "./components/security/email-confirmation-success/email-confirmation-success.component";
 
 const ROUTES: Routes = [
   {
     path: '',
-    redirectTo: '/sign-in',
+    redirectTo: '/security/sign-in',
     pathMatch: 'full'
   },
   {
-    path: 'sign-in',
+    path: 'security/sign-in',
     component: SignInComponent
   },
   {
-    path: 'sign-up',
+    path: 'security/sign-up',
     component: SignUpComponent
   },
   {
@@ -26,7 +26,7 @@ const ROUTES: Routes = [
     component: EmailConfirmationSuccessComponent
   },
   {
-    path: 'password-recovery',
+    path: 'security/password-recovery',
     component: PasswordRecoveryComponent
   },
   {
@@ -34,7 +34,7 @@ const ROUTES: Routes = [
     component: DashboardComponent
   },
   {
-    path: 'user-settings',
+    path: 'security/user-settings',
     component: UserSettingsComponent
   },
 ];
