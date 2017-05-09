@@ -81,11 +81,11 @@ export class SignUpComponent implements OnInit {
     this.pureHttp.post(`/api/security/sign-up`, signUpRequest)
       .subscribe(response => {
         this.router.navigate(['/sign-up-success']);
-      }, response => {
-        if (response.status == 409) {
+      }, errorResponse => {
+        if (errorResponse.status == 409) {
           this.alreadyRegisteredEmail = true;
         }
-        console.log(response);
+        console.log(errorResponse);
       });
   }
 
