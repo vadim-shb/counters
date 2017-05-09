@@ -25,6 +25,13 @@ export interface Translation {
     }
   };
 
+  component: {
+    emailConfirmationSuccess: {
+      WELCOME: string;
+      SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: string;
+    }
+  }
+
   errorMessages: {
     http: {
       SERVER_DO_NOT_RESPOND: {

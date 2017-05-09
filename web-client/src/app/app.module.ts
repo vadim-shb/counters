@@ -25,6 +25,7 @@ import { UserSettingsComponent } from './components/user-settings/user-settings.
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
 import {ValidationService} from "./services/validation/validation.service";
+import { EmailConfirmationSuccessComponent } from './components/security/email-confirmation-success/email-confirmation-success.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {ValidationService} from "./services/validation/validation.service";
     UserSettingsComponent,
     SignUpComponent,
     PasswordRecoveryComponent,
+    EmailConfirmationSuccessComponent,
   ],
   imports: [
     BrowserModule,

@@ -32,6 +32,13 @@ export class EnglishTranslation implements Translation {
     }
   };
 
+  component = {
+    emailConfirmationSuccess: {
+      WELCOME: 'Welcome!',
+      SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: 'Your email has been successfully confirmed. Now you could sign in to HR paradise',
+    }
+  };
+
   errorMessages = {
     http: {
       SERVER_DO_NOT_RESPOND: {

@@ -5,6 +5,7 @@ import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {UserSettingsComponent} from "./components/user-settings/user-settings.component";
 import {SignUpComponent} from "./components/sign-up/sign-up.component";
 import {PasswordRecoveryComponent} from "./components/password-recovery/password-recovery.component";
+import {EmailConfirmationSuccessComponent} from "./components/security/email-confirmation-success/email-confirmation-success.component";
 
 const ROUTES: Routes = [
   {
@@ -19,6 +20,10 @@ const ROUTES: Routes = [
   {
     path: 'sign-up',
     component: SignUpComponent
+  },
+  {
+    path: 'security/email-confirmation-success',
+    component: EmailConfirmationSuccessComponent
   },
   {
     path: 'password-recovery',

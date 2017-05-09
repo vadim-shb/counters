@@ -32,6 +32,13 @@ export class RussianTranslation implements Translation {
     }
   };
 
+  component = {
+    emailConfirmationSuccess: {
+      WELCOME: 'Добро пожаловать!',
+      SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: 'Ваш email был успешно подтвержден. Теперь вы можете войти в HR paradise',
+    }
+  };
+
   errorMessages = {
     http: {
       SERVER_DO_NOT_RESPOND: {
