@@ -17,7 +17,6 @@ export class EnglishTranslation implements Translation {
     SIGN_IN: 'Sign In',
     SIGN_OUT: 'Sign Out',
     SIGN_UP: 'Sign Up',
-    DO_SIGN_UP: 'Sign Up',
     FORGOT_PASSWORD_QUESTION: 'Forgot password?',
     SETTINGS: 'Settings',
     REPEAT_PASSWORD: 'Repeat password',
@@ -33,6 +32,10 @@ export class EnglishTranslation implements Translation {
   };
 
   component = {
+    signUp: {
+      DO_SIGN_UP: 'Sign Up',
+      ALREADY_HAVE_AN_ACCOUNT_QUESTION: 'Already have an account?',
+    },
     confirmationEmailSent: {
       TITLE: 'Congratulations!',
       CONFIRMATION_EMAIL_SENT_MESSAGE: "In couple minutes you'll get our email. Please follow the simple instructions in it, and you'll successfully finish the sign up process.",

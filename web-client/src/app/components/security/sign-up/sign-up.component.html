@@ -48,5 +48,9 @@
   <div class="error-message" *ngIf="alreadyRegisteredEmail">
     <md-hint>{{i18n.errorMessages.securityUser.USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP}}</md-hint>
   </div>
-  <button type="submit" md-raised-button color="primary">{{i18n.ui.DO_SIGN_UP}}</button>
+  <button type="submit" md-raised-button color="primary">{{i18n.component.signUp.DO_SIGN_UP}}</button>
 </form>
+<div id="linksContainer">
+  <span>{{i18n.component.signUp.ALREADY_HAVE_AN_ACCOUNT_QUESTION}}</span>
+  <a id="signUpLink" routerLink="/security/sign-in">{{i18n.ui.SIGN_IN}}</a>
+</div>

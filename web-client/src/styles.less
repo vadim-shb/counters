@@ -19,8 +19,12 @@ body {
   }
 }
 
-.link() {
+.basicFont() {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.link() {
+  .basicFont();
   color: #337ab7;
   text-decoration: underline;
   &:hover {
@@ -28,7 +32,12 @@ body {
   }
 }
 
-.small-link() {
+.small-text() {
+  .basicFont();
   font-size: 14px;
+}
+
+.small-link() {
+  .small-text();
   .link();
 }

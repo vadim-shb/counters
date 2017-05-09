@@ -10,7 +10,6 @@ export interface Translation {
     SIGN_IN: string;
     SIGN_OUT: string;
     SIGN_UP: string;
-    DO_SIGN_UP: string;
     FORGOT_PASSWORD_QUESTION: string;
     SETTINGS: string;
     REPEAT_PASSWORD: string;
@@ -26,6 +25,10 @@ export interface Translation {
   };
 
   component: {
+    signUp: {
+      DO_SIGN_UP: string;
+      ALREADY_HAVE_AN_ACCOUNT_QUESTION: string;
+    },
     confirmationEmailSent: {
       TITLE: string;
       CONFIRMATION_EMAIL_SENT_MESSAGE: string;

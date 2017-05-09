@@ -17,7 +17,6 @@ export class RussianTranslation implements Translation {
     SIGN_IN: 'Вход',
     SIGN_OUT: 'Выход',
     SIGN_UP: 'Регистрация',
-    DO_SIGN_UP: 'Зарегистрироваться',
     FORGOT_PASSWORD_QUESTION: 'Забыли пароль?',
     SETTINGS: 'Настройки',
     REPEAT_PASSWORD: 'Повторите пароль',
@@ -33,6 +32,10 @@ export class RussianTranslation implements Translation {
   };
 
   component = {
+    signUp: {
+      DO_SIGN_UP: 'Зарегистрироваться',
+      ALREADY_HAVE_AN_ACCOUNT_QUESTION: 'Уже есть аккаунт?',
+    },
     confirmationEmailSent: {
       TITLE: 'Поздравляем!',
       CONFIRMATION_EMAIL_SENT_MESSAGE: "В течение нескольких минут вы получите email. Пожалуйста, следуйте простым инструкция из письма и вы успешно завершите процеcc регистрации.",
