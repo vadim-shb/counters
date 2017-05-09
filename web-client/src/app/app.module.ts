@@ -26,6 +26,7 @@ import {SignUpComponent} from "./components/security/sign-up/sign-up.component";
 import {PasswordRecoveryComponent} from "./components/security/password-recovery/password-recovery.component";
 import {ValidationService} from "./services/validation/validation.service";
 import {EmailConfirmationSuccessComponent} from "./components/security/email-confirmation-success/email-confirmation-success.component";
+import { ConfirmationEmailSentComponent } from './components/security/confirmation-email-sent/confirmation-email-sent.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {EmailConfirmationSuccessComponent} from "./components/security/email-con
     SignUpComponent,
     PasswordRecoveryComponent,
     EmailConfirmationSuccessComponent,
+    ConfirmationEmailSentComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@ import {UserSettingsComponent} from "./components/security/user-settings/user-se
 import {SignUpComponent} from "./components/security/sign-up/sign-up.component";
 import {PasswordRecoveryComponent} from "./components/security/password-recovery/password-recovery.component";
 import {EmailConfirmationSuccessComponent} from "./components/security/email-confirmation-success/email-confirmation-success.component";
+import {ConfirmationEmailSentComponent} from "./components/security/confirmation-email-sent/confirmation-email-sent.component";
 
 const ROUTES: Routes = [
   {
@@ -20,6 +21,10 @@ const ROUTES: Routes = [
   {
     path: 'security/sign-up',
     component: SignUpComponent
+  },
+  {
+    path: 'security/confirmation-email-sent',
+    component: ConfirmationEmailSentComponent
   },
   {
     path: 'security/email-confirmation-success',

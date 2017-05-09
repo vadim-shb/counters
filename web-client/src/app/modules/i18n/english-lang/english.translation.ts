@@ -33,6 +33,10 @@ export class EnglishTranslation implements Translation {
   };
 
   component = {
+    confirmationEmailSent: {
+      TITLE: 'Congratulations!',
+      CONFIRMATION_EMAIL_SENT_MESSAGE: "In couple minutes you'll get our email. Please follow the simple instructions in it, and you'll successfully finish the sign up process.",
+    },
     emailConfirmationSuccess: {
       WELCOME: 'Welcome!',
       SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: 'Your email has been successfully confirmed. Now you could sign in to HR paradise',

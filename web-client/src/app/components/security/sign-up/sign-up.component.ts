@@ -80,7 +80,7 @@ export class SignUpComponent implements OnInit {
 
     this.pureHttp.post(`/api/security/sign-up`, signUpRequest)
       .subscribe(response => {
-        this.router.navigate(['/confirmation-email-sent']);
+        this.router.navigate(['/security/confirmation-email-sent']);
       }, errorResponse => {
         if (errorResponse.status == 409) {
           this.alreadyRegisteredEmail = true;

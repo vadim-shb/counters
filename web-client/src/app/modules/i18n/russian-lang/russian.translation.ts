@@ -33,6 +33,10 @@ export class RussianTranslation implements Translation {
   };
 
   component = {
+    confirmationEmailSent: {
+      TITLE: 'Поздравляем!',
+      CONFIRMATION_EMAIL_SENT_MESSAGE: "В течение нескольких минут вы получите email. Пожалуйста, следуйте простым инструкция из письма и вы успешно завершите процеcc регистрации.",
+    },
     emailConfirmationSuccess: {
       WELCOME: 'Добро пожаловать!',
       SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: 'Ваш email был успешно подтвержден. Теперь вы можете войти в HR paradise',

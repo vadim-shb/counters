@@ -26,10 +26,14 @@ export interface Translation {
   };
 
   component: {
+    confirmationEmailSent: {
+      TITLE: string;
+      CONFIRMATION_EMAIL_SENT_MESSAGE: string;
+    },
     emailConfirmationSuccess: {
       WELCOME: string;
       SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: string;
-    }
+    },
   }
 
   errorMessages: {
