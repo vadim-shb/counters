@@ -10,7 +10,8 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private SecurityRole role;
 
     @ManyToOne
     @JoinColumn(name = "security_user_id")
@@ -24,11 +25,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getRole() {
+    public SecurityRole getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(SecurityRole role) {
         this.role = role;
     }
 

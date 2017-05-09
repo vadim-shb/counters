@@ -1,9 +1,8 @@
 package com.vdshb.security.controller;
 
-import com.vdshb.security.domain.InactiveSecurityUser;
-import com.vdshb.security.domain.SecurityUser;
-import com.vdshb.security.domain.SignUpRequest;
+import com.vdshb.security.domain.*;
 import com.vdshb.security.repository.InactiveSecurityUserRepository;
+import com.vdshb.security.repository.RoleRepository;
 import com.vdshb.security.repository.SecurityUserRepository;
 import com.vdshb.security.service.SecurityEmailService;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -38,6 +37,9 @@ public class SignUpController {
     private SecurityUserRepository securityUserRepository;
 
     @Inject
+    private RoleRepository roleRepository;
+
+    @Inject
     private SecurityEmailService securityEmailService;
 
     @PostMapping("/api/security/sign-up")
@@ -66,7 +68,7 @@ public class SignUpController {
         return result;
     }
 
-    @GetMapping("/api/security/confirm-email/{emailConfirmationToken}")
+    @GetMapping("/api/security/confirm-user-email/{emailConfirmationToken}")
     @Transactional
     public ResponseEntity confirmEmail(@PathVariable String emailConfirmationToken) {
         InactiveSecurityUser inactiveSecurityUser = inactiveSecurityUserRepository.findByEmailConfirmationToken(emailConfirmationToken);
@@ -74,12 +76,15 @@ public class SignUpController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
 
-        SecurityUser securityUser = fulfillSecurityUser(inactiveSecurityUser);
-        securityUserRepository.save(securityUser);
+        SecurityUser securityUser = securityUserRepository.save(fulfillSecurityUser(inactiveSecurityUser));
+        Role role = new Role();
+        role.setSecurityUser(securityUser);
+        role.setRole(SecurityRole.USER);
+        roleRepository.save(role);
         List<InactiveSecurityUser> securityUsersWithSameId = inactiveSecurityUserRepository.findByEmail(inactiveSecurityUser.getEmail());
         inactiveSecurityUserRepository.delete(securityUsersWithSameId);
 
-        return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/confirm-email").body(null);
+        return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/email-confirmation-success").body(null);
     }
 
     private SecurityUser fulfillSecurityUser(InactiveSecurityUser inactiveSecurityUser) {

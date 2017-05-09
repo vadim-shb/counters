@@ -33,7 +33,7 @@ public class SecurityUserService {
         List<Role> roles = roleRepository.findByUser(securityUserId);
         return roles
                 .stream()
-                .map(role -> new SimpleGrantedAuthority(role.getRole()))
+                .map(role -> new SimpleGrantedAuthority(role.getRole().name()))
                 .collect(Collectors.toList());
     }
 
