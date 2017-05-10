@@ -48,8 +48,8 @@ export interface Translation {
       MESSAGE: string;
     },
     emailConfirmationSuccess: {
-      WELCOME: string;
-      SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: string;
+      TITLE: string;
+      MESSAGE: string;
     },
     passwordRecovery: {
       RECOVERY_PASSWORD: string;

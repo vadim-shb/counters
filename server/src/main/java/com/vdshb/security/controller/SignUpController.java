@@ -84,7 +84,7 @@ public class SignUpController {
         List<InactiveSecurityUser> securityUsersWithSameId = inactiveSecurityUserRepository.findByEmail(inactiveSecurityUser.getEmail());
         inactiveSecurityUserRepository.delete(securityUsersWithSameId);
 
-        return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/email-confirmation-success").body(null);
+        return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/message/email-confirmation-success").body(null);
     }
 
     private SecurityUser fulfillSecurityUser(InactiveSecurityUser inactiveSecurityUser) {

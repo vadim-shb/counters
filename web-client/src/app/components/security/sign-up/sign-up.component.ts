@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {I18nService} from "../../../modules/i18n/i18n.service";
 import {Translation} from "../../../modules/i18n/domain/translation";
 import {Lang} from "../../../modules/i18n/domain/lang";
@@ -81,7 +81,7 @@ export class SignUpComponent implements OnInit {
 
     this.pureHttp.post(`/api/security/sign-up`, signUpRequest)
       .subscribe(response => {
-        this.router.navigate(['/security/confirmation-email-sent']);
+        this.router.navigate(['/security/message/confirmation-email-sent']);
       }, errorResponse => {
         if (errorResponse.status == 409) {
           this.alreadyRegisteredEmail = true;

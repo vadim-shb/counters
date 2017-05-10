@@ -54,8 +54,8 @@ export class RussianTranslation implements Translation {
       MESSAGE: 'Письмо со ссылкой на восстановление пароля более не действительно',
     },
     emailConfirmationSuccess: {
-      WELCOME: 'Добро пожаловать!',
-      SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: 'Ваш email был успешно подтвержден. Теперь вы можете войти в HR paradise',
+      TITLE: 'Добро пожаловать!',
+      MESSAGE: 'Ваш email был успешно подтвержден. Теперь вы можете войти в HR paradise',
     },
     passwordRecovery: {
       RECOVERY_PASSWORD: 'Восстановить пароль',

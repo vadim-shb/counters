@@ -54,8 +54,8 @@ export class EnglishTranslation implements Translation {
       MESSAGE: 'Recovery letter not valid any more',
     },
     emailConfirmationSuccess: {
-      WELCOME: 'Welcome!',
-      SUCCESSFULLY_EMAIL_CONFIRMED_MESSAGE: 'Your email has been successfully confirmed. Now you could sign in to HR paradise',
+      TITLE: 'Welcome!',
+      MESSAGE: 'Your email has been successfully confirmed. Now you could sign in to HR paradise',
     },
     passwordRecovery: {
       RECOVERY_PASSWORD: 'Recovery password',

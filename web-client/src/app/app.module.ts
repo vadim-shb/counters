@@ -25,11 +25,7 @@ import {UserSettingsComponent} from "./components/security/user-settings/user-se
 import {SignUpComponent} from "./components/security/sign-up/sign-up.component";
 import {PasswordRecoveryComponent} from "./components/security/password-recovery/password-recovery.component";
 import {ValidationService} from "./services/validation/validation.service";
-import {EmailConfirmationSuccessComponent} from "./components/security/email-confirmation-success/email-confirmation-success.component";
-import { ConfirmationEmailSentComponent } from './components/security/confirmation-email-sent/confirmation-email-sent.component';
-import { PasswordRecoverySuccessComponent } from './components/security/password-recovery-success/password-recovery-success.component';
-import { PasswordRecoveryErrorComponent } from './components/security/password-recovery-error/password-recovery-error.component';
-import { PasswordRecoveryEmailSentComponent } from './components/security/password-recovery-email-sent/password-recovery-email-sent.component';
+import { MessageScreenComponent } from './components/security/message-screen/message-screen.component';
 
 @NgModule({
   declarations: [
@@ -41,11 +37,7 @@ import { PasswordRecoveryEmailSentComponent } from './components/security/passwo
     UserSettingsComponent,
     SignUpComponent,
     PasswordRecoveryComponent,
-    EmailConfirmationSuccessComponent,
-    ConfirmationEmailSentComponent,
-    PasswordRecoverySuccessComponent,
-    PasswordRecoveryErrorComponent,
-    PasswordRecoveryEmailSentComponent,
+    MessageScreenComponent,
   ],
   imports: [
     BrowserModule,
