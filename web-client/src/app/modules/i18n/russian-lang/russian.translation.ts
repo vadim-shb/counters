@@ -20,6 +20,7 @@ export class RussianTranslation implements Translation {
     FORGOT_PASSWORD_QUESTION: 'Забыли пароль?',
     SETTINGS: 'Настройки',
     REPEAT_PASSWORD: 'Повторите пароль',
+    TO_THE_MAIN_PAGE: 'На главную',
   };
 
   entity = {
@@ -38,7 +39,19 @@ export class RussianTranslation implements Translation {
     },
     confirmationEmailSent: {
       TITLE: 'Поздравляем!',
-      CONFIRMATION_EMAIL_SENT_MESSAGE: "В течение нескольких минут вы получите email. Пожалуйста, следуйте простым инструкция из письма и вы успешно завершите процеcc регистрации.",
+      MESSAGE: "В течение нескольких минут вы получите email. Пожалуйста, следуйте простым инструкция из письма и вы успешно завершите процеcc регистрации.",
+    },
+    passwordRecoveryEmailSent: {
+      TITLE: 'Письмо для восстановления пароля было выслано на указанный email',
+      MESSAGE: 'Следуйте простым инструкциям в письме для завершения процесса восстановления пароля',
+    },
+    passwordRecoverySuccess: {
+      TITLE: 'Пароль был успешно восстановлен',
+      MESSAGE: 'Теперь вы можете войти с новым паролем',
+    },
+    passwordRecoveryError: {
+      TITLE: 'Срок действия процесса восстановления пароля истек',
+      MESSAGE: 'Письмо со ссылкой на восстановление пароля более не действительно',
     },
     emailConfirmationSuccess: {
       WELCOME: 'Добро пожаловать!',

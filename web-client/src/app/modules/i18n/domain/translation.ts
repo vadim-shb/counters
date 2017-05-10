@@ -1,5 +1,6 @@
 import {Lang} from "./lang";
 
+//TODO: optimize
 export interface Translation {
   TRANSLATION_LANGUAGE: Lang;
   TRANSLATION_LANGUAGE_CODE: string;
@@ -13,6 +14,7 @@ export interface Translation {
     FORGOT_PASSWORD_QUESTION: string;
     SETTINGS: string;
     REPEAT_PASSWORD: string;
+    TO_THE_MAIN_PAGE: string;
   };
 
   entity : {
@@ -31,7 +33,19 @@ export interface Translation {
     },
     confirmationEmailSent: {
       TITLE: string;
-      CONFIRMATION_EMAIL_SENT_MESSAGE: string;
+      MESSAGE: string;
+    },
+    passwordRecoveryEmailSent: {
+      TITLE: string;
+      MESSAGE: string;
+    },
+    passwordRecoverySuccess: {
+      TITLE: string;
+      MESSAGE: string;
+    },
+    passwordRecoveryError: {
+      TITLE: string;
+      MESSAGE: string;
     },
     emailConfirmationSuccess: {
       WELCOME: string;

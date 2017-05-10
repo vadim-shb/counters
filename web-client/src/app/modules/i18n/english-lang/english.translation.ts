@@ -20,6 +20,7 @@ export class EnglishTranslation implements Translation {
     FORGOT_PASSWORD_QUESTION: 'Forgot password?',
     SETTINGS: 'Settings',
     REPEAT_PASSWORD: 'Repeat password',
+    TO_THE_MAIN_PAGE: 'Go to the main page',
   };
 
   entity = {
@@ -38,7 +39,19 @@ export class EnglishTranslation implements Translation {
     },
     confirmationEmailSent: {
       TITLE: 'Congratulations!',
-      CONFIRMATION_EMAIL_SENT_MESSAGE: "In couple minutes you'll get our email. Please follow the simple instructions in it, and you'll successfully finish the sign up process.",
+      MESSAGE: "In couple minutes you'll get our email. Please follow the simple instructions in it, and you'll successfully finish the sign up process.",
+    },
+    passwordRecoveryEmailSent: {
+      TITLE: 'Password recovery email has been sent',
+      MESSAGE: 'Follow the simple instructions in the email to finish password recovery process',
+    },
+    passwordRecoverySuccess: {
+      TITLE: 'Password was successfully recovered',
+      MESSAGE: 'Now you can sign in with the new password',
+    },
+    passwordRecoveryError: {
+      TITLE: 'Password recovery process expired',
+      MESSAGE: 'Recovery letter not valid any more',
     },
     emailConfirmationSuccess: {
       WELCOME: 'Welcome!',

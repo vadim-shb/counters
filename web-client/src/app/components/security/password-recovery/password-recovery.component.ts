@@ -76,7 +76,7 @@ export class PasswordRecoveryComponent implements OnInit {
     this.pureHttp.post(`/api/security/recovery-password-by-email`, passwordRecoveryRequest)
       .subscribe(
         () => {
-          this.router.navigate(['/security/recovery-password-email-sent']);
+          this.router.navigate(['/security/password-recovery-email-sent']);
         },
         (errorResponse: Response) => {
           if (errorResponse.status == 404) {

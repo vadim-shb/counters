@@ -67,7 +67,7 @@ public class PasswordRecoveryController {
     public ResponseEntity confirmEmail(@PathVariable String emailConfirmationToken) {
         PasswordRecovery passwordRecovery = passwordRecoveryRepository.findByEmailConfirmationToken(emailConfirmationToken);
         if (passwordRecovery == null || passwordRecovery.getCreationDateTime().plusSeconds(emailPasswordRecoveryTokenExpirationTime).isBefore(Instant.now())) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/password-recovery-error").body(null);
         }
 
         SecurityUser securityUser = passwordRecovery.getSecurityUser();
