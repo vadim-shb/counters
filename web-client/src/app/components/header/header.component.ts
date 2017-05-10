@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {SecurityService} from "../../services/security/security.service";
 import {UserService} from "../../services/user/user.service";
 import {I18nService} from "../../modules/i18n/i18n.service";
-import {Translation} from "../../modules/i18n/domain/translation";
+import {Translation} from "../../modules/i18n/translations/translation";
 import {User} from "../../domain/user";
 
 @Component({

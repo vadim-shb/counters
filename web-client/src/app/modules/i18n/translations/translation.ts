@@ -1,0 +1,70 @@
+import {Lang} from "../domain/lang";
+
+export interface Translation {
+  TRANSLATION_LANGUAGE: Lang;
+  TRANSLATION_LANGUAGE_CODE: string;
+  TRANSLATION_LANGUAGE_NAME: string;
+  TRANSLATION_LANGUAGE_FLAG_PATH: string;
+
+  securityUser: {
+    NAME: string;
+    PASSWORD: string;
+    EMAIL: string;
+    LANGUAGE: string;
+
+    // ==== errors ====
+    NAME__REQUIRED: string;
+    NAME__CAN_NOT_BE_LONGER_THAN_100_CHARACTERS: string;
+    EMAIL__REQUIRED: string;
+    EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS: string;
+    EMAIL__INVALID: string;
+    PASSWORD__REQUIRED: string;
+    PASSWORD__CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS: string;
+    PASSWORD__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS: string;
+    PASSWORD_CONFIRMATION__DO_NOT_MATCH: string;
+  };
+
+  security: {
+    SIGN_IN: string;
+    SIGN_OUT: string;
+    SIGN_UP: string;
+    FORGOT_PASSWORD_QUESTION: string;
+    SETTINGS: string;
+    REPEAT_PASSWORD: string;
+    TO_THE_MAIN_PAGE: string;
+    DO_SIGN_UP: string;
+    ALREADY_HAVE_AN_ACCOUNT_QUESTION: string;
+    RECOVERY_PASSWORD: string;
+    NEW_PASSWORD: string;
+
+    CONFIRMATION_EMAIL_SENT_TITLE: string;
+    CONFIRMATION_EMAIL_SENT_MESSAGE: string;
+
+    PASSWORD_RECOVERY_EMAIL_SENT_TITLE: string;
+    PASSWORD_RECOVERY_EMAIL_SENT_MESSAGE: string;
+
+    PASSWORD_RECOVERY_SUCCESS_TITLE: string;
+    PASSWORD_RECOVERY_SUCCESS_MESSAGE: string;
+
+    PASSWORD_RECOVERY_ERROR_TITLE: string;
+    PASSWORD_RECOVERY_ERROR_MESSAGE: string;
+
+    EMAIL_CONFIRMATION_SUCCESS_TITLE: string;
+    EMAIL_CONFIRMATION_SUCCESS_MESSAGE: string;
+
+    // ==== errors ====
+    INCORRECT_EMAIL_OR_PASSWORD: string;
+    USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP: string;
+    USER_WITH_THIS_EMAIL_HAS_NEVER_BEEN_SIGNED_UP: string;
+  }
+
+  httpErrors: {
+    SERVER_DO_NOT_RESPOND_HEADER: string;
+    SERVER_DO_NOT_RESPOND_BODY: string;
+
+    COMMUNICATION_PROTOCOL_ERROR_HEADER: string;
+    COMMUNICATION_PROTOCOL_ERROR_BODY: string;
+  }
+
+}
+

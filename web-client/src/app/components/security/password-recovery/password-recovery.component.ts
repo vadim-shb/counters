@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {I18nService} from "../../../modules/i18n/i18n.service";
-import {Translation} from "../../../modules/i18n/domain/translation";
+import {Translation} from "../../../modules/i18n/translations/translation";
 import {PureHttpService} from "../../../services/pure-http/pure-http.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationService} from "../../../services/validation/validation.service";

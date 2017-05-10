@@ -1,56 +1,56 @@
 <form [formGroup]="signUpForm" (ngSubmit)="signUp()" novalidate>
   <md-input-container>
-    <input mdInput formControlName="name" placeholder="{{i18n.entity.securityUser.NAME}}">
+    <input mdInput formControlName="name" placeholder="{{i18n.securityUser.NAME}}">
     <md-hint *ngIf="userNameFormControl.touched && userNameFormControl.hasError('required')">
-      {{i18n.errorMessages.securityUser.NAME__REQUIRED}}
+      {{i18n.securityUser.NAME__REQUIRED}}
     </md-hint>
     <md-hint *ngIf="userNameFormControl.touched && userNameFormControl.hasError('maxlength')">
-      {{i18n.errorMessages.securityUser.NAME__CAN_NOT_BE_LONGER_THAN_100_CHARACTERS}}
+      {{i18n.securityUser.NAME__CAN_NOT_BE_LONGER_THAN_100_CHARACTERS}}
     </md-hint>
   </md-input-container>
   <md-input-container>
-    <input mdInput formControlName="email" placeholder="{{i18n.entity.securityUser.EMAIL}}" (ngModelChange)="emailChanges()">
+    <input mdInput formControlName="email" placeholder="{{i18n.securityUser.EMAIL}}" (ngModelChange)="emailChanges()">
     <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('required')">
-      {{i18n.errorMessages.securityUser.EMAIL__REQUIRED}}
+      {{i18n.securityUser.EMAIL__REQUIRED}}
     </md-hint>
     <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('maxlength')">
-      {{i18n.errorMessages.securityUser.EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+      {{i18n.securityUser.EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
     </md-hint>
     <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('email')">
-      {{i18n.errorMessages.securityUser.EMAIL__INVALID}}
+      {{i18n.securityUser.EMAIL__INVALID}}
     </md-hint>
   </md-input-container>
   <md-input-container>
-    <input mdInput formControlName="password" placeholder="{{i18n.entity.securityUser.PASSWORD}}" type="password">
+    <input mdInput formControlName="password" placeholder="{{i18n.securityUser.PASSWORD}}" type="password">
     <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('required')">
-      {{i18n.errorMessages.securityUser.PASSWORD__REQUIRED}}
+      {{i18n.securityUser.PASSWORD__REQUIRED}}
     </md-hint>
     <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('minlength')">
-      {{i18n.errorMessages.securityUser.PASSWORD__CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS}}
+      {{i18n.securityUser.PASSWORD__CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS}}
     </md-hint>
     <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('maxlength')">
-      {{i18n.errorMessages.securityUser.PASSWORD__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+      {{i18n.securityUser.PASSWORD__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
     </md-hint>
   </md-input-container>
   <md-input-container>
-    <input mdInput formControlName="repeatPassword" placeholder="{{i18n.ui.REPEAT_PASSWORD}}" type="password">
+    <input mdInput formControlName="repeatPassword" placeholder="{{i18n.security.REPEAT_PASSWORD}}" type="password">
     <md-hint *ngIf="repeatPasswordFormControl.touched && repeatPasswordFormControl.hasError('repeatPassword')">
-      {{i18n.errorMessages.securityUser.PASSWORD_CONFIRMATION__DO_NOT_MATCH}}
+      {{i18n.securityUser.PASSWORD_CONFIRMATION__DO_NOT_MATCH}}
     </md-hint>
   </md-input-container>
 
-  <md-select formControlName="language" placeholder="{{i18n.entity.securityUser.LANGUAGE}}">
+  <md-select formControlName="language" placeholder="{{i18n.securityUser.LANGUAGE}}">
     <md-option *ngFor="let translation of i18nService.getTranslations()" value="{{translation.TRANSLATION_LANGUAGE_CODE}}">
       <span><img src="{{translation.TRANSLATION_LANGUAGE_FLAG_PATH}}"></span> {{translation.TRANSLATION_LANGUAGE_NAME}}
     </md-option>
   </md-select>
 
   <div class="error-message" *ngIf="alreadyRegisteredEmail">
-    <md-hint>{{i18n.errorMessages.securityUser.USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP}}</md-hint>
+    <md-hint>{{i18n.security.USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP}}</md-hint>
   </div>
-  <button type="submit" md-raised-button color="primary">{{i18n.component.signUp.DO_SIGN_UP}}</button>
+  <button type="submit" md-raised-button color="primary">{{i18n.security.DO_SIGN_UP}}</button>
 </form>
 <div id="linksContainer">
-  <span>{{i18n.component.signUp.ALREADY_HAVE_AN_ACCOUNT_QUESTION}}</span>
-  <a id="signUpLink" routerLink="/security/sign-in">{{i18n.ui.SIGN_IN}}</a>
+  <span>{{i18n.security.ALREADY_HAVE_AN_ACCOUNT_QUESTION}}</span>
+  <a id="signUpLink" routerLink="/security/sign-in">{{i18n.security.SIGN_IN}}</a>
 </div>

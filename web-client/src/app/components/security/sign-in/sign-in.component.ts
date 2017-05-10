@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 import {User} from "../../../domain/user";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {I18nService} from "../../../modules/i18n/i18n.service";
-import {Translation} from "../../../modules/i18n/domain/translation";
+import {Translation} from "../../../modules/i18n/translations/translation";
 import {EmailPasswordCredentials} from "../../../domain/email-password-credentials";
 import {ValidationService} from "../../../services/validation/validation.service";
 

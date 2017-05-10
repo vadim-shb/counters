@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {I18nService} from "../../../modules/i18n/i18n.service";
-import {Translation} from "../../../modules/i18n/domain/translation";
+import {Translation} from "../../../modules/i18n/translations/translation";
 import {Lang} from "../../../modules/i18n/domain/lang";
 import {Router} from "@angular/router";
 import {PureHttpService} from "../../../services/pure-http/pure-http.service";

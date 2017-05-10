@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {I18nService} from "../../../modules/i18n/i18n.service";
-import {Translation} from "../../../modules/i18n/domain/translation";
+import {Translation} from "../../../modules/i18n/translations/translation";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -34,32 +34,32 @@ export class MessageScreenComponent implements OnInit {
           title: '',
           message: '',
           linkPath: '/',
-          linkText: this.i18n.ui.TO_THE_MAIN_PAGE,
+          linkText: this.i18n.security.TO_THE_MAIN_PAGE,
         };
         switch (messageScreenType) {
           case 'password-recovery-email-sent':
-            this.messageWindow.title = this.i18n.component.passwordRecoveryEmailSent.TITLE;
-            this.messageWindow.message = this.i18n.component.passwordRecoveryEmailSent.MESSAGE;
+            this.messageWindow.title = this.i18n.security.PASSWORD_RECOVERY_EMAIL_SENT_TITLE;
+            this.messageWindow.message = this.i18n.security.PASSWORD_RECOVERY_EMAIL_SENT_MESSAGE;
             break;
           case 'password-recovery-success':
-            this.messageWindow.title = this.i18n.component.passwordRecoverySuccess.TITLE;
-            this.messageWindow.message = this.i18n.component.passwordRecoverySuccess.MESSAGE;
+            this.messageWindow.title = this.i18n.security.PASSWORD_RECOVERY_SUCCESS_TITLE;
+            this.messageWindow.message = this.i18n.security.PASSWORD_RECOVERY_SUCCESS_MESSAGE;
             this.messageWindow.linkPath = '/security/sign-in';
-            this.messageWindow.linkText = this.i18n.ui.SIGN_IN;
+            this.messageWindow.linkText = this.i18n.security.SIGN_IN;
             break;
           case 'password-recovery-error':
-            this.messageWindow.title = this.i18n.component.passwordRecoveryError.TITLE;
-            this.messageWindow.message = this.i18n.component.passwordRecoveryError.MESSAGE;
+            this.messageWindow.title = this.i18n.security.PASSWORD_RECOVERY_ERROR_TITLE;
+            this.messageWindow.message = this.i18n.security.PASSWORD_RECOVERY_ERROR_MESSAGE;
             break;
           case 'confirmation-email-sent':
-            this.messageWindow.title = this.i18n.component.confirmationEmailSent.TITLE;
-            this.messageWindow.message = this.i18n.component.confirmationEmailSent.MESSAGE;
+            this.messageWindow.title = this.i18n.security.CONFIRMATION_EMAIL_SENT_TITLE;
+            this.messageWindow.message = this.i18n.security.CONFIRMATION_EMAIL_SENT_MESSAGE;
             break;
           case 'email-confirmation-success':
-            this.messageWindow.title = this.i18n.component.emailConfirmationSuccess.TITLE;
-            this.messageWindow.message = this.i18n.component.emailConfirmationSuccess.MESSAGE;
+            this.messageWindow.title = this.i18n.security.EMAIL_CONFIRMATION_SUCCESS_TITLE;
+            this.messageWindow.message = this.i18n.security.EMAIL_CONFIRMATION_SUCCESS_MESSAGE;
             this.messageWindow.linkPath = '/security/sign-in';
-            this.messageWindow.linkText = this.i18n.ui.SIGN_IN;
+            this.messageWindow.linkText = this.i18n.security.SIGN_IN;
             break;
         }
       });
