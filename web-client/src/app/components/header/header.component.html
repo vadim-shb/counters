@@ -1,10 +1,15 @@
 <md-toolbar color="primary">
-  <span>HR paradise</span>
+  <span class="brand" routerLink="/">HR paradise</span>
   <span class="app-toolbar-filler"></span>
 
-  <ng-container *ngIf="userService.getUser() | async; else : anonymousBlock">
-      <button md-button (click)="signOut()">sign out</button>
+  <ng-container *ngIf="user; else : anonymousBlock">
+    <button md-button [mdMenuTriggerFor]="userMenu">{{user.email}}</button>
+    <md-menu #userMenu="mdMenu">
+      <a md-menu-item routerLink="/security/user-settings">{{i18n.security.SETTINGS}}</a>
+      <button  md-menu-item (click)="signOut()">{{i18n.security.SIGN_OUT}}</button>
+    </md-menu>
   </ng-container>
+
   <ng-template #anonymousBlock>
     <button md-button [mdMenuTriggerFor]="langMenu"><img src="{{i18n.TRANSLATION_LANGUAGE_FLAG_PATH}}"></button>
     <md-menu #langMenu="mdMenu">

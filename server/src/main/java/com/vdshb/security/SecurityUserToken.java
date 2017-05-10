@@ -1,5 +1,6 @@
 package com.vdshb.security;
 
+import com.vdshb.security.domain.SecurityUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;

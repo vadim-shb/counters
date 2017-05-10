@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <changeSet id="2017-05-07__create-inactive-security-user" author="vdshb" context="main">
+        <sql>
+            create table inactive_security_user (
+                id                                  BIGSERIAL                       NOT NULL PRIMARY KEY,
+                email                               VARCHAR(1000),
+                hashed_password                     VARCHAR(128),
+                salt                                VARCHAR(6),
+                name                                VARCHAR(100),
+                language                            VARCHAR(50),
+                email_confirmation_token            VARCHAR(64)                     UNIQUE,
+                creation_date_time                  TIMESTAMP WITHOUT TIME ZONE     NOT NULL DEFAULT (now() at time zone 'utc')
+            );
+
+            CREATE INDEX inactive_security_user___email_confirmation_token ON inactive_security_user (email_confirmation_token);
+            CREATE INDEX inactive_security_user___creation_date_time ON inactive_security_user (creation_date_time);
+        </sql>
+        <rollback>
+            <sql>
+                DROP TABLE inactive_security_user;
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

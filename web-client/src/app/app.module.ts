@@ -2,9 +2,9 @@ import "hammerjs";
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {ReactiveFormsModule} from "@angular/forms";
-import {HttpModule, Http, XHRBackend, ConnectionBackend} from "@angular/http";
+import {ConnectionBackend, Http, HttpModule, XHRBackend} from "@angular/http";
 import {RootComponent} from "./components/root/root.component";
-import {SignInComponent} from "./components/sign-in/sign-in.component";
+import {SignInComponent} from "./components/security/sign-in/sign-in.component";
 import {RoutingModule} from "./routing-module";
 import {MaterialModule} from "@angular/material";
 import {UserService} from "./services/user/user.service";
@@ -21,6 +21,11 @@ import {IfAuthenticatedDirective} from "./directives/if-authenticated/if-authent
 import {ToasterModule} from "angular2-toaster";
 import {ToastService} from "./services/toast/toast.service";
 import {I18nModule} from "./modules/i18n/i18n.module";
+import {UserSettingsComponent} from "./components/security/user-settings/user-settings.component";
+import {SignUpComponent} from "./components/security/sign-up/sign-up.component";
+import {PasswordRecoveryComponent} from "./components/security/password-recovery/password-recovery.component";
+import {ValidationService} from "./services/validation/validation.service";
+import { MessageScreenComponent } from './components/security/message-screen/message-screen.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,10 @@ import {I18nModule} from "./modules/i18n/i18n.module";
     DashboardComponent,
     HeaderComponent,
     IfAuthenticatedDirective,
+    UserSettingsComponent,
+    SignUpComponent,
+    PasswordRecoveryComponent,
+    MessageScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +55,7 @@ import {I18nModule} from "./modules/i18n/i18n.module";
     SecurityService,
     UserService,
     ErrorHandleService,
+    ValidationService,
     {provide: ConnectionBackend, useClass: XHRBackend},
     PureHttpService,
     {provide: Http, useClass: SecureHttpService},

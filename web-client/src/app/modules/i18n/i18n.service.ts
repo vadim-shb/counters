@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
 import {Lang} from "./domain/lang";
-import {EnglishTranslation} from "./english-lang/english.translation";
-import {RussianTranslation} from "./russian-lang/russian.translation";
-import {Translation} from "./domain/translation";
+import {EnglishTranslation} from "./translations/english.translation";
+import {RussianTranslation} from "./translations/russian.translation";
+import {Translation} from "./translations/translation";
 import {Observable} from "rxjs/Observable";
 import {ReplaySubject} from "rxjs/ReplaySubject";
 
@@ -26,7 +26,7 @@ export class I18nService {
     }
   }
 
-  getTranslation(): Observable<Translation> {
+  getCurrentTranslation(): Observable<Translation> {
     return this.currentTranslation;
   }
 

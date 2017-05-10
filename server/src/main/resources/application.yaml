@@ -1,3 +1,6 @@
+app:
+   url: "http://localhost:4200"
+
 spring:
   datasource:
     url:  "jdbc:postgresql://localhost:5432/hrparadise"
@@ -8,3 +11,16 @@ spring:
 security:
   access-token-expiration-time: 3600  # 1 hour
   refresh-token-expiration-time: 7776000 # 90 days
+  email-confirmation-token-expiration-time: 259200 # 3 days
+  email-password-recovery-token-expiration-time: 86400 # 1 day
+
+smtp :
+  host: "localhost.com"
+  port: 587
+  ssl: true
+  tls: true
+  user: "robot@localhost.com"
+  password: "1234"
+  timeout: 60000
+  connectiontimeout: 60000
+  mock: true

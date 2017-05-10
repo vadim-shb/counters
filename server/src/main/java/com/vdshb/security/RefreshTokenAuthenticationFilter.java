@@ -1,5 +1,6 @@
 package com.vdshb.security;
 
+import com.vdshb.security.domain.RefreshTokenCredentials;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;

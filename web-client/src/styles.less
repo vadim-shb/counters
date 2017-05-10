@@ -10,6 +10,7 @@ body {
 }
 
 @error-color: #f44336; // .mat-input-error.color
+@success-color: #38f467;
 
 .error-md-hint() {
   .ng-invalid {
@@ -17,4 +18,27 @@ body {
       color: @error-color;
     }
   }
+}
+
+.basicFont() {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.link() {
+  .basicFont();
+  color: #337ab7;
+  text-decoration: underline;
+  &:hover {
+    color: #23527c;
+  }
+}
+
+.small-text() {
+  .basicFont();
+  font-size: 14px;
+}
+
+.small-link() {
+  .small-text();
+  .link();
 }
