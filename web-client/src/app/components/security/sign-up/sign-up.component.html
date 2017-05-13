@@ -45,6 +45,13 @@
     </md-option>
   </md-select>
 
+  <div class="checkbox-container">
+    <md-checkbox formControlName="agreementWithTermsOfUsage">{{i18n.security.AGREE_WITH}} <a routerLink="/terms">{{i18n.security.TERMS}}</a> {{i18n.security.OF_USAGE}}</md-checkbox>
+    <md-hint *ngIf="agreementWithTermsOfUsageFormControl.touched && agreementWithTermsOfUsageFormControl.hasError('required')">
+      {{i18n.security.NEED_USER_AGREEMENT_WITH_TERMS_TO_SIGN_UP}}
+    </md-hint>
+  </div>
+
   <div class="error-message" *ngIf="alreadyRegisteredEmail">
     <md-hint>{{i18n.security.USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP}}</md-hint>
   </div>

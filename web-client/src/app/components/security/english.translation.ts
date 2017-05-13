@@ -32,6 +32,10 @@ export class ModuleSecurityEnglishTranslation implements ModuleSecurityTranslati
   RECOVERY_PASSWORD = 'Recovery password';
   NEW_PASSWORD = 'New password';
 
+  AGREE_WITH = 'Agree with';
+  TERMS = 'terms';
+  OF_USAGE = 'of usage';
+
   CONFIRMATION_EMAIL_SENT_TITLE = 'Congratulations!';
   CONFIRMATION_EMAIL_SENT_MESSAGE = "In couple minutes you'll get our email. Please follow the simple instructions in it; and you'll successfully finish the sign up process.";
 
@@ -52,5 +56,6 @@ export class ModuleSecurityEnglishTranslation implements ModuleSecurityTranslati
   INCORRECT_EMAIL_OR_PASSWORD = 'Incorrect email or password';
   USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP = 'User with this email has been already signed up';
   USER_WITH_THIS_EMAIL_HAS_NEVER_BEEN_SIGNED_UP = 'User with this email has never been signed up';
+  NEED_USER_AGREEMENT_WITH_TERMS_TO_SIGN_UP = 'Need user agreement with terms of usage to sign up';
 
 }

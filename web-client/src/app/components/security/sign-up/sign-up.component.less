@@ -1,5 +1,9 @@
 @import "../../../../styles";
 
+a {
+  .link();
+}
+
 form {
   .error-md-hint();
   width: 100%;
@@ -19,6 +23,13 @@ form {
   button {
     margin-top: 20px;
   }
+  .checkbox-container {
+    margin-top: 20px;
+    width: 350px;
+    md-hint {
+      .error-field-message();
+    }
+  }
   .error-message {
     margin-top: 20px;
     color: @error-color;
@@ -29,7 +40,4 @@ form {
   .small-text();
   margin-top: 20px;
   text-align: center;
-  a {
-    .link();
-  }
 }

@@ -34,6 +34,10 @@ export class SignUpComponent implements OnInit {
     return this.signUpForm.get('email') as FormControl;
   };
 
+  get agreementWithTermsOfUsageFormControl(): FormControl {
+    return this.signUpForm.get('agreementWithTermsOfUsage') as FormControl;
+  };
+
 
   constructor(private fb: FormBuilder,
               private i18nService: I18nService,
@@ -48,8 +52,9 @@ export class SignUpComponent implements OnInit {
       name: ['', [Validators.required, Validators.maxLength(100)]],
       email: ['', [Validators.required, this.validationService.emailValidator, Validators.maxLength(1000)]],
       password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(1000)]],
-      repeatPassword: ['', []],
-      language: Lang[Lang.RUSSIAN]
+      repeatPassword: [''],
+      language: Lang[Lang.RUSSIAN],
+      agreementWithTermsOfUsage: [false, [Validators.requiredTrue]]
     });
     //repeatPasswordValidator uses signUpForm.password
     this.repeatPasswordFormControl.setValidators(this.validationService.repeatPasswordValidator(() => {
@@ -66,27 +71,30 @@ export class SignUpComponent implements OnInit {
 
   signUp() {
     if (this.signUpForm.invalid) {
-      this.signUpForm.get("name").markAsTouched();
-      this.signUpForm.get("email").markAsTouched();
-      this.signUpForm.get("password").markAsTouched();
-      this.signUpForm.get("repeatPassword").markAsTouched();
+      this.userNameFormControl.markAsTouched();
+      this.emailFormControl.markAsTouched();
+      this.passwordFormControl.markAsTouched();
+      this.repeatPasswordFormControl.markAsTouched();
+      this.agreementWithTermsOfUsageFormControl.markAsTouched();
       return;
     }
     let signUpRequest = {
+      name: this.signUpForm.value.name,
       email: this.signUpForm.value.email,
       password: this.signUpForm.value.password,
-      name: this.signUpForm.value.name,
       language: this.signUpForm.value.language,
     };
 
     this.pureHttp.post(`/api/security/sign-up`, signUpRequest)
-      .subscribe(response => {
-        this.router.navigate(['/security/message/confirmation-email-sent']);
-      }, errorResponse => {
-        if (errorResponse.status == 409) {
-          this.alreadyRegisteredEmail = true;
-        }
-      });
+      .subscribe(
+        (response) => {
+          this.router.navigate(['/security/message/confirmation-email-sent']);
+        },
+        (errorResponse) => {
+          if (errorResponse.status == 409) {
+            this.alreadyRegisteredEmail = true;
+          }
+        });
   }
 
 }

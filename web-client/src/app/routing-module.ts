@@ -6,6 +6,7 @@ import {UserSettingsComponent} from "./components/security/user-settings/user-se
 import {SignUpComponent} from "./components/security/sign-up/sign-up.component";
 import {PasswordRecoveryComponent} from "./components/security/password-recovery/password-recovery.component";
 import {MessageScreenComponent} from "./components/security/message-screen/message-screen.component";
+import {TermsOfUsageComponent} from "./components/terms-of-usage/terms-of-usage.component";
 
 const ROUTES: Routes = [
   {
@@ -28,6 +29,10 @@ const ROUTES: Routes = [
   {
     path: 'security/message/:messageScreenType',
     component: MessageScreenComponent
+  },
+  {
+    path: 'terms',
+    component: TermsOfUsageComponent
   },
   {
     path: 'dashboard',

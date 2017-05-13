@@ -29,6 +29,10 @@ export interface ModuleSecurityTranslation {
   RECOVERY_PASSWORD: string;
   NEW_PASSWORD: string;
 
+  AGREE_WITH: string;
+  TERMS: string;
+  OF_USAGE: string;
+
   CONFIRMATION_EMAIL_SENT_TITLE: string;
   CONFIRMATION_EMAIL_SENT_MESSAGE: string;
 
@@ -48,4 +52,5 @@ export interface ModuleSecurityTranslation {
   INCORRECT_EMAIL_OR_PASSWORD: string;
   USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP: string;
   USER_WITH_THIS_EMAIL_HAS_NEVER_BEEN_SIGNED_UP: string;
+  NEED_USER_AGREEMENT_WITH_TERMS_TO_SIGN_UP: string;
 }

@@ -12,10 +12,15 @@ body {
 @error-color: #f44336; // .mat-input-error.color
 @success-color: #38f467;
 
+.error-field-message() {
+  font-size: 12px;
+  color: @error-color;
+}
+
 .error-md-hint() {
   .ng-invalid {
     md-hint {
-      color: @error-color;
+      .error-field-message();
     }
   }
 }

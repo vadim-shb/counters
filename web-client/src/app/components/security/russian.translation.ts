@@ -31,6 +31,10 @@ export class ModuleSecurityRussianTranslation implements ModuleSecurityTranslati
   RECOVERY_PASSWORD = 'Восстановить пароль';
   NEW_PASSWORD = 'Новый пароль';
 
+  AGREE_WITH = 'Согласен с';
+  TERMS = 'условиями';
+  OF_USAGE = 'использования';
+
   CONFIRMATION_EMAIL_SENT_TITLE = 'Поздравляем!';
   CONFIRMATION_EMAIL_SENT_MESSAGE = "В течение нескольких минут вы получите email. Пожалуйста; следуйте простым инструкция из письма и вы успешно завершите процеcc регистрации.";
 
@@ -50,4 +54,5 @@ export class ModuleSecurityRussianTranslation implements ModuleSecurityTranslati
   INCORRECT_EMAIL_OR_PASSWORD = 'Не верно введен email или пароль';
   USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP = 'Пользователь с данным email уже зарегистрирован';
   USER_WITH_THIS_EMAIL_HAS_NEVER_BEEN_SIGNED_UP = 'Пользователь с данным email не зарегистрирован';
+  NEED_USER_AGREEMENT_WITH_TERMS_TO_SIGN_UP = 'Для регистрации необходимо согласие с условиями использования';
 }
