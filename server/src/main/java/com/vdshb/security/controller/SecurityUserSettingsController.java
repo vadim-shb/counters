@@ -1,9 +1,9 @@
 package com.vdshb.security.controller;
 
 import com.vdshb.security.SecurityUserToken;
-import com.vdshb.security.domain.PublicUser;
-import com.vdshb.security.domain.SecurityUser;
-import com.vdshb.security.domain.UserInfoRequest;
+import com.vdshb.security.domain.response.PublicUser;
+import com.vdshb.security.domain.entity.SecurityUser;
+import com.vdshb.security.domain.request.UserInfoRequest;
 import com.vdshb.security.repository.SecurityUserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -2,8 +2,8 @@ package com.vdshb.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vdshb.security.*;
-import com.vdshb.security.domain.AuthenticatedUserResponse;
-import com.vdshb.security.domain.SecurityUser;
+import com.vdshb.security.domain.response.AuthenticatedUserResponse;
+import com.vdshb.security.domain.entity.SecurityUser;
 import com.vdshb.security.repository.SecurityUserRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

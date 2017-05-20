@@ -1,6 +1,8 @@
 package com.vdshb.security.controller;
 
-import com.vdshb.security.domain.*;
+import com.vdshb.security.domain.entity.PasswordRecovery;
+import com.vdshb.security.domain.entity.SecurityUser;
+import com.vdshb.security.domain.request.PasswordRecoveryRequest;
 import com.vdshb.security.repository.PasswordRecoveryRepository;
 import com.vdshb.security.repository.SecurityUserRepository;
 import com.vdshb.security.service.SecurityEmailService;

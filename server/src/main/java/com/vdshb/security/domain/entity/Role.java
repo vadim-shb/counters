@@ -1,4 +1,6 @@
-package com.vdshb.security.domain;
+package com.vdshb.security.domain.entity;
+
+import com.vdshb.security.domain.enums.SecurityRole;
 
 import javax.persistence.*;
 

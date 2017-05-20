@@ -1,6 +1,6 @@
 package com.vdshb.security.repository;
 
-import com.vdshb.security.domain.SecurityUser;
+import com.vdshb.security.domain.entity.SecurityUser;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

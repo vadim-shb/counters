@@ -1,4 +1,4 @@
-package com.vdshb.security.domain;
+package com.vdshb.security.domain.entity;
 
 import javax.persistence.*;
 import java.time.Instant;

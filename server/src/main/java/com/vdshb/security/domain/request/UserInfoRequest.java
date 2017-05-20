@@ -1,4 +1,6 @@
-package com.vdshb.security.domain;
+package com.vdshb.security.domain.request;
+
+import com.vdshb.security.domain.enums.Language;
 
 public class UserInfoRequest {
     private String name;

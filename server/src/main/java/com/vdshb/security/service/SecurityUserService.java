@@ -1,6 +1,6 @@
 package com.vdshb.security.service;
 
-import com.vdshb.security.domain.Role;
+import com.vdshb.security.domain.entity.Role;
 import com.vdshb.security.repository.RoleRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

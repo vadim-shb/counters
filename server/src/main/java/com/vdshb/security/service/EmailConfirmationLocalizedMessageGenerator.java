@@ -1,6 +1,6 @@
 package com.vdshb.security.service;
 
-import com.vdshb.security.domain.Language;
+import com.vdshb.security.domain.enums.Language;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

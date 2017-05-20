@@ -1,7 +1,7 @@
 package com.vdshb.security;
 
-import com.vdshb.security.domain.RefreshTokenCredentials;
-import com.vdshb.security.domain.SecurityUser;
+import com.vdshb.security.domain.request.RefreshTokenCredentials;
+import com.vdshb.security.domain.entity.SecurityUser;
 import com.vdshb.security.repository.SecurityUserRepository;
 import com.vdshb.security.service.SecurityTokensService;
 import com.vdshb.security.service.SecurityUserService;

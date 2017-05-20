@@ -1,6 +1,6 @@
 package com.vdshb.security;
 
-import com.vdshb.security.domain.RefreshTokenCredentials;
+import com.vdshb.security.domain.request.RefreshTokenCredentials;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 

@@ -1,7 +1,7 @@
 package com.vdshb.security.repository;
 
-import com.vdshb.security.domain.PasswordRecovery;
-import com.vdshb.security.domain.SecurityUser;
+import com.vdshb.security.domain.entity.PasswordRecovery;
+import com.vdshb.security.domain.entity.SecurityUser;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

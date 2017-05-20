@@ -1,4 +1,4 @@
-package com.vdshb.security.domain;
+package com.vdshb.security.domain.request;
 
 public class RefreshTokenCredentials {
     private String refreshToken;

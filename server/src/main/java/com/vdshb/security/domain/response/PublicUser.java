@@ -1,6 +1,8 @@
-package com.vdshb.security.domain;
+package com.vdshb.security.domain.response;
 
 import com.vdshb.security.SecurityUserToken;
+import com.vdshb.security.domain.enums.Language;
+import com.vdshb.security.domain.entity.SecurityUser;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;

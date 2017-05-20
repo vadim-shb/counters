@@ -2,7 +2,7 @@ package com.vdshb.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
-import com.vdshb.security.domain.EmailPasswordCredentials;
+import com.vdshb.security.domain.request.EmailPasswordCredentials;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;

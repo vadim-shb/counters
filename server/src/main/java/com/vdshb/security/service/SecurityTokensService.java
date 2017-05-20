@@ -2,7 +2,7 @@ package com.vdshb.security.service;
 
 
 import com.vdshb.security.repository.SecurityUserRepository;
-import com.vdshb.security.domain.SecurityUser;
+import com.vdshb.security.domain.entity.SecurityUser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.vdshb.security.domain;
+package com.vdshb.security.domain.response;
 
 import java.time.Instant;
 

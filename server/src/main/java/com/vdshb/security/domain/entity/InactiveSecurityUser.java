@@ -1,5 +1,7 @@
-package com.vdshb.security.domain;
+package com.vdshb.security.domain.entity;
 
+
+import com.vdshb.security.domain.enums.Language;
 
 import javax.persistence.*;
 import java.time.Instant;

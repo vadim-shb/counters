@@ -1,8 +1,8 @@
 package com.vdshb.security.service;
 
-import com.vdshb.security.domain.InactiveSecurityUser;
-import com.vdshb.security.domain.Language;
-import com.vdshb.security.domain.PasswordRecovery;
+import com.vdshb.security.domain.entity.InactiveSecurityUser;
+import com.vdshb.security.domain.enums.Language;
+import com.vdshb.security.domain.entity.PasswordRecovery;
 import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 import org.slf4j.Logger;
