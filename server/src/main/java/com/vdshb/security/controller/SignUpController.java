@@ -44,25 +44,25 @@ public class SignUpController {
 
     @PostMapping("/api/security/sign-up")
     @Transactional
-    public ResponseEntity signUp(@RequestBody SignUpRequest signUpRequest) {
-        SecurityUser securityUser = securityUserRepository.findByEmail(signUpRequest.getEmail().toLowerCase());
+    public ResponseEntity signUp(@RequestBody UserInfoRequest userInfoRequest) {
+        SecurityUser securityUser = securityUserRepository.findByEmail(userInfoRequest.getEmail().toLowerCase());
         if (securityUser != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         }
 
-        InactiveSecurityUser inactiveSecurityUser = fulfillInactiveSecurityUser(signUpRequest);
+        InactiveSecurityUser inactiveSecurityUser = fulfillInactiveSecurityUser(userInfoRequest);
         inactiveSecurityUserRepository.save(inactiveSecurityUser);
         securityEmailService.sendEmailAddressConfirmationEmail(inactiveSecurityUser);
         return ResponseEntity.ok(null);
     }
 
-    private InactiveSecurityUser fulfillInactiveSecurityUser(SignUpRequest signUpRequest) {
+    private InactiveSecurityUser fulfillInactiveSecurityUser(UserInfoRequest userInfoRequest) {
         InactiveSecurityUser result = new InactiveSecurityUser();
-        result.setEmail(signUpRequest.getEmail().toLowerCase());
-        result.setName(signUpRequest.getName());
-        result.setLanguage(signUpRequest.getLanguage());
+        result.setEmail(userInfoRequest.getEmail().toLowerCase());
+        result.setName(userInfoRequest.getName());
+        result.setLanguage(userInfoRequest.getLanguage());
         result.setSalt(RandomStringUtils.randomAlphanumeric(6));
-        result.setHashedPassword(DigestUtils.sha512Hex(signUpRequest.getPassword() + result.getSalt()));
+        result.setHashedPassword(DigestUtils.sha512Hex(userInfoRequest.getPassword() + result.getSalt()));
         result.setEmailConfirmationToken(RandomStringUtils.randomAlphanumeric(64));
         result.setCreationDateTime(Instant.now());
         return result;

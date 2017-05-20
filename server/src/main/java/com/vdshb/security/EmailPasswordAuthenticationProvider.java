@@ -2,6 +2,7 @@ package com.vdshb.security;
 
 import com.vdshb.security.domain.SecurityUser;
 import com.vdshb.security.domain.EmailPasswordCredentials;
+import com.vdshb.security.repository.SecurityUserRepository;
 import com.vdshb.security.service.SecurityTokensService;
 import com.vdshb.security.service.SecurityUserService;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -26,11 +27,14 @@ public class EmailPasswordAuthenticationProvider implements AuthenticationProvid
     @Inject
     private SecurityTokensService securityTokensService;
 
+    @Inject
+    private SecurityUserRepository securityUserRepository;
+
     @Transactional
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         EmailPasswordCredentials credentials = (EmailPasswordCredentials) authentication.getCredentials();
-        SecurityUser securityUser = securityUserService.findUserByEmail(credentials.getEmail());
+        SecurityUser securityUser = securityUserRepository.findByEmail(credentials.getEmail());
         if (securityUser != null && checkPassword(securityUser, credentials.getPassword())) {
             List<GrantedAuthority> authorities = securityUserService.findAuthorities(securityUser.getId());
             securityTokensService.renewTokens(securityUser);

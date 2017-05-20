@@ -51,7 +51,7 @@ public class SecurityUserToken implements Authentication {
     }
 
     @Override
-    public Object getPrincipal() {
+    public SecurityUser getPrincipal() {
         return user;
     }
 

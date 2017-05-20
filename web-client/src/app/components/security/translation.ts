@@ -28,6 +28,7 @@ export interface ModuleSecurityTranslation {
   ALREADY_HAVE_AN_ACCOUNT_QUESTION: string;
   RECOVERY_PASSWORD: string;
   NEW_PASSWORD: string;
+  USER_INFO: string;
 
   AGREE_WITH: string;
   TERMS: string;

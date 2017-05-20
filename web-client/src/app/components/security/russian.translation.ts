@@ -30,6 +30,7 @@ export class ModuleSecurityRussianTranslation implements ModuleSecurityTranslati
   ALREADY_HAVE_AN_ACCOUNT_QUESTION = 'Уже есть аккаунт?';
   RECOVERY_PASSWORD = 'Восстановить пароль';
   NEW_PASSWORD = 'Новый пароль';
+  USER_INFO = 'Информация о пользователе';
 
   AGREE_WITH = 'Согласен с';
   TERMS = 'условиями';

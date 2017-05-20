@@ -1,9 +1,7 @@
 package com.vdshb.security.service;
 
-import com.vdshb.security.repository.RoleRepository;
-import com.vdshb.security.repository.SecurityUserRepository;
 import com.vdshb.security.domain.Role;
-import com.vdshb.security.domain.SecurityUser;
+import com.vdshb.security.repository.RoleRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
@@ -16,18 +14,7 @@ import java.util.stream.Collectors;
 public class SecurityUserService {
 
     @Inject
-    private SecurityUserRepository securityUserRepository;
-
-    @Inject
     private RoleRepository roleRepository;
-
-    public SecurityUser findUserByEmail(String email) {
-        return securityUserRepository.findByEmail(email);
-    }
-
-    public SecurityUser findUserByRefreshToken(String refreshToken) {
-        return securityUserRepository.findByRefreshToken(refreshToken);
-    }
 
     public List<GrantedAuthority> findAuthorities(Long securityUserId) {
         List<Role> roles = roleRepository.findByUser(securityUserId);

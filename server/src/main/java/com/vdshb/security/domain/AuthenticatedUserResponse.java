@@ -1,9 +1,7 @@
 package com.vdshb.security.domain;
 
+import com.vdshb.security.SecurityUserToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-
-import java.util.stream.Collectors;
 
 public class AuthenticatedUserResponse {
 
@@ -17,15 +15,7 @@ public class AuthenticatedUserResponse {
         session.setRefreshToken(securityUser.getRefreshToken());
         session.setAccessTokenExpirationTime(securityUser.getAccessTokenExpirationDateTime());
         session.setRefreshTokenExpirationTime(securityUser.getRefreshTokenExpirationDateTime());
-        user = new PublicUser();
-        user.setName(securityUser.getName());
-        user.setEmail(securityUser.getEmail());
-        user.setLanguage(securityUser.getLanguage());
-        user.setRoles(authentication.getAuthorities()
-                .stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList())
-        );
+        user = new PublicUser((SecurityUserToken) authentication);
     }
 
     public AuthenticationSession getSession() {

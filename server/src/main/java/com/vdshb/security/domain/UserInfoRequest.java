@@ -1,6 +1,6 @@
 package com.vdshb.security.domain;
 
-public class SignUpRequest {
+public class UserInfoRequest {
     private String name;
     private String email;
     private String password;

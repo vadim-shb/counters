@@ -17,6 +17,8 @@ export class RussianTranslation implements Translation {
   constructor() {
   }
 
+  SAVE = 'Сохранить';
+
   securityUser = new EntitySecurityUserRussianTranslation();
   security = new ModuleSecurityRussianTranslation();
 

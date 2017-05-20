@@ -7,6 +7,8 @@ export interface Translation {
   TRANSLATION_LANGUAGE_NAME: string;
   TRANSLATION_LANGUAGE_FLAG_PATH: string;
 
+
+  SAVE: string;
   securityUser: EntitySecurityUserTranslation;
   security: ModuleSecurityTranslation;
 

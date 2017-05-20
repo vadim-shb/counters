@@ -2,6 +2,7 @@ package com.vdshb.security;
 
 import com.vdshb.security.domain.RefreshTokenCredentials;
 import com.vdshb.security.domain.SecurityUser;
+import com.vdshb.security.repository.SecurityUserRepository;
 import com.vdshb.security.service.SecurityTokensService;
 import com.vdshb.security.service.SecurityUserService;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -23,11 +24,14 @@ public class RefreshTokenAuthenticationProvider implements AuthenticationProvide
     @Inject
     private SecurityTokensService securityTokensService;
 
+    @Inject
+    private SecurityUserRepository securityUserRepository;
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         RefreshTokenCredentials credentials = (RefreshTokenCredentials) authentication.getCredentials();
 
-        SecurityUser securityUser = securityUserService.findUserByRefreshToken(credentials.getRefreshToken());
+        SecurityUser securityUser = securityUserRepository.findByRefreshToken(credentials.getRefreshToken());
         if (securityUser != null && securityUser.getRefreshTokenExpirationDateTime().isAfter(Instant.now())){
             List<GrantedAuthority> authorities = securityUserService.findAuthorities(securityUser.getId());
             securityTokensService.renewTokens(securityUser);

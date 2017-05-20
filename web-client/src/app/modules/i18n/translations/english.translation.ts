@@ -17,6 +17,8 @@ export class EnglishTranslation implements Translation {
   constructor() {
   }
 
+  SAVE = 'Save';
+
   securityUser = new EntitySecurityUserEnglishTranslation();
   security = new ModuleSecurityEnglishTranslation();
 

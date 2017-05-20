@@ -31,6 +31,7 @@ export class ModuleSecurityEnglishTranslation implements ModuleSecurityTranslati
   ALREADY_HAVE_AN_ACCOUNT_QUESTION = 'Already have an account?';
   RECOVERY_PASSWORD = 'Recovery password';
   NEW_PASSWORD = 'New password';
+  USER_INFO = 'User info';
 
   AGREE_WITH = 'Agree with';
   TERMS = 'terms';

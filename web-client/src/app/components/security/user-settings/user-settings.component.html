@@ -1,3 +1,22 @@
-<p>
-  user-settings works!
-</p>
+<md-card>
+  <form [formGroup]="userInfoForm" (ngSubmit)="saveUserInfo()" novalidate>
+    <h2>{{i18n.security.USER_INFO}}</h2>
+    <md-input-container>
+      <input mdInput formControlName="name" placeholder="{{i18n.securityUser.NAME}}">
+      <md-hint *ngIf="userNameFormControl.touched && userNameFormControl.hasError('required')">
+        {{i18n.securityUser.NAME__REQUIRED}}
+      </md-hint>
+      <md-hint *ngIf="userNameFormControl.touched && userNameFormControl.hasError('maxlength')">
+        {{i18n.securityUser.NAME__CAN_NOT_BE_LONGER_THAN_100_CHARACTERS}}
+      </md-hint>
+    </md-input-container>
+    <md-select formControlName="language" placeholder="{{i18n.securityUser.LANGUAGE}}">
+      <md-option *ngFor="let translation of i18nService.getTranslations()"
+                 value="{{translation.TRANSLATION_LANGUAGE_CODE}}">
+        <span><img src="{{translation.TRANSLATION_LANGUAGE_FLAG_PATH}}"></span>
+        {{translation.TRANSLATION_LANGUAGE_NAME}}
+      </md-option>
+    </md-select>
+    <button type="submit" md-raised-button color="primary" [disabled]="!isOriginUserInfoChanged()">{{i18n.SAVE}}</button>
+  </form>
+</md-card>
