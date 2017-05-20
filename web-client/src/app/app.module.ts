@@ -27,6 +27,9 @@ import {PasswordRecoveryComponent} from "./components/security/password-recovery
 import {ValidationService} from "./services/validation/validation.service";
 import {MessageScreenComponent} from "./components/security/message-screen/message-screen.component";
 import {TermsOfUsageComponent} from "./components/terms-of-usage/terms-of-usage.component";
+import { UserInfoComponent } from './components/security/user-settings/user-info/user-info.component';
+import { ChangeEmailComponent } from './components/security/user-settings/change-email/change-email.component';
+import { ChangePasswordComponent } from './components/security/user-settings/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import {TermsOfUsageComponent} from "./components/terms-of-usage/terms-of-usage.
     PasswordRecoveryComponent,
     MessageScreenComponent,
     TermsOfUsageComponent,
+    UserInfoComponent,
+    ChangeEmailComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
