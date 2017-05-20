@@ -16,7 +16,6 @@ export class ToastService {
   }
 
   error(header: string, body?: string) {
-    console.log(header);
     let toast = this.toasterService.pop('error', header, body);
   }
 }

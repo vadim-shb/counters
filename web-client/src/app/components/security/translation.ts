@@ -23,12 +23,17 @@ export interface ModuleSecurityTranslation {
   FORGOT_PASSWORD_QUESTION: string;
   SETTINGS: string;
   REPEAT_PASSWORD: string;
+  REPEAT_NEW_PASSWORD: string;
   TO_THE_MAIN_PAGE: string;
   DO_SIGN_UP: string;
   ALREADY_HAVE_AN_ACCOUNT_QUESTION: string;
   RECOVERY_PASSWORD: string;
   NEW_PASSWORD: string;
+  CURRENT_PASSWORD: string;
   USER_INFO: string;
+  CHANGE_PASSWORD: string;
+  PASSWORD_CHANGE_SUCCESS: string;
+  WRONG_PASSWORD: string;
 
   AGREE_WITH: string;
   TERMS: string;

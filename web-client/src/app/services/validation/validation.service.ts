@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import {AbstractControl} from "@angular/forms";
+import {AbstractControl, Validators} from "@angular/forms";
 
 @Injectable()
 export class ValidationService {
 
   constructor() { }
+
+  PASSWORD_VALIDATORS = [Validators.required, Validators.minLength(4), Validators.maxLength(1000)];
 
   emailValidator(control: AbstractControl): { [key: string]: any } {
     const emailRegexp = /.+@.+/i;

@@ -37,7 +37,6 @@ export class ErrorHandleService {
       if (response.status == 400) {
         this.toastService.error(this.i18n.httpErrors.COMMUNICATION_PROTOCOL_ERROR_HEADER, this.i18n.httpErrors.COMMUNICATION_PROTOCOL_ERROR_BODY);
       }
-      return Observable.never();
     }
     return Observable.throw(response);
   }

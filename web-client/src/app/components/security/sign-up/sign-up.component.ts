@@ -51,7 +51,7 @@ export class SignUpComponent implements OnInit {
     this.signUpForm = fb.group({
       name: ['', [Validators.required, Validators.maxLength(100)]],
       email: ['', [Validators.required, this.validationService.emailValidator, Validators.maxLength(1000)]],
-      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(1000)]],
+      password: ['', this.validationService.PASSWORD_VALIDATORS],
       repeatPassword: [''],
       language: Lang[Lang.RUSSIAN],
       agreementWithTermsOfUsage: [false, [Validators.requiredTrue]]

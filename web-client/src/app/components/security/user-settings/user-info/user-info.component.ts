@@ -70,7 +70,7 @@ export class UserInfoComponent implements OnInit {
       language: this.userLanguageFormControl.value,
     };
 
-    this.http.post(`/api/security/current-user`, userInfoChangeRequest)
+    this.http.post(`/api/security/current-user/change-info`, userInfoChangeRequest)
       .map(response => response.json() as User)
       .subscribe(
         (user) => {

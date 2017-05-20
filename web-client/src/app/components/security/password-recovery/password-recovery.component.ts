@@ -47,7 +47,7 @@ export class PasswordRecoveryComponent implements OnInit {
         Validators.maxLength(1000),
         this.validationService.emailValidator
       ]],
-      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(1000)]],
+      password: ['', this.validationService.PASSWORD_VALIDATORS],
       repeatPassword: ['', []],
     });
     //repeatPasswordValidator uses recoveryPasswordForm.password

@@ -1,7 +1,9 @@
 package com.vdshb.security.service;
 
 import com.vdshb.security.domain.entity.Role;
+import com.vdshb.security.domain.entity.SecurityUser;
 import com.vdshb.security.repository.RoleRepository;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
@@ -24,4 +26,9 @@ public class SecurityUserService {
                 .collect(Collectors.toList());
     }
 
+    public boolean isCorrectPassword(SecurityUser securityUser, String passwordForCheck) {
+        String saltyPassword = passwordForCheck + securityUser.getSalt();
+        String hashedPassword = DigestUtils.sha512Hex(saltyPassword);
+        return securityUser.getHashedPassword().equals(hashedPassword);
+    }
 }

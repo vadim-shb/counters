@@ -24,17 +24,17 @@ export class SecureHttpService extends Http {
   get(url: string, options?: RequestOptionsArgs): Observable<Response> {
     return this.ifAuthenticated(() => {
       return this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options))
-        .catch(response => {
-          if (response.status == 403 || response.status == 401) {
+        .catch(errorResponse => {
+          if (errorResponse.status == 403 || errorResponse.status == 401) {
             return this.securityService.refreshAuthSession()
               .flatMap(() => {
                 return this.pureHttpService.get(url, this.modifyOptions(this.securityService.getAccessToken(), options))
               });
           }
-          return response;
+          return Observable.throw(errorResponse);
         })
-        .catch(response => {
-          return this.errorHandleService.catchHttpError(response)
+        .catch(errorResponse => {
+          return this.errorHandleService.catchHttpError(errorResponse)
         })
     });
   }
@@ -43,17 +43,17 @@ export class SecureHttpService extends Http {
   post(url: string, data?: Object, options?: RequestOptionsArgs): Observable<Response> {
     return this.ifAuthenticated(() => {
       return this.pureHttpService.post(url, data, this.modifyOptions(this.securityService.getAccessToken(), options))
-        .catch(response => {
-          if (response.status == 403 || response.status == 401) {
+        .catch(errorResponse => {
+          if (errorResponse.status == 403 || errorResponse.status == 401) {
             return this.securityService.refreshAuthSession()
               .flatMap(() => {
                 return this.pureHttpService.post(url, data, this.modifyOptions(this.securityService.getAccessToken(), options))
               });
           }
-          return response;
+          return Observable.throw(errorResponse);
         })
-        .catch(response => {
-          return this.errorHandleService.catchHttpError(response)
+        .catch(errorResponse => {
+          return this.errorHandleService.catchHttpError(errorResponse)
         })
     });
   }

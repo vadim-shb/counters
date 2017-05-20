@@ -5,7 +5,6 @@ import com.vdshb.security.domain.request.EmailPasswordCredentials;
 import com.vdshb.security.repository.SecurityUserRepository;
 import com.vdshb.security.service.SecurityTokensService;
 import com.vdshb.security.service.SecurityUserService;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
@@ -35,18 +34,12 @@ public class EmailPasswordAuthenticationProvider implements AuthenticationProvid
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         EmailPasswordCredentials credentials = (EmailPasswordCredentials) authentication.getCredentials();
         SecurityUser securityUser = securityUserRepository.findByEmail(credentials.getEmail());
-        if (securityUser != null && checkPassword(securityUser, credentials.getPassword())) {
+        if (securityUser != null && securityUserService.isCorrectPassword(securityUser, credentials.getPassword())) {
             List<GrantedAuthority> authorities = securityUserService.findAuthorities(securityUser.getId());
             securityTokensService.renewTokens(securityUser);
             return new SecurityUserToken(securityUser, authorities);
         }
         return null;
-    }
-
-    private boolean checkPassword(SecurityUser securityUser, String password) {
-        String saltyPassword = password + securityUser.getSalt();
-        String hashedPassword = DigestUtils.sha512Hex(saltyPassword);
-        return securityUser.getHashedPassword().equals(hashedPassword);
     }
 
     @Override

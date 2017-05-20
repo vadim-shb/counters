@@ -26,12 +26,17 @@ export class ModuleSecurityEnglishTranslation implements ModuleSecurityTranslati
   FORGOT_PASSWORD_QUESTION = 'Forgot password?';
   SETTINGS = 'Settings';
   REPEAT_PASSWORD = 'Repeat password';
+  REPEAT_NEW_PASSWORD = 'Repeat new password';
   TO_THE_MAIN_PAGE = 'Go to the main page';
   DO_SIGN_UP = 'Sign Up';
   ALREADY_HAVE_AN_ACCOUNT_QUESTION = 'Already have an account?';
   RECOVERY_PASSWORD = 'Recovery password';
   NEW_PASSWORD = 'New password';
+  CURRENT_PASSWORD = 'Current password';
   USER_INFO = 'User info';
+  CHANGE_PASSWORD = 'Change password';
+  PASSWORD_CHANGE_SUCCESS = 'Password successfully changed';
+  WRONG_PASSWORD = 'Wrong password';
 
   AGREE_WITH = 'Agree with';
   TERMS = 'terms';

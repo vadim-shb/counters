@@ -25,12 +25,17 @@ export class ModuleSecurityRussianTranslation implements ModuleSecurityTranslati
   FORGOT_PASSWORD_QUESTION = 'Забыли пароль?';
   SETTINGS = 'Настройки';
   REPEAT_PASSWORD = 'Повторите пароль';
+  REPEAT_NEW_PASSWORD = 'Повторите новый пароль';
   TO_THE_MAIN_PAGE = 'На главную';
   DO_SIGN_UP = 'Зарегистрироваться';
   ALREADY_HAVE_AN_ACCOUNT_QUESTION = 'Уже есть аккаунт?';
   RECOVERY_PASSWORD = 'Восстановить пароль';
   NEW_PASSWORD = 'Новый пароль';
+  CURRENT_PASSWORD = 'Текущий пароль';
   USER_INFO = 'Информация о пользователе';
+  CHANGE_PASSWORD = 'Изменить пароль';
+  PASSWORD_CHANGE_SUCCESS = 'Пароль успешно изменен';
+  WRONG_PASSWORD = 'Не верный пароль';
 
   AGREE_WITH = 'Согласен с';
   TERMS = 'условиями';
