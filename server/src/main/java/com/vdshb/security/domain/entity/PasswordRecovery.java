@@ -28,8 +28,17 @@ public class PasswordRecovery {
     @Column(name = "creation_date_time")
     private LocalDateTime creationDateTime;
 
+    public Instant getCreationDateTime() {
+        return creationDateTime.toInstant(ZoneOffset.UTC);
+    }
 
+    public void setCreationDateTime(Instant creationDateTime) {
+        this.creationDateTime = LocalDateTime.ofInstant(creationDateTime, ZoneOffset.UTC);
+    }
 
+    //===========================================================
+    //             Generated getters and setters
+    //===========================================================
 
     public Long getId() {
         return id;
@@ -71,11 +80,4 @@ public class PasswordRecovery {
         this.hashedPassword = hashedPassword;
     }
 
-    public Instant getCreationDateTime() {
-        return creationDateTime.toInstant(ZoneOffset.UTC);
-    }
-
-    public void setCreationDateTime(Instant creationDateTime) {
-        this.creationDateTime = LocalDateTime.ofInstant(creationDateTime, ZoneOffset.UTC);
-    }
 }

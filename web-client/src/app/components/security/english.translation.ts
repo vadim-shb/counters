@@ -35,8 +35,10 @@ export class ModuleSecurityEnglishTranslation implements ModuleSecurityTranslati
   CURRENT_PASSWORD = 'Current password';
   USER_INFO = 'User info';
   CHANGE_PASSWORD = 'Change password';
+  CHANGE_EMAIL = 'Change email';
   PASSWORD_CHANGE_SUCCESS = 'Password successfully changed';
   WRONG_PASSWORD = 'Wrong password';
+  EMAIL_CHANGE_MESSAGE_SENT = 'Messages have been sent on your current and new email addresses. Please follow instructions in both to finish email changing.';
 
   AGREE_WITH = 'Agree with';
   TERMS = 'terms';
@@ -52,11 +54,25 @@ export class ModuleSecurityEnglishTranslation implements ModuleSecurityTranslati
   PASSWORD_RECOVERY_SUCCESS_MESSAGE = 'Now you can sign in with the new password';
 
   PASSWORD_RECOVERY_ERROR_TITLE = 'Password recovery process expired';
-  PASSWORD_RECOVERY_ERROR_MESSAGE = 'Recovery letter not valid any more';
+  PASSWORD_RECOVERY_ERROR_MESSAGE = 'Recovery letter not valid any more. Try again.';
 
   EMAIL_CONFIRMATION_SUCCESS_TITLE = 'Welcome!';
   EMAIL_CONFIRMATION_SUCCESS_MESSAGE = 'Your email has been successfully confirmed. Now you could sign in to HR paradise';
 
+  SIGN_UP__EMAIL_CONFIRMATION_ERROR_TITLE = 'Sign up process expired';
+  SIGN_UP__EMAIL_CONFIRMATION_ERROR_MESSAGE = 'Sign up letter not valid any more';
+
+  CHANGE_EMAIL__SUCCESS_TITLE = 'Email changed successfully';
+  CHANGE_EMAIL__SUCCESS_MESSAGE = 'You can continue with application';
+
+  CHANGE_EMAIL__NEW_EMAIL_CONFIRMATION_SUCCESS_TITLE = 'You successfully confirm your new email';
+  CHANGE_EMAIL__NEW_EMAIL_CONFIRMATION_SUCCESS_MESSAGE = 'You must confirm your current email to finish the process';
+
+  CHANGE_EMAIL__CURRENT_EMAIL_CONFIRMATION_SUCCESS_TITLE = 'You successfully confirm your current email';
+  CHANGE_EMAIL__CURRENT_EMAIL_CONFIRMATION_SUCCESS_MESSAGE = 'You must confirm your new email to finish the process';
+
+  CHANGE_EMAIL__EMAIL_CONFIRMATION_ERROR_TITLE = 'Email changing process expired';
+  CHANGE_EMAIL__EMAIL_CONFIRMATION_ERROR_MESSAGE = 'Email changing letters not valid any more';
 
   // ==== errors ====
   INCORRECT_EMAIL_OR_PASSWORD = 'Incorrect email or password';

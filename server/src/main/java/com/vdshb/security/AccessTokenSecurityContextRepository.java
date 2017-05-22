@@ -53,7 +53,7 @@ public class AccessTokenSecurityContextRepository implements SecurityContextRepo
         return request.getHeader("access-token") != null;
     }
 
-    public void dropAuthentication(String accessToken) {
+    public void dropCachedAuthentication(String accessToken) {
         cachedSecurityContexts.invalidate(accessToken);
     }
 }

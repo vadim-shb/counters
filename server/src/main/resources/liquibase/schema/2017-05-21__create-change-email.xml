@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <changeSet id="2017-05-21__create-change-email" author="vdshb" context="main">
+        <sql>
+            create table change_email (
+                id                                  BIGSERIAL                       NOT NULL PRIMARY KEY,
+                new_email                           VARCHAR(1000),
+                current_email_confirmation_token    VARCHAR(64)                     UNIQUE,
+                new_email_confirmation_token        VARCHAR(64)                     UNIQUE,
+                current_email_confirmed             BOOLEAN                         DEFAULT FALSE,
+                new_email_confirmed                 BOOLEAN                         DEFAULT FALSE,
+                creation_date_time                  TIMESTAMP WITHOUT TIME ZONE     NOT NULL DEFAULT (now() at time zone 'utc'),
+                security_user_id                    BIGINT                          NOT NULL
+            );
+
+            CREATE INDEX change_email___current_email_confirmation_token ON change_email (current_email_confirmation_token);
+            CREATE INDEX change_email___new_email_confirmation_token ON change_email (new_email_confirmation_token);
+            CREATE INDEX change_email___creation_date_time ON change_email (creation_date_time);
+        </sql>
+        <rollback>
+            <sql>
+                DROP TABLE change_email;
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

@@ -34,8 +34,10 @@ export class ModuleSecurityRussianTranslation implements ModuleSecurityTranslati
   CURRENT_PASSWORD = 'Текущий пароль';
   USER_INFO = 'Информация о пользователе';
   CHANGE_PASSWORD = 'Изменить пароль';
+  CHANGE_EMAIL = 'Изменить email';
   PASSWORD_CHANGE_SUCCESS = 'Пароль успешно изменен';
   WRONG_PASSWORD = 'Не верный пароль';
+  EMAIL_CHANGE_MESSAGE_SENT = 'На ваш новый и текущий email высланы письма. Пожалуйста проследуйте инструкциям в каждом из них, для изменения email.';
 
   AGREE_WITH = 'Согласен с';
   TERMS = 'условиями';
@@ -51,10 +53,25 @@ export class ModuleSecurityRussianTranslation implements ModuleSecurityTranslati
   PASSWORD_RECOVERY_SUCCESS_MESSAGE = 'Теперь вы можете войти с новым паролем';
 
   PASSWORD_RECOVERY_ERROR_TITLE = 'Срок действия процесса восстановления пароля истек';
-  PASSWORD_RECOVERY_ERROR_MESSAGE = 'Письмо со ссылкой на восстановление пароля более не действительно';
+  PASSWORD_RECOVERY_ERROR_MESSAGE = 'Письмо со ссылкой на восстановление пароля более не действительно. Попробуйте еще раз.';
 
   EMAIL_CONFIRMATION_SUCCESS_TITLE = 'Добро пожаловать!';
   EMAIL_CONFIRMATION_SUCCESS_MESSAGE = 'Ваш email был успешно подтвержден. Теперь вы можете войти в HR paradise';
+
+  SIGN_UP__EMAIL_CONFIRMATION_ERROR_TITLE = 'Срок действия процесса регистрации истек';
+  SIGN_UP__EMAIL_CONFIRMATION_ERROR_MESSAGE = 'Письмо подтверждения регистрации более не действительно';
+
+  CHANGE_EMAIL__SUCCESS_TITLE = 'Смена email успешно завершена';
+  CHANGE_EMAIL__SUCCESS_MESSAGE = 'Вы можете продолжить работу в приложении';
+
+  CHANGE_EMAIL__NEW_EMAIL_CONFIRMATION_SUCCESS_TITLE = 'Вы успешно подтвердили свой новый email';
+  CHANGE_EMAIL__NEW_EMAIL_CONFIRMATION_SUCCESS_MESSAGE = 'Для завершения смены email осталось подтвердить текущий.';
+
+  CHANGE_EMAIL__CURRENT_EMAIL_CONFIRMATION_SUCCESS_TITLE = 'Вы успешно подтвердили свой текущий email';
+  CHANGE_EMAIL__CURRENT_EMAIL_CONFIRMATION_SUCCESS_MESSAGE = 'Для завершения смены email осталось подтвердить новый';
+
+  CHANGE_EMAIL__EMAIL_CONFIRMATION_ERROR_TITLE = 'Срок действия процесса смены email истек';
+  CHANGE_EMAIL__EMAIL_CONFIRMATION_ERROR_MESSAGE = 'Письма подтверждения регистрации более не действительны';
 
   // ==== errors ====
   INCORRECT_EMAIL_OR_PASSWORD = 'Не верно введен email или пароль';

@@ -110,7 +110,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             if (authentication != null) {
                 SecurityUser securityUser = (SecurityUser) authentication.getPrincipal();
                 securityUserRepository.dropAuthTokens(securityUser.getId());
-                accessTokenSecurityContextRepository.dropAuthentication(securityUser.getAccessToken());
+                accessTokenSecurityContextRepository.dropCachedAuthentication(securityUser.getAccessToken());
             }
         };
     }

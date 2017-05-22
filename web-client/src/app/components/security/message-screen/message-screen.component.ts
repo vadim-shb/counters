@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {I18nService} from "../../../modules/i18n/i18n.service";
 import {Translation} from "../../../modules/i18n/translations/translation";
 import {ActivatedRoute} from "@angular/router";
+import {SecurityService} from "../../../services/security/security.service";
 
 @Component({
   selector: 'message-screen',
@@ -19,7 +20,8 @@ export class MessageScreenComponent implements OnInit {
   };
 
   constructor(private i18nService: I18nService,
-              private route: ActivatedRoute,) {
+              private route: ActivatedRoute,
+              private securityService: SecurityService,) {
     i18nService.getCurrentTranslation()
       .subscribe(translation => {
         this.i18n = translation;
@@ -51,15 +53,36 @@ export class MessageScreenComponent implements OnInit {
             this.messageWindow.title = this.i18n.security.PASSWORD_RECOVERY_ERROR_TITLE;
             this.messageWindow.message = this.i18n.security.PASSWORD_RECOVERY_ERROR_MESSAGE;
             break;
-          case 'confirmation-email-sent':
+          case 'sign-up__confirmation-email-sent':
             this.messageWindow.title = this.i18n.security.CONFIRMATION_EMAIL_SENT_TITLE;
             this.messageWindow.message = this.i18n.security.CONFIRMATION_EMAIL_SENT_MESSAGE;
             break;
-          case 'email-confirmation-success':
+          case 'sign-up__email-confirmation-success':
             this.messageWindow.title = this.i18n.security.EMAIL_CONFIRMATION_SUCCESS_TITLE;
             this.messageWindow.message = this.i18n.security.EMAIL_CONFIRMATION_SUCCESS_MESSAGE;
             this.messageWindow.linkPath = '/security/sign-in';
             this.messageWindow.linkText = this.i18n.security.SIGN_IN;
+            break;
+          case 'sign-up__email-confirmation-error':
+            this.messageWindow.title = this.i18n.security.SIGN_UP__EMAIL_CONFIRMATION_ERROR_TITLE;
+            this.messageWindow.message = this.i18n.security.SIGN_UP__EMAIL_CONFIRMATION_ERROR_MESSAGE;
+            break;
+          case 'change-email__success':
+            this.messageWindow.title = this.i18n.security.CHANGE_EMAIL__SUCCESS_TITLE;
+            this.messageWindow.message = this.i18n.security.CHANGE_EMAIL__SUCCESS_MESSAGE;
+            this.securityService.refreshAuthSession();
+            break;
+          case 'change-email__new-email-confirmation-success':
+            this.messageWindow.title = this.i18n.security.CHANGE_EMAIL__NEW_EMAIL_CONFIRMATION_SUCCESS_TITLE;
+            this.messageWindow.message = this.i18n.security.CHANGE_EMAIL__NEW_EMAIL_CONFIRMATION_SUCCESS_MESSAGE;
+            break;
+          case 'change-email__current-email-confirmation-success':
+            this.messageWindow.title = this.i18n.security.CHANGE_EMAIL__CURRENT_EMAIL_CONFIRMATION_SUCCESS_TITLE;
+            this.messageWindow.message = this.i18n.security.CHANGE_EMAIL__CURRENT_EMAIL_CONFIRMATION_SUCCESS_MESSAGE;
+            break;
+          case 'change-email__email-confirmation-error':
+            this.messageWindow.title = this.i18n.security.CHANGE_EMAIL__EMAIL_CONFIRMATION_ERROR_TITLE;
+            this.messageWindow.message = this.i18n.security.CHANGE_EMAIL__EMAIL_CONFIRMATION_ERROR_MESSAGE;
             break;
         }
       });

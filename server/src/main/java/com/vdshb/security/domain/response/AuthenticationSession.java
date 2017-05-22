@@ -7,6 +7,7 @@ public class AuthenticationSession {
     private String accessToken;
     private String refreshToken;
 
+    //todo: guarantee access token expiration time, or drop it from here.
     private Instant accessTokenExpirationTime;
     private Instant refreshTokenExpirationTime;
 

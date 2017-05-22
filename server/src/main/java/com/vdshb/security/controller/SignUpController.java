@@ -77,7 +77,7 @@ public class SignUpController {
     public ResponseEntity confirmEmail(@PathVariable String emailConfirmationToken) {
         InactiveSecurityUser inactiveSecurityUser = inactiveSecurityUserRepository.findByEmailConfirmationToken(emailConfirmationToken);
         if (inactiveSecurityUser == null || inactiveSecurityUser.getCreationDateTime().plusSeconds(emailTokenExpirationTime).isBefore(Instant.now())) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/message/sign-up__email-confirmation-error").body(null);
         }
 
         SecurityUser securityUser = securityUserRepository.save(fulfillSecurityUser(inactiveSecurityUser));
@@ -88,7 +88,7 @@ public class SignUpController {
         List<InactiveSecurityUser> securityUsersWithSameId = inactiveSecurityUserRepository.findByEmail(inactiveSecurityUser.getEmail());
         inactiveSecurityUserRepository.delete(securityUsersWithSameId);
 
-        return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/message/email-confirmation-success").body(null);
+        return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/message/sign-up__email-confirmation-success").body(null);
     }
 
     private SecurityUser fulfillSecurityUser(InactiveSecurityUser inactiveSecurityUser) {

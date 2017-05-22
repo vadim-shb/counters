@@ -34,6 +34,18 @@ public class InactiveSecurityUser {
     @Column(name = "creation_date_time")
     private LocalDateTime creationDateTime;
 
+    public Instant getCreationDateTime() {
+        return creationDateTime.toInstant(ZoneOffset.UTC);
+    }
+
+    public void setCreationDateTime(Instant creationDateTime) {
+        this.creationDateTime = LocalDateTime.ofInstant(creationDateTime, ZoneOffset.UTC);
+    }
+
+    //===========================================================
+    //             Generated getters and setters
+    //===========================================================
+
 
     public Long getId() {
         return id;
@@ -92,11 +104,4 @@ public class InactiveSecurityUser {
         this.emailConfirmationToken = emailConfirmationToken;
     }
 
-    public Instant getCreationDateTime() {
-        return creationDateTime.toInstant(ZoneOffset.UTC);
-    }
-
-    public void setCreationDateTime(Instant creationDateTime) {
-        this.creationDateTime = LocalDateTime.ofInstant(creationDateTime, ZoneOffset.UTC);
-    }
 }

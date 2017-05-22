@@ -1,5 +1,6 @@
 package com.vdshb.security.service;
 
+import com.vdshb.security.domain.entity.PasswordRecovery;
 import com.vdshb.security.domain.enums.Language;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -21,93 +22,45 @@ public class PasswordRecoveryLocalizedMessageGenerator implements LocalizedMessa
         }
     }
 
-    public String localizedHtmlMessage(Language language, String emailConfirmationToken) {
+    public String localizedHtmlMessage(Language language, Object details) {
+        PasswordRecovery passwordRecovery = (PasswordRecovery) details;
         switch (language) {
             case ENGLISH:
                 return "<html><body>" +
-                        "<style>" +
-                        "    body {" +
-                        "        font-family: Arial, Helvetica, sans-serif;" +
-                        "        font-size: 20px;" +
-                        "        margin: 20px;" +
-                        "    }" +
-                        "    p {" +
-                        "        display: inline-block;" +
-                        "        margin-right: 10px;" +
-                        "    }" +
-                        "    h2 {" +
-                        "        margin-bottom: 30px;" +
-                        "    }" +
-                        "    div {" +
-                        "        margin-bottom: 15px;" +
-                        "    }" +
-                        "    a {" +
-                        "        text-decoration: none;" +
-                        "        color: #337ab7;" +
-                        "        font-weight: 400;" +
-                        "    }" +
-                        "    a:hover {" +
-                        "        color: #23527c;" +
-                        "        text-decoration: underline;" +
-                        "    }" +
-                        "</style>" +
+                        EMAIL_HTML_STYLES +
                         "<h2>Recovery password</h2>" +
                         "<p>If you don't started recovery process, please just ignore this letter</p>" +
                         "<p>To confirm password recovery process please follow the link:</p>" +
-                        "<a href=\"" + appUrl + "/api/security/password-recovery-confirmation/" + emailConfirmationToken + "\">Recovery password</a>" +
+                        "<a href=\"" + appUrl + "/api/security/password-recovery-confirmation/" + passwordRecovery.getEmailConfirmationToken() + "\">Recovery password</a>" +
                         "</body></html>";
             case RUSSIAN:
                 return "<html><body>" +
-                        "<style>" +
-                        "    body {" +
-                        "        font-family: Arial, Helvetica, sans-serif;" +
-                        "        font-size: 20px;" +
-                        "        margin: 20px;" +
-                        "    }" +
-                        "    p {" +
-                        "        display: inline-block;" +
-                        "        margin-right: 10px;" +
-                        "    }" +
-                        "    h2 {" +
-                        "        margin-bottom: 30px;" +
-                        "    }" +
-                        "    div {" +
-                        "        margin-bottom: 15px;" +
-                        "    }" +
-                        "    a {" +
-                        "        text-decoration: none;" +
-                        "        color: #337ab7;" +
-                        "        font-weight: 400;" +
-                        "    }" +
-                        "    a:hover {" +
-                        "        color: #23527c;" +
-                        "        text-decoration: underline;" +
-                        "    }" +
-                        "</style>" +
+                        EMAIL_HTML_STYLES +
                         "<h2>Восстановление пароля</h2>" +
                         "<p>Если вы не собираетесь восстанавливать пароль, пожалуйста проигнорируйте это письмо</p>" +
                         "<p>Для завершения восстановления пароля, пройдите по ссылке:</p>" +
-                        "<a href=\"" + appUrl + "/api/security/password-recovery-confirmation/" + emailConfirmationToken + "\">Сменить пароль</a>" +
+                        "<a href=\"" + appUrl + "/api/security/password-recovery-confirmation/" + passwordRecovery.getEmailConfirmationToken() + "\">Сменить пароль</a>" +
                         "</body></html>";
             default:
-                return this.localizedHtmlMessage(Language.ENGLISH, emailConfirmationToken);
+                return this.localizedHtmlMessage(Language.ENGLISH, details);
         }
     }
 
-    public String localizedPlainTextMessage(Language language, String emailConfirmationToken) {
+    public String localizedPlainTextMessage(Language language, Object details) {
+        PasswordRecovery passwordRecovery = (PasswordRecovery) details;
         switch (language) {
             case ENGLISH:
                 return "Recovery password\n" +
                         "If you don't started recovery process, please just ignore this letter.\n" +
                         "To confirm password recovery process please follow the link:\n" +
-                        appUrl + "/api/security/password-recovery-confirmation/" + emailConfirmationToken;
+                        appUrl + "/api/security/password-recovery-confirmation/" + passwordRecovery.getEmailConfirmationToken();
             case RUSSIAN:
                 return "Восстановление пароля.\n" +
                         "Если вы не собираетесь восстанавливать пароль, пожалуйста проигнорируйте это письмо\n" +
                         "Для завершения восстановления пароля, пройдите по ссылке:\n" +
-                        appUrl + "/api/security/password-recovery-confirmation/" + emailConfirmationToken;
+                        appUrl + "/api/security/password-recovery-confirmation/" + passwordRecovery.getEmailConfirmationToken();
             default:
-                return this.localizedPlainTextMessage(Language.ENGLISH, emailConfirmationToken);
+                return this.localizedPlainTextMessage(Language.ENGLISH, details);
         }
     }
 }

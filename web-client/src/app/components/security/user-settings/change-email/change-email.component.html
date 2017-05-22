@@ -1,3 +1,22 @@
-<p>
-  change-email works!
-</p>
+<form [formGroup]="emailChangeForm" (ngSubmit)="changeEmail()" novalidate>
+  <h2>{{i18n.security.CHANGE_EMAIL}}</h2>
+  <md-input-container>
+    <input mdInput formControlName="email" placeholder="{{i18n.securityUser.EMAIL}}" (ngModelChange)="emailChanges()">
+    <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('required')">
+      {{i18n.securityUser.EMAIL__REQUIRED}}
+    </md-hint>
+    <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('maxlength')">
+      {{i18n.securityUser.EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+    </md-hint>
+    <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('email')">
+      {{i18n.securityUser.EMAIL__INVALID}}
+    </md-hint>
+  </md-input-container>
+  <div class="message success" *ngIf="emailChangeProcessStarts">
+    <md-hint>{{this.i18n.security.EMAIL_CHANGE_MESSAGE_SENT}}</md-hint>
+  </div>
+  <div class="message error" *ngIf="alreadyRegisteredEmail">
+    <md-hint>{{i18n.security.USER_WITH_THIS_EMAIL_HAS_BEEN_ALREADY_SIGNED_UP}}</md-hint>
+  </div>
+  <button type="submit" md-raised-button color="primary" [disabled]="!isOriginEmailChanged()">{{i18n.SAVE}}</button>
+</form>
