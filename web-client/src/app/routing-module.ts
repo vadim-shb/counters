@@ -10,6 +10,7 @@ import {TermsOfUsageComponent} from "./components/terms-of-usage/terms-of-usage.
 
 const ROUTES: Routes = [
   {
+    //todo: change default screen for different roles
     path: '',
     redirectTo: '/security/sign-in',
     pathMatch: 'full'
