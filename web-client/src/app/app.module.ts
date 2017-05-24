@@ -52,7 +52,7 @@ import { ChangePasswordComponent } from './components/security/user-settings/cha
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpModule,
-    MaterialModule,
+    MaterialModule, //fixme: change deprecated module
     ToasterModule,
     RoutingModule,
     MomentModule,
