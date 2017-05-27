@@ -1,6 +1,6 @@
 package com.vdshb.security.service;
 
-import com.vdshb.security.domain.entity.ChangeSecurityUserEmail;
+import com.vdshb.security.domain.entity.ChangeEmail;
 import com.vdshb.security.domain.enums.Language;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -24,24 +24,24 @@ public class CurrentEmailConfirmMessageGenerator implements LocalizedMessageGene
 
     @Override
     public String localizedHtmlMessage(Language language, Object details) {
-        ChangeSecurityUserEmail changeSecurityUserEmail = (ChangeSecurityUserEmail) details;
+        ChangeEmail changeEmail = (ChangeEmail) details;
         switch (language) {
             case ENGLISH:
                 return "<html><body>" +
                         EMAIL_HTML_STYLES +
-                        "<h2>Hello " + changeSecurityUserEmail.getSecurityUser().getName() + "!</h2>" +
-                        "<p>You started procedure of changing your email address to " + changeSecurityUserEmail.getNewEmail() + "</p>" +
+                        "<h2>Hello " + changeEmail.getSecurityUser().getName() + "!</h2>" +
+                        "<p>You started procedure of changing your email address to " + changeEmail.getNewEmail() + "</p>" +
                         "<p>If you don't want to change the email, please ignore this message</p>" +
                         "<p>To confirm your new email please follow the link:</p>" +
-                        "<a href=\"" + appUrl + "/api/security/change-email/confirm-current-email/" + changeSecurityUserEmail.getCurrentEmailConfirmationToken() + "\">Confirm new email</a>" +
+                        "<a href=\"" + appUrl + "/api/security/change-email/confirm-current-email/" + changeEmail.getCurrentEmailConfirmationToken() + "\">Confirm new email</a>" +
                         "</body></html>";
             case RUSSIAN:
                 return "<html><body>" +
                         EMAIL_HTML_STYLES +
-                        "<h2>Здравствуйте " + changeSecurityUserEmail.getSecurityUser().getName() + "!</h2>" +
-                        "<p>Вы начали процедуру смены email адреса на " + changeSecurityUserEmail.getNewEmail() + "</p>" +
+                        "<h2>Здравствуйте " + changeEmail.getSecurityUser().getName() + "!</h2>" +
+                        "<p>Вы начали процедуру смены email адреса на " + changeEmail.getNewEmail() + "</p>" +
                         "<p>Для того, чтобы подтвердить правильность нового email, пожалуйста, пройдите по ссылке:</p>" +
-                        "<a href=\"" + appUrl + "/api/security/change-email/confirm-current-email/" + changeSecurityUserEmail.getCurrentEmailConfirmationToken() + "\">Подтвердить email</a>" +
+                        "<a href=\"" + appUrl + "/api/security/change-email/confirm-current-email/" + changeEmail.getCurrentEmailConfirmationToken() + "\">Подтвердить email</a>" +
                         "</body></html>";
             default:
                 return this.localizedHtmlMessage(Language.ENGLISH, details);
@@ -49,19 +49,19 @@ public class CurrentEmailConfirmMessageGenerator implements LocalizedMessageGene
     }
 
     public String localizedPlainTextMessage(Language language, Object details) {
-        ChangeSecurityUserEmail changeSecurityUserEmail = (ChangeSecurityUserEmail) details;
+        ChangeEmail changeEmail = (ChangeEmail) details;
         switch (language) {
             case ENGLISH:
-                return "Hello " + changeSecurityUserEmail.getSecurityUser().getName() + "!\n" +
-                        "You started procedure of changing your email address to " + changeSecurityUserEmail.getNewEmail() + "\n" +
+                return "Hello " + changeEmail.getSecurityUser().getName() + "!\n" +
+                        "You started procedure of changing your email address to " + changeEmail.getNewEmail() + "\n" +
                         "If you don't want to change the email, please ignore this message\n" +
                         "To confirm your new email please follow the link:\n" +
-                        appUrl + "/api/security/change-email/confirm-current-email/" + changeSecurityUserEmail.getCurrentEmailConfirmationToken();
+                        appUrl + "/api/security/change-email/confirm-current-email/" + changeEmail.getCurrentEmailConfirmationToken();
             case RUSSIAN:
-                return "Здравствуйте " + changeSecurityUserEmail.getSecurityUser().getName() + "!\n" +
-                        "Вы начали процедуру смены email адреса на " + changeSecurityUserEmail.getNewEmail() + "\n" +
+                return "Здравствуйте " + changeEmail.getSecurityUser().getName() + "!\n" +
+                        "Вы начали процедуру смены email адреса на " + changeEmail.getNewEmail() + "\n" +
                         "Для того, чтобы подтвердить правильность нового email, пожалуйста, пройдите по ссылке:\n" +
-                        appUrl + "/api/security/change-email/confirm-current-email/" + changeSecurityUserEmail.getCurrentEmailConfirmationToken();
+                        appUrl + "/api/security/change-email/confirm-current-email/" + changeEmail.getCurrentEmailConfirmationToken();
             default:
                 return this.localizedPlainTextMessage(Language.ENGLISH, details);
         }

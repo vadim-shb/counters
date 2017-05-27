@@ -2,12 +2,12 @@ package com.vdshb.security.controller;
 
 import com.vdshb.security.AccessTokenSecurityContextRepository;
 import com.vdshb.security.SecurityUserToken;
-import com.vdshb.security.domain.entity.ChangeSecurityUserEmail;
+import com.vdshb.security.domain.entity.ChangeEmail;
 import com.vdshb.security.domain.entity.SecurityUser;
 import com.vdshb.security.domain.request.ChangePasswordRequest;
 import com.vdshb.security.domain.request.UserInfoRequest;
 import com.vdshb.security.domain.response.PublicUser;
-import com.vdshb.security.repository.ChangeSecurityUserEmailRepository;
+import com.vdshb.security.repository.ChangeEmailRepository;
 import com.vdshb.security.repository.SecurityUserRepository;
 import com.vdshb.security.service.SecurityEmailService;
 import com.vdshb.security.service.SecurityUserService;
@@ -40,7 +40,7 @@ public class SecurityUserSettingsController {
     private SecurityUserRepository securityUserRepository;
 
     @Inject
-    private ChangeSecurityUserEmailRepository changeSecurityUserEmailRepository;
+    private ChangeEmailRepository changeEmailRepository;
 
     @Inject
     private SecurityEmailService securityEmailService;
@@ -84,32 +84,32 @@ public class SecurityUserSettingsController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(null);
         }
 
-        ChangeSecurityUserEmail changeSecurityUserEmail = new ChangeSecurityUserEmail();
-        changeSecurityUserEmail.setNewEmail(newEmail);
-        changeSecurityUserEmail.setCurrentEmailConfirmationToken(RandomStringUtils.randomAlphanumeric(64));
-        changeSecurityUserEmail.setNewEmailConfirmationToken(RandomStringUtils.randomAlphanumeric(64));
-        changeSecurityUserEmail.setCreationDateTime(Instant.now());
-        changeSecurityUserEmail.setCurrentEmailConfirmed(false);
-        changeSecurityUserEmail.setNewEmailConfirmed(false);
-        changeSecurityUserEmail.setSecurityUser(currentUser);
-        changeSecurityUserEmailRepository.save(changeSecurityUserEmail);
-        securityEmailService.onEmailChangeSendNewEmailAddressConfirmationMessage(changeSecurityUserEmail);
-        securityEmailService.onEmailChangeSendCurrentEmailAddressConfirmationMessage(changeSecurityUserEmail);
+        ChangeEmail changeEmail = new ChangeEmail();
+        changeEmail.setNewEmail(newEmail);
+        changeEmail.setCurrentEmailConfirmationToken(RandomStringUtils.randomAlphanumeric(64));
+        changeEmail.setNewEmailConfirmationToken(RandomStringUtils.randomAlphanumeric(64));
+        changeEmail.setCreationDateTime(Instant.now());
+        changeEmail.setCurrentEmailConfirmed(false);
+        changeEmail.setNewEmailConfirmed(false);
+        changeEmail.setSecurityUser(currentUser);
+        changeEmailRepository.save(changeEmail);
+        securityEmailService.onEmailChangeSendNewEmailAddressConfirmationMessage(changeEmail);
+        securityEmailService.onEmailChangeSendCurrentEmailAddressConfirmationMessage(changeEmail);
         return ResponseEntity.ok(null);
     }
 
     @GetMapping("/api/security/change-email/confirm-current-email/{emailConfirmationToken}")
     @Transactional
     public ResponseEntity changeEmail_ConfirmCurrentEmail(@PathVariable String emailConfirmationToken) {
-        ChangeSecurityUserEmail changeSecurityUserEmail = changeSecurityUserEmailRepository.findByCurrentEmailConfirmationToken(emailConfirmationToken);
-        if (changeSecurityUserEmail == null || changeSecurityUserEmail.getCreationDateTime().plusSeconds(emailTokenExpirationTime).isBefore(Instant.now())) {
+        ChangeEmail changeEmail = changeEmailRepository.findByCurrentEmailConfirmationToken(emailConfirmationToken);
+        if (changeEmail == null || changeEmail.getCreationDateTime().plusSeconds(emailTokenExpirationTime).isBefore(Instant.now())) {
             return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/message/change-email__email-confirmation-error").body(null);
         }
 
-        changeSecurityUserEmail.setCurrentEmailConfirmed(true);
-        changeSecurityUserEmailRepository.save(changeSecurityUserEmail);
-        if (changeSecurityUserEmail.isNewEmailConfirmed()) {
-            finishChangeSecurityUserEmail(changeSecurityUserEmail);
+        changeEmail.setCurrentEmailConfirmed(true);
+        changeEmailRepository.save(changeEmail);
+        if (changeEmail.isNewEmailConfirmed()) {
+            finishChangeEmail(changeEmail);
             return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/message/change-email__success").body(null);
         }
 
@@ -119,28 +119,28 @@ public class SecurityUserSettingsController {
     @GetMapping("/api/security/change-email/confirm-new-email/{emailConfirmationToken}")
     @Transactional
     public ResponseEntity changeEmail_ConfirmNewEmail(@PathVariable String emailConfirmationToken) {
-        ChangeSecurityUserEmail changeSecurityUserEmail = changeSecurityUserEmailRepository.findByNewEmailConfirmationToken(emailConfirmationToken);
-        if (changeSecurityUserEmail == null || changeSecurityUserEmail.getCreationDateTime().plusSeconds(emailTokenExpirationTime).isBefore(Instant.now())) {
+        ChangeEmail changeEmail = changeEmailRepository.findByNewEmailConfirmationToken(emailConfirmationToken);
+        if (changeEmail == null || changeEmail.getCreationDateTime().plusSeconds(emailTokenExpirationTime).isBefore(Instant.now())) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
 
-        changeSecurityUserEmail.setNewEmailConfirmed(true);
-        changeSecurityUserEmailRepository.save(changeSecurityUserEmail);
-        if (changeSecurityUserEmail.isCurrentEmailConfirmed()) {
-            finishChangeSecurityUserEmail(changeSecurityUserEmail);
+        changeEmail.setNewEmailConfirmed(true);
+        changeEmailRepository.save(changeEmail);
+        if (changeEmail.isCurrentEmailConfirmed()) {
+            finishChangeEmail(changeEmail);
             return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/message/change-email__success").body(null);
         }
 
         return ResponseEntity.status(HttpStatus.FOUND).header("Location", appUrl + "/security/message/change-email__new-email-confirmation-success").body(null);
     }
 
-    private void finishChangeSecurityUserEmail(ChangeSecurityUserEmail changeSecurityUserEmail) {
-        SecurityUser securityUser = changeSecurityUserEmail.getSecurityUser();
-        securityUser.setEmail(changeSecurityUserEmail.getNewEmail());
+    private void finishChangeEmail(ChangeEmail changeEmail) {
+        SecurityUser securityUser = changeEmail.getSecurityUser();
+        securityUser.setEmail(changeEmail.getNewEmail());
         securityUserRepository.save(securityUser);
         accessTokenSecurityContextRepository.dropCachedAuthentication(securityUser.getAccessToken());
 
-        List<ChangeSecurityUserEmail> changeSecurityUserWithSameNewEmail = changeSecurityUserEmailRepository.findByNewEmail(changeSecurityUserEmail.getNewEmail());
-        changeSecurityUserEmailRepository.delete(changeSecurityUserWithSameNewEmail);
+        List<ChangeEmail> changeSecurityUserWithSameNewEmail = changeEmailRepository.findByNewEmail(changeEmail.getNewEmail());
+        changeEmailRepository.delete(changeSecurityUserWithSameNewEmail);
     }
 }

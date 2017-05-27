@@ -1,6 +1,6 @@
 package com.vdshb.security.service;
 
-import com.vdshb.security.domain.entity.ChangeSecurityUserEmail;
+import com.vdshb.security.domain.entity.ChangeEmail;
 import com.vdshb.security.domain.enums.Language;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -24,21 +24,21 @@ public class NewEmailConfirmMessageGenerator implements LocalizedMessageGenerato
 
     @Override
     public String localizedHtmlMessage(Language language, Object details) {
-        ChangeSecurityUserEmail changeSecurityUserEmail = (ChangeSecurityUserEmail) details;
+        ChangeEmail changeEmail = (ChangeEmail) details;
         switch (language) {
             case ENGLISH:
                 return "<html><body>" +
                         EMAIL_HTML_STYLES +
-                        "<h2>Hello " + changeSecurityUserEmail.getSecurityUser().getName() + "!</h2>" +
+                        "<h2>Hello " + changeEmail.getSecurityUser().getName() + "!</h2>" +
                         "<p>To confirm your new email please follow the link:</p>" +
-                        "<a href=\"" + appUrl + "/api/security/change-email/confirm-new-email/" + changeSecurityUserEmail.getNewEmailConfirmationToken() + "\">Confirm new email</a>" +
+                        "<a href=\"" + appUrl + "/api/security/change-email/confirm-new-email/" + changeEmail.getNewEmailConfirmationToken() + "\">Confirm new email</a>" +
                         "</body></html>";
             case RUSSIAN:
                 return "<html><body>" +
                         EMAIL_HTML_STYLES +
-                        "<h2>Здравствуйте " + changeSecurityUserEmail.getSecurityUser().getName() + "!</h2>" +
+                        "<h2>Здравствуйте " + changeEmail.getSecurityUser().getName() + "!</h2>" +
                         "<p>Для того, чтобы подтвердить правильность нового email, пожалуйста, пройдите по ссылке:</p>" +
-                        "<a href=\"" + appUrl + "/api/security/change-email/confirm-new-email/" + changeSecurityUserEmail.getNewEmailConfirmationToken() + "\">Подтвердить email</a>" +
+                        "<a href=\"" + appUrl + "/api/security/change-email/confirm-new-email/" + changeEmail.getNewEmailConfirmationToken() + "\">Подтвердить email</a>" +
                         "</body></html>";
             default:
                 return this.localizedHtmlMessage(Language.ENGLISH, details);
@@ -46,16 +46,16 @@ public class NewEmailConfirmMessageGenerator implements LocalizedMessageGenerato
     }
 
     public String localizedPlainTextMessage(Language language, Object details) {
-        ChangeSecurityUserEmail changeSecurityUserEmail = (ChangeSecurityUserEmail) details;
+        ChangeEmail changeEmail = (ChangeEmail) details;
         switch (language) {
             case ENGLISH:
-                return "Hello " + changeSecurityUserEmail.getSecurityUser().getName() + "!\n" +
+                return "Hello " + changeEmail.getSecurityUser().getName() + "!\n" +
                         "To confirm your new email please follow the link:\n" +
-                        appUrl + "/api/security/change-email/confirm-new-email/" + changeSecurityUserEmail.getNewEmailConfirmationToken();
+                        appUrl + "/api/security/change-email/confirm-new-email/" + changeEmail.getNewEmailConfirmationToken();
             case RUSSIAN:
-                return "Здравствуйте " + changeSecurityUserEmail.getSecurityUser().getName() + "!\n" +
+                return "Здравствуйте " + changeEmail.getSecurityUser().getName() + "!\n" +
                         "Для того, чтобы подтвердить правильность нового email, пожалуйста, пройдите по ссылке:\n" +
-                        appUrl + "/api/security/change-email/confirm-new-email/" + changeSecurityUserEmail.getNewEmailConfirmationToken();
+                        appUrl + "/api/security/change-email/confirm-new-email/" + changeEmail.getNewEmailConfirmationToken();
             default:
                 return this.localizedPlainTextMessage(Language.ENGLISH, details);
         }

@@ -1,6 +1,6 @@
 package com.vdshb.security.service;
 
-import com.vdshb.security.domain.entity.ChangeSecurityUserEmail;
+import com.vdshb.security.domain.entity.ChangeEmail;
 import com.vdshb.security.domain.entity.InactiveSecurityUser;
 import com.vdshb.security.domain.enums.Language;
 import com.vdshb.security.domain.entity.PasswordRecovery;
@@ -57,20 +57,20 @@ public class SecurityEmailService {
         sendEmail(passwordRecovery.getSecurityUser().getEmail(), passwordRecovery.getSecurityUser().getName(), subject, textMessage, htmlMessage);
     }
 
-    public void onEmailChangeSendNewEmailAddressConfirmationMessage(ChangeSecurityUserEmail changeSecurityUserEmail) {
-        Language language = changeSecurityUserEmail.getSecurityUser().getLanguage();
+    public void onEmailChangeSendNewEmailAddressConfirmationMessage(ChangeEmail changeEmail) {
+        Language language = changeEmail.getSecurityUser().getLanguage();
         String subject = emailChangeLocalizedMessageGenerators.newEmailConfirmMessageGenerator.localizedSubject(language);
-        String textMessage = emailChangeLocalizedMessageGenerators.newEmailConfirmMessageGenerator.localizedPlainTextMessage(language, changeSecurityUserEmail);
-        String htmlMessage = emailChangeLocalizedMessageGenerators.newEmailConfirmMessageGenerator.localizedHtmlMessage(language, changeSecurityUserEmail);
-        sendEmail(changeSecurityUserEmail.getNewEmail(), changeSecurityUserEmail.getSecurityUser().getName(), subject, textMessage, htmlMessage);
+        String textMessage = emailChangeLocalizedMessageGenerators.newEmailConfirmMessageGenerator.localizedPlainTextMessage(language, changeEmail);
+        String htmlMessage = emailChangeLocalizedMessageGenerators.newEmailConfirmMessageGenerator.localizedHtmlMessage(language, changeEmail);
+        sendEmail(changeEmail.getNewEmail(), changeEmail.getSecurityUser().getName(), subject, textMessage, htmlMessage);
     }
 
-    public void onEmailChangeSendCurrentEmailAddressConfirmationMessage(ChangeSecurityUserEmail changeSecurityUserEmail) {
-        Language language = changeSecurityUserEmail.getSecurityUser().getLanguage();
+    public void onEmailChangeSendCurrentEmailAddressConfirmationMessage(ChangeEmail changeEmail) {
+        Language language = changeEmail.getSecurityUser().getLanguage();
         String subject = emailChangeLocalizedMessageGenerators.currentEmailConfirmMessageGenerator.localizedSubject(language);
-        String textMessage = emailChangeLocalizedMessageGenerators.currentEmailConfirmMessageGenerator.localizedPlainTextMessage(language, changeSecurityUserEmail);
-        String htmlMessage = emailChangeLocalizedMessageGenerators.currentEmailConfirmMessageGenerator.localizedHtmlMessage(language, changeSecurityUserEmail);
-        sendEmail(changeSecurityUserEmail.getSecurityUser().getEmail(), changeSecurityUserEmail.getSecurityUser().getName(), subject, textMessage, htmlMessage);
+        String textMessage = emailChangeLocalizedMessageGenerators.currentEmailConfirmMessageGenerator.localizedPlainTextMessage(language, changeEmail);
+        String htmlMessage = emailChangeLocalizedMessageGenerators.currentEmailConfirmMessageGenerator.localizedHtmlMessage(language, changeEmail);
+        sendEmail(changeEmail.getSecurityUser().getEmail(), changeEmail.getSecurityUser().getName(), subject, textMessage, htmlMessage);
     }
 
     private void sendEmail(String emailAddress, String userName, String subject, String textMessage, String htmlMessage) {

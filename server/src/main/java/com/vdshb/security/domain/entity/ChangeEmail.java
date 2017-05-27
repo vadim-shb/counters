@@ -8,7 +8,7 @@ import java.time.ZoneOffset;
 
 @Entity
 @Table(name = "change_email")
-public class ChangeSecurityUserEmail {
+public class ChangeEmail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
