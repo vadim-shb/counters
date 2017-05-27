@@ -18,13 +18,13 @@ import javax.sql.DataSource;
 public class DataBaseConfig {
 
     @Value("${spring.datasource.url}")
-    String url;
+    private String url;
     @Value("${spring.datasource.username}")
-    String user;
+    private String user;
     @Value("${spring.datasource.password}")
-    String pass;
+    private String pass;
     @Value("${spring.datasource.driver-class-name}")
-    String driver;
+    private String driver;
 
     @Bean
     public SpringLiquibase liquibase() {

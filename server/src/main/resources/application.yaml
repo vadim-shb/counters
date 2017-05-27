@@ -13,6 +13,7 @@ security:
   refresh-token-expiration-time: 7776000 # 90 days
   email-confirmation-token-expiration-time: 259200 # 3 days
   email-password-recovery-token-expiration-time: 86400 # 1 day
+  expired-tokens-clean-time: "0 0 2 * * *" # 2 AM UTC
 
 smtp :
   host: "localhost.com"
