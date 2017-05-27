@@ -6,7 +6,6 @@ import {ConnectionBackend, Http, HttpModule, XHRBackend} from "@angular/http";
 import {RootComponent, RootNavigatorComponent} from "./components/root/root.component";
 import {SignInComponent} from "./components/security/sign-in/sign-in.component";
 import {RoutingModule} from "./routing-module";
-import {MaterialModule} from "@angular/material";
 import {UserService} from "./services/user/user.service";
 import {PureHttpService} from "./services/pure-http/pure-http.service";
 import {SecureHttpService} from "./services/secure-http/secure-http.service";
@@ -31,6 +30,7 @@ import {ChangeEmailComponent} from "./components/security/user-settings/change-e
 import {ChangePasswordComponent} from "./components/security/user-settings/change-password/change-password.component";
 import { AdminDashboardComponent } from './components/space-admin/admin-dashboard/admin-dashboard.component';
 import {UserDashboardComponent} from "./components/space-customer/user-dashboard/user-dashboard.component";
+import {MaterialModule} from "./material.module";
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import {UserDashboardComponent} from "./components/space-customer/user-dashboard
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpModule,
-    MaterialModule, //fixme: change deprecated module
+    MaterialModule,
     ToasterModule,
     RoutingModule,
     MomentModule,
