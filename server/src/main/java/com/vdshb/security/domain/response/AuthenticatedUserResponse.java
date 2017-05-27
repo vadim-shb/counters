@@ -14,8 +14,6 @@ public class AuthenticatedUserResponse {
         session = new AuthenticationSession();
         session.setAccessToken(securityUser.getAccessToken());
         session.setRefreshToken(securityUser.getRefreshToken());
-        session.setAccessTokenExpirationTime(securityUser.getAccessTokenExpirationDateTime());
-        session.setRefreshTokenExpirationTime(securityUser.getRefreshTokenExpirationDateTime());
         user = new PublicUser((SecurityUserToken) authentication);
     }
 
