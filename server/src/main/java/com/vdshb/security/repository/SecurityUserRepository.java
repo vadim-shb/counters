@@ -16,6 +16,6 @@ public interface SecurityUserRepository extends CrudRepository<SecurityUser, Lon
 
     @Modifying
     @Transactional
-    @Query("update SecurityUser u set u.accessToken = null, u.refreshToken = null, u.accessTokenExpirationDateTime = null, u.refreshTokenExpirationDateTime = null where u.id = :userId")
-    void dropAuthTokens(@Param("userId") Long userId);
+    @Query("update SecurityUser item set item.accessToken = null, item.refreshToken = null, item.accessTokenExpirationDateTime = null, item.refreshTokenExpirationDateTime = null where item.id = :securityUserId")
+    void dropAuthTokens(@Param("securityUserId") Long securityUserId);
 }

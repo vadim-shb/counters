@@ -10,14 +10,14 @@ import java.util.List;
 
 public interface ChangeEmailRepository extends CrudRepository<ChangeEmail, Long> {
 
-    @Query("select c from ChangeEmail c where c.currentEmailConfirmationToken = :emailConfirmationToken")
+    @Query("select item from ChangeEmail item where item.currentEmailConfirmationToken = :emailConfirmationToken")
     ChangeEmail findByCurrentEmailConfirmationToken(@Param("emailConfirmationToken") String emailConfirmationToken);
 
-    @Query("select c from ChangeEmail c where c.newEmailConfirmationToken = :emailConfirmationToken")
+    @Query("select item from ChangeEmail item where item.newEmailConfirmationToken = :emailConfirmationToken")
     ChangeEmail findByNewEmailConfirmationToken(@Param("emailConfirmationToken") String emailConfirmationToken);
 
     List<ChangeEmail> findByNewEmail(String email);
 
-    @Query("select c from ChangeEmail c where c.creationDateTime < :beforeDateTime")
+    @Query("select item from ChangeEmail item where item.creationDateTime < :beforeDateTime")
     List<ChangeEmail> findCreatedBefore(@Param("beforeDateTime") LocalDateTime beforeDateTime);
 }

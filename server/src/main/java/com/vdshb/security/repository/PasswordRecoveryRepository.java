@@ -6,13 +6,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface PasswordRecoveryRepository extends CrudRepository<PasswordRecovery, Long> {
 
-    @Query("select r from PasswordRecovery r where r.emailConfirmationToken = :emailConfirmationToken")
+    @Query("select item from PasswordRecovery item where item.emailConfirmationToken = :emailConfirmationToken")
     PasswordRecovery findByEmailConfirmationToken(@Param("emailConfirmationToken") String emailConfirmationToken);
 
     //todo: clean table regularly
     List<PasswordRecovery> findBySecurityUser(SecurityUser securityUser);
+
+    @Query("select item from PasswordRecovery item where item.creationDateTime < :beforeDateTime")
+    List<PasswordRecovery> findCreatedBefore(@Param("beforeDateTime") LocalDateTime beforeDateTime);
 }

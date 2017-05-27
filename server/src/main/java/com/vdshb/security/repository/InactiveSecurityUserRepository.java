@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface InactiveSecurityUserRepository extends CrudRepository<InactiveSecurityUser, Long> {
 
-    @Query("select u from InactiveSecurityUser u where u.emailConfirmationToken = :emailConfirmationToken")
+    @Query("select item from InactiveSecurityUser item where item.emailConfirmationToken = :emailConfirmationToken")
     InactiveSecurityUser findByEmailConfirmationToken(@Param("emailConfirmationToken") String emailConfirmationToken);
 
     //todo: clean table regularly
