@@ -14,7 +14,6 @@ public interface PasswordRecoveryRepository extends CrudRepository<PasswordRecov
     @Query("select item from PasswordRecovery item where item.emailConfirmationToken = :emailConfirmationToken")
     PasswordRecovery findByEmailConfirmationToken(@Param("emailConfirmationToken") String emailConfirmationToken);
 
-    //todo: clean table regularly
     List<PasswordRecovery> findBySecurityUser(SecurityUser securityUser);
 
     @Query("select item from PasswordRecovery item where item.creationDateTime < :beforeDateTime")
