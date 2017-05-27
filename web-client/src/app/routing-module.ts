@@ -1,19 +1,19 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {SignInComponent} from "./components/security/sign-in/sign-in.component";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {UserSettingsComponent} from "./components/security/user-settings/user-settings.component";
 import {SignUpComponent} from "./components/security/sign-up/sign-up.component";
 import {PasswordRecoveryComponent} from "./components/security/password-recovery/password-recovery.component";
 import {MessageScreenComponent} from "./components/security/message-screen/message-screen.component";
 import {TermsOfUsageComponent} from "./components/terms-of-usage/terms-of-usage.component";
+import {RootNavigatorComponent} from "./components/root/root.component";
+import {AdminDashboardComponent} from "./components/space-admin/admin-dashboard/admin-dashboard.component";
+import {UserDashboardComponent} from "./components/space-customer/user-dashboard/user-dashboard.component";
 
 const ROUTES: Routes = [
   {
-    //todo: change default screen for different roles
     path: '',
-    redirectTo: '/security/sign-in',
-    pathMatch: 'full'
+    component: RootNavigatorComponent
   },
   {
     path: 'security/sign-in',
@@ -36,8 +36,12 @@ const ROUTES: Routes = [
     component: TermsOfUsageComponent
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent
+    path: 'admin/dashboard',
+    component: AdminDashboardComponent
+  },
+  {
+    path: 'user/dashboard',
+    component: UserDashboardComponent
   },
   {
     path: 'security/user-settings',

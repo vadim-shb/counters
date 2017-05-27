@@ -61,7 +61,7 @@ export class SignInComponent implements OnInit {
     this.securityService.signIn(credentials)
       .subscribe((user: User) => {
         if (user) {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/']);
         }
       }, (errorResponse: Response) => {
         if (errorResponse.status === 401){

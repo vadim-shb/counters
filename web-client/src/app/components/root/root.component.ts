@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {ToastService} from "../../services/toast/toast.service";
 import {ToasterConfig} from "angular2-toaster";
+import {UserService} from "../../services/user/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -17,4 +19,35 @@ export class RootComponent implements OnInit {
   ngOnInit() {
   }
 
+}
+
+// ===================== root "/" navigation =====================
+
+@Component({
+  selector: 'app-root-navigator',
+  template: '',
+})
+export class RootNavigatorComponent implements OnInit {
+
+  constructor(private router: Router,
+              private userService: UserService,) {
+  }
+
+  ngOnInit() {
+    this.userService.getUser()
+      .subscribe(user => {
+        if (!user) {
+          this.router.navigate(['/security/sign-in']);
+          return;
+        }
+        if (user.roles.includes("ADMIN")) {
+          this.router.navigate(['/admin/dashboard']);
+          return;
+        }
+        if (user.roles.includes("USER")) {
+          this.router.navigate(['/user/dashboard']);
+          return;
+        }
+      });
+  }
 }

@@ -3,7 +3,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ConnectionBackend, Http, HttpModule, XHRBackend} from "@angular/http";
-import {RootComponent} from "./components/root/root.component";
+import {RootComponent, RootNavigatorComponent} from "./components/root/root.component";
 import {SignInComponent} from "./components/security/sign-in/sign-in.component";
 import {RoutingModule} from "./routing-module";
 import {MaterialModule} from "@angular/material";
@@ -14,7 +14,6 @@ import {ErrorHandleService} from "./services/error-handle/error-handle.service";
 import {SecurityService} from "./services/security/security.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MomentModule} from "angular2-moment";
-import {DashboardComponent} from "./components/dashboard/dashboard.component";
 import {ResumeDao} from "./dao/resume/resume.dao";
 import {HeaderComponent} from "./components/header/header.component";
 import {IfAuthenticatedDirective} from "./directives/if-authenticated/if-authenticated.directive";
@@ -27,15 +26,16 @@ import {PasswordRecoveryComponent} from "./components/security/password-recovery
 import {ValidationService} from "./services/validation/validation.service";
 import {MessageScreenComponent} from "./components/security/message-screen/message-screen.component";
 import {TermsOfUsageComponent} from "./components/terms-of-usage/terms-of-usage.component";
-import { UserInfoComponent } from './components/security/user-settings/user-info/user-info.component';
-import { ChangeEmailComponent } from './components/security/user-settings/change-email/change-email.component';
-import { ChangePasswordComponent } from './components/security/user-settings/change-password/change-password.component';
+import {UserInfoComponent} from "./components/security/user-settings/user-info/user-info.component";
+import {ChangeEmailComponent} from "./components/security/user-settings/change-email/change-email.component";
+import {ChangePasswordComponent} from "./components/security/user-settings/change-password/change-password.component";
+import { AdminDashboardComponent } from './components/space-admin/admin-dashboard/admin-dashboard.component';
+import {UserDashboardComponent} from "./components/space-customer/user-dashboard/user-dashboard.component";
 
 @NgModule({
   declarations: [
     RootComponent,
     SignInComponent,
-    DashboardComponent,
     HeaderComponent,
     IfAuthenticatedDirective,
     UserSettingsComponent,
@@ -46,6 +46,9 @@ import { ChangePasswordComponent } from './components/security/user-settings/cha
     UserInfoComponent,
     ChangeEmailComponent,
     ChangePasswordComponent,
+    RootNavigatorComponent,
+    AdminDashboardComponent,
+    UserDashboardComponent,
   ],
   imports: [
     BrowserModule,
