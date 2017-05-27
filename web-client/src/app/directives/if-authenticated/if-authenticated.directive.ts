@@ -8,8 +8,8 @@ export class IfAuthenticatedDirective {
 
   private isView = false;
 
-  //todo: change to *userHasRoles="['ADMIN', 'USER']"  // may be UserRoles.ADMIN
-  //todo: change to *userHasAnyRole="['ADMIN', 'USER']"
+  //todo: change to *userHasRoles="[UserRoles.ADMIN, UserRoles.USER]"
+  //todo: change to *userHasAnyRole="[UserRoles.ADMIN, UserRoles.USER]"
 
   //@formatter:off
   constructor(

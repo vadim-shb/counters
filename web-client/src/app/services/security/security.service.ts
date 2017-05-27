@@ -34,9 +34,10 @@ export class SecurityService {
       })
       .map(auth => {
         if (auth) {
-          this.userService.setUser(auth.user);
+          let user = new User(auth.user);
+          this.userService.setUser(user);
           this.setAuthSession(auth.session);
-          return auth.user;
+          return user;
         }
       })
   }
@@ -74,7 +75,7 @@ export class SecurityService {
       this.refreshingSessionProcess = new ReplaySubject(1);
       this.refreshAuthSessionRequest(this.authSession.refreshToken)
         .subscribe(auth => {
-          this.userService.setUser(auth.user);
+          this.userService.setUser(new User(auth.user));
           this.setAuthSession(auth.session);
           this.refreshingSessionProcess.next();
           setTimeout(() => {

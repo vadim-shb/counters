@@ -3,6 +3,7 @@ import {ToastService} from "../../services/toast/toast.service";
 import {ToasterConfig} from "angular2-toaster";
 import {UserService} from "../../services/user/user.service";
 import {Router} from "@angular/router";
+import {UserRole} from "../../domain/user";
 
 @Component({
   selector: 'app-root',
@@ -40,11 +41,11 @@ export class RootNavigatorComponent implements OnInit {
           this.router.navigate(['/security/sign-in']);
           return;
         }
-        if (user.roles.includes("ADMIN")) {
+        if (user.roles.includes(UserRole.ADMIN)) {
           this.router.navigate(['/admin/dashboard']);
           return;
         }
-        if (user.roles.includes("USER")) {
+        if (user.roles.includes(UserRole.USER)) {
           this.router.navigate(['/user/dashboard']);
           return;
         }
