@@ -30,7 +30,7 @@ import {ChangeEmailComponent} from "./components/security/user-settings/change-e
 import {ChangePasswordComponent} from "./components/security/user-settings/change-password/change-password.component";
 import { AdminDashboardComponent } from './components/space-admin/admin-dashboard/admin-dashboard.component';
 import {UserDashboardComponent} from "./components/space-customer/user-dashboard/user-dashboard.component";
-import {MaterialModule} from "./material.module";
+import {MaterialModule} from "./modules/material.module";
 
 @NgModule({
   declarations: [
