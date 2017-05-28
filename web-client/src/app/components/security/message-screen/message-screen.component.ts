@@ -1,8 +1,8 @@
-import {Component, OnInit} from "@angular/core";
-import {I18nService} from "../../../modules/i18n/i18n.service";
-import {Translation} from "../../../modules/i18n/translations/translation";
-import {ActivatedRoute} from "@angular/router";
-import {SecurityService} from "../../../services/security/security.service";
+import {Component, OnInit} from '@angular/core';
+import {I18nService} from '../../../modules/i18n/i18n.service';
+import {Translation} from '../../../modules/i18n/translations/translation';
+import {ActivatedRoute} from '@angular/router';
+import {SecurityService} from '../../../services/security/security.service';
 
 @Component({
   selector: 'message-screen',

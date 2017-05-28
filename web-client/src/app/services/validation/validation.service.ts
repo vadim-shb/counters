@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {AbstractControl, Validators} from "@angular/forms";
+import {Injectable} from '@angular/core';
+import {AbstractControl, Validators} from '@angular/forms';
 
 @Injectable()
 export class ValidationService {

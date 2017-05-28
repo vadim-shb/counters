@@ -1,12 +1,12 @@
-import {Component, OnInit} from "@angular/core";
-import {SecurityService} from "../../../services/security/security.service";
-import {Router} from "@angular/router";
-import {User} from "../../../domain/user";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {I18nService} from "../../../modules/i18n/i18n.service";
-import {Translation} from "../../../modules/i18n/translations/translation";
-import {EmailPasswordCredentials} from "../../../domain/email-password-credentials";
-import {ValidationService} from "../../../services/validation/validation.service";
+import {Component, OnInit} from '@angular/core';
+import {SecurityService} from '../../../services/security/security.service';
+import {Router} from '@angular/router';
+import {User} from '../../../domain/user';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {I18nService} from '../../../modules/i18n/i18n.service';
+import {Translation} from '../../../modules/i18n/translations/translation';
+import {EmailPasswordCredentials} from '../../../domain/email-password-credentials';
+import {ValidationService} from '../../../services/validation/validation.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -37,12 +37,12 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = this.fb.group({
-      email: ['',[
+      email: ['', [
         Validators.required,
         Validators.maxLength(1000),
         this.validationService.emailValidator
       ]],
-      password: ['',[
+      password: ['', [
         Validators.required,
         Validators.minLength(4),
         Validators.maxLength(1000),
@@ -52,11 +52,11 @@ export class SignInComponent implements OnInit {
 
   signIn() {
     if (this.signInForm.invalid) {
-      this.signInForm.get("email").markAsTouched();
-      this.signInForm.get("password").markAsTouched();
+      this.signInForm.get('email').markAsTouched();
+      this.signInForm.get('password').markAsTouched();
       return;
     }
-    let credentials : EmailPasswordCredentials = this.signInForm.value;
+    let credentials: EmailPasswordCredentials = this.signInForm.value;
 
     this.securityService.signIn(credentials)
       .subscribe((user: User) => {
@@ -64,7 +64,7 @@ export class SignInComponent implements OnInit {
           this.router.navigate(['/']);
         }
       }, (errorResponse: Response) => {
-        if (errorResponse.status === 401){
+        if (errorResponse.status === 401) {
           this.wrongEmailOrPassword = true;
         }
       });

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {Translation} from "../../../../modules/i18n/translations/translation";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../../../domain/user";
-import {UserService} from "../../../../services/user/user.service";
-import {I18nService} from "../../../../modules/i18n/i18n.service";
-import {Http} from "@angular/http";
+import {Component, OnInit} from '@angular/core';
+import {Translation} from '../../../../modules/i18n/translations/translation';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {User} from '../../../../domain/user';
+import {UserService} from '../../../../services/user/user.service';
+import {I18nService} from '../../../../modules/i18n/i18n.service';
+import {Http} from '@angular/http';
 
 @Component({
   selector: 'user-settings__user-info',
@@ -28,8 +28,7 @@ export class UserInfoComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private userService: UserService,
               private i18nService: I18nService,
-              private http: Http,
-  ) {
+              private http: Http,) {
     i18nService.getCurrentTranslation()
       .subscribe(translation => {
         this.i18n = translation;

@@ -7,8 +7,8 @@ import {
   MdSelectModule,
   MdToolbarModule,
   PlatformModule
-} from "@angular/material";
-import {NgModule} from "@angular/core";
+} from '@angular/material';
+import {NgModule} from '@angular/core';
 
 @NgModule({
   imports: [

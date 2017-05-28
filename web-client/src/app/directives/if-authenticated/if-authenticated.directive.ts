@@ -1,5 +1,5 @@
-import {Directive, TemplateRef, ViewContainerRef} from "@angular/core";
-import {UserService} from "../../services/user/user.service";
+import {Directive, TemplateRef, ViewContainerRef} from '@angular/core';
+import {UserService} from '../../services/user/user.service';
 
 @Directive({
   selector: '[ifAuthenticated]'

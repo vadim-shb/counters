@@ -1,7 +1,7 @@
-import {TestBed, inject} from "@angular/core/testing";
-import {SecureHttpService} from "./secure-http.service";
-import {HttpModule, BaseRequestOptions} from "@angular/http";
-import {MockBackend} from "@angular/http/testing";
+import {inject, TestBed} from '@angular/core/testing';
+import {SecureHttpService} from './secure-http.service';
+import {BaseRequestOptions, HttpModule} from '@angular/http';
+import {MockBackend} from '@angular/http/testing';
 
 describe('SecureHttpService', () => {
   beforeEach(() => {

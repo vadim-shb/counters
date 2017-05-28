@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-import {Resume} from "../../domain/resume";
-import {Http} from "@angular/http";
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Resume} from '../../domain/resume';
+import {Http} from '@angular/http';
 
 @Injectable()
 export class ResumeDao {

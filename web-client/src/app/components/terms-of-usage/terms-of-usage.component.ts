@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {I18nService} from "../../modules/i18n/i18n.service";
-import {Translation} from "../../modules/i18n/translations/translation";
+import {Component, OnInit} from '@angular/core';
+import {I18nService} from '../../modules/i18n/i18n.service';
+import {Translation} from '../../modules/i18n/translations/translation';
 
 @Component({
   selector: 'app-terms-of-usage',

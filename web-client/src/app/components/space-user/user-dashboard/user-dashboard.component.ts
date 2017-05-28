@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ResumeDao} from "../../../dao/resume/resume.dao";
-import {Resume} from "../../../domain/resume";
+import {Component, OnInit} from '@angular/core';
+import {ResumeDao} from '../../../dao/resume/resume.dao';
+import {Resume} from '../../../domain/resume';
 
 @Component({
   selector: 'app-user-dashboard',

@@ -1,11 +1,11 @@
-import {TestBed, inject} from "@angular/core/testing";
-import {SecurityService} from "./security.service";
-import {PureHttpService} from "../pure-http/pure-http.service";
-import {HttpModule, BaseRequestOptions} from "@angular/http";
-import {MockBackend} from "@angular/http/testing";
-import {ErrorHandleService} from "../error-handle/error-handle.service";
-import {UserService} from "../user/user.service";
-import {BehaviorSubject} from "rxjs";
+import {inject, TestBed} from '@angular/core/testing';
+import {SecurityService} from './security.service';
+import {PureHttpService} from '../pure-http/pure-http.service';
+import {BaseRequestOptions, HttpModule} from '@angular/http';
+import {MockBackend} from '@angular/http/testing';
+import {ErrorHandleService} from '../error-handle/error-handle.service';
+import {UserService} from '../user/user.service';
+import {BehaviorSubject} from 'rxjs';
 
 describe('SecurityService', () => {
   beforeEach(() => {
@@ -56,7 +56,7 @@ describe('SecurityService', () => {
   it('should return Observable[User] if backend returns user', inject([SecurityService], (service: SecurityService) => {
     let httpMock = TestBed.get(PureHttpService);
     spyOn(httpMock, 'post').and.returnValue(new BehaviorSubject({
-      status: 200, json: function() {
+      status: 200, json: function () {
         return {
           accessToken: '777',
           user: {

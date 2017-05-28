@@ -1,4 +1,4 @@
-import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from "./translation";
+import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from './translation';
 
 export class EntitySecurityUserEnglishTranslation implements EntitySecurityUserTranslation {
 
@@ -16,7 +16,7 @@ export class EntitySecurityUserEnglishTranslation implements EntitySecurityUserT
   PASSWORD__REQUIRED = 'Password required';
   PASSWORD__CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS = 'Password can not be shorter than 4 characters';
   PASSWORD__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS = 'Password can not be longer than 1000 characters';
-  PASSWORD_CONFIRMATION__DO_NOT_MATCH = "Passwords don't match";
+  PASSWORD_CONFIRMATION__DO_NOT_MATCH = 'Passwords don\'t match';
 }
 
 export class ModuleSecurityEnglishTranslation implements ModuleSecurityTranslation {
@@ -45,7 +45,7 @@ export class ModuleSecurityEnglishTranslation implements ModuleSecurityTranslati
   OF_USAGE = 'of usage';
 
   CONFIRMATION_EMAIL_SENT_TITLE = 'Congratulations!';
-  CONFIRMATION_EMAIL_SENT_MESSAGE = "In couple minutes you'll get our email. Please follow the simple instructions in it; and you'll successfully finish the sign up process.";
+  CONFIRMATION_EMAIL_SENT_MESSAGE = 'In couple minutes you\'ll get our email. Please follow the simple instructions in it; and you\'ll successfully finish the sign up process.';
 
   PASSWORD_RECOVERY_EMAIL_SENT_TITLE = 'Password recovery email has been sent';
   PASSWORD_RECOVERY_EMAIL_SENT_MESSAGE = 'Follow the simple instructions in the email to finish password recovery process';

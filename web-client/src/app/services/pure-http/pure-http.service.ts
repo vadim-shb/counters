@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {Http, ConnectionBackend, RequestOptions} from "@angular/http";
+import {Injectable} from '@angular/core';
+import {ConnectionBackend, Http, RequestOptions} from '@angular/http';
 
 @Injectable()
 export class PureHttpService extends Http {

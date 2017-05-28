@@ -1,10 +1,10 @@
-import {Injectable} from "@angular/core";
-import {Lang} from "./domain/lang";
-import {EnglishTranslation} from "./translations/english.translation";
-import {RussianTranslation} from "./translations/russian.translation";
-import {Translation} from "./translations/translation";
-import {Observable} from "rxjs/Observable";
-import {ReplaySubject} from "rxjs/ReplaySubject";
+import {Injectable} from '@angular/core';
+import {Lang} from './domain/lang';
+import {EnglishTranslation} from './translations/english.translation';
+import {RussianTranslation} from './translations/russian.translation';
+import {Translation} from './translations/translation';
+import {Observable} from 'rxjs/Observable';
+import {ReplaySubject} from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class I18nService {
@@ -30,7 +30,7 @@ export class I18nService {
     return this.currentTranslation;
   }
 
-  getTranslations() : Translation[] {
+  getTranslations(): Translation[] {
     return [
       this.russianTranslation,
       this.englishTranslation

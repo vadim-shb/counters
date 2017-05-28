@@ -1,10 +1,10 @@
-import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Translation} from "../../../../modules/i18n/translations/translation";
-import {Http} from "@angular/http";
-import {I18nService} from "../../../../modules/i18n/i18n.service";
-import {ValidationService} from "../../../../services/validation/validation.service";
-import {UserService} from "../../../../services/user/user.service";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Translation} from '../../../../modules/i18n/translations/translation';
+import {Http} from '@angular/http';
+import {I18nService} from '../../../../modules/i18n/i18n.service';
+import {ValidationService} from '../../../../services/validation/validation.service';
+import {UserService} from '../../../../services/user/user.service';
 
 @Component({
   selector: 'user-settings__change-email',

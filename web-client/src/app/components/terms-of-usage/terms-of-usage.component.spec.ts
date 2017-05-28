@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TermsOfUsageComponent } from './terms-of-usage.component';
+import {TermsOfUsageComponent} from './terms-of-usage.component';
 
 describe('TermsOfUsageComponent', () => {
   let component: TermsOfUsageComponent;
@@ -8,9 +8,9 @@ describe('TermsOfUsageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TermsOfUsageComponent ]
+      declarations: [TermsOfUsageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,5 +1,5 @@
-import {UserResponse} from "./success-authentication-response";
-export class User{
+import {UserResponse} from './success-authentication-response';
+export class User {
 
   id: number;
   name: string;

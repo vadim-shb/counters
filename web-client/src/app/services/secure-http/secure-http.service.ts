@@ -1,11 +1,11 @@
-import {Injectable} from "@angular/core";
-import {Http, ConnectionBackend, RequestOptions, RequestOptionsArgs, Response, Headers} from "@angular/http";
-import {PureHttpService} from "../pure-http/pure-http.service";
-import {Observable} from "rxjs";
-import {ErrorHandleService} from "../error-handle/error-handle.service";
-import {SecurityService} from "../security/security.service";
-import {UserService} from "../user/user.service";
-import {Router} from "@angular/router";
+import {Injectable} from '@angular/core';
+import {ConnectionBackend, Headers, Http, RequestOptions, RequestOptionsArgs, Response} from '@angular/http';
+import {PureHttpService} from '../pure-http/pure-http.service';
+import {Observable} from 'rxjs';
+import {ErrorHandleService} from '../error-handle/error-handle.service';
+import {SecurityService} from '../security/security.service';
+import {UserService} from '../user/user.service';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class SecureHttpService extends Http {

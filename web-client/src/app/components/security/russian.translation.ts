@@ -1,4 +1,4 @@
-import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from "./translation";
+import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from './translation';
 
 export class EntitySecurityUserRussianTranslation implements EntitySecurityUserTranslation {
   NAME = 'Имя';
@@ -44,7 +44,7 @@ export class ModuleSecurityRussianTranslation implements ModuleSecurityTranslati
   OF_USAGE = 'использования';
 
   CONFIRMATION_EMAIL_SENT_TITLE = 'Поздравляем!';
-  CONFIRMATION_EMAIL_SENT_MESSAGE = "В течение нескольких минут вы получите email. Пожалуйста; следуйте простым инструкция из письма и вы успешно завершите процеcc регистрации.";
+  CONFIRMATION_EMAIL_SENT_MESSAGE = 'В течение нескольких минут вы получите email. Пожалуйста; следуйте простым инструкция из письма и вы успешно завершите процеcc регистрации.';
 
   PASSWORD_RECOVERY_EMAIL_SENT_TITLE = 'Письмо для восстановления пароля было выслано на указанный email';
   PASSWORD_RECOVERY_EMAIL_SENT_MESSAGE = 'Следуйте простым инструкциям в письме для завершения процесса восстановления пароля';

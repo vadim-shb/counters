@@ -1,4 +1,4 @@
-import {AuthenticationSession} from "./authentication-session";
+import {AuthenticationSession} from './authentication-session';
 
 export class SuccessAuthenticationResponse {
   session: AuthenticationSession;

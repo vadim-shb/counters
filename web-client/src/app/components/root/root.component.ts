@@ -1,9 +1,9 @@
-import {Component, OnInit} from "@angular/core";
-import {ToastService} from "../../services/toast/toast.service";
-import {ToasterConfig} from "angular2-toaster";
-import {UserService} from "../../services/user/user.service";
-import {Router} from "@angular/router";
-import {UserRole} from "../../domain/user";
+import {Component, OnInit} from '@angular/core';
+import {ToastService} from '../../services/toast/toast.service';
+import {ToasterConfig} from 'angular2-toaster';
+import {UserService} from '../../services/user/user.service';
+import {Router} from '@angular/router';
+import {UserRole} from '../../domain/user';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,7 @@ import {UserRole} from "../../domain/user";
 export class RootComponent implements OnInit {
 
   private toasterConfig: ToasterConfig;
+
   constructor(private toastService: ToastService) {
     this.toasterConfig = this.toastService.getConfig();
   }

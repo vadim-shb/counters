@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PasswordRecoveryComponent } from './password-recovery.component';
+import {PasswordRecoveryComponent} from './password-recovery.component';
 
 describe('PasswordRecoveryComponent', () => {
   let component: PasswordRecoveryComponent;
@@ -8,9 +8,9 @@ describe('PasswordRecoveryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PasswordRecoveryComponent ]
+      declarations: [PasswordRecoveryComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

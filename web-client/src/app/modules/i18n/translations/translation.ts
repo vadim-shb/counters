@@ -1,5 +1,5 @@
-import {Lang} from "../domain/lang";
-import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from "../../../components/security/translation";
+import {Lang} from '../domain/lang';
+import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from '../../../components/security/translation';
 
 export interface Translation {
   TRANSLATION_LANGUAGE: Lang;

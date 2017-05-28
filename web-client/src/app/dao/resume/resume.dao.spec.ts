@@ -1,5 +1,5 @@
-import { TestBed, inject } from '@angular/core/testing';
-import {ResumeDao} from "./resume.dao";
+import {inject, TestBed} from '@angular/core/testing';
+import {ResumeDao} from './resume.dao';
 
 
 describe('ResumeDao', () => {

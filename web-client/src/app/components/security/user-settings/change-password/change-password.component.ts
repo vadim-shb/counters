@@ -1,9 +1,9 @@
-import {Component, OnInit} from "@angular/core";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-import {Translation} from "../../../../modules/i18n/translations/translation";
-import {Http} from "@angular/http";
-import {I18nService} from "../../../../modules/i18n/i18n.service";
-import {ValidationService} from "../../../../services/validation/validation.service";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {Translation} from '../../../../modules/i18n/translations/translation';
+import {Http} from '@angular/http';
+import {I18nService} from '../../../../modules/i18n/i18n.service';
+import {ValidationService} from '../../../../services/validation/validation.service';
 
 @Component({
   selector: 'user-settings__change-password',

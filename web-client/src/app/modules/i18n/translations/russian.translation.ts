@@ -1,10 +1,10 @@
-import {Injectable} from "@angular/core";
-import {Translation} from "./translation";
-import {Lang} from "../domain/lang";
+import {Injectable} from '@angular/core';
+import {Translation} from './translation';
+import {Lang} from '../domain/lang';
 import {
   EntitySecurityUserRussianTranslation,
   ModuleSecurityRussianTranslation
-} from "../../../components/security/russian.translation";
+} from '../../../components/security/russian.translation';
 
 @Injectable()
 export class RussianTranslation implements Translation {

@@ -1,10 +1,10 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {SignInComponent} from "./sign-in.component";
-import {MaterialModule} from "@angular/material";
-import {SecurityService} from "../../../services/security/security.service";
-import {FormsModule} from "@angular/forms";
-import {Router} from "@angular/router";
-import {BehaviorSubject} from "rxjs";
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {SignInComponent} from './sign-in.component';
+import {MaterialModule} from '@angular/material';
+import {SecurityService} from '../../../services/security/security.service';
+import {FormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
+import {BehaviorSubject} from 'rxjs';
 
 describe('SignInComponent', () => {
   let component: SignInComponent;
