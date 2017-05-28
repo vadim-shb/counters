@@ -14,9 +14,9 @@ public class CurrentEmailConfirmMessageGenerator implements LocalizedMessageGene
     public String localizedSubject(Language language) {
         switch (language) {
             case ENGLISH:
-                return "HR-paradise email changing confirmation";
+                return "Счётчики ЖКХ. Email changing confirmation";
             case RUSSIAN:
-                return "Подтверждение смены email в HR-paradise";
+                return "Счётчики ЖКХ. Подтверждение смены email";
             default:
                 return this.localizedSubject(Language.ENGLISH);
         }

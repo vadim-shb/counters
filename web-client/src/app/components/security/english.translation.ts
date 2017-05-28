@@ -57,7 +57,7 @@ export class ModuleSecurityEnglishTranslation implements ModuleSecurityTranslati
   PASSWORD_RECOVERY_ERROR_MESSAGE = 'Recovery letter not valid any more. Try again.';
 
   EMAIL_CONFIRMATION_SUCCESS_TITLE = 'Welcome!';
-  EMAIL_CONFIRMATION_SUCCESS_MESSAGE = 'Your email has been successfully confirmed. Now you could sign in to HR paradise';
+  EMAIL_CONFIRMATION_SUCCESS_MESSAGE = 'Your email has been successfully confirmed. Now you could sign in to "Счётчики ЖКХ"';
 
   SIGN_UP__EMAIL_CONFIRMATION_ERROR_TITLE = 'Sign up process expired';
   SIGN_UP__EMAIL_CONFIRMATION_ERROR_MESSAGE = 'Sign up letter not valid any more';

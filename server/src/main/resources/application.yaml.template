@@ -1,8 +1,0 @@
-spring:
-  datasource:
-    url:  "${spring.datasource.url}"
-    email:  "${spring.datasource.email}"
-    password:  "${spring.datasource.password}"
-    driver-class-name: "org.postgresql.Driver"
-  data:
-    jpa.repositories.enabled: true

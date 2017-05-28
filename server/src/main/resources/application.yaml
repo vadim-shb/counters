@@ -3,7 +3,7 @@ app:
 
 spring:
   datasource:
-    url:  "jdbc:postgresql://localhost:5432/hrparadise"
+    url:  "jdbc:postgresql://localhost:5433/hcs"
     username:  "pguser"
     password:  "1234"
     driver-class-name: "org.postgresql.Driver"

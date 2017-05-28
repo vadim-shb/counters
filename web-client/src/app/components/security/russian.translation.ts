@@ -56,7 +56,7 @@ export class ModuleSecurityRussianTranslation implements ModuleSecurityTranslati
   PASSWORD_RECOVERY_ERROR_MESSAGE = 'Письмо со ссылкой на восстановление пароля более не действительно. Попробуйте еще раз.';
 
   EMAIL_CONFIRMATION_SUCCESS_TITLE = 'Добро пожаловать!';
-  EMAIL_CONFIRMATION_SUCCESS_MESSAGE = 'Ваш email был успешно подтвержден. Теперь вы можете войти в HR paradise';
+  EMAIL_CONFIRMATION_SUCCESS_MESSAGE = 'Ваш email был успешно подтвержден. Теперь вы можете войти в "Счётчики ЖКХ"';
 
   SIGN_UP__EMAIL_CONFIRMATION_ERROR_TITLE = 'Срок действия процесса регистрации истек';
   SIGN_UP__EMAIL_CONFIRMATION_ERROR_MESSAGE = 'Письмо подтверждения регистрации более не действительно';

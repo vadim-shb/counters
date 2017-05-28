@@ -27,10 +27,6 @@ RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/${PG_VERSION}/main
 USER postgres
 RUN /etc/init.d/postgresql restart;\
     psql --command "CREATE USER pguser WITH SUPERUSER PASSWORD '1234';";\
-    createdb -O pguser -E UTF8 hrparadise
-
-EXPOSE 5432
-
-VOLUME  ["/etc/postgresql", "/var/log/postgresql", "/var/lib/postgresql"]
+    createdb -O pguser -E UTF8 hcs
 
 CMD /usr/lib/postgresql/${PG_VERSION}/bin/postgres -D /var/lib/postgresql/${PG_VERSION}/main -c config_file=/etc/postgresql/${PG_VERSION}/main/postgresql.conf

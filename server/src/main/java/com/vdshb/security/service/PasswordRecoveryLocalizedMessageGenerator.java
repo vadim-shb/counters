@@ -14,9 +14,9 @@ public class PasswordRecoveryLocalizedMessageGenerator implements LocalizedMessa
     public String localizedSubject(Language language) {
         switch (language) {
             case ENGLISH:
-                return "HR-paradise password recovery";
+                return "Счётчики ЖКХ. Password recovery";
             case RUSSIAN:
-                return "Восстановление забытого паролья в HR-paradise";
+                return "Счётчики ЖКХ. Восстановление забытого пароля";
             default:
                 return this.localizedSubject(Language.ENGLISH);
         }
