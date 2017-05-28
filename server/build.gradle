@@ -63,10 +63,13 @@ dependencies {
     compile group: 'com.github.ben-manes.caffeine'  , name: 'caffeine'
 
 
+//    dev tools
     compile group: 'org.springframework.boot'       , name: 'spring-boot-starter-actuator'
     compile group: 'org.springframework.boot'       , name: 'spring-boot-devtools'
+    compile group: 'io.springfox'                   , name: 'springfox-swagger2'            , version: '2.7.0'
+    compile group: 'io.springfox'                   , name: 'springfox-swagger-ui'          , version: '2.7.0'
 
-
+//    test tools
     testCompile group: 'org.springframework'        , name: 'spring-test'
     testCompile group: 'junit'                      , name: 'junit'
     testCompile group: 'com.h2database'             , name: 'h2'
