@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * This is just a stub. It adds knowladge about this API to swagger.
+ * This is just a stub. It adds knowledge about this API to swagger.
  * Real logic is in custom AuthenticationProviders, Filters and so on.
  * See com.vdshb.config.SecurityConfig to understand what really happens.
  */
