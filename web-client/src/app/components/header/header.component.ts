@@ -3,7 +3,7 @@ import {SecurityService} from '../../services/security/security.service';
 import {UserService} from '../../services/user/user.service';
 import {I18nService} from '../../modules/i18n/i18n.service';
 import {Translation} from '../../modules/i18n/translations/translation';
-import {User} from '../../domain/user';
+import {User, UserRole} from '../../domain/security/user';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   private i18n: Translation;
   private user?: User;
+  private UserRole = UserRole;
 
   constructor(private securityService: SecurityService,
               private userService: UserService,

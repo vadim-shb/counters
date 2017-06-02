@@ -5,6 +5,7 @@ import {
   EntitySecurityUserRussianTranslation,
   ModuleSecurityRussianTranslation
 } from '../../../components/security/russian.translation';
+import {EntityTownRussianTranslation} from '../../../domain/i18n/russian.translation';
 
 @Injectable()
 export class RussianTranslation implements Translation {
@@ -20,6 +21,7 @@ export class RussianTranslation implements Translation {
   SAVE = 'Сохранить';
 
   securityUser = new EntitySecurityUserRussianTranslation();
+  town = new EntityTownRussianTranslation();
   security = new ModuleSecurityRussianTranslation();
 
 

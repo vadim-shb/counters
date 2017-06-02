@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Observable, ReplaySubject, Subject} from 'rxjs';
-import {User} from '../../domain/user';
+import {User} from '../../domain/security/user';
 import {PureHttpService} from '../pure-http/pure-http.service';
 import {ErrorHandleService} from '../error-handle/error-handle.service';
 import {UserService} from '../user/user.service';
-import {AuthenticationSession} from '../../domain/authentication-session';
-import {SuccessAuthenticationResponse} from '../../domain/success-authentication-response';
+import {AuthenticationSession} from '../../domain/security/authentication-session';
+import {SuccessAuthenticationResponse} from '../../domain/security/success-authentication-response';
 import {Router} from '@angular/router';
 import {Headers, RequestOptionsArgs} from '@angular/http';
-import {EmailPasswordCredentials} from '../../domain/email-password-credentials';
+import {EmailPasswordCredentials} from '../../domain/security/email-password-credentials';
 
 @Injectable()
 export class SecurityService {

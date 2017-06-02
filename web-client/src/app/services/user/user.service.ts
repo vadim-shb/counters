@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {User} from '../../domain/user';
+import {User} from '../../domain/security/user';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {I18nService} from '../../modules/i18n/i18n.service';
 import {Lang} from '../../modules/i18n/domain/lang';

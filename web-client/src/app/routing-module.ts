@@ -9,6 +9,7 @@ import {TermsOfUsageComponent} from './components/terms-of-usage/terms-of-usage.
 import {RootNavigatorComponent} from './components/root/root.component';
 import {AdminDashboardComponent} from './components/space-admin/admin-dashboard/admin-dashboard.component';
 import {UserDashboardComponent} from './components/space-user/user-dashboard/user-dashboard.component';
+import {TownsComponent} from 'app/components/space-admin/towns/towns.component';
 
 const ROUTES: Routes = [
   {
@@ -38,6 +39,10 @@ const ROUTES: Routes = [
   {
     path: 'admin/dashboard',
     component: AdminDashboardComponent
+  },
+  {
+    path: 'admin/towns',
+    component: TownsComponent
   },
   {
     path: 'user/dashboard',

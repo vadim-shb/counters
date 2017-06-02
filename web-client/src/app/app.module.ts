@@ -15,7 +15,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MomentModule} from 'angular2-moment';
 import {ResumeDao} from './dao/resume/resume.dao';
 import {HeaderComponent} from './components/header/header.component';
-import {IfAuthenticatedDirective} from './directives/if-authenticated/if-authenticated.directive';
 import {ToasterModule} from 'angular2-toaster';
 import {ToastService} from './services/toast/toast.service';
 import {I18nModule} from './modules/i18n/i18n.module';
@@ -31,13 +30,16 @@ import {ChangePasswordComponent} from './components/security/user-settings/chang
 import {AdminDashboardComponent} from './components/space-admin/admin-dashboard/admin-dashboard.component';
 import {UserDashboardComponent} from './components/space-user/user-dashboard/user-dashboard.component';
 import {MaterialModule} from './modules/material.module';
+import {TownsComponent} from './components/space-admin/towns/towns.component';
+import {EditTownLineComponent} from './components/space-admin/towns/edit-town-line/edit-town-line.component';
+import {UserHasRolesDirective} from './directives/user-has-roles/user-has-roles.directive';
+import {UserHasAnyRoleDirective} from './directives/user-has-any-role/user-has-any-role.directive';
 
 @NgModule({
   declarations: [
     RootComponent,
     SignInComponent,
     HeaderComponent,
-    IfAuthenticatedDirective,
     UserSettingsComponent,
     SignUpComponent,
     PasswordRecoveryComponent,
@@ -49,6 +51,10 @@ import {MaterialModule} from './modules/material.module';
     RootNavigatorComponent,
     AdminDashboardComponent,
     UserDashboardComponent,
+    TownsComponent,
+    EditTownLineComponent,
+    UserHasRolesDirective,
+    UserHasAnyRoleDirective,
   ],
   imports: [
     BrowserModule,

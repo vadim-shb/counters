@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {SecurityService} from '../../../services/security/security.service';
 import {Router} from '@angular/router';
-import {User} from '../../../domain/user';
+import {User} from '../../../domain/security/user';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {I18nService} from '../../../modules/i18n/i18n.service';
 import {Translation} from '../../../modules/i18n/translations/translation';
-import {EmailPasswordCredentials} from '../../../domain/email-password-credentials';
+import {EmailPasswordCredentials} from '../../../domain/security/email-password-credentials';
 import {ValidationService} from '../../../services/validation/validation.service';
 
 @Component({

@@ -3,7 +3,7 @@ import {ToastService} from '../../services/toast/toast.service';
 import {ToasterConfig} from 'angular2-toaster';
 import {UserService} from '../../services/user/user.service';
 import {Router} from '@angular/router';
-import {UserRole} from '../../domain/user';
+import {UserRole} from '../../domain/security/user';
 
 @Component({
   selector: 'app-root',

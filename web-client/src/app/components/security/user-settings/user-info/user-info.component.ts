@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Translation} from '../../../../modules/i18n/translations/translation';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {User} from '../../../../domain/user';
+import {User} from '../../../../domain/security/user';
 import {UserService} from '../../../../services/user/user.service';
 import {I18nService} from '../../../../modules/i18n/i18n.service';
 import {Http} from '@angular/http';
