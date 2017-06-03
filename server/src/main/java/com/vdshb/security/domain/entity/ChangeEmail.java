@@ -11,7 +11,8 @@ import java.time.ZoneOffset;
 public class ChangeEmail {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "change_email_id_seq")
+    @SequenceGenerator(name = "change_email_id_seq", sequenceName = "change_email_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "new_email")

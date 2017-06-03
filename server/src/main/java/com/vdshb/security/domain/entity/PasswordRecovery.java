@@ -10,7 +10,8 @@ import java.time.ZoneOffset;
 public class PasswordRecovery {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "password_recovery_id_seq")
+    @SequenceGenerator(name = "password_recovery_id_seq", sequenceName = "password_recovery_id_seq", allocationSize = 1)
     private Long id;
 
     @ManyToOne

@@ -13,7 +13,8 @@ import java.time.ZoneOffset;
 public class SecurityUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "security_user_id_seq")
+    @SequenceGenerator(name = "security_user_id_seq", sequenceName = "security_user_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "access_token")
