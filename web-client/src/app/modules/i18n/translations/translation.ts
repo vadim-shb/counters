@@ -10,6 +10,9 @@ export interface Translation {
 
 
   SAVE: string;
+  ADD: string;
+
+
   securityUser: EntitySecurityUserTranslation;
   town: EntityTownTranslation;
   security: ModuleSecurityTranslation;

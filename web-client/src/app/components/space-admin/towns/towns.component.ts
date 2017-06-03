@@ -16,4 +16,7 @@ export class TownsComponent implements OnInit {
     this.newTown = new Town();
   }
 
+  clearSavedValue(savedTown) {
+    this.newTown = new Town();
+  }
 }

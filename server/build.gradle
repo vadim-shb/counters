@@ -68,6 +68,7 @@ dependencies {
     compile group: 'org.springframework.boot'       , name: 'spring-boot-devtools'
     compile group: 'io.springfox'                   , name: 'springfox-swagger2'            , version: '2.7.0'
     compile group: 'io.springfox'                   , name: 'springfox-swagger-ui'          , version: '2.7.0'
+    compile group: 'org.lazyluke'                   , name: 'log4jdbc-remix'                , version: '0.2.7'
 
 //    test tools
     testCompile group: 'org.springframework'        , name: 'spring-test'

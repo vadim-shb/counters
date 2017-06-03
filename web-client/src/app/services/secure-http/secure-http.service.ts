@@ -20,6 +20,10 @@ export class SecureHttpService extends Http {
     super(backend, defaultOptions);
   }
 
+  request(url: string, options?: RequestOptionsArgs): Observable<Response> {
+    throw 'Not implemented yet. See SecureHttpService.';
+  }
+
   // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
   get(url: string, options?: RequestOptionsArgs): Observable<Response> {
     return this.ifAuthenticated(() => {
@@ -40,6 +44,63 @@ export class SecureHttpService extends Http {
   }
 
   // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
+  delete(url: string, options?: RequestOptionsArgs): Observable<Response> {
+    return this.ifAuthenticated(() => {
+      return this.pureHttpService.delete(url, this.modifyOptions(this.securityService.getAccessToken(), options))
+        .catch(errorResponse => {
+          if (errorResponse.status == 403 || errorResponse.status == 401) {
+            return this.securityService.refreshAuthSession()
+              .flatMap(() => {
+                return this.pureHttpService.delete(url, this.modifyOptions(this.securityService.getAccessToken(), options))
+              });
+          }
+          return Observable.throw(errorResponse);
+        })
+        .catch(errorResponse => {
+          return this.errorHandleService.catchHttpError(errorResponse)
+        })
+    });
+  }
+
+  // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
+  head(url: string, options?: RequestOptionsArgs): Observable<Response> {
+    return this.ifAuthenticated(() => {
+      return this.pureHttpService.head(url, this.modifyOptions(this.securityService.getAccessToken(), options))
+        .catch(errorResponse => {
+          if (errorResponse.status == 403 || errorResponse.status == 401) {
+            return this.securityService.refreshAuthSession()
+              .flatMap(() => {
+                return this.pureHttpService.head(url, this.modifyOptions(this.securityService.getAccessToken(), options))
+              });
+          }
+          return Observable.throw(errorResponse);
+        })
+        .catch(errorResponse => {
+          return this.errorHandleService.catchHttpError(errorResponse)
+        })
+    });
+  }
+
+  // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
+  options(url: string, options?: RequestOptionsArgs): Observable<Response> {
+    return this.ifAuthenticated(() => {
+      return this.pureHttpService.options(url, this.modifyOptions(this.securityService.getAccessToken(), options))
+        .catch(errorResponse => {
+          if (errorResponse.status == 403 || errorResponse.status == 401) {
+            return this.securityService.refreshAuthSession()
+              .flatMap(() => {
+                return this.pureHttpService.options(url, this.modifyOptions(this.securityService.getAccessToken(), options))
+              });
+          }
+          return Observable.throw(errorResponse);
+        })
+        .catch(errorResponse => {
+          return this.errorHandleService.catchHttpError(errorResponse)
+        })
+    });
+  }
+
+  // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
   post(url: string, data?: Object, options?: RequestOptionsArgs): Observable<Response> {
     return this.ifAuthenticated(() => {
       return this.pureHttpService.post(url, data, this.modifyOptions(this.securityService.getAccessToken(), options))
@@ -48,6 +109,44 @@ export class SecureHttpService extends Http {
             return this.securityService.refreshAuthSession()
               .flatMap(() => {
                 return this.pureHttpService.post(url, data, this.modifyOptions(this.securityService.getAccessToken(), options))
+              });
+          }
+          return Observable.throw(errorResponse);
+        })
+        .catch(errorResponse => {
+          return this.errorHandleService.catchHttpError(errorResponse)
+        })
+    });
+  }
+
+  // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
+  put(url: string, data?: Object, options?: RequestOptionsArgs): Observable<Response> {
+    return this.ifAuthenticated(() => {
+      return this.pureHttpService.put(url, data, this.modifyOptions(this.securityService.getAccessToken(), options))
+        .catch(errorResponse => {
+          if (errorResponse.status == 403 || errorResponse.status == 401) {
+            return this.securityService.refreshAuthSession()
+              .flatMap(() => {
+                return this.pureHttpService.put(url, data, this.modifyOptions(this.securityService.getAccessToken(), options))
+              });
+          }
+          return Observable.throw(errorResponse);
+        })
+        .catch(errorResponse => {
+          return this.errorHandleService.catchHttpError(errorResponse)
+        })
+    });
+  }
+
+  // Try to get data second time, if UNAUTHORIZED. Possibly access-token expired.
+  patch(url: string, data?: Object, options?: RequestOptionsArgs): Observable<Response> {
+    return this.ifAuthenticated(() => {
+      return this.pureHttpService.patch(url, data, this.modifyOptions(this.securityService.getAccessToken(), options))
+        .catch(errorResponse => {
+          if (errorResponse.status == 403 || errorResponse.status == 401) {
+            return this.securityService.refreshAuthSession()
+              .flatMap(() => {
+                return this.pureHttpService.patch(url, data, this.modifyOptions(this.securityService.getAccessToken(), options))
               });
           }
           return Observable.throw(errorResponse);

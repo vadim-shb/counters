@@ -19,6 +19,7 @@ export class EnglishTranslation implements Translation {
   }
 
   SAVE = 'Save';
+  ADD = 'Add';
 
   securityUser = new EntitySecurityUserEnglishTranslation();
   town = new EntityTownEnglishTranslation();

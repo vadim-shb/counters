@@ -3,10 +3,11 @@ app:
 
 spring:
   datasource:
-    url:  "jdbc:postgresql://localhost:5433/hcs"
+    url:  "jdbc:log4jdbc:postgresql://localhost:5433/hcs"
     username:  "pguser"
     password:  "1234"
-    driver-class-name: "org.postgresql.Driver"
+    driver-class-name: "net.sf.log4jdbc.DriverSpy"
+#    driver-class-name: "org.postgresql.Driver"
 
 security:
   access-token-expiration-time: 3600  # 1 hour

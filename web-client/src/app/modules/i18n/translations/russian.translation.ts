@@ -19,6 +19,7 @@ export class RussianTranslation implements Translation {
   }
 
   SAVE = 'Сохранить';
+  ADD = 'Добавить';
 
   securityUser = new EntitySecurityUserRussianTranslation();
   town = new EntityTownRussianTranslation();

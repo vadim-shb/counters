@@ -1,1 +1,3 @@
-<edit-town-line [town]="newTown"></edit-town-line>
+<div class="add-town">
+  <edit-town-line [town]="newTown" (onSave)="clearSavedValue($event)"></edit-town-line>
+</div>

@@ -34,6 +34,7 @@ import {TownsComponent} from './components/space-admin/towns/towns.component';
 import {EditTownLineComponent} from './components/space-admin/towns/edit-town-line/edit-town-line.component';
 import {UserHasRolesDirective} from './directives/user-has-roles/user-has-roles.directive';
 import {UserHasAnyRoleDirective} from './directives/user-has-any-role/user-has-any-role.directive';
+import {TownDao} from './dao/town/town.dao';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import {UserHasAnyRoleDirective} from './directives/user-has-any-role/user-has-a
     {provide: ConnectionBackend, useClass: XHRBackend},
     PureHttpService,
     {provide: Http, useClass: SecureHttpService},
-    ResumeDao
+    ResumeDao,
+    TownDao,
   ],
   bootstrap: [RootComponent]
 })

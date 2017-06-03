@@ -1,3 +1,9 @@
-<p>
-  edit-town-line works!
-</p>
+<form [formGroup]="townForm" (ngSubmit)="save()" novalidate>
+  <md-input-container>
+    <input mdInput formControlName="name" placeholder="{{i18n.town.NAME}}">
+    <md-hint *ngIf="nameFormControl.touched && nameFormControl.hasError('required')">
+      {{i18n.town.NAME__REQUIRED}}
+    </md-hint>
+  </md-input-container>
+  <button type="submit" md-raised-button color="primary">{{i18n.ADD}} {{i18n.town.TOWN | lowercase}}</button>
+</form>

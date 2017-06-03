@@ -3,15 +3,16 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
 
-    <changeSet id="2017-03-16__add-resumes" author="vdshb" context="dev">
-        <loadData
-                tableName="resume"
-                file="liquibase/fixtures/2017-03-16__add-resumes.csv"
-        >
-        </loadData>
+    <changeSet id="2017-06-03__create-town" author="vdshb" context="main">
+        <sql>
+            create table town (
+                id              BIGSERIAL           NOT NULL PRIMARY KEY,
+                name            VARCHAR(100)
+            );
+        </sql>
         <rollback>
             <sql>
-                DELETE FROM resume;
+                DROP TABLE town;
             </sql>
         </rollback>
     </changeSet>
