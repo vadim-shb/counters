@@ -12,6 +12,7 @@ import {TownDao} from '../../../../dao/town/town.dao';
 })
 export class EditTownLineComponent implements OnInit {
 
+  private originalTown: Town;
   private townForm: FormGroup;
   private i18n: Translation;
 
@@ -38,6 +39,7 @@ export class EditTownLineComponent implements OnInit {
   }
 
   @Input() set town(townToEdit: Town) {
+    this.originalTown = townToEdit;
     this.townForm = this.fb.group({
       id: [townToEdit.id],
       name: [townToEdit.name, [Validators.required]]

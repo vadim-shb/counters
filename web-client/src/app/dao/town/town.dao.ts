@@ -9,6 +9,11 @@ export class TownDao {
   constructor(private http: Http) {
   }
 
+  loadAll(): Observable<Town[]> {
+    return this.http.get(`api/towns`)
+      .map(response => response.json() as Town[]);
+  }
+
   create(town: Town): Observable<Town> {
     return this.http.post(`api/town/`, town)
       .map(response => response.json() as Town);

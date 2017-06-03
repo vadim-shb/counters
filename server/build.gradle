@@ -58,6 +58,7 @@ dependencies {
     compile group: 'org.apache.commons'             , name: 'commons-lang3'                 , version: '3.5'
     compile group: 'org.apache.commons'             , name: 'commons-email'                 , version: '1.4'
     compile group: 'commons-codec'                  , name: 'commons-codec'                 , version: '1.10'
+    compile group: 'org.apache.commons'             , name: 'commons-collections4'          , version: '4.1'
     compile group: 'org.springframework.security'   , name: 'spring-security-web'
     compile group: 'org.springframework.security'   , name: 'spring-security-config'
     compile group: 'com.github.ben-manes.caffeine'  , name: 'caffeine'

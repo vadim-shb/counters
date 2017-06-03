@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Town} from '../../../domain/town';
+import {TownDao} from '../../../dao/town/town.dao';
 
 @Component({
   selector: 'app-towns',
@@ -9,11 +10,18 @@ import {Town} from '../../../domain/town';
 export class TownsComponent implements OnInit {
 
   private newTown: Town;
+  private towns: Town[] = [];
 
-  constructor() { }
+  // @formatter:off
+  constructor(
+    private townDao: TownDao,
+  ) { }
+  // @formatter:on
 
   ngOnInit() {
     this.newTown = new Town();
+    this.townDao.loadAll()
+      .subscribe(towns => this.towns = towns);
   }
 
   clearSavedValue(savedTown) {
