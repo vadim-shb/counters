@@ -1,7 +1,7 @@
 package com.vdshb.controllers;
 
 import com.vdshb.domain.Town;
-import com.vdshb.repositories.TownRepository;
+import com.vdshb.repository.TownRepository;
 import org.apache.commons.collections4.IteratorUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

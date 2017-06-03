@@ -1,7 +1,7 @@
 package com.vdshb.controllers;
 
 import com.vdshb.domain.ManagementCompany;
-import com.vdshb.repositories.ManagementCompanyRepository;
+import com.vdshb.repository.ManagementCompanyRepository;
 import org.apache.commons.collections4.IteratorUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

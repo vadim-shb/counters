@@ -7,6 +7,7 @@
         <sql>
             create table security_user (
                 id                                  BIGSERIAL           NOT NULL PRIMARY KEY,
+                is_active                           BOOLEAN             NOT NULL DEFAULT TRUE,
                 access_token                        VARCHAR(40),
                 refresh_token                       VARCHAR(40),
                 access_token_expiration_date_time   TIMESTAMP WITHOUT TIME ZONE,

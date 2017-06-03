@@ -1,17 +1,16 @@
 package com.vdshb.domain;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "management_company")
-public class ManagementCompany {
+public class ManagementCompany extends BasicEntity {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "management_company_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "management_company_id_seq")
     @SequenceGenerator(name = "management_company_id_seq", sequenceName = "management_company_id_seq", allocationSize = 1)
     private Long id;
+
     private String name;
 
 //    @ManyToMany
@@ -26,6 +25,7 @@ public class ManagementCompany {
     //===========================================================
 
 
+    @Override
     public Long getId() {
         return id;
     }
