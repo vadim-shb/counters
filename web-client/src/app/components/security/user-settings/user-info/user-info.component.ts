@@ -5,6 +5,7 @@ import {User} from '../../../../domain/security/user';
 import {UserService} from '../../../../services/user/user.service';
 import {I18nService} from '../../../../modules/i18n/i18n.service';
 import {Http} from '@angular/http';
+import {UserResponse} from '../../../../domain/security/success-authentication-response';
 
 @Component({
   selector: 'user-settings__user-info',
@@ -70,10 +71,10 @@ export class UserInfoComponent implements OnInit {
     };
 
     this.http.post(`/api/security/current-user/change-info`, userInfoChangeRequest)
-      .map(response => response.json() as User)
+      .map(response => response.json() as UserResponse)
       .subscribe(
-        (user) => {
-          this.userService.setUser(user);
+        (userResponse) => {
+          this.userService.setUser(new User(userResponse));
         });
   }
 
