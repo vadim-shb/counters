@@ -1,6 +1,6 @@
 import {Lang} from '../domain/lang';
 import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from '../../../components/security/translation';
-import {EntityTownTranslation} from '../../../domain/i18n/translation';
+import {EntityManagementCompanyTranslation, EntityTownTranslation} from '../../../domain/i18n/translation';
 
 export interface Translation {
   TRANSLATION_LANGUAGE: Lang;
@@ -16,6 +16,7 @@ export interface Translation {
 
   securityUser: EntitySecurityUserTranslation;
   town: EntityTownTranslation;
+  managementCompany: EntityManagementCompanyTranslation;
   security: ModuleSecurityTranslation;
 
   httpErrors: {

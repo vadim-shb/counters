@@ -1,0 +1,11 @@
+<form [formGroup]="managementCompanyForm" (ngSubmit)="save()" novalidate>
+  <md-input-container>
+    <input mdInput formControlName="name" placeholder="{{i18n.managementCompany.NAME}}">
+    <md-hint *ngIf="nameFormControl.touched && nameFormControl.hasError('required')">
+      {{i18n.managementCompany.NAME__REQUIRED}}
+    </md-hint>
+  </md-input-container>
+  <button *ngIf="!originalManagementCompany.id" type="submit" md-raised-button color="primary">{{i18n.managementCompany.ADD_MANAGEMENT_COMPANY}}</button>
+  <button *ngIf="originalManagementCompany.id" type="submit" md-raised-button color="primary" [disabled]="managementCompanyForm.value.name == originalManagementCompany.name">{{i18n.SAVE}}</button>
+  <button *ngIf="originalManagementCompany.id" type="button" md-raised-button color="warn" (click)="delete()">{{i18n.DELETE}}</button>
+</form>

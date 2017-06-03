@@ -57,7 +57,7 @@ export class EditTownLineComponent implements OnInit {
     let town: Town = this.townForm.value;
 
     let saveObs = town.id ? this.townDao.update(town) : this.townDao.create(town);
-    saveObs.subscribe((town) => {
+    saveObs.subscribe(town => {
       this.town = town;
       this.onSave.emit(town);
       setTimeout(() => this.markFormAsUntouchedAndPending());

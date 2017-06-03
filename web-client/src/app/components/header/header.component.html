@@ -5,6 +5,10 @@
     <a md-button routerLink="admin/towns">{{i18n.town.TOWNS}}</a>
   </ng-container>
 
+  <ng-container *userHasRoles="[UserRole.ADMIN]">
+    <a md-button routerLink="admin/management-companies">{{i18n.managementCompany.MANAGEMENT_COMPANIES}}</a>
+  </ng-container>
+
   <span class="app-toolbar-filler"></span>
 
   <ng-container *ngIf="user; else : anonymousBlock">

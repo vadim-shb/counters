@@ -25,7 +25,7 @@ public class TownController {
 //
 
     @GetMapping("/api/towns")
-    public Iterable<Town> getTowns() {
+    public List<Town> getTowns() {
         List<Town> towns = IteratorUtils.toList(townRepository.findAll().iterator());
         towns.sort(Comparator.comparing(Town::getName));
         return towns;

@@ -10,6 +10,7 @@ import {RootNavigatorComponent} from './components/root/root.component';
 import {AdminDashboardComponent} from './components/space-admin/admin-dashboard/admin-dashboard.component';
 import {UserDashboardComponent} from './components/space-user/user-dashboard/user-dashboard.component';
 import {TownsComponent} from 'app/components/space-admin/towns/towns.component';
+import {ManagementCompanyComponent} from './components/space-admin/management-company/management-company.component';
 
 const ROUTES: Routes = [
   {
@@ -43,6 +44,10 @@ const ROUTES: Routes = [
   {
     path: 'admin/towns',
     component: TownsComponent
+  },
+  {
+    path: 'admin/management-companies',
+    component: ManagementCompanyComponent
   },
   {
     path: 'user/dashboard',

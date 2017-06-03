@@ -5,7 +5,7 @@ import {
   EntitySecurityUserEnglishTranslation,
   ModuleSecurityEnglishTranslation
 } from '../../../components/security/english.translation';
-import {EntityTownEnglishTranslation} from '../../../domain/i18n/english.translation';
+import {EntityManagementCompanyEnglishTranslation, EntityTownEnglishTranslation} from '../../../domain/i18n/english.translation';
 
 @Injectable()
 export class EnglishTranslation implements Translation {
@@ -24,6 +24,7 @@ export class EnglishTranslation implements Translation {
 
   securityUser = new EntitySecurityUserEnglishTranslation();
   town = new EntityTownEnglishTranslation();
+  managementCompany = new EntityManagementCompanyEnglishTranslation();
   security = new ModuleSecurityEnglishTranslation();
 
   httpErrors = {

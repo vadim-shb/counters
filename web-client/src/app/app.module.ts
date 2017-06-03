@@ -35,6 +35,9 @@ import {EditTownLineComponent} from './components/space-admin/towns/edit-town-li
 import {UserHasRolesDirective} from './directives/user-has-roles/user-has-roles.directive';
 import {UserHasAnyRoleDirective} from './directives/user-has-any-role/user-has-any-role.directive';
 import {TownDao} from './dao/town/town.dao';
+import {ManagementCompanyComponent} from './components/space-admin/management-company/management-company.component';
+import {EditManagementCompanyLineComponent} from './components/space-admin/management-company/edit-management-company-line/edit-management-company-line.component';
+import {ManagementCompanyDao} from './dao/management-company/management-company.dao';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,8 @@ import {TownDao} from './dao/town/town.dao';
     EditTownLineComponent,
     UserHasRolesDirective,
     UserHasAnyRoleDirective,
+    ManagementCompanyComponent,
+    EditManagementCompanyLineComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +84,7 @@ import {TownDao} from './dao/town/town.dao';
     {provide: Http, useClass: SecureHttpService},
     ResumeDao,
     TownDao,
+    ManagementCompanyDao,
   ],
   bootstrap: [RootComponent]
 })
