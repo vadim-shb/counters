@@ -47,6 +47,7 @@ export class EditTownLineComponent implements OnInit {
   };
 
   @Output() onSave = new EventEmitter();
+  @Output() onDelete = new EventEmitter();
 
   save() {
     if (this.townForm.invalid) {
@@ -61,6 +62,13 @@ export class EditTownLineComponent implements OnInit {
       this.onSave.emit(town);
       setTimeout(() => this.markFormAsUntouchedAndPending());
     });
+  }
+
+  delete() {
+    this.townDao.delete(this.originalTown.id)
+      .subscribe(() => {
+        this.onDelete.emit();
+      });
   }
 
   private markFormAsUntouchedAndPending() {

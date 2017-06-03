@@ -27,4 +27,8 @@ export class TownsComponent implements OnInit {
   clearSavedValue(savedTown) {
     this.newTown = new Town();
   }
+
+  deleted(deletedTown: Town) {
+    this.towns = this.towns.filter(town => town != deletedTown);
+  }
 }

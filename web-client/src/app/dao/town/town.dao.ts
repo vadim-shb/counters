@@ -23,4 +23,8 @@ export class TownDao {
     return this.http.put(`api/town/${town.id}`, town)
       .map(response => response.json() as Town);
   }
+
+  delete(townId: number) {
+    return this.http.delete(`api/town/${townId}`);
+  }
 }

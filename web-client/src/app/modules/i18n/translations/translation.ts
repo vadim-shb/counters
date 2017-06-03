@@ -11,6 +11,7 @@ export interface Translation {
 
   SAVE: string;
   ADD: string;
+  DELETE: string;
 
 
   securityUser: EntitySecurityUserTranslation;

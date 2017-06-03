@@ -2,5 +2,5 @@
   <edit-town-line [town]="newTown" (onSave)="clearSavedValue($event)"></edit-town-line>
 </div>
 <div class="towns">
-  <edit-town-line *ngFor="let town of towns" [town]="town"></edit-town-line>
+  <edit-town-line *ngFor="let town of towns" [town]="town" (onDelete)="deleted(town)"></edit-town-line>
 </div>
