@@ -10,7 +10,7 @@ export interface Translation {
   TRANSLATION_LANGUAGE_FLAG_PATH: string;
 
 
-  securityUser: EntitySecurityUserTranslation;
+  entSecurityUser: EntitySecurityUserTranslation;
   town: EntityTownTranslation;
   managementCompany: EntityManagementCompanyTranslation;
   uiSecurity: ModuleSecurityTranslation;

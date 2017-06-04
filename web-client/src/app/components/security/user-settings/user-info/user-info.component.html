@@ -1,15 +1,15 @@
 <form [formGroup]="userInfoForm" (ngSubmit)="saveUserInfo()" novalidate>
   <h2>{{i18n.uiSecurity.USER_INFO}}</h2>
   <md-input-container>
-    <input mdInput formControlName="name" placeholder="{{i18n.securityUser.NAME}}">
+    <input mdInput formControlName="name" placeholder="{{i18n.entSecurityUser.NAME}}">
     <md-hint *ngIf="userNameFormControl.touched && userNameFormControl.hasError('required')">
-      {{i18n.securityUser.NAME__REQUIRED}}
+      {{i18n.entSecurityUser.NAME__REQUIRED}}
     </md-hint>
     <md-hint *ngIf="userNameFormControl.touched && userNameFormControl.hasError('maxlength')">
-      {{i18n.securityUser.NAME__CAN_NOT_BE_LONGER_THAN_100_CHARACTERS}}
+      {{i18n.entSecurityUser.NAME__CAN_NOT_BE_LONGER_THAN_100_CHARACTERS}}
     </md-hint>
   </md-input-container>
-  <md-select formControlName="language" placeholder="{{i18n.securityUser.LANGUAGE}}">
+  <md-select formControlName="language" placeholder="{{i18n.entSecurityUser.LANGUAGE}}">
     <md-option *ngFor="let translation of i18nService.getTranslations()"
                value="{{translation.TRANSLATION_LANGUAGE_CODE}}">
       <span><img src="{{translation.TRANSLATION_LANGUAGE_FLAG_PATH}}"></span>

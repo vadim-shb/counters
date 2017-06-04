@@ -19,7 +19,7 @@ export class RussianTranslation implements Translation {
   constructor() {
   }
 
-  securityUser = new EntitySecurityUserRussianTranslation();
+  entSecurityUser = new EntitySecurityUserRussianTranslation();
   town = new EntityTownRussianTranslation();
   managementCompany = new EntityManagementCompanyRussianTranslation();
   uiSecurity = new ModuleSecurityRussianTranslation();

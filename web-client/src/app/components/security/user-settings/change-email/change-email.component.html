@@ -1,15 +1,15 @@
 <form [formGroup]="emailChangeForm" (ngSubmit)="changeEmail()" novalidate>
   <h2>{{i18n.uiSecurity.CHANGE_EMAIL}}</h2>
   <md-input-container>
-    <input mdInput formControlName="email" placeholder="{{i18n.securityUser.EMAIL}}" (ngModelChange)="emailChanges()">
+    <input mdInput formControlName="email" placeholder="{{i18n.entSecurityUser.EMAIL}}" (ngModelChange)="emailChanges()">
     <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('required')">
-      {{i18n.securityUser.EMAIL__REQUIRED}}
+      {{i18n.entSecurityUser.EMAIL__REQUIRED}}
     </md-hint>
     <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('maxlength')">
-      {{i18n.securityUser.EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+      {{i18n.entSecurityUser.EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
     </md-hint>
     <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('email')">
-      {{i18n.securityUser.EMAIL__INVALID}}
+      {{i18n.entSecurityUser.EMAIL__INVALID}}
     </md-hint>
   </md-input-container>
   <div class="message success" *ngIf="emailChangeProcessStarts">

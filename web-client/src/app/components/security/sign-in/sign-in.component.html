@@ -2,27 +2,27 @@
   <div class="center-container">
     <form [formGroup]="signInForm" (ngSubmit)="signIn()" novalidate>
       <md-input-container>
-        <input mdInput formControlName="email" placeholder="{{i18n.securityUser.EMAIL}}">
+        <input mdInput formControlName="email" placeholder="{{i18n.entSecurityUser.EMAIL}}">
         <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('required')">
-          {{i18n.securityUser.EMAIL__REQUIRED}}
+          {{i18n.entSecurityUser.EMAIL__REQUIRED}}
         </md-hint>
         <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('maxlength')">
-          {{i18n.securityUser.EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+          {{i18n.entSecurityUser.EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
         </md-hint>
         <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('email')">
-          {{i18n.securityUser.EMAIL__INVALID}}
+          {{i18n.entSecurityUser.EMAIL__INVALID}}
         </md-hint>
       </md-input-container>
       <md-input-container>
-        <input mdInput formControlName="password" placeholder="{{i18n.securityUser.PASSWORD}}" type="password">
+        <input mdInput formControlName="password" placeholder="{{i18n.entSecurityUser.PASSWORD}}" type="password">
         <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('required')">
-          {{i18n.securityUser.PASSWORD__REQUIRED}}
+          {{i18n.entSecurityUser.PASSWORD__REQUIRED}}
         </md-hint>
         <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('minlength')">
-          {{i18n.securityUser.PASSWORD__CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS}}
+          {{i18n.entSecurityUser.PASSWORD__CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS}}
         </md-hint>
         <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('maxlength')">
-          {{i18n.securityUser.PASSWORD__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+          {{i18n.entSecurityUser.PASSWORD__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
         </md-hint>
       </md-input-container>
       <div class="error-message" *ngIf="wrongEmailOrPassword">

@@ -1,45 +1,45 @@
 <form [formGroup]="signUpForm" (ngSubmit)="signUp()" novalidate>
   <md-input-container>
-    <input mdInput formControlName="name" placeholder="{{i18n.securityUser.NAME}}">
+    <input mdInput formControlName="name" placeholder="{{i18n.entSecurityUser.NAME}}">
     <md-hint *ngIf="userNameFormControl.touched && userNameFormControl.hasError('required')">
-      {{i18n.securityUser.NAME__REQUIRED}}
+      {{i18n.entSecurityUser.NAME__REQUIRED}}
     </md-hint>
     <md-hint *ngIf="userNameFormControl.touched && userNameFormControl.hasError('maxlength')">
-      {{i18n.securityUser.NAME__CAN_NOT_BE_LONGER_THAN_100_CHARACTERS}}
+      {{i18n.entSecurityUser.NAME__CAN_NOT_BE_LONGER_THAN_100_CHARACTERS}}
     </md-hint>
   </md-input-container>
   <md-input-container>
-    <input mdInput formControlName="email" placeholder="{{i18n.securityUser.EMAIL}}" (ngModelChange)="emailChanges()">
+    <input mdInput formControlName="email" placeholder="{{i18n.entSecurityUser.EMAIL}}" (ngModelChange)="emailChanges()">
     <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('required')">
-      {{i18n.securityUser.EMAIL__REQUIRED}}
+      {{i18n.entSecurityUser.EMAIL__REQUIRED}}
     </md-hint>
     <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('maxlength')">
-      {{i18n.securityUser.EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+      {{i18n.entSecurityUser.EMAIL__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
     </md-hint>
     <md-hint *ngIf="emailFormControl.touched && emailFormControl.hasError('email')">
-      {{i18n.securityUser.EMAIL__INVALID}}
+      {{i18n.entSecurityUser.EMAIL__INVALID}}
     </md-hint>
   </md-input-container>
   <md-input-container>
-    <input mdInput formControlName="password" placeholder="{{i18n.securityUser.PASSWORD}}" type="password">
+    <input mdInput formControlName="password" placeholder="{{i18n.entSecurityUser.PASSWORD}}" type="password">
     <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('required')">
-      {{i18n.securityUser.PASSWORD__REQUIRED}}
+      {{i18n.entSecurityUser.PASSWORD__REQUIRED}}
     </md-hint>
     <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('minlength')">
-      {{i18n.securityUser.PASSWORD__CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS}}
+      {{i18n.entSecurityUser.PASSWORD__CAN_NOT_BE_SHORTER_THAN_4_CHARACTERS}}
     </md-hint>
     <md-hint *ngIf="passwordFormControl.touched && passwordFormControl.hasError('maxlength')">
-      {{i18n.securityUser.PASSWORD__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+      {{i18n.entSecurityUser.PASSWORD__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
     </md-hint>
   </md-input-container>
   <md-input-container>
     <input mdInput formControlName="repeatPassword" placeholder="{{i18n.uiSecurity.REPEAT_PASSWORD}}" type="password">
     <md-hint *ngIf="repeatPasswordFormControl.touched && repeatPasswordFormControl.hasError('repeatPassword')">
-      {{i18n.securityUser.PASSWORD_CONFIRMATION__DO_NOT_MATCH}}
+      {{i18n.entSecurityUser.PASSWORD_CONFIRMATION__DO_NOT_MATCH}}
     </md-hint>
   </md-input-container>
 
-  <md-select formControlName="language" placeholder="{{i18n.securityUser.LANGUAGE}}">
+  <md-select formControlName="language" placeholder="{{i18n.entSecurityUser.LANGUAGE}}">
     <md-option *ngFor="let translation of i18nService.getTranslations()" value="{{translation.TRANSLATION_LANGUAGE_CODE}}">
       <span><img src="{{translation.TRANSLATION_LANGUAGE_FLAG_PATH}}"></span> {{translation.TRANSLATION_LANGUAGE_NAME}}
     </md-option>

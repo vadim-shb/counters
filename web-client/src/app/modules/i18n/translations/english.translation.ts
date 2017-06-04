@@ -19,7 +19,7 @@ export class EnglishTranslation implements Translation {
   constructor() {
   }
 
-  securityUser = new EntitySecurityUserEnglishTranslation();
+  entSecurityUser = new EntitySecurityUserEnglishTranslation();
   town = new EntityTownEnglishTranslation();
   managementCompany = new EntityManagementCompanyEnglishTranslation();
   uiSecurity = new ModuleSecurityEnglishTranslation();
