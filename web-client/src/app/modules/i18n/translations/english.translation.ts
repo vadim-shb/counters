@@ -1,12 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Translation} from './translation';
 import {Lang} from '../domain/lang';
+import {EntitySecurityUserEnglishTranslation, ModuleSecurityEnglishTranslation} from './security/english.translation';
 import {
-  EntitySecurityUserEnglishTranslation,
-  ModuleSecurityEnglishTranslation
-} from '../../../components/security/english.translation';
-import {EntityManagementCompanyEnglishTranslation, EntityTownEnglishTranslation} from '../../../domain/i18n/english.translation';
-import {UiSharedEnglishTranslation} from '../../../components/space-shared/english.translation';
+  EntityManagementCompanyEnglishTranslation,
+  EntitySpaceAddressEnglishTranslation,
+  EntityTownEnglishTranslation
+} from './ent-business-logic/english.translation';
+import {UiSharedEnglishTranslation} from './ui-shared/english.translation';
+import {UiAdminEnglishTranslation} from './ui-admin/english.translation';
 
 @Injectable()
 export class EnglishTranslation implements Translation {
@@ -22,8 +24,10 @@ export class EnglishTranslation implements Translation {
   entSecurityUser = new EntitySecurityUserEnglishTranslation();
   entTown = new EntityTownEnglishTranslation();
   entManagementCompany = new EntityManagementCompanyEnglishTranslation();
+  entSpaceAddress = new EntitySpaceAddressEnglishTranslation();
   uiSecurity = new ModuleSecurityEnglishTranslation();
   uiShared = new UiSharedEnglishTranslation();
+  uiAdmin = new UiAdminEnglishTranslation();
 
   httpErrors = {
     SERVER_DO_NOT_RESPOND_HEADER: 'Server do not respond',

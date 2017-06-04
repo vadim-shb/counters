@@ -38,7 +38,9 @@ import {TownDao} from './dao/town/town.dao';
 import {ManagementCompanyComponent} from './components/space-admin/management-company/management-company.component';
 import {EditManagementCompanyLineComponent} from './components/space-admin/management-company/edit-management-company-line/edit-management-company-line.component';
 import {ManagementCompanyDao} from './dao/management-company/management-company.dao';
-import { UserCabinetComponent } from './components/space-shared/user-cabinet/user-cabinet.component';
+import {UserCabinetComponent} from './components/space-shared/user-cabinet/user-cabinet.component';
+import {UserSpacesComponent} from './components/space-user/user-spaces/user-spaces.component';
+import {EditUserSpaceComponent} from './components/space-user/user-spaces/edit-user-space/edit-user-space.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { UserCabinetComponent } from './components/space-shared/user-cabinet/use
     ManagementCompanyComponent,
     EditManagementCompanyLineComponent,
     UserCabinetComponent,
+    UserSpacesComponent,
+    EditUserSpaceComponent,
   ],
   imports: [
     BrowserModule,

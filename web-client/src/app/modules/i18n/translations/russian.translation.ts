@@ -1,12 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Translation} from './translation';
 import {Lang} from '../domain/lang';
+import {EntitySecurityUserRussianTranslation, ModuleSecurityRussianTranslation} from './security/russian.translation';
 import {
-  EntitySecurityUserRussianTranslation,
-  ModuleSecurityRussianTranslation
-} from '../../../components/security/russian.translation';
-import {EntityManagementCompanyRussianTranslation, EntityTownRussianTranslation} from '../../../domain/i18n/russian.translation';
-import {UiSharedRussianTranslation} from '../../../components/space-shared/russian.translation';
+  EntityManagementCompanyRussianTranslation,
+  EntitySpaceAddressRussianTranslation,
+  EntityTownRussianTranslation
+} from './ent-business-logic/russian.translation';
+import {UiSharedRussianTranslation} from './ui-shared/russian.translation';
+import {UiAdminRussianTranslation} from './ui-admin/russian.translation';
 
 @Injectable()
 export class RussianTranslation implements Translation {
@@ -22,8 +24,10 @@ export class RussianTranslation implements Translation {
   entSecurityUser = new EntitySecurityUserRussianTranslation();
   entTown = new EntityTownRussianTranslation();
   entManagementCompany = new EntityManagementCompanyRussianTranslation();
+  entSpaceAddress = new EntitySpaceAddressRussianTranslation();
   uiSecurity = new ModuleSecurityRussianTranslation();
   uiShared = new UiSharedRussianTranslation();
+  uiAdmin = new UiAdminRussianTranslation();
 
   httpErrors = {
     SERVER_DO_NOT_RESPOND_HEADER: 'Сервер не отвечает',

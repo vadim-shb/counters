@@ -1,4 +1,5 @@
 export interface EntityTownTranslation {
+  TOWN: string;
   TOWNS: string;
   NAME: string;
   ADD_TOWN: string;
@@ -14,4 +15,11 @@ export interface EntityManagementCompanyTranslation {
 
   // ==== errors ====
   NAME__REQUIRED: string;
+}
+
+export interface EntitySpaceAddressTranslation {
+  ADDRESS: string;
+
+  // ==== errors ====
+  ADDRESS__REQUIRED: string;
 }

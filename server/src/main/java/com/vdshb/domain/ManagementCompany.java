@@ -1,10 +1,12 @@
 package com.vdshb.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "management_company")
-public class ManagementCompany extends BasicEntity {
+public class ManagementCompany extends BasicEntity<ManagementCompany> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "management_company_id_seq")
@@ -13,12 +15,18 @@ public class ManagementCompany extends BasicEntity {
 
     private String name;
 
-//    @ManyToMany
-//    @JoinTable(name="management_companies_in_towns",
-//            joinColumns = @JoinColumn(name = "management_company_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(name = "town_id", referencedColumnName = "id")
-//    )
-//    private List<Town> towns = new ArrayList<>(0);
+    @ManyToMany
+    @JoinTable(name="management_company_in_town",
+            joinColumns = @JoinColumn(name = "management_company_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "town_id", referencedColumnName = "id")
+    )
+    private List<Town> towns = new ArrayList<>(0);
+
+    @Override
+    public void setBeanPropertiesFromREST(ManagementCompany request) {
+        setName(request.getName());
+        setTowns(request.getTowns());
+    }
 
     //===========================================================
     //             Generated getters and setters
@@ -42,11 +50,11 @@ public class ManagementCompany extends BasicEntity {
         this.name = name;
     }
 
-//    public List<Town> getTowns() {
-//        return towns;
-//    }
-//
-//    public void setTowns(List<Town> towns) {
-//        this.towns = towns;
-//    }
+    public List<Town> getTowns() {
+        return towns;
+    }
+
+    public void setTowns(List<Town> towns) {
+        this.towns = towns;
+    }
 }

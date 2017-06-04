@@ -1,7 +1,8 @@
 import {Lang} from '../domain/lang';
-import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from '../../../components/security/translation';
-import {EntityManagementCompanyTranslation, EntityTownTranslation} from '../../../domain/i18n/translation';
-import {UiSharedTranslation} from '../../../components/space-shared/translation';
+import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from './security/translation';
+import {EntityManagementCompanyTranslation, EntitySpaceAddressTranslation, EntityTownTranslation} from './ent-business-logic/translation';
+import {UiSharedTranslation} from './ui-shared/translation';
+import {UiAdminTranslation} from './ui-admin/translation';
 
 export interface Translation {
   TRANSLATION_LANGUAGE: Lang;
@@ -13,8 +14,10 @@ export interface Translation {
   entSecurityUser: EntitySecurityUserTranslation;
   entTown: EntityTownTranslation;
   entManagementCompany: EntityManagementCompanyTranslation;
+  entSpaceAddress: EntitySpaceAddressTranslation;
   uiSecurity: ModuleSecurityTranslation;
   uiShared: UiSharedTranslation;
+  uiAdmin: UiAdminTranslation;
 
   httpErrors: {
     SERVER_DO_NOT_RESPOND_HEADER: string;
