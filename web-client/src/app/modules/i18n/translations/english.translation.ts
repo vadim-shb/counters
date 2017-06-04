@@ -20,8 +20,8 @@ export class EnglishTranslation implements Translation {
   }
 
   entSecurityUser = new EntitySecurityUserEnglishTranslation();
-  town = new EntityTownEnglishTranslation();
-  managementCompany = new EntityManagementCompanyEnglishTranslation();
+  entTown = new EntityTownEnglishTranslation();
+  entManagementCompany = new EntityManagementCompanyEnglishTranslation();
   uiSecurity = new ModuleSecurityEnglishTranslation();
   uiShared = new UiSharedEnglishTranslation();
 

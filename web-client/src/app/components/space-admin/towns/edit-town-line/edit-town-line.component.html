@@ -1,11 +1,11 @@
 <form [formGroup]="townForm" (ngSubmit)="save()" novalidate>
   <md-input-container>
-    <input mdInput formControlName="name" placeholder="{{i18n.town.NAME}}">
+    <input mdInput formControlName="name" placeholder="{{i18n.entTown.NAME}}">
     <md-hint *ngIf="nameFormControl.touched && nameFormControl.hasError('required')">
-      {{i18n.town.NAME__REQUIRED}}
+      {{i18n.entTown.NAME__REQUIRED}}
     </md-hint>
   </md-input-container>
-  <button *ngIf="!originalTown.id" type="submit" md-raised-button color="primary">{{i18n.town.ADD_TOWN}}</button>
+  <button *ngIf="!originalTown.id" type="submit" md-raised-button color="primary">{{i18n.entTown.ADD_TOWN}}</button>
   <button *ngIf="originalTown.id" type="submit" md-raised-button color="primary" [disabled]="townForm.value.name == originalTown.name">{{i18n.uiShared.SAVE}}</button>
   <button *ngIf="originalTown.id" type="button" md-raised-button color="warn" (click)="delete()">{{i18n.uiShared.DELETE}}</button>
 </form>

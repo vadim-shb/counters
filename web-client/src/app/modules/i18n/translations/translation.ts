@@ -11,8 +11,8 @@ export interface Translation {
 
 
   entSecurityUser: EntitySecurityUserTranslation;
-  town: EntityTownTranslation;
-  managementCompany: EntityManagementCompanyTranslation;
+  entTown: EntityTownTranslation;
+  entManagementCompany: EntityManagementCompanyTranslation;
   uiSecurity: ModuleSecurityTranslation;
   uiShared: UiSharedTranslation;
 

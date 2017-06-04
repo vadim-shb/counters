@@ -20,8 +20,8 @@ export class RussianTranslation implements Translation {
   }
 
   entSecurityUser = new EntitySecurityUserRussianTranslation();
-  town = new EntityTownRussianTranslation();
-  managementCompany = new EntityManagementCompanyRussianTranslation();
+  entTown = new EntityTownRussianTranslation();
+  entManagementCompany = new EntityManagementCompanyRussianTranslation();
   uiSecurity = new ModuleSecurityRussianTranslation();
   uiShared = new UiSharedRussianTranslation();
 
