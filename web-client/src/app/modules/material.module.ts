@@ -4,7 +4,7 @@ import {
   MdCheckboxModule,
   MdInputModule,
   MdMenuModule,
-  MdSelectModule,
+  MdSelectModule, MdTabsModule,
   MdToolbarModule,
   PlatformModule
 } from '@angular/material';
@@ -20,6 +20,7 @@ import {NgModule} from '@angular/core';
     MdSelectModule,
     MdToolbarModule,
     MdCardModule,
+    MdTabsModule,
 
     // ***** Possible modules [DON'T FORGET to add it to export]: *****
 
@@ -30,7 +31,6 @@ import {NgModule} from '@angular/core';
     // MdProgressSpinnerModule,
     // MdRippleModule,
     // MdSidenavModule,
-    // MdTabsModule,
     // PortalModule,
     // ProjectionModule,
     // RtlModule,
@@ -59,6 +59,7 @@ import {NgModule} from '@angular/core';
     MdSelectModule,
     MdToolbarModule,
     MdCardModule,
+    MdTabsModule,
   ],
 })
 export class MaterialModule {

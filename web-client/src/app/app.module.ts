@@ -38,6 +38,7 @@ import {TownDao} from './dao/town/town.dao';
 import {ManagementCompanyComponent} from './components/space-admin/management-company/management-company.component';
 import {EditManagementCompanyLineComponent} from './components/space-admin/management-company/edit-management-company-line/edit-management-company-line.component';
 import {ManagementCompanyDao} from './dao/management-company/management-company.dao';
+import { UserCabinetComponent } from './components/space-shared/user-cabinet/user-cabinet.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import {ManagementCompanyDao} from './dao/management-company/management-company.
     UserHasAnyRoleDirective,
     ManagementCompanyComponent,
     EditManagementCompanyLineComponent,
+    UserCabinetComponent,
   ],
   imports: [
     BrowserModule,

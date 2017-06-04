@@ -1,5 +1,5 @@
 <form [formGroup]="userInfoForm" (ngSubmit)="saveUserInfo()" novalidate>
-  <h2>{{i18n.security.USER_INFO}}</h2>
+  <h2>{{i18n.uiSecurity.USER_INFO}}</h2>
   <md-input-container>
     <input mdInput formControlName="name" placeholder="{{i18n.securityUser.NAME}}">
     <md-hint *ngIf="userNameFormControl.touched && userNameFormControl.hasError('required')">
@@ -16,5 +16,5 @@
       {{translation.TRANSLATION_LANGUAGE_NAME}}
     </md-option>
   </md-select>
-  <button type="submit" md-raised-button color="primary" [disabled]="!isOriginUserInfoChanged()">{{i18n.SAVE}}</button>
+  <button type="submit" md-raised-button color="primary" [disabled]="!isOriginUserInfoChanged()">{{i18n.uiShared.SAVE}}</button>
 </form>

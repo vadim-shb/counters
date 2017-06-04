@@ -1,0 +1,14 @@
+<ng-container *userHasRoles="[UserRole.USER]">
+  <md-tab-group>
+    <md-tab label="{{ i18n.uiShared.USER_SETTINGS }}">
+      <user-settings></user-settings>
+    </md-tab>
+    <md-tab label="{{ i18n.uiShared.SPACES }}">
+
+    </md-tab>
+  </md-tab-group>
+</ng-container>
+<ng-container *userHasAnyRole="[UserRole.ADMIN]">
+  <user-settings></user-settings>
+</ng-container>
+

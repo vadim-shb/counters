@@ -14,8 +14,8 @@
   <ng-container *ngIf="user; else : anonymousBlock">
     <button md-button [mdMenuTriggerFor]="userMenu">{{user.name}}</button>
     <md-menu #userMenu="mdMenu">
-      <a md-menu-item routerLink="/security/user-settings">{{i18n.security.SETTINGS}}</a>
-      <button md-menu-item (click)="signOut()">{{i18n.security.SIGN_OUT}}</button>
+      <a md-menu-item routerLink="/security/user-cabinet/settings">{{i18n.uiSecurity.SETTINGS}}</a>
+      <button md-menu-item (click)="signOut()">{{i18n.uiSecurity.SIGN_OUT}}</button>
     </md-menu>
   </ng-container>
 

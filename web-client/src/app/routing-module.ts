@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SignInComponent} from './components/security/sign-in/sign-in.component';
-import {UserSettingsComponent} from './components/security/user-settings/user-settings.component';
 import {SignUpComponent} from './components/security/sign-up/sign-up.component';
 import {PasswordRecoveryComponent} from './components/security/password-recovery/password-recovery.component';
 import {MessageScreenComponent} from './components/security/message-screen/message-screen.component';
@@ -11,6 +10,7 @@ import {AdminDashboardComponent} from './components/space-admin/admin-dashboard/
 import {UserDashboardComponent} from './components/space-user/user-dashboard/user-dashboard.component';
 import {TownsComponent} from 'app/components/space-admin/towns/towns.component';
 import {ManagementCompanyComponent} from './components/space-admin/management-company/management-company.component';
+import {UserCabinetComponent} from './components/space-shared/user-cabinet/user-cabinet.component';
 
 const ROUTES: Routes = [
   {
@@ -54,8 +54,8 @@ const ROUTES: Routes = [
     component: UserDashboardComponent
   },
   {
-    path: 'security/user-settings',
-    component: UserSettingsComponent
+    path: 'security/user-cabinet/:tab',
+    component: UserCabinetComponent
   },
 ];
 

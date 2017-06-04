@@ -6,6 +6,7 @@ import {
   ModuleSecurityEnglishTranslation
 } from '../../../components/security/english.translation';
 import {EntityManagementCompanyEnglishTranslation, EntityTownEnglishTranslation} from '../../../domain/i18n/english.translation';
+import {UiSharedEnglishTranslation} from '../../../components/space-shared/english.translation';
 
 @Injectable()
 export class EnglishTranslation implements Translation {
@@ -18,14 +19,11 @@ export class EnglishTranslation implements Translation {
   constructor() {
   }
 
-  SAVE = 'Save';
-  ADD = 'Add';
-  DELETE = 'Delete';
-
   securityUser = new EntitySecurityUserEnglishTranslation();
   town = new EntityTownEnglishTranslation();
   managementCompany = new EntityManagementCompanyEnglishTranslation();
-  security = new ModuleSecurityEnglishTranslation();
+  uiSecurity = new ModuleSecurityEnglishTranslation();
+  uiShared = new UiSharedEnglishTranslation();
 
   httpErrors = {
     SERVER_DO_NOT_RESPOND_HEADER: 'Server do not respond',

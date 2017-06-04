@@ -26,14 +26,14 @@
         </md-hint>
       </md-input-container>
       <div class="error-message" *ngIf="wrongEmailOrPassword">
-        <md-hint>{{i18n.security.INCORRECT_EMAIL_OR_PASSWORD}}</md-hint>
+        <md-hint>{{i18n.uiSecurity.INCORRECT_EMAIL_OR_PASSWORD}}</md-hint>
       </div>
-      <button type="submit" md-raised-button color="primary">{{i18n.security.SIGN_IN}}</button>
+      <button type="submit" md-raised-button color="primary">{{i18n.uiSecurity.SIGN_IN}}</button>
     </form>
     <div id="linksContainer">
-      <a id="signUpLink" routerLink="/security/sign-up">{{i18n.security.SIGN_UP}}</a>
+      <a id="signUpLink" routerLink="/security/sign-up">{{i18n.uiSecurity.SIGN_UP}}</a>
       <a id="passwordRecoveryLink"
-         routerLink="/security/password-recovery">{{i18n.security.FORGOT_PASSWORD_QUESTION}}</a>
+         routerLink="/security/password-recovery">{{i18n.uiSecurity.FORGOT_PASSWORD_QUESTION}}</a>
     </div>
   </div>
 </div>

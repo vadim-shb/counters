@@ -6,6 +6,7 @@ import {
   ModuleSecurityRussianTranslation
 } from '../../../components/security/russian.translation';
 import {EntityManagementCompanyRussianTranslation, EntityTownRussianTranslation} from '../../../domain/i18n/russian.translation';
+import {UiSharedRussianTranslation} from '../../../components/space-shared/russian.translation';
 
 @Injectable()
 export class RussianTranslation implements Translation {
@@ -18,15 +19,11 @@ export class RussianTranslation implements Translation {
   constructor() {
   }
 
-  SAVE = 'Сохранить';
-  ADD = 'Добавить';
-  DELETE = 'Удалить';
-
   securityUser = new EntitySecurityUserRussianTranslation();
   town = new EntityTownRussianTranslation();
   managementCompany = new EntityManagementCompanyRussianTranslation();
-  security = new ModuleSecurityRussianTranslation();
-
+  uiSecurity = new ModuleSecurityRussianTranslation();
+  uiShared = new UiSharedRussianTranslation();
 
   httpErrors = {
     SERVER_DO_NOT_RESPOND_HEADER: 'Сервер не отвечает',
