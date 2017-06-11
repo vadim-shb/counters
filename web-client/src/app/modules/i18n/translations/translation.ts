@@ -1,6 +1,9 @@
 import {Lang} from '../domain/lang';
 import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from './security/translation';
-import {EntityManagementCompanyTranslation, EntitySpaceAddressTranslation, EntityTownTranslation} from './ent-business-logic/translation';
+import {
+  EntityCountTranslation, EntityManagementCompanyTranslation, EntitySpaceAddressTranslation,
+  EntityTownTranslation
+} from './ent-business-logic/translation';
 import {UiSharedTranslation} from './ui-shared/translation';
 import {UiAdminTranslation} from './ui-admin/translation';
 
@@ -15,6 +18,7 @@ export interface Translation {
   entTown: EntityTownTranslation;
   entManagementCompany: EntityManagementCompanyTranslation;
   entSpaceAddress: EntitySpaceAddressTranslation;
+  entCount: EntityCountTranslation;
   uiSecurity: ModuleSecurityTranslation;
   uiShared: UiSharedTranslation;
   uiAdmin: UiAdminTranslation;

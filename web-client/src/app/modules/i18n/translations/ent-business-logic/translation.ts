@@ -22,4 +22,21 @@ export interface EntitySpaceAddressTranslation {
 
   // ==== errors ====
   ADDRESS__REQUIRED: string;
+  ADDRESS__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS: string;
+  TOWN__REQUIRED: string;
+}
+
+export interface EntityCountTranslation {
+  NAME: string;
+  TYPE: string;
+  COLD_WATER: string;
+  HOT_WATER: string;
+  ELECTRICITY: string;
+  ELECTRICITY_DAY: string;
+  ELECTRICITY_NIGHT: string;
+  GAS: string;
+
+  // ==== errors ====
+  NAME__REQUIRED: string;
+  NAME__CAN_NOT_BE_LONGER_THAN_250_CHARACTERS: string;
 }

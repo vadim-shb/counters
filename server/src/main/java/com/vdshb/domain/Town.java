@@ -14,7 +14,7 @@ public class Town extends BasicEntity<Town> {
     private String name;
 
     @Override
-    public void setBeanPropertiesFromREST(Town request) {
+    public void setBeanPropertiesFromRestUpdate(Town request) {
         setName(request.getName());
     }
 

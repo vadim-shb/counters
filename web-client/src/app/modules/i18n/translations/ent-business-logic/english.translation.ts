@@ -1,4 +1,4 @@
-import {EntityManagementCompanyTranslation, EntitySpaceAddressTranslation, EntityTownTranslation} from './translation';
+import {EntityCountTranslation, EntityManagementCompanyTranslation, EntitySpaceAddressTranslation, EntityTownTranslation} from './translation';
 
 export class EntityTownEnglishTranslation implements EntityTownTranslation {
   TOWN = 'Town';
@@ -24,4 +24,21 @@ export class EntitySpaceAddressEnglishTranslation implements EntitySpaceAddressT
 
   // ==== errors ====
   ADDRESS__REQUIRED = 'Address required';
+  ADDRESS__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS = 'Address can not be longer than 1000 characters';
+  TOWN__REQUIRED = 'Town required';
+}
+
+export class EntityCountEnglishTranslation implements EntityCountTranslation {
+  NAME = 'Name';
+  TYPE = 'Type';
+  COLD_WATER = 'Cold water';
+  HOT_WATER = 'Hot water';
+  ELECTRICITY = 'Electricity';
+  ELECTRICITY_DAY = 'Electricity-day';
+  ELECTRICITY_NIGHT = 'Electricity-night';
+  GAS = 'Gas';
+
+  // ==== errors ====
+  NAME__REQUIRED = 'Name required';
+  NAME__CAN_NOT_BE_LONGER_THAN_250_CHARACTERS = 'Name can not be longer than 250 characters';
 }

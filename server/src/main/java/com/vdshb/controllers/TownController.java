@@ -44,7 +44,7 @@ public class TownController {
         if (persistedTown == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        persistedTown.setBeanPropertiesFromREST(town);
+        persistedTown.setBeanPropertiesFromRestUpdate(town);
         townRepository.save(persistedTown);
         return ResponseEntity.ok(persistedTown);
     }

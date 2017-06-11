@@ -23,7 +23,7 @@ public class ManagementCompany extends BasicEntity<ManagementCompany> {
     private List<Town> towns = new ArrayList<>(0);
 
     @Override
-    public void setBeanPropertiesFromREST(ManagementCompany request) {
+    public void setBeanPropertiesFromRestUpdate(ManagementCompany request) {
         setName(request.getName());
         setTowns(request.getTowns());
     }

@@ -13,7 +13,6 @@ import {ErrorHandleService} from './services/error-handle/error-handle.service';
 import {SecurityService} from './services/security/security.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MomentModule} from 'angular2-moment';
-import {ResumeDao} from './dao/resume/resume.dao';
 import {HeaderComponent} from './components/header/header.component';
 import {ToasterModule} from 'angular2-toaster';
 import {ToastService} from './services/toast/toast.service';
@@ -88,7 +87,6 @@ import {EditUserSpaceComponent} from './components/space-user/user-spaces/edit-u
     {provide: ConnectionBackend, useClass: XHRBackend},
     PureHttpService,
     {provide: Http, useClass: SecureHttpService},
-    ResumeDao,
     TownDao,
     ManagementCompanyDao,
   ],

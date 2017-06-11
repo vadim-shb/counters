@@ -15,10 +15,10 @@ public abstract class BasicEntity<T extends BasicEntity> {
 
     /**
      * You need to ignore active and id fields when user update entity.
-     * So implement this method to copy all other fields rotm user.
+     * So implement this method to copy all other fields from user.
      * @param request
      */
-    public abstract void setBeanPropertiesFromREST(T request);
+    public abstract void setBeanPropertiesFromRestUpdate(T request);
 
     //===========================================================
     //             Generated getters and setters

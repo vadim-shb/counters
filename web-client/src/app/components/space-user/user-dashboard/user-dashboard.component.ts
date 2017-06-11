@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ResumeDao} from '../../../dao/resume/resume.dao';
-import {Resume} from '../../../domain/resume';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -9,16 +7,11 @@ import {Resume} from '../../../domain/resume';
 })
 export class UserDashboardComponent implements OnInit {
 
-  private resumes: Resume[];
 
-  constructor(private resumeDao: ResumeDao) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.reload();
   }
 
-  reload() {
-    this.resumeDao.findAll().subscribe(resume => this.resumes = resume);
-  }
 }
