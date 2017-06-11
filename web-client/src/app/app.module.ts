@@ -40,6 +40,7 @@ import {ManagementCompanyDao} from './dao/management-company/management-company.
 import {UserCabinetComponent} from './components/space-shared/user-cabinet/user-cabinet.component';
 import {UserSpacesComponent} from './components/space-user/user-spaces/user-spaces.component';
 import {EditUserSpaceComponent} from './components/space-user/user-spaces/edit-user-space/edit-user-space.component';
+import {SpaceDao} from './dao/space-dao/space.dao';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import {EditUserSpaceComponent} from './components/space-user/user-spaces/edit-u
     PureHttpService,
     {provide: Http, useClass: SecureHttpService},
     TownDao,
+    SpaceDao,
     ManagementCompanyDao,
   ],
   bootstrap: [RootComponent]

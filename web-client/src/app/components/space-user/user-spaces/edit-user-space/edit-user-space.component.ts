@@ -5,7 +5,7 @@ import {Translation} from '../../../../modules/i18n/translations/translation';
 import {TownDao} from '../../../../dao/town/town.dao';
 import {Town} from '../../../../domain/town';
 import {CountType, countTypeByName} from '../../../../domain/count';
-import {Http} from '@angular/http';
+import {SpaceDao} from '../../../../dao/space-dao/space.dao';
 
 @Component({
   selector: 'app-edit-user-space',
@@ -36,7 +36,7 @@ export class EditUserSpaceComponent implements OnInit {
   constructor(private i18nService: I18nService,
               private fb: FormBuilder,
               private townDao: TownDao,
-              private http: Http,) {
+              private spaceDao: SpaceDao,) {
     i18nService.getCurrentTranslation()
       .subscribe(translation => {
         this.i18n = translation;
@@ -83,11 +83,8 @@ export class EditUserSpaceComponent implements OnInit {
       return;
     }
 
-    this.http.post(`/api/space`, this.spaceAddressForm.value)
-      .subscribe(
-        (response) => {
-          // this.router.navigate(['/security/message/sign-up__confirmation-email-sent']);
-        });
+    this.spaceDao.create(this.spaceAddressForm.value)
+      .subscribe();
   }
 
 }

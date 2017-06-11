@@ -12,6 +12,9 @@ public class Space extends BasicEntity<Space> {
     @SequenceGenerator(name = "space_id_seq", sequenceName = "space_id_seq", allocationSize = 1)
     private Long id;
 
+    @Column(name = "user_id")
+    private Long userId;
+
     @Column(name = "town_id")
     private Long townId;
 
@@ -36,6 +39,14 @@ public class Space extends BasicEntity<Space> {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Long getTownId() {
