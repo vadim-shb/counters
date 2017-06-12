@@ -44,7 +44,7 @@ public class ManagementCompanyController {
         if (persistedManagementCompany == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        persistedManagementCompany.setName(managementCompany.getName());
+        persistedManagementCompany.setBeanPropertiesFromRestUpdate(managementCompany);
         managementCompanyRepository.save(persistedManagementCompany);
         return ResponseEntity.ok(persistedManagementCompany);
     }

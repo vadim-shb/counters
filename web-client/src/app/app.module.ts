@@ -1,7 +1,7 @@
 import 'hammerjs';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConnectionBackend, Http, HttpModule, XHRBackend} from '@angular/http';
 import {RootComponent, RootNavigatorComponent} from './components/root/root.component';
 import {SignInComponent} from './components/security/sign-in/sign-in.component';
@@ -13,7 +13,6 @@ import {ErrorHandleService} from './services/error-handle/error-handle.service';
 import {SecurityService} from './services/security/security.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MomentModule} from 'angular2-moment';
-import {ResumeDao} from './dao/resume/resume.dao';
 import {HeaderComponent} from './components/header/header.component';
 import {ToasterModule} from 'angular2-toaster';
 import {ToastService} from './services/toast/toast.service';
@@ -38,7 +37,11 @@ import {TownDao} from './dao/town/town.dao';
 import {ManagementCompanyComponent} from './components/space-admin/management-company/management-company.component';
 import {EditManagementCompanyLineComponent} from './components/space-admin/management-company/edit-management-company-line/edit-management-company-line.component';
 import {ManagementCompanyDao} from './dao/management-company/management-company.dao';
-import { UserCabinetComponent } from './components/space-shared/user-cabinet/user-cabinet.component';
+import {UserCabinetComponent} from './components/space-shared/user-cabinet/user-cabinet.component';
+import {UserSpacesComponent} from './components/space-user/user-spaces/user-spaces.component';
+import {EditUserSpaceComponent} from './components/space-user/user-spaces/edit-user-space/edit-user-space.component';
+import {SpaceDao} from './dao/space-dao/space.dao';
+import {SpaceService} from './services/space/space.service';
 
 @NgModule({
   declarations: [
@@ -63,10 +66,13 @@ import { UserCabinetComponent } from './components/space-shared/user-cabinet/use
     ManagementCompanyComponent,
     EditManagementCompanyLineComponent,
     UserCabinetComponent,
+    UserSpacesComponent,
+    EditUserSpaceComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpModule,
     MaterialModule,
@@ -84,8 +90,9 @@ import { UserCabinetComponent } from './components/space-shared/user-cabinet/use
     {provide: ConnectionBackend, useClass: XHRBackend},
     PureHttpService,
     {provide: Http, useClass: SecureHttpService},
-    ResumeDao,
     TownDao,
+    SpaceDao,
+    SpaceService,
     ManagementCompanyDao,
   ],
   bootstrap: [RootComponent]

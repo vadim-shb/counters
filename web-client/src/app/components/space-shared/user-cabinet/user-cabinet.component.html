@@ -1,12 +1,21 @@
 <ng-container *userHasRoles="[UserRole.USER]">
-  <md-tab-group>
-    <md-tab label="{{ i18n.uiShared.USER_SETTINGS }}">
-      <user-settings></user-settings>
-    </md-tab>
-    <md-tab label="{{ i18n.uiShared.SPACES }}">
-
-    </md-tab>
-  </md-tab-group>
+  <nav md-tab-nav-bar>
+    <a md-tab-link
+       routerLink="/user-cabinet/settings"
+       [active]="activeTab === 'settings'">
+      {{ i18n.uiShared.USER_SETTINGS }}
+    </a>
+    <a md-tab-link
+       routerLink="/user-cabinet/spaces"
+       [active]="activeTab === 'spaces' || activeTab === 'space'">
+      {{ i18n.uiShared.SPACES }}
+    </a>
+  </nav>
+  <user-settings *ngIf="activeTab === 'settings'"></user-settings>
+  <user-spaces *ngIf="activeTab === 'spaces'"></user-spaces>
+  <edit-user-space *ngIf="activeTab === 'space'"
+                   [spaceId]="editSpaceId"
+                   (onSave)="router.navigate(['/user-cabinet/spaces'])"></edit-user-space>
 </ng-container>
 <ng-container *userHasAnyRole="[UserRole.ADMIN]">
   <user-settings></user-settings>

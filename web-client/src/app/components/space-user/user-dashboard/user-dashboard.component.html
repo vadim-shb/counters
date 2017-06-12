@@ -1,4 +1,6 @@
-<p>
-  dashboard works!
-  <button (click)="reload()">reload</button>
-</p>
+<div id="readouts-container" *ngIf="activeSpaceId">
+  <md-select [(ngModel)]="activeSpaceId" placeholder="{{i18n.entSpace.ADDRESS}}">
+    <md-option *ngFor="let space of spaces" [value]="space.id">{{space.fullAddress}}</md-option>
+  </md-select>
+
+</div>

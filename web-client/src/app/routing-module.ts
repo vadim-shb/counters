@@ -11,6 +11,7 @@ import {UserDashboardComponent} from './components/space-user/user-dashboard/use
 import {TownsComponent} from 'app/components/space-admin/towns/towns.component';
 import {ManagementCompanyComponent} from './components/space-admin/management-company/management-company.component';
 import {UserCabinetComponent} from './components/space-shared/user-cabinet/user-cabinet.component';
+import {EditUserSpaceComponent} from './components/space-user/user-spaces/edit-user-space/edit-user-space.component';
 
 const ROUTES: Routes = [
   {
@@ -54,7 +55,11 @@ const ROUTES: Routes = [
     component: UserDashboardComponent
   },
   {
-    path: 'security/user-cabinet/:tab',
+    path: 'user-cabinet/:tab',
+    component: UserCabinetComponent
+  },
+  {
+    path: 'user-cabinet/:tab/:id',
     component: UserCabinetComponent
   },
 ];

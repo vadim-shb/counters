@@ -40,7 +40,7 @@
   </md-input-container>
 
   <md-select formControlName="language" placeholder="{{i18n.entSecurityUser.LANGUAGE}}">
-    <md-option *ngFor="let translation of i18nService.getTranslations()" value="{{translation.TRANSLATION_LANGUAGE_CODE}}">
+    <md-option *ngFor="let translation of i18nService.getTranslations()" [value]="translation.TRANSLATION_LANGUAGE_CODE">
       <span><img src="{{translation.TRANSLATION_LANGUAGE_FLAG_PATH}}"></span> {{translation.TRANSLATION_LANGUAGE_NAME}}
     </md-option>
   </md-select>

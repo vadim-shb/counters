@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <changeSet id="2017-06-11_1__create-space" author="vdshb" context="main">
+        <sql>
+            create table space (
+                id              BIGSERIAL           NOT NULL PRIMARY KEY,
+                is_active       BOOLEAN             NOT NULL DEFAULT TRUE,
+                user_id         BIGINT              NOT NULL REFERENCES security_user (id),
+                town_id         BIGINT              NOT NULL REFERENCES town (id),
+                address         VARCHAR(1000)       NOT NULL
+            );
+
+            CREATE INDEX space___security_user_id ON space (user_id);
+            CREATE INDEX space___town_id ON space (town_id);
+        </sql>
+        <rollback>
+            <sql>
+                DROP TABLE space;
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PublicUser {
+    private Long id;
     private String name;
     private String email;
     private Language language;
@@ -16,6 +17,7 @@ public class PublicUser {
 
     public PublicUser(SecurityUserToken securityUserToken) {
         SecurityUser securityUser = securityUserToken.getPrincipal();
+        this.id = securityUser.getId();
         this.name = securityUser.getName();
         this.email = securityUser.getEmail();
         this.language = securityUser.getLanguage();
@@ -23,6 +25,14 @@ public class PublicUser {
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

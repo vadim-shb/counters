@@ -5,7 +5,6 @@ import com.vdshb.security.domain.entity.SecurityUser;
 import com.vdshb.security.repository.RoleRepository;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -22,7 +21,7 @@ public class SecurityUserService {
         List<Role> roles = roleRepository.findByUser(securityUserId);
         return roles
                 .stream()
-                .map(role -> new SimpleGrantedAuthority(role.getRole().name()))
+                .map(role -> role.getRole().getGrantedAuthority())
                 .collect(Collectors.toList());
     }
 

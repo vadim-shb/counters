@@ -1,15 +1,15 @@
 import {inject, TestBed} from '@angular/core/testing';
-import {ResumeDao} from './resume.dao';
+import {SpaceDao} from './space.dao';
 
 
-describe('ResumeDao', () => {
+describe('SpaceDao', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ResumeDao]
+      providers: [SpaceDao]
     });
   });
 
-  it('should ...', inject([ResumeDao], (service: ResumeDao) => {
+  it('should be created', inject([SpaceDao], (service: SpaceDao) => {
     expect(service).toBeTruthy();
   }));
 });

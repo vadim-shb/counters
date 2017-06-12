@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <changeSet id="2017-06-04__create-management-companies-in-towns" author="vdshb" context="main">
+        <sql>
+            create table management_company_in_town (
+                management_company_id       BIGINT              NOT NULL REFERENCES management_company (id),
+                town_id                     BIGINT              NOT NULL REFERENCES town (id)
+            );
+
+            CREATE INDEX management_company_in_town___management_company_id ON management_company_in_town (management_company_id);
+            CREATE INDEX management_company_in_town___town_id ON management_company_in_town (town_id);
+        </sql>
+        <rollback>
+            <sql>
+                DROP TABLE management_companies_in_towns;
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
