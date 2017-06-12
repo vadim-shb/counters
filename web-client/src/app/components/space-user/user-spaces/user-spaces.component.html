@@ -1,5 +1,5 @@
 <div id="spaces-container">
-  <a *ngFor="let space of spaces" routerLink="/user-cabinet/spaces/{{space.id}}">{{space.fullAddress}}</a>
+  <a class="space-link" *ngFor="let space of spaces" routerLink="/user-cabinet/spaces/{{space.id}}">{{space.fullAddress}}</a>
 
   <a md-raised-button color="primary" routerLink="/user-cabinet/add-space">{{i18n.uiShared.ADD}}</a>
 </div>
