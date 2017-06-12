@@ -1,6 +1,7 @@
 package com.vdshb.security;
 
 import com.vdshb.security.domain.entity.SecurityUser;
+import com.vdshb.security.domain.enums.SecurityRole;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -70,4 +71,7 @@ public class SecurityUserToken implements Authentication {
         return null;
     }
 
+    public boolean hasRole(SecurityRole role) {
+        return authorities.contains(role.getGrantedAuthority());
+    }
 }

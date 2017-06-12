@@ -31,7 +31,7 @@ export class UserSpacesComponent implements OnInit {
   private loadUserSpaces() {
     this.townDao.loadAll()
       .subscribe(towns => {
-        this.spaceDao.findCurrentUserSpaces()
+        this.spaceDao.loadCurrentUserSpaces()
           .subscribe(spaces => {
             spaces.forEach(space => {
               let townName = towns.filter(town => town.id == space.townId)[0].name;

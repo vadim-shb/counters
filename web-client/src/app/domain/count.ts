@@ -1,6 +1,6 @@
 export class Count {
   public id?: number;
-  public spaceId: number;
+  public spaceId?: number;
   public type: CountType;
   public name: string;
 }

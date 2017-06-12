@@ -25,7 +25,6 @@ public class Space extends BasicEntity<Space> {
 
     @Override
     public void setBeanPropertiesFromRestUpdate(Space request) {
-        setTownId(request.townId);
         setAddress(request.address);
     }
 

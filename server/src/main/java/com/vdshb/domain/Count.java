@@ -23,7 +23,6 @@ public class Count extends BasicEntity<Count> {
     @Override
     public void setBeanPropertiesFromRestUpdate(Count request) {
         setName(request.name);
-        setType(request.type);
     }
 
     //===========================================================
