@@ -55,11 +55,11 @@ const ROUTES: Routes = [
     component: UserDashboardComponent
   },
   {
-    path: 'user-cabinet/add-space',
-    component: EditUserSpaceComponent
+    path: 'user-cabinet/:tab',
+    component: UserCabinetComponent
   },
   {
-    path: 'user-cabinet/:tab',
+    path: 'user-cabinet/:tab/:id',
     component: UserCabinetComponent
   },
 ];

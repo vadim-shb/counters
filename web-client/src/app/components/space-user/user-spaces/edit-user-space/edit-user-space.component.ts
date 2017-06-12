@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {I18nService} from '../../../../modules/i18n/i18n.service';
 import {Translation} from '../../../../modules/i18n/translations/translation';
@@ -8,7 +8,7 @@ import {CountType, countTypeByName} from '../../../../domain/count';
 import {SpaceDao} from '../../../../dao/space-dao/space.dao';
 
 @Component({
-  selector: 'app-edit-user-space',
+  selector: 'edit-user-space',
   templateUrl: './edit-user-space.component.html',
   styleUrls: ['./edit-user-space.component.less']
 })
@@ -18,6 +18,7 @@ export class EditUserSpaceComponent implements OnInit {
   private CountType = CountType;
   private countTypes: CountType[];
 
+  @Input() spaceId: number;
   private spaceAddressForm: FormGroup;
   private towns: Town[];
 

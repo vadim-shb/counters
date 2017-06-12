@@ -14,6 +14,7 @@ export class UserCabinetComponent implements OnInit {
   private UserRole = UserRole;
   private i18n: Translation;
   private activeTab: string;
+  private editSpaceId: number;
 
   constructor(
     private i18nService: I18nService,
@@ -26,6 +27,13 @@ export class UserCabinetComponent implements OnInit {
 
     route.params.subscribe(params => {
       this.activeTab = params.tab;
+      if (this.activeTab === 'space') {
+        if (params.id === 'new') {
+          this.editSpaceId = null;
+        } else {
+          this.editSpaceId = params.id;
+        }
+      }
     });
   }
 
