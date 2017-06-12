@@ -5,7 +5,7 @@ import {Translation} from '../../../../modules/i18n/translations/translation';
 import {TownDao} from '../../../../dao/town/town.dao';
 import {Town} from '../../../../domain/town';
 import {Count, CountType, countTypeByName} from '../../../../domain/count';
-import {SpaceDao} from '../../../../dao/space-dao/space.dao';
+import {SpaceDao} from '../../../../dao/space/space.dao';
 import {EditMode} from 'app/domain/edit-mode';
 
 @Component({

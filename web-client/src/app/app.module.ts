@@ -40,8 +40,10 @@ import {ManagementCompanyDao} from './dao/management-company/management-company.
 import {UserCabinetComponent} from './components/space-shared/user-cabinet/user-cabinet.component';
 import {UserSpacesComponent} from './components/space-user/user-spaces/user-spaces.component';
 import {EditUserSpaceComponent} from './components/space-user/user-spaces/edit-user-space/edit-user-space.component';
-import {SpaceDao} from './dao/space-dao/space.dao';
+import {SpaceDao} from './dao/space/space.dao';
 import {SpaceService} from './services/space/space.service';
+import { AddReadoutsComponent } from './components/space-user/user-dashboard/add-readouts/add-readouts.component';
+import {ReadoutDao} from './dao/readout/readout.dao';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,7 @@ import {SpaceService} from './services/space/space.service';
     UserCabinetComponent,
     UserSpacesComponent,
     EditUserSpaceComponent,
+    AddReadoutsComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,8 +95,9 @@ import {SpaceService} from './services/space/space.service';
     {provide: Http, useClass: SecureHttpService},
     TownDao,
     SpaceDao,
-    SpaceService,
+    ReadoutDao,
     ManagementCompanyDao,
+    SpaceService,
   ],
   bootstrap: [RootComponent]
 })

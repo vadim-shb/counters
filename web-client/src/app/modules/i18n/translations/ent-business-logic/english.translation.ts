@@ -1,4 +1,7 @@
-import {EntityCountTranslation, EntityManagementCompanyTranslation, EntitySpaceTranslation, EntityTownTranslation} from './translation';
+import {
+  EntityCountTranslation, EntityManagementCompanyTranslation, EntityReadoutTranslation, EntitySpaceTranslation,
+  EntityTownTranslation
+} from './translation';
 
 export class EntityTownEnglishTranslation implements EntityTownTranslation {
   TOWN = 'Town';
@@ -41,4 +44,13 @@ export class EntityCountEnglishTranslation implements EntityCountTranslation {
   // ==== errors ====
   NAME__REQUIRED = 'Name required';
   NAME__CAN_NOT_BE_LONGER_THAN_250_CHARACTERS = 'Name can not be longer than 250 characters';
+}
+
+export class EntityReadoutEnglishTranslation implements EntityReadoutTranslation {
+  READOUT = 'Readout';
+  READOUTS = 'Readouts';
+
+  // ==== errors ====
+  READOUT__CAN_NOT_BE_CONTAIN_THAN_9_DIGITS = 'Readout can not contain more than 9 digits';
+  READOUT__CAN_NOT_BE_NEGATIVE = 'Readout can not be negative';
 }

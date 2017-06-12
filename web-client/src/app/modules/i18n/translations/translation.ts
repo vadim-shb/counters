@@ -1,11 +1,12 @@
 import {Lang} from '../domain/lang';
 import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from './security/translation';
 import {
-  EntityCountTranslation, EntityManagementCompanyTranslation, EntitySpaceTranslation,
+  EntityCountTranslation, EntityManagementCompanyTranslation, EntityReadoutTranslation, EntitySpaceTranslation,
   EntityTownTranslation
 } from './ent-business-logic/translation';
 import {UiSharedTranslation} from './ui-shared/translation';
 import {UiAdminTranslation} from './ui-admin/translation';
+import {UiUserTranslation} from './ui-user/translation';
 
 export interface Translation {
   TRANSLATION_LANGUAGE: Lang;
@@ -19,9 +20,11 @@ export interface Translation {
   entManagementCompany: EntityManagementCompanyTranslation;
   entSpace: EntitySpaceTranslation;
   entCount: EntityCountTranslation;
+  entReadout: EntityReadoutTranslation;
   uiSecurity: ModuleSecurityTranslation;
   uiShared: UiSharedTranslation;
   uiAdmin: UiAdminTranslation;
+  uiUser: UiUserTranslation;
 
   httpErrors: {
     SERVER_DO_NOT_RESPOND_HEADER: string;

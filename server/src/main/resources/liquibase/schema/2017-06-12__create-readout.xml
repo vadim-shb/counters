@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
+
+    <changeSet id="2017-06-12__create-readout" author="vdshb" context="main">
+        <sql>
+            create table readout (
+                id                      BIGSERIAL                       NOT NULL PRIMARY KEY,
+                is_active               BOOLEAN                         NOT NULL DEFAULT TRUE,
+                count_id                BIGINT                          NOT NULL REFERENCES count (id),
+                readout                 INT                             NOT NULL,
+                creation_date_time      TIMESTAMP WITHOUT TIME ZONE     NOT NULL DEFAULT (now() at time zone 'utc')
+            );
+
+            CREATE INDEX readout___count_id ON readout (count_id);
+        </sql>
+        <rollback>
+            <sql>
+                DROP TABLE readout;
+            </sql>
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,6 +1,8 @@
+<!--todo: add space creation component if there are no spaces-->
 <div id="readouts-container" *ngIf="activeSpaceId">
-  <md-select [(ngModel)]="activeSpaceId" placeholder="{{i18n.entSpace.ADDRESS}}">
+  <md-select [(ngModel)]="activeSpaceId" placeholder="{{i18n.entSpace.ADDRESS}}" (ngModelChange)="activeSpaceChanges()">
     <md-option *ngFor="let space of spaces" [value]="space.id">{{space.fullAddress}}</md-option>
   </md-select>
 
+  <add-readouts [counts]="countsToAskReadouts"></add-readouts>
 </div>

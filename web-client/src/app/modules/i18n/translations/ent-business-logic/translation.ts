@@ -40,3 +40,12 @@ export interface EntityCountTranslation {
   NAME__REQUIRED: string;
   NAME__CAN_NOT_BE_LONGER_THAN_250_CHARACTERS: string;
 }
+
+export interface EntityReadoutTranslation {
+  READOUT: string;
+  READOUTS: string;
+
+  // ==== errors ====
+  READOUT__CAN_NOT_BE_CONTAIN_THAN_9_DIGITS: string;
+  READOUT__CAN_NOT_BE_NEGATIVE: string;
+}

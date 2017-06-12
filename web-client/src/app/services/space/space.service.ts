@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {SpaceDao} from '../../dao/space-dao/space.dao';
+import {SpaceDao} from '../../dao/space/space.dao';
 import {TownDao} from '../../dao/town/town.dao';
 import {Observable} from 'rxjs/Observable';
 import {Space} from '../../domain/space';

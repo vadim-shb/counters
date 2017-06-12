@@ -1,3 +1,4 @@
+//todo: think about renaming. MeasuredValue?
 export class Count {
   public id?: number;
   public spaceId?: number;
@@ -7,9 +8,9 @@ export class Count {
 
 export class Readout {
   public id?: number;
-  public countId?: number;
+  public countId: number;
   public readout: number;
-  public dateTime: Date;
+  public creationDateTime?: Date;
 }
 
 export enum CountType {

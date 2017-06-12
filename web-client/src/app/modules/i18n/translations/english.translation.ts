@@ -4,12 +4,13 @@ import {Lang} from '../domain/lang';
 import {EntitySecurityUserEnglishTranslation, ModuleSecurityEnglishTranslation} from './security/english.translation';
 import {
   EntityCountEnglishTranslation,
-  EntityManagementCompanyEnglishTranslation,
+  EntityManagementCompanyEnglishTranslation, EntityReadoutEnglishTranslation,
   EntitySpaceEnglishTranslation,
   EntityTownEnglishTranslation
 } from './ent-business-logic/english.translation';
 import {UiSharedEnglishTranslation} from './ui-shared/english.translation';
 import {UiAdminEnglishTranslation} from './ui-admin/english.translation';
+import {UiUserEnglishTranslation} from './ui-user/english.translation';
 
 @Injectable()
 export class EnglishTranslation implements Translation {
@@ -27,9 +28,11 @@ export class EnglishTranslation implements Translation {
   entManagementCompany = new EntityManagementCompanyEnglishTranslation();
   entSpace = new EntitySpaceEnglishTranslation();
   entCount = new EntityCountEnglishTranslation();
+  entReadout = new EntityReadoutEnglishTranslation();
   uiSecurity = new ModuleSecurityEnglishTranslation();
   uiShared = new UiSharedEnglishTranslation();
   uiAdmin = new UiAdminEnglishTranslation();
+  uiUser = new UiUserEnglishTranslation();
 
   httpErrors = {
     SERVER_DO_NOT_RESPOND_HEADER: 'Server do not respond',

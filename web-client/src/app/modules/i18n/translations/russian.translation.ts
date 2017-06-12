@@ -4,12 +4,13 @@ import {Lang} from '../domain/lang';
 import {EntitySecurityUserRussianTranslation, ModuleSecurityRussianTranslation} from './security/russian.translation';
 import {
   EntityCountRussianTranslation,
-  EntityManagementCompanyRussianTranslation,
+  EntityManagementCompanyRussianTranslation, EntityReadoutRussianTranslation,
   EntitySpaceRussianTranslation,
   EntityTownRussianTranslation
 } from './ent-business-logic/russian.translation';
 import {UiSharedRussianTranslation} from './ui-shared/russian.translation';
 import {UiAdminRussianTranslation} from './ui-admin/russian.translation';
+import {UiUserRussianTranslation} from './ui-user/russian.translation';
 
 @Injectable()
 export class RussianTranslation implements Translation {
@@ -27,9 +28,11 @@ export class RussianTranslation implements Translation {
   entManagementCompany = new EntityManagementCompanyRussianTranslation();
   entSpace = new EntitySpaceRussianTranslation();
   entCount = new EntityCountRussianTranslation();
+  entReadout = new EntityReadoutRussianTranslation();
   uiSecurity = new ModuleSecurityRussianTranslation();
   uiShared = new UiSharedRussianTranslation();
   uiAdmin = new UiAdminRussianTranslation();
+  uiUser = new UiUserRussianTranslation();
 
   httpErrors = {
     SERVER_DO_NOT_RESPOND_HEADER: 'Сервер не отвечает',
