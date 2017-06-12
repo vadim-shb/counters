@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface CountRepository extends SoftDeleteCrudRepository<Count, Long> {
 
+    //fixme: not load inactive
     List<Count> findBySpaceId(Long spaceId);
 }
