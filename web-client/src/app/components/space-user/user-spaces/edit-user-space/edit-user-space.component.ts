@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {I18nService} from '../../../../modules/i18n/i18n.service';
 import {Translation} from '../../../../modules/i18n/translations/translation';
@@ -19,6 +19,8 @@ export class EditUserSpaceComponent implements OnInit {
   private countTypes: CountType[];
 
   @Input() spaceId: number;
+  @Output() onSave = new EventEmitter();
+
   private spaceAddressForm: FormGroup;
   private towns: Town[];
 
@@ -85,7 +87,7 @@ export class EditUserSpaceComponent implements OnInit {
     }
 
     this.spaceDao.create(this.spaceAddressForm.value)
-      .subscribe();
+      .subscribe((space) => this.onSave.emit(space));
   }
 
 }

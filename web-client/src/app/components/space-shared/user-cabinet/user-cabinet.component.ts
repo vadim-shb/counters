@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {I18nService} from '../../../modules/i18n/i18n.service';
 import {Translation} from '../../../modules/i18n/translations/translation';
 import {UserRole} from '../../../domain/security/user';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-cabinet',
@@ -18,6 +18,7 @@ export class UserCabinetComponent implements OnInit {
 
   constructor(
     private i18nService: I18nService,
+    private router: Router,
     private route: ActivatedRoute,
   ) {
     i18nService.getCurrentTranslation()

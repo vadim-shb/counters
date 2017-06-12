@@ -13,7 +13,9 @@
   </nav>
   <user-settings *ngIf="activeTab === 'settings'"></user-settings>
   <user-spaces *ngIf="activeTab === 'spaces'"></user-spaces>
-  <edit-user-space *ngIf="activeTab === 'space'" [spaceId]="editSpaceId"></edit-user-space>
+  <edit-user-space *ngIf="activeTab === 'space'"
+                   [spaceId]="editSpaceId"
+                   (onSave)="router.navigate(['/user-cabinet/spaces'])"></edit-user-space>
 </ng-container>
 <ng-container *userHasAnyRole="[UserRole.ADMIN]">
   <user-settings></user-settings>
