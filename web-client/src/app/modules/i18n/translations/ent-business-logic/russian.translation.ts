@@ -1,4 +1,4 @@
-import {EntityCountTranslation, EntityManagementCompanyTranslation, EntitySpaceAddressTranslation, EntityTownTranslation} from './translation';
+import {EntityCountTranslation, EntityManagementCompanyTranslation, EntitySpaceTranslation, EntityTownTranslation} from './translation';
 
 export class EntityTownRussianTranslation implements EntityTownTranslation {
   TOWN = 'Город';
@@ -19,7 +19,7 @@ export class EntityManagementCompanyRussianTranslation implements EntityManageme
   NAME__REQUIRED = 'Наименование не может быть пустым';
 }
 
-export class EntitySpaceAddressRussianTranslation implements EntitySpaceAddressTranslation {
+export class EntitySpaceRussianTranslation implements EntitySpaceTranslation {
   ADDRESS = 'Адрес';
 
   // ==== errors ====

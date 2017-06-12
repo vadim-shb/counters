@@ -17,7 +17,7 @@ export interface EntityManagementCompanyTranslation {
   NAME__REQUIRED: string;
 }
 
-export interface EntitySpaceAddressTranslation {
+export interface EntitySpaceTranslation {
   ADDRESS: string;
 
   // ==== errors ====

@@ -4,16 +4,16 @@
     <md-option *ngFor="let town of towns" [value]="town.id">{{town.name}}</md-option>
   </md-select>
   <md-hint class="town" *ngIf="townIdFormControl.touched && townIdFormControl.hasError('required')">
-    {{i18n.entSpaceAddress.TOWN__REQUIRED}}
+    {{i18n.entSpace.TOWN__REQUIRED}}
   </md-hint>
 
   <md-input-container>
-    <input mdInput formControlName="address" placeholder="{{i18n.entSpaceAddress.ADDRESS}}">
+    <input mdInput formControlName="address" placeholder="{{i18n.entSpace.ADDRESS}}">
     <md-hint *ngIf="addressFormControl.touched && addressFormControl.hasError('required')">
-      {{i18n.entSpaceAddress.ADDRESS__REQUIRED}}
+      {{i18n.entSpace.ADDRESS__REQUIRED}}
     </md-hint>
     <md-hint *ngIf="addressFormControl.touched && addressFormControl.hasError('maxlength')">
-      {{i18n.entSpaceAddress.ADDRESS__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
+      {{i18n.entSpace.ADDRESS__CAN_NOT_BE_LONGER_THAN_1000_CHARACTERS}}
     </md-hint>
   </md-input-container>
 

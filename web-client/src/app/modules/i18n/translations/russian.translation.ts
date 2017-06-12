@@ -5,7 +5,7 @@ import {EntitySecurityUserRussianTranslation, ModuleSecurityRussianTranslation} 
 import {
   EntityCountRussianTranslation,
   EntityManagementCompanyRussianTranslation,
-  EntitySpaceAddressRussianTranslation,
+  EntitySpaceRussianTranslation,
   EntityTownRussianTranslation
 } from './ent-business-logic/russian.translation';
 import {UiSharedRussianTranslation} from './ui-shared/russian.translation';
@@ -25,7 +25,7 @@ export class RussianTranslation implements Translation {
   entSecurityUser = new EntitySecurityUserRussianTranslation();
   entTown = new EntityTownRussianTranslation();
   entManagementCompany = new EntityManagementCompanyRussianTranslation();
-  entSpaceAddress = new EntitySpaceAddressRussianTranslation();
+  entSpace = new EntitySpaceRussianTranslation();
   entCount = new EntityCountRussianTranslation();
   uiSecurity = new ModuleSecurityRussianTranslation();
   uiShared = new UiSharedRussianTranslation();

@@ -1,4 +1,4 @@
-import {EntityCountTranslation, EntityManagementCompanyTranslation, EntitySpaceAddressTranslation, EntityTownTranslation} from './translation';
+import {EntityCountTranslation, EntityManagementCompanyTranslation, EntitySpaceTranslation, EntityTownTranslation} from './translation';
 
 export class EntityTownEnglishTranslation implements EntityTownTranslation {
   TOWN = 'Town';
@@ -19,7 +19,7 @@ export class EntityManagementCompanyEnglishTranslation implements EntityManageme
   NAME__REQUIRED = 'Name required';
 }
 
-export class EntitySpaceAddressEnglishTranslation implements EntitySpaceAddressTranslation {
+export class EntitySpaceEnglishTranslation implements EntitySpaceTranslation {
   ADDRESS = 'Address';
 
   // ==== errors ====

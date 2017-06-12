@@ -1,7 +1,7 @@
 import 'hammerjs';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConnectionBackend, Http, HttpModule, XHRBackend} from '@angular/http';
 import {RootComponent, RootNavigatorComponent} from './components/root/root.component';
 import {SignInComponent} from './components/security/sign-in/sign-in.component';
@@ -41,6 +41,7 @@ import {UserCabinetComponent} from './components/space-shared/user-cabinet/user-
 import {UserSpacesComponent} from './components/space-user/user-spaces/user-spaces.component';
 import {EditUserSpaceComponent} from './components/space-user/user-spaces/edit-user-space/edit-user-space.component';
 import {SpaceDao} from './dao/space-dao/space.dao';
+import {SpaceService} from './services/space/space.service';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import {SpaceDao} from './dao/space-dao/space.dao';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpModule,
     MaterialModule,
@@ -90,6 +92,7 @@ import {SpaceDao} from './dao/space-dao/space.dao';
     {provide: Http, useClass: SecureHttpService},
     TownDao,
     SpaceDao,
+    SpaceService,
     ManagementCompanyDao,
   ],
   bootstrap: [RootComponent]
