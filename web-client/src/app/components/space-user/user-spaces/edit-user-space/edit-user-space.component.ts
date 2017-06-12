@@ -6,6 +6,7 @@ import {TownDao} from '../../../../dao/town/town.dao';
 import {Town} from '../../../../domain/town';
 import {Count, CountType, countTypeByName} from '../../../../domain/count';
 import {SpaceDao} from '../../../../dao/space-dao/space.dao';
+import {EditMode} from 'app/domain/edit-mode';
 
 @Component({
   selector: 'edit-user-space',
@@ -78,14 +79,8 @@ export class EditUserSpaceComponent implements OnInit {
   }
 
   private addBasicCountsToNewForm() {
-    this.countsFormControl.push(this.generateCountFormGroup({
-      type: CountType.COLD_WATER,
-      name: this.i18n.entCount.COLD_WATER
-    }));
-    this.countsFormControl.push(this.generateCountFormGroup({
-      type: CountType.HOT_WATER,
-      name: this.i18n.entCount.HOT_WATER
-    }));
+    this.addCountWithType(CountType.COLD_WATER);
+    this.addCountWithType(CountType.HOT_WATER);
   }
 
   private fillFormWithSpace(space) {
@@ -93,19 +88,21 @@ export class EditUserSpaceComponent implements OnInit {
     this.townIdFormControl.setValue(space.townId);
     this.addressFormControl.setValue(space.address);
     space.counts.forEach(count => {
-      let countFormGroup = this.generateCountFormGroup(count);
-      countFormGroup.get('type').disable();
-      this.countsFormControl.push(countFormGroup);
+      this.addCount(count, EditMode.CUT);
     });
   }
 
-  private generateCountFormGroup(count: Count): FormGroup {
-    return this.fb.group({
+  private addCount(count: Count, editMode: EditMode): void {
+    let countFormGroup = this.fb.group({
       id: [count.id],
       spaceId: [count.spaceId],
       type: [count.type, [Validators.required]],
       name: [count.name, [Validators.required, Validators.maxLength(1000)]],
     });
+    if (editMode === EditMode.CUT) {
+      countFormGroup.get('type').disable();
+    }
+    this.countsFormControl.push(countFormGroup);
   }
 
   save() {
@@ -126,4 +123,10 @@ export class EditUserSpaceComponent implements OnInit {
       .subscribe((space) => this.onSave.emit(space));
   }
 
+  addCountWithType(countType: CountType) {
+    this.addCount({
+      type: countType,
+      name: this.i18n.entCount[countType]
+    }, EditMode.FULL)
+  }
 }
