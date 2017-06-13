@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {PureHttpService} from '../../../services/pure-http/pure-http.service';
 import {ValidationService} from '../../../services/validation/validation.service';
 import {InternationalizedComponent} from '../../../modules/i18n/utils/internationalized-component';
+import {I18nService} from '../../../modules/i18n/i18n.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -38,6 +39,7 @@ export class SignUpComponent extends InternationalizedComponent implements OnIni
 
 
   constructor(private fb: FormBuilder,
+              private i18nService: I18nService,
               private pureHttp: PureHttpService,
               private router: Router,
               private validationService: ValidationService,) {

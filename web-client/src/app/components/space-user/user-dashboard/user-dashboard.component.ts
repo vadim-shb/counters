@@ -3,6 +3,7 @@ import {Space} from '../../../domain/space';
 import {SpaceService} from '../../../services/space/space.service';
 import {Count} from '../../../domain/count';
 import {InternationalizedComponent} from '../../../modules/i18n/utils/internationalized-component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -15,7 +16,10 @@ export class UserDashboardComponent extends InternationalizedComponent implement
   private activeSpaceId: number;
   private countsToAskReadouts: Count[] = [];
 
-  constructor(private spaceService: SpaceService,) {
+  constructor(
+    private spaceService: SpaceService,
+    private router: Router,
+  ) {
     super();
 
     this.spaceService.loadCurrentUserSpaces()

@@ -1,4 +1,3 @@
-<!--todo: add space creation component if there are no spaces-->
 <div id="readouts-container" *ngIf="activeSpaceId">
   <md-select [(ngModel)]="activeSpaceId" placeholder="{{i18n.entSpace.ADDRESS}}" (ngModelChange)="activeSpaceChanges()">
     <md-option *ngFor="let space of spaces" [value]="space.id">{{space.fullAddress}}</md-option>
@@ -6,3 +5,7 @@
 
   <add-readouts [counts]="countsToAskReadouts"></add-readouts>
 </div>
+
+<edit-user-space *ngIf="!activeSpaceId"
+                 [spaceId]="editSpaceId"
+                 (onSave)="router.navigate(['/'])"></edit-user-space>
