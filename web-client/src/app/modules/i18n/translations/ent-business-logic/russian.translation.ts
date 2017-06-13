@@ -51,6 +51,7 @@ export class EntityReadoutRussianTranslation implements EntityReadoutTranslation
   READOUTS = 'Показания';
 
   // ==== errors ====
-  READOUT__CAN_NOT_BE_CONTAIN_THAN_9_DIGITS = 'Показание не может содержать более 9 цифр';
+  READOUT__CAN_NOT_CONTAIN_MORE_THAN_9_DIGITS = 'Показание не может содержать более 9 цифр';
   READOUT__CAN_NOT_BE_NEGATIVE = 'Показание не может быть отрицательным';
+  READOUT__MUST_BE_AN_INTEGER = 'Показание должно быть целым числом';
 }

@@ -1,13 +1,15 @@
 <form [formGroup]="readoutsForm" (ngSubmit)="save()" novalidate>
   <md-input-container *ngFor="let readoutFormControl of readoutsForm.controls; let i=index" [formGroupName]="i">
     <input mdInput type="number" formControlName="readout" placeholder="{{counts[i].name}}" min="0" max="999999999">
-    <!--todo: add validation. See ValidationService-->
-    <!--<md-hint *ngIf="readoutFormControl.get('readout').touched && readoutFormControl.get('readout').hasError('maxlength')">-->
-      <!--{{i18n.entReadout.READOUT__CAN_NOT_BE_CONTAIN_THAN_9_DIGITS}}-->
-    <!--</md-hint>-->
-    <!--<md-hint *ngIf="readoutFormControl.get('readout').touched && readoutFormControl.get('readout').hasError('negative')">-->
-      <!--{{i18n.entReadout.READOUT__CAN_NOT_BE_NEGATIVE}}-->
-    <!--</md-hint>-->
+    <md-hint *ngIf="readoutFormControl.get('readout').touched && readoutFormControl.get('readout').hasError('maxNumber')">
+      {{i18n.entReadout.READOUT__CAN_NOT_CONTAIN_MORE_THAN_9_DIGITS}}
+    </md-hint>
+    <md-hint *ngIf="readoutFormControl.get('readout').touched && readoutFormControl.get('readout').hasError('minNumber')">
+      {{i18n.entReadout.READOUT__CAN_NOT_BE_NEGATIVE}}
+    </md-hint>
+    <md-hint *ngIf="readoutFormControl.get('readout').touched && readoutFormControl.get('readout').hasError('integer')">
+      {{i18n.entReadout.READOUT__MUST_BE_AN_INTEGER}}
+    </md-hint>
   </md-input-container>
   <button type="submit" md-raised-button color="primary">{{i18n.uiUser.SEND_READOUTS}}</button>
 </form>

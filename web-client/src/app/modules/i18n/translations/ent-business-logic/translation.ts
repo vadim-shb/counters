@@ -46,6 +46,7 @@ export interface EntityReadoutTranslation {
   READOUTS: string;
 
   // ==== errors ====
-  READOUT__CAN_NOT_BE_CONTAIN_THAN_9_DIGITS: string;
+  READOUT__CAN_NOT_CONTAIN_MORE_THAN_9_DIGITS: string;
   READOUT__CAN_NOT_BE_NEGATIVE: string;
+  READOUT__MUST_BE_AN_INTEGER: string;
 }

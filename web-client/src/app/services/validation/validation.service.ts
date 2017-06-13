@@ -15,6 +15,32 @@ export class ValidationService {
     }
   }
 
+  integerValidator(control: AbstractControl): { [key: string]: any } {
+    if (control.value && !Number.isInteger(control.value)) {
+      return {'integer': true}
+    }
+  }
+
+  minNumberValidator(minNumber: number) {
+    return (control: AbstractControl): { [key: string]: any } => {
+      if (control.value &&
+          typeof control.value == 'number' &&
+          control.value < minNumber) {
+        return {'minNumber': true}
+      }
+    }
+  }
+
+  maxNumberValidator(maxNumber: number) {
+    return (control: AbstractControl): { [key: string]: any } => {
+      if (control.value &&
+        typeof control.value == 'number' &&
+        control.value > maxNumber) {
+        return {'maxNumber': true}
+      }
+    }
+  }
+
   repeatPasswordValidator(passwordGetter: () => string) {
     return (control: AbstractControl): { [key: string]: any } => {
       if (control.value != passwordGetter()) {

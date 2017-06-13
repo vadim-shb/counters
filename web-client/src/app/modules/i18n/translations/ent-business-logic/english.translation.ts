@@ -51,6 +51,7 @@ export class EntityReadoutEnglishTranslation implements EntityReadoutTranslation
   READOUTS = 'Readouts';
 
   // ==== errors ====
-  READOUT__CAN_NOT_BE_CONTAIN_THAN_9_DIGITS = 'Readout can not contain more than 9 digits';
+  READOUT__CAN_NOT_CONTAIN_MORE_THAN_9_DIGITS = 'Readout can not contain more than 9 digits';
   READOUT__CAN_NOT_BE_NEGATIVE = 'Readout can not be negative';
+  READOUT__MUST_BE_AN_INTEGER = 'Readout must be an integer';
 }
