@@ -1,21 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {I18nService} from '../../../modules/i18n/i18n.service';
-import {Translation} from '../../../modules/i18n/translations/translation';
 import {Lang} from '../../../modules/i18n/domain/lang';
 import {Router} from '@angular/router';
 import {PureHttpService} from '../../../services/pure-http/pure-http.service';
 import {ValidationService} from '../../../services/validation/validation.service';
+import {InternationalizedComponent} from '../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.less']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent extends InternationalizedComponent implements OnInit {
 
   private signUpForm: FormGroup;
-  private i18n: Translation;
   private alreadyRegisteredEmail: boolean = false;
 
   get userNameFormControl(): FormControl {
@@ -40,14 +38,10 @@ export class SignUpComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder,
-              private i18nService: I18nService,
               private pureHttp: PureHttpService,
               private router: Router,
               private validationService: ValidationService,) {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+    super();
     this.signUpForm = fb.group({
       name: ['', [Validators.required, Validators.maxLength(100)]],
       email: ['', [Validators.required, this.validationService.emailValidator, Validators.maxLength(1000)]],

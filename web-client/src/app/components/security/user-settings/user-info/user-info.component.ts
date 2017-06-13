@@ -1,20 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {Translation} from '../../../../modules/i18n/translations/translation';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../../../domain/security/user';
 import {UserService} from '../../../../services/user/user.service';
-import {I18nService} from '../../../../modules/i18n/i18n.service';
 import {Http} from '@angular/http';
 import {UserResponse} from '../../../../domain/security/success-authentication-response';
+import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
+import {I18nService} from '../../../../modules/i18n/i18n.service';
 
 @Component({
   selector: 'user-settings__user-info',
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.less']
 })
-export class UserInfoComponent implements OnInit {
+export class UserInfoComponent extends InternationalizedComponent implements OnInit {
 
-  private i18n: Translation;
   private userInfoForm: FormGroup;
   private originUserInfo: User;
 
@@ -26,14 +25,11 @@ export class UserInfoComponent implements OnInit {
     return this.userInfoForm.get('language') as FormControl;
   };
 
-  constructor(private fb: FormBuilder,
+  constructor(private i18nService: I18nService,
+              private fb: FormBuilder,
               private userService: UserService,
-              private i18nService: I18nService,
               private http: Http,) {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+    super();
 
     this.userInfoForm = fb.group({
       name: ['', [Validators.required, Validators.maxLength(100)]],

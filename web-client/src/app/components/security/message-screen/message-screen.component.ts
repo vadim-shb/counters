@@ -1,17 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {I18nService} from '../../../modules/i18n/i18n.service';
-import {Translation} from '../../../modules/i18n/translations/translation';
 import {ActivatedRoute} from '@angular/router';
 import {SecurityService} from '../../../services/security/security.service';
+import {InternationalizedComponent} from '../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'message-screen',
   templateUrl: './message-screen.component.html',
   styleUrls: ['./message-screen.component.less']
 })
-export class MessageScreenComponent implements OnInit {
+export class MessageScreenComponent extends InternationalizedComponent implements OnInit {
 
-  private i18n: Translation;
   private messageWindow: {
     title: string;
     message: string;
@@ -19,13 +17,9 @@ export class MessageScreenComponent implements OnInit {
     linkText: string;
   };
 
-  constructor(private i18nService: I18nService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private securityService: SecurityService,) {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+    super();
   }
 
   ngOnInit() {

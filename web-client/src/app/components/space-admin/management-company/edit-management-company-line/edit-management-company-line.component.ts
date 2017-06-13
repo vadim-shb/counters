@@ -1,23 +1,21 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Translation} from '../../../../modules/i18n/translations/translation';
-import {I18nService} from '../../../../modules/i18n/i18n.service';
 import {ManagementCompanyDao} from '../../../../dao/management-company/management-company.dao';
 import {ManagementCompany} from '../../../../domain/management-company';
 import {TownDao} from '../../../../dao/town/town.dao';
 import {Town} from '../../../../domain/town';
 import * as _ from 'underscore';
+import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'edit-management-company-line',
   templateUrl: './edit-management-company-line.component.html',
   styleUrls: ['./edit-management-company-line.component.less']
 })
-export class EditManagementCompanyLineComponent implements OnInit {
+export class EditManagementCompanyLineComponent extends InternationalizedComponent implements OnInit {
 
   private originalManagementCompany: ManagementCompany;
   private managementCompanyForm: FormGroup;
-  private i18n: Translation;
   private towns: Town[] = [];
   private _ = _;
 
@@ -28,16 +26,12 @@ export class EditManagementCompanyLineComponent implements OnInit {
   // @formatter:off
   constructor(
     private fb: FormBuilder,
-    private i18nService: I18nService,
     private managementCompanyDao: ManagementCompanyDao,
     private townDao: TownDao,
   )
   // @formatter:on
   {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+    super();
   }
 
   ngOnInit() {

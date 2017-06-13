@@ -1,19 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {I18nService} from '../../../modules/i18n/i18n.service';
-import {Translation} from '../../../modules/i18n/translations/translation';
 import {PureHttpService} from '../../../services/pure-http/pure-http.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ValidationService} from '../../../services/validation/validation.service';
 import {Router} from '@angular/router';
+import {InternationalizedComponent} from '../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'app-password-recovery',
   templateUrl: './password-recovery.component.html',
   styleUrls: ['./password-recovery.component.less']
 })
-export class PasswordRecoveryComponent implements OnInit {
+export class PasswordRecoveryComponent extends InternationalizedComponent implements OnInit {
 
-  private i18n: Translation;
   private recoveryPasswordForm: FormGroup;
   private neverSignedUpEmail = false;
 
@@ -29,15 +27,11 @@ export class PasswordRecoveryComponent implements OnInit {
     return this.recoveryPasswordForm.get('repeatPassword') as FormControl;
   };
 
-  constructor(private i18nService: I18nService,
-              private pureHttp: PureHttpService,
+  constructor(private pureHttp: PureHttpService,
               private fb: FormBuilder,
               private router: Router,
               private validationService: ValidationService,) {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+    super();
   }
 
   ngOnInit() {

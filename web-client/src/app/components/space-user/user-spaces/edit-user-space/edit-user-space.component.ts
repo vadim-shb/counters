@@ -1,21 +1,19 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {I18nService} from '../../../../modules/i18n/i18n.service';
-import {Translation} from '../../../../modules/i18n/translations/translation';
 import {TownDao} from '../../../../dao/town/town.dao';
 import {Town} from '../../../../domain/town';
 import {Count, CountType, countTypeByName} from '../../../../domain/count';
 import {SpaceDao} from '../../../../dao/space/space.dao';
 import {EditMode} from 'app/domain/edit-mode';
+import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'edit-user-space',
   templateUrl: './edit-user-space.component.html',
   styleUrls: ['./edit-user-space.component.less']
 })
-export class EditUserSpaceComponent implements OnInit {
+export class EditUserSpaceComponent extends InternationalizedComponent implements OnInit {
 
-  private i18n: Translation;
   private CountType = CountType;
   private countTypes: CountType[];
 
@@ -41,14 +39,10 @@ export class EditUserSpaceComponent implements OnInit {
     return this.spaceAddressForm.get('counts') as FormArray;
   };
 
-  constructor(private i18nService: I18nService,
-              private fb: FormBuilder,
+  constructor(private fb: FormBuilder,
               private townDao: TownDao,
               private spaceDao: SpaceDao,) {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+    super();
 
     this.countTypes = [];
     for (let countType in CountType) {

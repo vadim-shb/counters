@@ -1,21 +1,18 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Town} from '../../../../domain/town';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {I18nService} from '../../../../modules/i18n/i18n.service';
-import {Translation} from '../../../../modules/i18n/translations/translation';
 import {TownDao} from '../../../../dao/town/town.dao';
+import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'edit-town-line',
   templateUrl: './edit-town-line.component.html',
   styleUrls: ['./edit-town-line.component.less']
 })
-export class EditTownLineComponent implements OnInit {
+export class EditTownLineComponent extends InternationalizedComponent implements OnInit {
 
   private originalTown: Town;
   private townForm: FormGroup;
-  private i18n: Translation;
-
 
   private get nameFormControl() {
     return this.townForm.get('name');
@@ -24,15 +21,11 @@ export class EditTownLineComponent implements OnInit {
   // @formatter:off
   constructor(
     private fb: FormBuilder,
-    private i18nService: I18nService,
     private townDao: TownDao,
   )
   // @formatter:on
   {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+    super();
   }
 
   ngOnInit() {

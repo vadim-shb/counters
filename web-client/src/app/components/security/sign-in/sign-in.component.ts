@@ -3,36 +3,33 @@ import {SecurityService} from '../../../services/security/security.service';
 import {Router} from '@angular/router';
 import {User} from '../../../domain/security/user';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {I18nService} from '../../../modules/i18n/i18n.service';
-import {Translation} from '../../../modules/i18n/translations/translation';
 import {EmailPasswordCredentials} from '../../../domain/security/email-password-credentials';
 import {ValidationService} from '../../../services/validation/validation.service';
+import {InternationalizedComponent} from '../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.less']
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent extends InternationalizedComponent implements OnInit {
 
   private signInForm: FormGroup;
   private wrongEmailOrPassword: boolean = false;
-  private i18n: Translation;
 
-  get emailFormControl() { return this.signInForm.get('email') };
-  get passwordFormControl() { return this.signInForm.get('password') };
+  get emailFormControl() {
+    return this.signInForm.get('email')
+  };
 
-  constructor(
-    private router: Router,
-    private securityService: SecurityService,
-    private fb: FormBuilder,
-    private i18nService: I18nService,
-    private validationService: ValidationService,
-  ) {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+  get passwordFormControl() {
+    return this.signInForm.get('password')
+  };
+
+  constructor(private router: Router,
+              private securityService: SecurityService,
+              private fb: FormBuilder,
+              private validationService: ValidationService,) {
+    super()
   }
 
   ngOnInit() {

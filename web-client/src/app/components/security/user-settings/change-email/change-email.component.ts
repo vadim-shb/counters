@@ -1,21 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Translation} from '../../../../modules/i18n/translations/translation';
 import {Http} from '@angular/http';
-import {I18nService} from '../../../../modules/i18n/i18n.service';
 import {ValidationService} from '../../../../services/validation/validation.service';
 import {UserService} from '../../../../services/user/user.service';
+import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'user-settings__change-email',
   templateUrl: './change-email.component.html',
   styleUrls: ['./change-email.component.less']
 })
-export class ChangeEmailComponent implements OnInit {
+export class ChangeEmailComponent extends InternationalizedComponent implements OnInit {
 
   private emailChangeProcessStarts = false;
   private alreadyRegisteredEmail = false;
-  private i18n: Translation;
   private emailChangeForm: FormGroup;
   private originalEmail: string;
 
@@ -24,14 +22,10 @@ export class ChangeEmailComponent implements OnInit {
   };
 
   constructor(private fb: FormBuilder,
-              private i18nService: I18nService,
               private http: Http,
               private userService: UserService,
               private validationService: ValidationService,) {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+    super();
   }
 
   ngOnInit() {

@@ -1,30 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import {I18nService} from '../../../modules/i18n/i18n.service';
-import {Translation} from '../../../modules/i18n/translations/translation';
+import {Component, OnInit} from '@angular/core';
 import {UserRole} from '../../../domain/security/user';
 import {ActivatedRoute, Router} from '@angular/router';
+import {InternationalizedComponent} from '../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'app-user-cabinet',
   templateUrl: './user-cabinet.component.html',
   styleUrls: ['./user-cabinet.component.less']
 })
-export class UserCabinetComponent implements OnInit {
+export class UserCabinetComponent extends InternationalizedComponent implements OnInit {
 
   private UserRole = UserRole;
-  private i18n: Translation;
   private activeTab: string;
   private editSpaceId: number;
 
-  constructor(
-    private i18nService: I18nService,
-    private router: Router,
-    private route: ActivatedRoute,
-  ) {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+  constructor(private router: Router,
+              private route: ActivatedRoute,) {
+    super();
 
     route.params.subscribe(params => {
       this.activeTab = params.tab;

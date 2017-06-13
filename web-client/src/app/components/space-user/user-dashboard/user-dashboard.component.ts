@@ -1,28 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {Space} from '../../../domain/space';
-import {I18nService} from '../../../modules/i18n/i18n.service';
-import {Translation} from '../../../modules/i18n/translations/translation';
 import {SpaceService} from '../../../services/space/space.service';
 import {Count} from '../../../domain/count';
+import {InternationalizedComponent} from '../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.less']
 })
-export class UserDashboardComponent implements OnInit {
+export class UserDashboardComponent extends InternationalizedComponent implements OnInit {
 
-  private i18n: Translation;
   private spaces: Space[] = [];
   private activeSpaceId: number;
   private countsToAskReadouts: Count[] = [];
 
-  constructor(private i18nService: I18nService,
-              private spaceService: SpaceService,) {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+  constructor(private spaceService: SpaceService,) {
+    super();
 
     this.spaceService.loadCurrentUserSpaces()
       .subscribe(spaces => {

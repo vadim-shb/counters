@@ -1,20 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {Translation} from '../../../../modules/i18n/translations/translation';
 import {Http} from '@angular/http';
-import {I18nService} from '../../../../modules/i18n/i18n.service';
 import {ValidationService} from '../../../../services/validation/validation.service';
+import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
 
 @Component({
   selector: 'user-settings__change-password',
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.less']
 })
-export class ChangePasswordComponent implements OnInit {
+export class ChangePasswordComponent extends InternationalizedComponent implements OnInit {
 
   private successfulPasswordChange = false;
   private wrongPassword = false;
-  private i18n: Translation;
   private passwordChangeForm: FormGroup;
 
   get currentPasswordFormControl(): FormControl {
@@ -30,13 +28,9 @@ export class ChangePasswordComponent implements OnInit {
   };
 
   constructor(private fb: FormBuilder,
-              private i18nService: I18nService,
               private http: Http,
               private validationService: ValidationService,) {
-    i18nService.getCurrentTranslation()
-      .subscribe(translation => {
-        this.i18n = translation;
-      });
+    super();
 
     this.passwordChangeForm = fb.group({
       currentPassword: ['', this.validationService.PASSWORD_VALIDATORS],

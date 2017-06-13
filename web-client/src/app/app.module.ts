@@ -1,6 +1,6 @@
 import 'hammerjs';
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {Injector, NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConnectionBackend, Http, HttpModule, XHRBackend} from '@angular/http';
 import {RootComponent, RootNavigatorComponent} from './components/root/root.component';
@@ -44,6 +44,11 @@ import {SpaceDao} from './dao/space/space.dao';
 import {SpaceService} from './services/space/space.service';
 import { AddReadoutsComponent } from './components/space-user/user-dashboard/add-readouts/add-readouts.component';
 import {ReadoutDao} from './dao/readout/readout.dao';
+
+export let GlobalInjectors : {
+  AppModuleInjector?: Injector,
+  I18nModuleInjector?: Injector,
+} = {};
 
 @NgModule({
   declarations: [
@@ -102,4 +107,7 @@ import {ReadoutDao} from './dao/readout/readout.dao';
   bootstrap: [RootComponent]
 })
 export class AppModule {
+  constructor(private injector: Injector){
+    GlobalInjectors.AppModuleInjector = injector;
+  }
 }
