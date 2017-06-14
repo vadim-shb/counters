@@ -1,6 +1,6 @@
 package com.vdshb.domain.enums;
 
-public enum CountType {
+public enum ResourceType {
     COLD_WATER,
     HOT_WATER,
     ELECTRICITY,

@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TownDao} from '../../../../dao/town/town.dao';
 import {Town} from '../../../../domain/town';
-import {Count, CountType, countTypeByName} from '../../../../domain/count';
+import {Count, ResourceType, resourceTypeByName} from '../../../../domain/count';
 import {SpaceDao} from '../../../../dao/space/space.dao';
 import {EditMode} from 'app/domain/edit-mode';
 import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
@@ -14,8 +14,8 @@ import {InternationalizedComponent} from '../../../../modules/i18n/utils/interna
 })
 export class EditUserSpaceComponent extends InternationalizedComponent implements OnInit {
 
-  private CountType = CountType;
-  private countTypes: CountType[];
+  private ResourceType = ResourceType;
+  private resourceTypes: ResourceType[];
 
   @Input() spaceId: number;
   @Output() onSave = new EventEmitter();
@@ -44,9 +44,9 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
               private spaceDao: SpaceDao,) {
     super();
 
-    this.countTypes = [];
-    for (let countType in CountType) {
-      this.countTypes.push(countTypeByName(countType));
+    this.resourceTypes = [];
+    for (let resourceType in ResourceType) {
+      this.resourceTypes.push(resourceTypeByName(resourceType));
     }
   }
 
@@ -73,8 +73,8 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
   }
 
   private addBasicCountsToNewForm() {
-    this.addCountWithType(CountType.COLD_WATER);
-    this.addCountWithType(CountType.HOT_WATER);
+    this.addCountWithType(ResourceType.COLD_WATER);
+    this.addCountWithType(ResourceType.HOT_WATER);
   }
 
   private fillFormWithSpace(space) {
@@ -117,10 +117,10 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
       .subscribe((space) => this.onSave.emit(space));
   }
 
-  addCountWithType(countType: CountType) {
+  addCountWithType(resourceType: ResourceType) {
     this.addCount({
-      type: countType,
-      name: this.i18n.entCount[countType]
+      type: resourceType,
+      name: this.i18n.entCount[resourceType]
     }, EditMode.FULL)
   }
 }

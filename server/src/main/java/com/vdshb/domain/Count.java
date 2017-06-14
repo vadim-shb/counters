@@ -1,6 +1,6 @@
 package com.vdshb.domain;
 
-import com.vdshb.domain.enums.CountType;
+import com.vdshb.domain.enums.ResourceType;
 
 import javax.persistence.*;
 
@@ -18,7 +18,7 @@ public class Count extends BasicEntity<Count> {
 
     private String name;
 
-    private CountType type;
+    private ResourceType type;
 
     @Override
     public void setBeanPropertiesFromRestUpdate(Count request) {
@@ -53,11 +53,11 @@ public class Count extends BasicEntity<Count> {
         this.name = name;
     }
 
-    public CountType getType() {
+    public ResourceType getType() {
         return type;
     }
 
-    public void setType(CountType type) {
+    public void setType(ResourceType type) {
         this.type = type;
     }
 }

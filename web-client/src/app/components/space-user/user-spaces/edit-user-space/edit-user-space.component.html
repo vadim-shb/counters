@@ -17,7 +17,7 @@
     </md-hint>
   </md-input-container>
 
-  <button type="button" md-raised-button color="primary" (click)="addCountWithType(CountType.ELECTRICITY_DAY)">{{i18n.uiShared.ADD}}</button>
+  <button type="button" md-raised-button color="primary" (click)="addCountWithType(ResourceType.ELECTRICITY_DAY)">{{i18n.uiShared.ADD}}</button>
 
   <div formArrayName="counts">
     <md-card *ngFor="let countFormGroup of countsFormControl.controls; let i=index" [formGroupName]="i">
@@ -30,8 +30,8 @@
       </md-input-container>
 
       <md-select formControlName="type" placeholder="{{i18n.entCount.TYPE}}">
-        <md-option *ngFor="let countType of countTypes" [value]="countType">
-          {{i18n.entCount[countType]}}
+        <md-option *ngFor="let resourceType of resourceTypes" [value]="resourceType">
+          {{i18n.entCount[resourceType]}}
         </md-option>
       </md-select>
 

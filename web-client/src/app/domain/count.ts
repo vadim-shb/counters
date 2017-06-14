@@ -1,8 +1,8 @@
-//todo: think about renaming. CountPoint?
+//todo: Count --> CountPoint
 export class Count {
   public id?: number;
   public spaceId?: number;
-  public type: CountType;
+  public type: ResourceType;
   public name: string;
 }
 
@@ -13,8 +13,7 @@ export class Readout {
   public creationDateTime?: Date;
 }
 
-// todo: ResourceType?
-export enum CountType {
+export enum ResourceType {
   COLD_WATER = <any>'COLD_WATER',
   HOT_WATER = <any>'HOT_WATER',
   ELECTRICITY = <any>'ELECTRICITY',
@@ -23,14 +22,14 @@ export enum CountType {
   GAS = <any>'GAS',
 }
 
-export function countTypeByName(countType: string) {
-  switch (countType) {
-    case 'COLD_WATER': return CountType.COLD_WATER;
-    case 'HOT_WATER': return CountType.HOT_WATER;
-    case 'ELECTRICITY': return CountType.ELECTRICITY;
-    case 'ELECTRICITY_DAY': return CountType.ELECTRICITY_DAY;
-    case 'ELECTRICITY_NIGHT': return CountType.ELECTRICITY_NIGHT;
-    case 'GAS': return CountType.GAS;
+export function resourceTypeByName(resourceType: string) {
+  switch (resourceType) {
+    case 'COLD_WATER': return ResourceType.COLD_WATER;
+    case 'HOT_WATER': return ResourceType.HOT_WATER;
+    case 'ELECTRICITY': return ResourceType.ELECTRICITY;
+    case 'ELECTRICITY_DAY': return ResourceType.ELECTRICITY_DAY;
+    case 'ELECTRICITY_NIGHT': return ResourceType.ELECTRICITY_NIGHT;
+    case 'GAS': return ResourceType.GAS;
     default:
       throw 'wrong count type';
   }
