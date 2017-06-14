@@ -1,6 +1,6 @@
 export interface UiSharedTranslation {
   SAVE: string;
-  ADD: string; //todo: delete if will not be used
+  ADD: string;
   DELETE: string;
 
   SPACES: string;
