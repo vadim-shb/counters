@@ -1,4 +1,3 @@
-//todo: Count --> CountPoint
 export class CountPoint {
   public id?: number;
   public spaceId?: number;
