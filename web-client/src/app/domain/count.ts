@@ -1,4 +1,4 @@
-//todo: think about renaming. MeasuredValue?
+//todo: think about renaming. CountPoint?
 export class Count {
   public id?: number;
   public spaceId?: number;
@@ -13,6 +13,7 @@ export class Readout {
   public creationDateTime?: Date;
 }
 
+// todo: ResourceType?
 export enum CountType {
   COLD_WATER = <any>'COLD_WATER',
   HOT_WATER = <any>'HOT_WATER',
