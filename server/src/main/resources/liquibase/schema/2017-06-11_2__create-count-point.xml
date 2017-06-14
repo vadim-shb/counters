@@ -3,9 +3,9 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
 
-    <changeSet id="2017-06-11_2__create-count" author="vdshb" context="main">
+    <changeSet id="2017-06-11_2__create-count-point" author="vdshb" context="main">
         <sql>
-            create table count (
+            create table count_point (
                 id              BIGSERIAL           NOT NULL PRIMARY KEY,
                 is_active       BOOLEAN             NOT NULL DEFAULT TRUE,
                 space_id        BIGINT              NOT NULL REFERENCES space (id),
@@ -13,11 +13,11 @@
                 type            VARCHAR(150)        NOT NULL
             );
 
-            CREATE INDEX count___space_id ON count (space_id);
+            CREATE INDEX count_point___space_id ON count_point (space_id);
         </sql>
         <rollback>
             <sql>
-                DROP TABLE count;
+                DROP TABLE count_point;
             </sql>
         </rollback>
     </changeSet>

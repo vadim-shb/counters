@@ -3,7 +3,7 @@
     <md-option *ngFor="let space of spaces" [value]="space.id">{{space.fullAddress}}</md-option>
   </md-select>
 
-  <add-readouts [counts]="countsToAskReadouts"></add-readouts>
+  <add-readouts [countPoints]="countPointsToAskReadouts"></add-readouts>
 </div>
 
 <edit-user-space *ngIf="!activeSpaceId"

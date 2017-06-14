@@ -1,4 +1,4 @@
-import {Count} from './count';
+import {CountPoint} from './count-point';
 export class Space {
 
   public id?: number;
@@ -6,6 +6,6 @@ export class Space {
   public townId: number;
   public address: string;
   public fullAddress?: string;
-  public counts: Count[];
+  public countPoints: CountPoint[];
 
 }

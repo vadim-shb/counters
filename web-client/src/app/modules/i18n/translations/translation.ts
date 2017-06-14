@@ -1,7 +1,7 @@
 import {Lang} from '../domain/lang';
 import {EntitySecurityUserTranslation, ModuleSecurityTranslation} from './security/translation';
 import {
-  EntityCountTranslation, EntityManagementCompanyTranslation, EntityReadoutTranslation, EntitySpaceTranslation,
+  EntityCountPointTranslation, EntityManagementCompanyTranslation, EntityReadoutTranslation, EntitySpaceTranslation,
   EntityTownTranslation
 } from './ent-business-logic/translation';
 import {UiSharedTranslation} from './ui-shared/translation';
@@ -19,7 +19,7 @@ export interface Translation {
   entTown: EntityTownTranslation;
   entManagementCompany: EntityManagementCompanyTranslation;
   entSpace: EntitySpaceTranslation;
-  entCount: EntityCountTranslation;
+  entCountPoint: EntityCountPointTranslation;
   entReadout: EntityReadoutTranslation;
   uiSecurity: ModuleSecurityTranslation;
   uiShared: UiSharedTranslation;

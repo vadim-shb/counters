@@ -5,12 +5,12 @@ import com.vdshb.domain.enums.ResourceType;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "count")
-public class Count extends BasicEntity<Count> {
+@Table(name = "count_point")
+public class CountPoint extends BasicEntity<CountPoint> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "count_id_seq")
-    @SequenceGenerator(name = "count_id_seq", sequenceName = "count_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "count_point_id_seq")
+    @SequenceGenerator(name = "count_point_id_seq", sequenceName = "count_point_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "space_id")
@@ -21,7 +21,7 @@ public class Count extends BasicEntity<Count> {
     private ResourceType type;
 
     @Override
-    public void setBeanPropertiesFromRestUpdate(Count request) {
+    public void setBeanPropertiesFromRestUpdate(CountPoint request) {
         setName(request.name);
     }
 

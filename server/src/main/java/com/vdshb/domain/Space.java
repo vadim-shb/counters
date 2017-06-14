@@ -21,7 +21,7 @@ public class Space extends BasicEntity<Space> {
     private String address;
 
     @Transient
-    private List<Count> counts;
+    private List<CountPoint> countPoints;
 
     @Override
     public void setBeanPropertiesFromRestUpdate(Space request) {
@@ -64,11 +64,11 @@ public class Space extends BasicEntity<Space> {
         this.address = address;
     }
 
-    public List<Count> getCounts() {
-        return counts;
+    public List<CountPoint> getCountPoints() {
+        return countPoints;
     }
 
-    public void setCounts(List<Count> counts) {
-        this.counts = counts;
+    public void setCountPoints(List<CountPoint> countPoints) {
+        this.countPoints = countPoints;
     }
 }

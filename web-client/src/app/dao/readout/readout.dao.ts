@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Readout} from '../../domain/count';
+import {Readout} from '../../domain/count-point';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 

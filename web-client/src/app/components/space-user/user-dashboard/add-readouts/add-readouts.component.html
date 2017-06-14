@@ -1,6 +1,6 @@
 <form [formGroup]="readoutsForm" (ngSubmit)="save()" novalidate>
   <md-input-container *ngFor="let readoutFormControl of readoutsForm.controls; let i=index" [formGroupName]="i">
-    <input mdInput type="number" formControlName="readout" placeholder="{{counts[i].name}}" min="0" max="999999999">
+    <input mdInput type="number" formControlName="readout" placeholder="{{countPoints[i].name}}" min="0" max="999999999">
     <md-hint *ngIf="readoutFormControl.get('readout').touched && readoutFormControl.get('readout').hasError('maxNumber')">
       {{i18n.entReadout.READOUT__CAN_NOT_CONTAIN_MORE_THAN_9_DIGITS}}
     </md-hint>

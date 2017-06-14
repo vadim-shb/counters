@@ -17,21 +17,21 @@
     </md-hint>
   </md-input-container>
 
-  <button type="button" md-raised-button color="primary" (click)="addCountWithType(ResourceType.ELECTRICITY_DAY)">{{i18n.uiShared.ADD}}</button>
+  <button type="button" md-raised-button color="primary" (click)="addCountPointWithType(ResourceType.ELECTRICITY_DAY)">{{i18n.uiShared.ADD}}</button>
 
-  <div formArrayName="counts">
-    <md-card *ngFor="let countFormGroup of countsFormControl.controls; let i=index" [formGroupName]="i">
+  <div formArrayName="countPoints">
+    <md-card *ngFor="let countPointFormGroup of countPointsFormControl.controls; let i=index" [formGroupName]="i">
 
       <md-input-container>
-        <input mdInput formControlName="name" placeholder="{{i18n.entCount.NAME}}">
-        <md-hint *ngIf="countFormGroup.get('name').touched && countFormGroup.get('name').hasError('required')">
-          {{i18n.entCount.NAME__REQUIRED}}
+        <input mdInput formControlName="name" placeholder="{{i18n.entCountPoint.NAME}}">
+        <md-hint *ngIf="countPointFormGroup.get('name').touched && countPointFormGroup.get('name').hasError('required')">
+          {{i18n.entCountPoint.NAME__REQUIRED}}
         </md-hint>
       </md-input-container>
 
-      <md-select formControlName="type" placeholder="{{i18n.entCount.TYPE}}">
+      <md-select formControlName="type" placeholder="{{i18n.entCountPoint.TYPE}}">
         <md-option *ngFor="let resourceType of resourceTypes" [value]="resourceType">
-          {{i18n.entCount[resourceType]}}
+          {{i18n.entCountPoint[resourceType]}}
         </md-option>
       </md-select>
 

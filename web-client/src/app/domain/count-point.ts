@@ -1,5 +1,5 @@
 //todo: Count --> CountPoint
-export class Count {
+export class CountPoint {
   public id?: number;
   public spaceId?: number;
   public type: ResourceType;
@@ -8,7 +8,7 @@ export class Count {
 
 export class Readout {
   public id?: number;
-  public countId: number;
+  public countPointId: number;
   public readout: number;
   public creationDateTime?: Date;
 }
@@ -31,6 +31,6 @@ export function resourceTypeByName(resourceType: string) {
     case 'ELECTRICITY_NIGHT': return ResourceType.ELECTRICITY_NIGHT;
     case 'GAS': return ResourceType.GAS;
     default:
-      throw 'wrong count type';
+      throw 'wrong resource type';
   }
 }

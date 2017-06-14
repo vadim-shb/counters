@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TownDao} from '../../../../dao/town/town.dao';
 import {Town} from '../../../../domain/town';
-import {Count, ResourceType, resourceTypeByName} from '../../../../domain/count';
+import {CountPoint, ResourceType, resourceTypeByName} from '../../../../domain/count-point';
 import {SpaceDao} from '../../../../dao/space/space.dao';
 import {EditMode} from 'app/domain/edit-mode';
 import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
@@ -35,8 +35,8 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
     return this.spaceAddressForm.get('address') as FormControl;
   }
 
-  private get countsFormControl(): FormArray {
-    return this.spaceAddressForm.get('counts') as FormArray;
+  private get countPointsFormControl(): FormArray {
+    return this.spaceAddressForm.get('countPoints') as FormArray;
   };
 
   constructor(private fb: FormBuilder,
@@ -55,7 +55,7 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
       id: [],
       townId: [, Validators.required],
       address: ['', [Validators.required, Validators.maxLength(1000)]],
-      counts: this.fb.array([]),
+      countPoints: this.fb.array([]),
     });
 
     this.townDao.loadAll().subscribe(towns => this.towns = towns);
@@ -68,44 +68,44 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
           this.addressFormControl.disable();
         });
     } else {
-      this.addBasicCountsToNewForm();
+      this.addBasicCountPointsToNewForm();
     }
   }
 
-  private addBasicCountsToNewForm() {
-    this.addCountWithType(ResourceType.COLD_WATER);
-    this.addCountWithType(ResourceType.HOT_WATER);
+  private addBasicCountPointsToNewForm() {
+    this.addCountPointWithType(ResourceType.COLD_WATER);
+    this.addCountPointWithType(ResourceType.HOT_WATER);
   }
 
   private fillFormWithSpace(space) {
     this.idFormControl.setValue(space.id);
     this.townIdFormControl.setValue(space.townId);
     this.addressFormControl.setValue(space.address);
-    space.counts.forEach(count => {
-      this.addCount(count, EditMode.CUT);
+    space.countPoints.forEach(countPoint => {
+      this.addCountPoint(countPoint, EditMode.CUT);
     });
   }
 
-  private addCount(count: Count, editMode: EditMode): void {
-    let countFormGroup = this.fb.group({
-      id: [count.id],
-      spaceId: [count.spaceId],
-      type: [count.type, [Validators.required]],
-      name: [count.name, [Validators.required, Validators.maxLength(1000)]],
+  private addCountPoint(countPoint: CountPoint, editMode: EditMode): void {
+    let countPointFormGroup = this.fb.group({
+      id: [countPoint.id],
+      spaceId: [countPoint.spaceId],
+      type: [countPoint.type, [Validators.required]],
+      name: [countPoint.name, [Validators.required, Validators.maxLength(1000)]],
     });
     if (editMode === EditMode.CUT) {
-      countFormGroup.get('type').disable();
+      countPointFormGroup.get('type').disable();
     }
-    this.countsFormControl.push(countFormGroup);
+    this.countPointsFormControl.push(countPointFormGroup);
   }
 
   save() {
     if (this.spaceAddressForm.invalid) {
       this.townIdFormControl.markAsTouched();
       this.addressFormControl.markAsTouched();
-      this.countsFormControl.controls.forEach(countFormGroup => {
-        countFormGroup.get('type').markAsTouched();
-        countFormGroup.get('name').markAsTouched();
+      this.countPointsFormControl.controls.forEach(countPointFormGroup => {
+        countPointFormGroup.get('type').markAsTouched();
+        countPointFormGroup.get('name').markAsTouched();
       });
       return;
     }
@@ -117,10 +117,10 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
       .subscribe((space) => this.onSave.emit(space));
   }
 
-  addCountWithType(resourceType: ResourceType) {
-    this.addCount({
+  addCountPointWithType(resourceType: ResourceType) {
+    this.addCountPoint({
       type: resourceType,
-      name: this.i18n.entCount[resourceType]
+      name: this.i18n.entCountPoint[resourceType]
     }, EditMode.FULL)
   }
 }

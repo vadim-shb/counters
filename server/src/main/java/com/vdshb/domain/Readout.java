@@ -14,8 +14,8 @@ public class Readout extends BasicEntity<Readout> {
     @SequenceGenerator(name = "readout_id_seq", sequenceName = "readout_id_seq", allocationSize = 1)
     private Long id;
 
-    @Column(name = "count_id")
-    private Long countId;
+    @Column(name = "count_point_id")
+    private Long countPointId;
 
     private Integer readout;
 
@@ -47,12 +47,12 @@ public class Readout extends BasicEntity<Readout> {
         this.id = id;
     }
 
-    public Long getCountId() {
-        return countId;
+    public Long getCountPointId() {
+        return countPointId;
     }
 
-    public void setCountId(Long countId) {
-        this.countId = countId;
+    public void setCountPointId(Long countPointId) {
+        this.countPointId = countPointId;
     }
 
     public Integer getReadout() {

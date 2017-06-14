@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Space} from '../../../domain/space';
 import {SpaceService} from '../../../services/space/space.service';
-import {Count} from '../../../domain/count';
+import {CountPoint} from '../../../domain/count-point';
 import {InternationalizedComponent} from '../../../modules/i18n/utils/internationalized-component';
 import {Router} from '@angular/router';
 
@@ -14,7 +14,7 @@ export class UserDashboardComponent extends InternationalizedComponent implement
 
   private spaces: Space[] = [];
   private activeSpaceId: number;
-  private countsToAskReadouts: Count[] = [];
+  private countPointsToAskReadouts: CountPoint[] = [];
 
   constructor(
     private spaceService: SpaceService,
@@ -27,7 +27,7 @@ export class UserDashboardComponent extends InternationalizedComponent implement
         this.spaces = spaces;
         if (spaces[0]) {
           this.activeSpaceId = spaces[0].id;
-          this.countsToAskReadouts = spaces[0].counts;
+          this.countPointsToAskReadouts = spaces[0].countPoints;
         }
       });
   }
@@ -38,7 +38,7 @@ export class UserDashboardComponent extends InternationalizedComponent implement
   activeSpaceChanges() {
     this.spaces
       .filter(space => space.id === this.activeSpaceId)
-      .forEach(space => this.countsToAskReadouts = space.counts);
+      .forEach(space => this.countPointsToAskReadouts = space.countPoints);
   }
 
 }

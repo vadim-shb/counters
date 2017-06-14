@@ -26,7 +26,7 @@ export interface EntitySpaceTranslation {
   TOWN__REQUIRED: string;
 }
 
-export interface EntityCountTranslation {
+export interface EntityCountPointTranslation {
   NAME: string;
   TYPE: string;
   COLD_WATER: string;

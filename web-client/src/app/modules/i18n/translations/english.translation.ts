@@ -3,7 +3,7 @@ import {Translation} from './translation';
 import {Lang} from '../domain/lang';
 import {EntitySecurityUserEnglishTranslation, ModuleSecurityEnglishTranslation} from './security/english.translation';
 import {
-  EntityCountEnglishTranslation,
+  EntityCountPointEnglishTranslation,
   EntityManagementCompanyEnglishTranslation, EntityReadoutEnglishTranslation,
   EntitySpaceEnglishTranslation,
   EntityTownEnglishTranslation
@@ -27,7 +27,7 @@ export class EnglishTranslation implements Translation {
   entTown = new EntityTownEnglishTranslation();
   entManagementCompany = new EntityManagementCompanyEnglishTranslation();
   entSpace = new EntitySpaceEnglishTranslation();
-  entCount = new EntityCountEnglishTranslation();
+  entCountPoint = new EntityCountPointEnglishTranslation();
   entReadout = new EntityReadoutEnglishTranslation();
   uiSecurity = new ModuleSecurityEnglishTranslation();
   uiShared = new UiSharedEnglishTranslation();

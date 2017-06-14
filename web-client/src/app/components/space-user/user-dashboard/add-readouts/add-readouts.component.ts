@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {Count, Readout} from '../../../../domain/count';
+import {CountPoint, Readout} from '../../../../domain/count-point';
 import {FormArray, FormBuilder} from '@angular/forms';
 import {ReadoutDao} from '../../../../dao/readout/readout.dao';
 import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
@@ -12,7 +12,7 @@ import {ValidationService} from '../../../../services/validation/validation.serv
 })
 export class AddReadoutsComponent extends InternationalizedComponent implements OnInit, OnChanges {
 
-  @Input() counts: Count[];
+  @Input() countPoints: CountPoint[];
   @Output() onSave = new EventEmitter();
 
   private readoutsForm: FormArray;
@@ -25,9 +25,9 @@ export class AddReadoutsComponent extends InternationalizedComponent implements 
 
   ngOnChanges(changes: SimpleChanges): void {
     this.readoutsForm = this.fb.array([]);
-    this.counts.forEach(count => {
+    this.countPoints.forEach(countPoint => {
       this.readoutsForm.push(this.fb.group({
-        countId: [count.id],
+        countPointId: [countPoint.id],
         readout: ['', [
           this.validationService.integerValidator,
           this.validationService.minNumberValidator(0),

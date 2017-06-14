@@ -1,7 +1,7 @@
 package com.vdshb.controllers;
 
 import com.vdshb.domain.Readout;
-import com.vdshb.repository.CountRepository;
+import com.vdshb.repository.CountPointRepository;
 import com.vdshb.repository.ReadoutRepository;
 import com.vdshb.security.domain.entity.SecurityUser;
 import org.springframework.http.HttpStatus;
@@ -25,7 +25,7 @@ public class ReadoutController {
     private ReadoutRepository readoutRepository;
 
     @Inject
-    private CountRepository countRepository;
+    private CountPointRepository countPointRepository;
 
     @PostMapping("/api/readouts")
     @PreAuthorize("hasRole('USER')")
@@ -45,8 +45,8 @@ public class ReadoutController {
 
     private boolean isIllegalReadouts(List<Readout> readouts) {
         SecurityUser securityUser = (SecurityUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Set<Long> userCounts = countRepository.findUserCountIds(securityUser.getId());
-        return readouts.stream().anyMatch(readout -> !userCounts.contains(readout.getCountId()));
+        Set<Long> userCountPoints = countPointRepository.findUserCountPointIds(securityUser.getId());
+        return readouts.stream().anyMatch(readout -> !userCountPoints.contains(readout.getCountPointId()));
     }
 
 }

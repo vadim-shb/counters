@@ -8,12 +8,12 @@
             create table readout (
                 id                      BIGSERIAL                       NOT NULL PRIMARY KEY,
                 is_active               BOOLEAN                         NOT NULL DEFAULT TRUE,
-                count_id                BIGINT                          NOT NULL REFERENCES count (id),
+                count_point_id          BIGINT                          NOT NULL REFERENCES count_point (id),
                 readout                 INT                             NOT NULL,
                 creation_date_time      TIMESTAMP WITHOUT TIME ZONE     NOT NULL DEFAULT (now() at time zone 'utc')
             );
 
-            CREATE INDEX readout___count_id ON readout (count_id);
+            CREATE INDEX readout___count_point_id ON readout (count_point_id);
         </sql>
         <rollback>
             <sql>

@@ -1,5 +1,5 @@
 import {
-  EntityCountTranslation, EntityManagementCompanyTranslation, EntityReadoutTranslation, EntitySpaceTranslation,
+  EntityCountPointTranslation, EntityManagementCompanyTranslation, EntityReadoutTranslation, EntitySpaceTranslation,
   EntityTownTranslation
 } from './translation';
 
@@ -31,7 +31,7 @@ export class EntitySpaceEnglishTranslation implements EntitySpaceTranslation {
   TOWN__REQUIRED = 'Town required';
 }
 
-export class EntityCountEnglishTranslation implements EntityCountTranslation {
+export class EntityCountPointEnglishTranslation implements EntityCountPointTranslation {
   NAME = 'Name';
   TYPE = 'Type';
   COLD_WATER = 'Cold water';

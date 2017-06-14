@@ -1,8 +1,8 @@
 package com.vdshb.controllers;
 
-import com.vdshb.domain.Count;
+import com.vdshb.domain.CountPoint;
 import com.vdshb.domain.Space;
-import com.vdshb.repository.CountRepository;
+import com.vdshb.repository.CountPointRepository;
 import com.vdshb.repository.SpaceRepository;
 import com.vdshb.security.SecurityUserToken;
 import com.vdshb.security.domain.entity.SecurityUser;
@@ -24,7 +24,7 @@ public class SpaceController {
     private SpaceRepository spaceRepository;
 
     @Inject
-    private CountRepository countRepository;
+    private CountPointRepository countPointRepository;
 
     @GetMapping("/api/spaces")
     @PreAuthorize("hasRole('USER')")
@@ -34,7 +34,7 @@ public class SpaceController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null);
         }
         List<Space> result = spaceRepository.findByUserId(userId);
-        result.forEach(space -> space.setCounts(countRepository.findBySpaceId(space.getId())));
+        result.forEach(space -> space.setCountPoints(countPointRepository.findBySpaceId(space.getId())));
         return ResponseEntity.ok(result);
     }
 
@@ -46,7 +46,7 @@ public class SpaceController {
         if (!securityUser.getId().equals(result.getUserId())) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        result.setCounts(countRepository.findBySpaceId(spaceId));
+        result.setCountPoints(countPointRepository.findBySpaceId(spaceId));
         return ResponseEntity.ok(result);
     }
 
@@ -58,17 +58,17 @@ public class SpaceController {
         space.setId(null);
         space.setUserId(securityUser.getId());
         Space persistedSpace = spaceRepository.save(space);
-        List<Count> counts = space.getCounts();
-        for (Count count : counts) {
-            addCount(persistedSpace, count);
+        List<CountPoint> countPoints = space.getCountPoints();
+        for (CountPoint countPoint : countPoints) {
+            addCount(persistedSpace, countPoint);
         }
         return persistedSpace;
     }
 
-    private void addCount(Space parentSpace, Count count) {
-        count.setId(null);
-        count.setSpaceId(parentSpace.getId());
-        countRepository.save(count);
+    private void addCount(Space parentSpace, CountPoint countPoint) {
+        countPoint.setId(null);
+        countPoint.setSpaceId(parentSpace.getId());
+        countPointRepository.save(countPoint);
     }
 
     @PutMapping("/api/space/{spaceId}")
@@ -85,37 +85,37 @@ public class SpaceController {
             persistedSpace.setBeanPropertiesFromRestUpdate(newSpace);
         }
         spaceRepository.save(persistedSpace);
-        List<Count> oldCounts = countRepository.findBySpaceId(spaceId);
-        removeCounts(oldCounts, newSpace.getCounts());
-        updateCounts(oldCounts, newSpace.getCounts());
-        addCounts(persistedSpace, newSpace.getCounts());
+        List<CountPoint> oldCountPoints = countPointRepository.findBySpaceId(spaceId);
+        removeCounts(oldCountPoints, newSpace.getCountPoints());
+        updateCounts(oldCountPoints, newSpace.getCountPoints());
+        addCounts(persistedSpace, newSpace.getCountPoints());
 
-        persistedSpace.setCounts(countRepository.findBySpaceId(spaceId));
+        persistedSpace.setCountPoints(countPointRepository.findBySpaceId(spaceId));
         return ResponseEntity.ok(persistedSpace);
     }
 
     // todo: check if works
-    private void removeCounts(List<Count> oldCounts, List<Count> newCounts) {
-        oldCounts.stream()
-                .filter(count -> !count.containedByIdIn(newCounts))
-                .forEach(count -> countRepository.delete(count));
+    private void removeCounts(List<CountPoint> oldCountPoints, List<CountPoint> newCountPoints) {
+        oldCountPoints.stream()
+                .filter(countPoint -> !countPoint.containedByIdIn(newCountPoints))
+                .forEach(countPoint -> countPointRepository.delete(countPoint));
     }
 
     // todo: check if works
-    private void updateCounts(List<Count> oldCounts, List<Count> newCounts) {
-        newCounts.forEach(newCount -> {
-            newCount.getByIdFrom(oldCounts).ifPresent(oldCount -> {
-                oldCount.setBeanPropertiesFromRestUpdate(newCount);
-                countRepository.save(oldCount);
+    private void updateCounts(List<CountPoint> oldCountPoints, List<CountPoint> newCountPoints) {
+        newCountPoints.forEach(newCountPoint -> {
+            newCountPoint.getByIdFrom(oldCountPoints).ifPresent(oldCountPoint -> {
+                oldCountPoint.setBeanPropertiesFromRestUpdate(newCountPoint);
+                countPointRepository.save(oldCountPoint);
             });
         });
     }
 
     // todo: check if works
-    private void addCounts(Space space, List<Count> newCounts) {
-        newCounts.stream()
-                .filter(count -> count.getId() == null)
-                .forEach(count -> addCount(space, count));
+    private void addCounts(Space space, List<CountPoint> newCountPoints) {
+        newCountPoints.stream()
+                .filter(countPoint -> countPoint.getId() == null)
+                .forEach(countPoint -> addCount(space, countPoint));
     }
 
 }
