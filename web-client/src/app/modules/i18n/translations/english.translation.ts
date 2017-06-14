@@ -4,7 +4,7 @@ import {Lang} from '../domain/lang';
 import {EntitySecurityUserEnglishTranslation, ModuleSecurityEnglishTranslation} from './security/english.translation';
 import {
   EntityCountPointEnglishTranslation,
-  EntityManagementCompanyEnglishTranslation, EntityReadoutEnglishTranslation,
+  EntityBillingCompanyEnglishTranslation, EntityReadoutEnglishTranslation,
   EntitySpaceEnglishTranslation,
   EntityTownEnglishTranslation
 } from './ent-business-logic/english.translation';
@@ -25,7 +25,7 @@ export class EnglishTranslation implements Translation {
 
   entSecurityUser = new EntitySecurityUserEnglishTranslation();
   entTown = new EntityTownEnglishTranslation();
-  entManagementCompany = new EntityManagementCompanyEnglishTranslation();
+  entBillingCompany = new EntityBillingCompanyEnglishTranslation();
   entSpace = new EntitySpaceEnglishTranslation();
   entCountPoint = new EntityCountPointEnglishTranslation();
   entReadout = new EntityReadoutEnglishTranslation();

@@ -8,9 +8,9 @@ export interface EntityTownTranslation {
   NAME__REQUIRED: string;
 }
 
-export interface EntityManagementCompanyTranslation {
-  MANAGEMENT_COMPANIES: string;
-  ADD_MANAGEMENT_COMPANY: string;
+export interface EntityBillingCompanyTranslation {
+  BILLING_COMPANIES: string;
+  ADD_BILLING_COMPANY: string;
   NAME: string;
 
   // ==== errors ====

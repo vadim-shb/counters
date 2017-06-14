@@ -3,15 +3,17 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.2.xsd">
 
-    <changeSet id="2017-06-03__add-management-companies" author="vdshb" context="dev">
-        <loadData
-                tableName="management_company"
-                file="liquibase/fixtures/2017-06-03__add-management-companies.csv"
-        >
-        </loadData>
+    <changeSet id="2017-06-03__create-billing-company" author="vdshb" context="main">
+        <sql>
+            create table billing_company (
+                id              BIGSERIAL           NOT NULL PRIMARY KEY,
+                is_active       BOOLEAN             NOT NULL DEFAULT TRUE,
+                name            VARCHAR(100)
+            );
+        </sql>
         <rollback>
             <sql>
-                DELETE FROM management_company;
+                DROP TABLE billing_company;
             </sql>
         </rollback>
     </changeSet>

@@ -1,6 +1,0 @@
-<div class="add-management-company">
-  <edit-management-company-line [managementCompany]="newManagementCompany" (onSave)="clearSavedValue($event)"></edit-management-company-line>
-</div>
-<div class="management-companies">
-  <edit-management-company-line *ngFor="let managementCompany of managementCompanies" [managementCompany]="managementCompany" (onDelete)="deleted(managementCompany)"></edit-management-company-line>
-</div>

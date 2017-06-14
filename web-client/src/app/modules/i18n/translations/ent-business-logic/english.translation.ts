@@ -1,5 +1,5 @@
 import {
-  EntityCountPointTranslation, EntityManagementCompanyTranslation, EntityReadoutTranslation, EntitySpaceTranslation,
+  EntityCountPointTranslation, EntityBillingCompanyTranslation, EntityReadoutTranslation, EntitySpaceTranslation,
   EntityTownTranslation
 } from './translation';
 
@@ -13,9 +13,9 @@ export class EntityTownEnglishTranslation implements EntityTownTranslation {
   NAME__REQUIRED = 'Name required';
 }
 
-export class EntityManagementCompanyEnglishTranslation implements EntityManagementCompanyTranslation {
-  MANAGEMENT_COMPANIES = 'Management companies';
-  ADD_MANAGEMENT_COMPANY = 'Add management company';
+export class EntityBillingCompanyEnglishTranslation implements EntityBillingCompanyTranslation {
+  BILLING_COMPANIES = 'Billing companies';
+  ADD_BILLING_COMPANY = 'Add billing company';
   NAME = 'Name';
 
   // ==== errors ====

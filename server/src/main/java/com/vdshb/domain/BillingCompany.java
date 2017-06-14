@@ -5,25 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "management_company")
-public class ManagementCompany extends BasicEntity<ManagementCompany> {
+@Table(name = "billing_company")
+public class BillingCompany extends BasicEntity<BillingCompany> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "management_company_id_seq")
-    @SequenceGenerator(name = "management_company_id_seq", sequenceName = "management_company_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "billing_company_id_seq")
+    @SequenceGenerator(name = "billing_company_id_seq", sequenceName = "billing_company_id_seq", allocationSize = 1)
     private Long id;
 
     private String name;
 
     @ManyToMany
-    @JoinTable(name="management_company_in_town",
-            joinColumns = @JoinColumn(name = "management_company_id", referencedColumnName = "id"),
+    @JoinTable(name="billing_company_in_town",
+            joinColumns = @JoinColumn(name = "billing_company_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "town_id", referencedColumnName = "id")
     )
     private List<Town> towns = new ArrayList<>(0);
 
     @Override
-    public void setBeanPropertiesFromRestUpdate(ManagementCompany request) {
+    public void setBeanPropertiesFromRestUpdate(BillingCompany request) {
         setName(request.getName());
         setTowns(request.getTowns());
     }

@@ -1,5 +1,5 @@
 import {
-  EntityCountPointTranslation, EntityManagementCompanyTranslation, EntityReadoutTranslation, EntitySpaceTranslation,
+  EntityCountPointTranslation, EntityBillingCompanyTranslation, EntityReadoutTranslation, EntitySpaceTranslation,
   EntityTownTranslation
 } from './translation';
 
@@ -13,9 +13,9 @@ export class EntityTownRussianTranslation implements EntityTownTranslation {
   NAME__REQUIRED = 'Название не может быть пустым';
 }
 
-export class EntityManagementCompanyRussianTranslation implements EntityManagementCompanyTranslation {
-  MANAGEMENT_COMPANIES = 'Управляющие компании';
-  ADD_MANAGEMENT_COMPANY = 'Добавить УК';
+export class EntityBillingCompanyRussianTranslation implements EntityBillingCompanyTranslation {
+  BILLING_COMPANIES = 'Рассчетные компании';
+  ADD_BILLING_COMPANY = 'Добавить рассчетную компанию';
   NAME = 'Наименование';
 
   // ==== errors ====

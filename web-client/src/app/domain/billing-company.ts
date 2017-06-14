@@ -1,7 +1,6 @@
 import {Town} from './town';
-//todo: think about renaming. BillingCompany
 
-export class ManagementCompany {
+export class BillingCompany {
   id?: number;
   name: string;
   towns: Town[];

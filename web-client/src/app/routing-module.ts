@@ -9,9 +9,8 @@ import {RootNavigatorComponent} from './components/root/root.component';
 import {AdminDashboardComponent} from './components/space-admin/admin-dashboard/admin-dashboard.component';
 import {UserDashboardComponent} from './components/space-user/user-dashboard/user-dashboard.component';
 import {TownsComponent} from 'app/components/space-admin/towns/towns.component';
-import {ManagementCompanyComponent} from './components/space-admin/management-company/management-company.component';
+import {BillingCompanyComponent} from './components/space-admin/billing-company/billing-company.component';
 import {UserCabinetComponent} from './components/space-shared/user-cabinet/user-cabinet.component';
-import {EditUserSpaceComponent} from './components/space-user/user-spaces/edit-user-space/edit-user-space.component';
 
 const ROUTES: Routes = [
   {
@@ -47,8 +46,8 @@ const ROUTES: Routes = [
     component: TownsComponent
   },
   {
-    path: 'admin/management-companies',
-    component: ManagementCompanyComponent
+    path: 'admin/billing-companies',
+    component: BillingCompanyComponent
   },
   {
     path: 'user/dashboard',
