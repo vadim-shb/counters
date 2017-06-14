@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public interface CountPointRepository extends SoftDeleteCrudRepository<CountPoint, Long> {
 
-    //fixme: not load inactive
+    @Query("select e from CountPoint e where e.isActive = true and e.spaceId = ?1")
     List<CountPoint> findBySpaceId(Long spaceId);
 
     @Query(value = "SELECT DISTINCT c.id from count_point c JOIN space s ON s.id = c.space_id where s.user_id = ?1 and c.is_active = true and s.is_active = true", nativeQuery = true)
