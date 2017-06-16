@@ -13,6 +13,7 @@ export class SpaceDao {
 
   loadCurrentUserSpaces(): Observable<Space[]> {
     return this.userService.getUser()
+      .takeWhile(user => !!user)
       .flatMap(user => {
         return this.http.get(`/api/spaces?userId=${user.id}`)
           .map(response => response.json() as Space[]);
@@ -21,7 +22,7 @@ export class SpaceDao {
 
   loadOne(spaceId: number): Observable<Space> {
     return this.http.get(`/api/space/${spaceId}`)
-          .map(response => response.json() as Space);
+      .map(response => response.json() as Space);
   }
 
   create(space: Space): Observable<Space> {

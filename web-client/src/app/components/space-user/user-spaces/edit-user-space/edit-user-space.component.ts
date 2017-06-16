@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TownDao} from '../../../../dao/town/town.dao';
 import {Town} from '../../../../domain/town';
@@ -6,6 +6,7 @@ import {CountPoint, ResourceType, resourceTypeByName} from '../../../../domain/c
 import {SpaceDao} from '../../../../dao/space/space.dao';
 import {EditMode} from 'app/domain/edit-mode';
 import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'edit-user-space',
@@ -21,7 +22,7 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
   @Output() onSave = new EventEmitter();
 
   private spaceAddressForm: FormGroup;
-  private towns: Town[];
+  private towns$: Observable<Town[]> = this.townDao.loadAll();
 
   private get idFormControl(): FormControl {
     return this.spaceAddressForm.get('id') as FormControl;
@@ -57,8 +58,6 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
       address: ['', [Validators.required, Validators.maxLength(1000)]],
       countPoints: this.fb.array([]),
     });
-
-    this.townDao.loadAll().subscribe(towns => this.towns = towns);
 
     if (this.spaceId) {
       this.spaceDao.loadOne(this.spaceId)

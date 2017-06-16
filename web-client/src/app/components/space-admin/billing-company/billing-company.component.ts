@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BillingCompanyDao} from '../../../dao/billing-company/billing-company.dao';
 import {BillingCompany} from '../../../domain/billing-company';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-billing-company',
@@ -10,7 +11,7 @@ import {BillingCompany} from '../../../domain/billing-company';
 export class BillingCompanyComponent implements OnInit {
 
   private newBillingCompany: BillingCompany;
-  private billingCompanies: BillingCompany[] = [];
+  private billingCompanies$: Observable<BillingCompany[]>;
 
   // @formatter:off
   constructor(
@@ -19,17 +20,30 @@ export class BillingCompanyComponent implements OnInit {
   // @formatter:on
 
   ngOnInit() {
-    this.newBillingCompany = new BillingCompany();
-    this.billingCompanyDao.loadAll()
-      .subscribe(billingCompanies => this.billingCompanies = billingCompanies);
+    this.renewComponent();
   }
 
-  clearSavedValue(savedBillingCompany) {
+  renewComponent() {
     this.newBillingCompany = new BillingCompany();
+    this.renewBillingCompanies();
   }
 
-  deleted(deletedBillingCompany: BillingCompany) {
-    this.billingCompanies = this.billingCompanies.filter(billingCompany => billingCompany != deletedBillingCompany);
+  renewBillingCompanies() {
+    this.billingCompanies$ = this.billingCompanyDao.loadAll();
   }
+
+  // ngOnInit() {
+  //   this.newBillingCompany = new BillingCompany();
+  //   this.billingCompanyDao.loadAll()
+  //     .subscribe(billingCompanies => this.billingCompanies = billingCompanies);
+  // }
+  //
+  // clearSavedValue(savedBillingCompany) {
+  //   this.newBillingCompany = new BillingCompany();
+  // }
+  //
+  // deleted(deletedBillingCompany: BillingCompany) {
+  //   this.billingCompanies = this.billingCompanies.filter(billingCompany => billingCompany != deletedBillingCompany);
+  // }
 
 }

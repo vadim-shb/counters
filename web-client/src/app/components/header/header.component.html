@@ -11,8 +11,8 @@
 
   <span class="app-toolbar-filler"></span>
 
-  <ng-container *ngIf="user; else : anonymousBlock">
-    <button md-button [mdMenuTriggerFor]="userMenu">{{user.name}}</button>
+  <ng-container *ngIf="user$ | async; else : anonymousBlock">
+    <button md-button [mdMenuTriggerFor]="userMenu">{{(user$ | async).name}}</button>
     <md-menu #userMenu="mdMenu">
       <a md-menu-item routerLink="/user-cabinet/settings">{{i18n.uiSecurity.SETTINGS}}</a>
       <button md-menu-item (click)="signOut()">{{i18n.uiSecurity.SIGN_OUT}}</button>

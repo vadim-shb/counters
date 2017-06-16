@@ -1,8 +1,8 @@
 <div class="add-billing-company">
-  <edit-billing-company-line [billingCompany]="newBillingCompany" (onSave)="clearSavedValue($event)"></edit-billing-company-line>
+  <edit-billing-company-line [billingCompany]="newBillingCompany" (onSave)="renewComponent()"></edit-billing-company-line>
 </div>
 <div class="billing-companies">
-  <edit-billing-company-line *ngFor="let billingCompany of billingCompanies"
+  <edit-billing-company-line *ngFor="let billingCompany of billingCompanies$ | async"
                              [billingCompany]="billingCompany"
-                             (onDelete)="deleted(billingCompany)"></edit-billing-company-line>
+                             (onDelete)="renewBillingCompanies(billingCompany)"></edit-billing-company-line>
 </div>

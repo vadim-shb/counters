@@ -5,6 +5,7 @@ import {Translation} from '../../modules/i18n/translations/translation';
 import {User, UserRole} from '../../domain/security/user';
 import {InternationalizedComponent} from '../../modules/i18n/utils/internationalized-component';
 import {I18nService} from '../../modules/i18n/i18n.service';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ import {I18nService} from '../../modules/i18n/i18n.service';
 })
 export class HeaderComponent extends InternationalizedComponent implements OnInit {
 
-  private user?: User;
+  private user$: Observable<User>;
   private UserRole = UserRole;
 
   constructor(private securityService: SecurityService,
@@ -21,10 +22,7 @@ export class HeaderComponent extends InternationalizedComponent implements OnIni
               private i18nService: I18nService,
   ) {
     super();
-    userService.getUser()
-      .subscribe(user => {
-        this.user = user;
-      });
+    this.user$ = userService.getUser();
   }
 
   ngOnInit() {

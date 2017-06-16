@@ -1,7 +1,7 @@
 <form [formGroup]="spaceAddressForm" (ngSubmit)="save()" novalidate>
 
   <md-select formControlName="townId" placeholder="{{i18n.entTown.TOWN}}">
-    <md-option *ngFor="let town of towns" [value]="town.id">{{town.name}}</md-option>
+    <md-option *ngFor="let town of towns$ | async" [value]="town.id">{{town.name}}</md-option>
   </md-select>
   <md-hint class="town" *ngIf="townIdFormControl.touched && townIdFormControl.hasError('required')">
     {{i18n.entSpace.TOWN__REQUIRED}}

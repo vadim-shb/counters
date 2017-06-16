@@ -16,13 +16,15 @@ export class SpaceService {
       .flatMap(towns => {
         return this.spaceDao.loadCurrentUserSpaces()
           .map(spaces => {
-            spaces.forEach(space => {
-              let townName = towns.filter(town => town.id == space.townId)[0].name;
-              space.fullAddress = `${townName}, ${space.address}`;
-            });
+            spaces.forEach(space => this.addFullAddress(space, towns));
             spaces.sort((s1, s2) => s1.fullAddress.localeCompare(s2.fullAddress));
             return spaces;
           });
       });
+  }
+
+  private addFullAddress(space, towns): void {
+    let townName = towns.filter(town => town.id == space.townId)[0].name;
+    space.fullAddress = `${townName}, ${space.address}`;
   }
 }

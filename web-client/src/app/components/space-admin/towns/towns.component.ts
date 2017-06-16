@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Town} from '../../../domain/town';
 import {TownDao} from '../../../dao/town/town.dao';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-towns',
@@ -10,7 +11,7 @@ import {TownDao} from '../../../dao/town/town.dao';
 export class TownsComponent implements OnInit {
 
   private newTown: Town;
-  private towns: Town[] = [];
+  private towns$: Observable<Town[]>;
 
   // @formatter:off
   constructor(
@@ -19,16 +20,15 @@ export class TownsComponent implements OnInit {
   // @formatter:on
 
   ngOnInit() {
-    this.newTown = new Town();
-    this.townDao.loadAll()
-      .subscribe(towns => this.towns = towns);
+    this.renewComponent();
   }
 
-  clearSavedValue(savedTown) {
+  renewComponent() {
     this.newTown = new Town();
+    this.renewTowns();
   }
 
-  deleted(deletedTown: Town) {
-    this.towns = this.towns.filter(town => town != deletedTown);
+  renewTowns() {
+    this.towns$ = this.townDao.loadAll();
   }
 }
