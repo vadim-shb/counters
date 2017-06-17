@@ -16,6 +16,9 @@ public class CountPoint extends BasicEntity<CountPoint> {
     @Column(name = "space_id")
     private Long spaceId;
 
+    @Column(name = "billing_company_id")
+    private Long billingCompanyId;
+
     private String name;
 
     private ResourceType type;
@@ -43,6 +46,14 @@ public class CountPoint extends BasicEntity<CountPoint> {
 
     public void setSpaceId(Long spaceId) {
         this.spaceId = spaceId;
+    }
+
+    public Long getBillingCompanyId() {
+        return billingCompanyId;
+    }
+
+    public void setBillingCompanyId(Long billingCompanyId) {
+        this.billingCompanyId = billingCompanyId;
     }
 
     public String getName() {

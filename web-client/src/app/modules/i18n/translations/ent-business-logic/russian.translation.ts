@@ -14,6 +14,7 @@ export class EntityTownRussianTranslation implements EntityTownTranslation {
 }
 
 export class EntityBillingCompanyRussianTranslation implements EntityBillingCompanyTranslation {
+  BILLING_COMPANY = 'Рассчетная компания';
   BILLING_COMPANIES = 'Рассчетные компании';
   ADD_BILLING_COMPANY = 'Добавить рассчетную компанию';
   NAME = 'Наименование';

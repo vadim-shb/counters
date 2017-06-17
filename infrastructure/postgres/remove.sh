@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd "$(dirname "$0")"
 
 sudo docker stop hcs-postgres
 sudo docker rm hcs-postgres

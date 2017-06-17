@@ -24,7 +24,7 @@ export class TownsComponent implements OnInit {
   }
 
   renewComponent() {
-    this.newTown = new Town();
+    this.newTown = new Town({name: ''});
     this.renewTowns();
   }
 

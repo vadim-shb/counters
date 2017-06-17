@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {TownDao} from '../../../../dao/town/town.dao';
 import {Town} from '../../../../domain/town';
@@ -7,6 +7,8 @@ import {SpaceDao} from '../../../../dao/space/space.dao';
 import {EditMode} from 'app/domain/edit-mode';
 import {InternationalizedComponent} from '../../../../modules/i18n/utils/internationalized-component';
 import {Observable} from 'rxjs/Observable';
+import {BillingCompany} from '../../../../domain/billing-company';
+import {BillingCompanyDao} from '../../../../dao/billing-company/billing-company.dao';
 
 @Component({
   selector: 'edit-user-space',
@@ -14,7 +16,6 @@ import {Observable} from 'rxjs/Observable';
   styleUrls: ['./edit-user-space.component.less']
 })
 export class EditUserSpaceComponent extends InternationalizedComponent implements OnInit {
-
   private ResourceType = ResourceType;
   private resourceTypes: ResourceType[];
 
@@ -23,6 +24,7 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
 
   private spaceAddressForm: FormGroup;
   private towns$: Observable<Town[]> = this.townDao.loadAll();
+  private billingCompanies$: Observable<BillingCompany[]>;
 
   private get idFormControl(): FormControl {
     return this.spaceAddressForm.get('id') as FormControl;
@@ -42,6 +44,7 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
 
   constructor(private fb: FormBuilder,
               private townDao: TownDao,
+              private billingCompanyDao: BillingCompanyDao,
               private spaceDao: SpaceDao,) {
     super();
 
@@ -53,8 +56,8 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
 
   ngOnInit() {
     this.spaceAddressForm = this.fb.group({
-      id: [],
-      townId: [, Validators.required],
+      id: [null],
+      townId: [null, Validators.required],
       address: ['', [Validators.required, Validators.maxLength(1000)]],
       countPoints: this.fb.array([]),
     });
@@ -69,6 +72,18 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
     } else {
       this.addBasicCountPointsToNewForm();
     }
+
+    this.billingCompanies$ = this.townIdFormControl.valueChanges
+      .flatMap(changedTownId => {
+        return this.billingCompanyDao.loadAll()
+          .map(billingCompanies => billingCompanies.filter(billingCompany => billingCompany.isInTown(changedTownId)));
+      });
+
+    this.billingCompanies$.subscribe(() => {
+        this.countPointsFormControl.controls.forEach(countPointFormControl => countPointFormControl.get('billingCompanyId').setValue(null));
+      }
+    );
+    //todo check if billingCompanies$ completes on component destroy
   }
 
   private addBasicCountPointsToNewForm() {
@@ -91,12 +106,14 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
       spaceId: [countPoint.spaceId],
       type: [countPoint.type, [Validators.required]],
       name: [countPoint.name, [Validators.required, Validators.maxLength(1000)]],
+      billingCompanyId: [null, []],
     });
     if (editMode === EditMode.CUT) {
       countPointFormGroup.get('type').disable();
     }
     this.countPointsFormControl.push(countPointFormGroup);
   }
+
 
   save() {
     if (this.spaceAddressForm.invalid) {
@@ -105,6 +122,7 @@ export class EditUserSpaceComponent extends InternationalizedComponent implement
       this.countPointsFormControl.controls.forEach(countPointFormGroup => {
         countPointFormGroup.get('type').markAsTouched();
         countPointFormGroup.get('name').markAsTouched();
+        countPointFormGroup.get('billingCompanyId').markAsTouched();
       });
       return;
     }

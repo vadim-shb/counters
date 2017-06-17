@@ -35,6 +35,12 @@
         </md-option>
       </md-select>
 
+      <md-select formControlName="billingCompanyId" placeholder="{{i18n.entBillingCompany.BILLING_COMPANY}}">
+        <md-option *ngFor="let billingCompany of billingCompanies$ | async" [value]="billingCompany.id">
+          {{billingCompany.name}}
+        </md-option>
+      </md-select>
+
     </md-card>
   </div>
 

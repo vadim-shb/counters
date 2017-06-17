@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd "$(dirname "$0")"
 
 sudo docker build -t hcs/postgres .
 sudo docker run --name hcs-postgres -t -d \

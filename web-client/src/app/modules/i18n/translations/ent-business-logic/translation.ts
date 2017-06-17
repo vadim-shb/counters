@@ -9,6 +9,7 @@ export interface EntityTownTranslation {
 }
 
 export interface EntityBillingCompanyTranslation {
+  BILLING_COMPANY: string;
   BILLING_COMPANIES: string;
   ADD_BILLING_COMPANY: string;
   NAME: string;

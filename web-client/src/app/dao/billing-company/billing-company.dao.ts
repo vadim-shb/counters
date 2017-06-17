@@ -11,17 +11,17 @@ export class BillingCompanyDao {
 
   loadAll(): Observable<BillingCompany[]> {
     return this.http.get(`api/billing-companies`)
-      .map(response => response.json() as BillingCompany[]);
+      .map(response => response.json().map(buildingCompany => new BillingCompany(buildingCompany)));
   }
 
   create(billingCompany: BillingCompany): Observable<BillingCompany> {
     return this.http.post(`api/billing-company/`, billingCompany)
-      .map(response => response.json() as BillingCompany);
+      .map(response => new BillingCompany(response.json()));
   }
 
   update(billingCompany: BillingCompany): Observable<BillingCompany> {
     return this.http.put(`api/billing-company/${billingCompany.id}`, billingCompany)
-      .map(response => response.json() as BillingCompany);
+      .map(response => new BillingCompany(response.json()));
   }
 
   delete(billingCompanyId: number) {

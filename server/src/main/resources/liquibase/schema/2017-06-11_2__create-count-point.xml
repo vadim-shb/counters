@@ -6,14 +6,16 @@
     <changeSet id="2017-06-11_2__create-count-point" author="vdshb" context="main">
         <sql>
             create table count_point (
-                id              BIGSERIAL           NOT NULL PRIMARY KEY,
-                is_active       BOOLEAN             NOT NULL DEFAULT TRUE,
-                space_id        BIGINT              NOT NULL REFERENCES space (id),
-                name            VARCHAR(250)        NOT NULL,
-                type            VARCHAR(150)        NOT NULL
+                id                      BIGSERIAL           NOT NULL PRIMARY KEY,
+                is_active               BOOLEAN             NOT NULL DEFAULT TRUE,
+                space_id                BIGINT              NOT NULL REFERENCES space (id),
+                billing_company_id      BIGINT              REFERENCES billing_company (id),
+                name                    VARCHAR(250)        NOT NULL,
+                type                    VARCHAR(150)        NOT NULL
             );
 
             CREATE INDEX count_point___space_id ON count_point (space_id);
+            CREATE INDEX count_point___billing_company_id ON count_point (billing_company_id);
         </sql>
         <rollback>
             <sql>
